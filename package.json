@@ -1,0 +1,13 @@
+{
+  "name": "czech-inn-uno",
+  "version": "1.0.0",
+  "description": "Czech Inn Hotels × UNO Guided Experiences Platform",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

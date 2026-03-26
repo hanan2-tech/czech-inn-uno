@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Digital Concierge — Czech Inn Hotels Guest Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Heebo:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+/* ── Digital Concierge ─── */
+
+.dc-hero {
+  background: var(--dark);
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.dc-hero-gradient {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 70% at 60% 40%, rgba(156,123,60,.1) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 10% 80%, rgba(102,62,55,.12) 0%, transparent 50%);
+}
+.dc-hero-img {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1800&q=80') center/cover;
+  opacity: .06;
+}
+.dc-hero-inner {
+  position: relative; z-index: 2;
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 140px 40px 100px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.dc-hero-phone {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(156,123,60,.25);
+  border-radius: 32px; padding: 28px 24px;
+  box-shadow: 0 40px 100px rgba(0,0,0,.5);
+  position: relative;
+}
+.dc-phone-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(156,123,60,.12);
+}
+.dc-phone-title {
+  font-family: var(--fd); font-size: 1rem;
+  color: var(--cream); font-weight: 600;
+}
+.dc-phone-status {
+  font-size: .65rem; color: #4caf7d;
+  display: flex; align-items: center; gap: 5px;
+}
+.dc-phone-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #4caf7d;
+  animation: dotPulse 2s infinite;
+}
+.dc-phone-greeting {
+  font-size: .8rem; color: var(--tan); margin-bottom: 16px;
+  line-height: 1.6;
+}
+.dc-phone-tiles {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.dc-tile {
+  background: rgba(156,123,60,.08);
+  border: 1px solid rgba(156,123,60,.18);
+  border-radius: 12px; padding: 16px 14px;
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+}
+.dc-tile:hover { background: rgba(156,123,60,.14); border-color: rgba(156,123,60,.35); }
+.dc-tile-icon { font-size: 1.4rem; margin-bottom: 8px; display: block; }
+.dc-tile-name { font-size: .72rem; color: var(--cream); font-weight: 500; }
+.dc-tile-sub { font-size: .62rem; color: var(--grey); margin-top: 3px; }
+
+/* Features grid */
+.dc-features {
+  background: var(--bg-warm);
+  padding: 100px 40px;
+}
+.dc-features-inner { max-width: var(--max-w); margin: 0 auto; }
+.dc-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 64px;
+}
+.dc-feat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 36px 28px;
+  transition: border-color .25s, transform .25s;
+}
+.dc-feat:hover {
+  border-color: rgba(156,123,60,.4);
+  transform: translateY(-4px);
+}
+.dc-feat-icon { font-size: 2.2rem; margin-bottom: 20px; display: block; }
+.dc-feat-title {
+  font-family: var(--fd); font-size: 1.2rem;
+  color: var(--cream); font-weight: 600; margin-bottom: 12px;
+}
+.dc-feat-desc {
+  font-size: .82rem; color: var(--grey);
+  line-height: 1.85; font-weight: 300;
+}
+
+/* Guest journey */
+.dc-journey {
+  background: var(--dark);
+  padding: 100px 40px;
+  border-top: 1px solid rgba(156,123,60,.1);
+}
+.dc-journey-inner { max-width: var(--max-w); margin: 0 auto; }
+.dc-journey-steps {
+  display: flex; gap: 0; margin-top: 64px; position: relative;
+  flex-wrap: nowrap;
+}
+.dc-journey-steps::before {
+  content: '';
+  position: absolute; top: 32px; left: 32px; right: 32px;
+  height: 1px; background: rgba(156,123,60,.2);
+  pointer-events: none;
+}
+.dc-j-step { flex: 1; padding: 0 20px; position: relative; }
+.dc-j-num {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(156,123,60,.1);
+  border: 1px solid rgba(156,123,60,.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fd); font-size: 1.4rem; color: var(--gold);
+  font-weight: 600; margin-bottom: 24px; position: relative; z-index: 1;
+}
+.dc-j-when { font-size: .62rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+.dc-j-title { font-family: var(--fd); font-size: 1.1rem; color: var(--cream); font-weight: 600; margin-bottom: 10px; }
+.dc-j-desc { font-size: .79rem; color: var(--grey); line-height: 1.75; font-weight: 300; }
+
+/* AI Assistant */
+.dc-ai {
+  background: var(--bg-warm);
+  padding: 100px 40px;
+}
+.dc-ai-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: center;
+}
+.dc-ai-chat {
+  background: rgba(22,18,20,.98);
+  border: 1px solid rgba(156,123,60,.2);
+  border-radius: 20px; overflow: hidden;
+}
+.dc-ai-chat-bar {
+  background: rgba(156,123,60,.08);
+  border-bottom: 1px solid rgba(156,123,60,.12);
+  padding: 14px 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.dc-ai-avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex; align-items: center; justify-content: center;
+  font-size: .75rem;
+}
+.dc-ai-name { font-size: .8rem; color: var(--cream); font-weight: 500; }
+.dc-ai-online { font-size: .62rem; color: #4caf7d; }
+.dc-ai-messages { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.dc-msg {
+  max-width: 80%; padding: 12px 16px;
+  border-radius: 12px; font-size: .8rem; line-height: 1.6;
+}
+.dc-msg-bot {
+  background: rgba(156,123,60,.1); color: var(--tan);
+  border-radius: 4px 12px 12px 12px; align-self: flex-start;
+  border: 1px solid rgba(156,123,60,.15);
+}
+.dc-msg-user {
+  background: rgba(255,255,255,.06); color: var(--cream);
+  border-radius: 12px 4px 12px 12px; align-self: flex-end;
+}
+.dc-ai-input {
+  border-top: 1px solid rgba(156,123,60,.1);
+  padding: 12px 16px;
+  display: flex; gap: 8px;
+}
+.dc-ai-input-field {
+  flex: 1; background: rgba(255,255,255,.04);
+  border: 1px solid rgba(156,123,60,.12);
+  border-radius: 8px; padding: 8px 14px;
+  color: var(--tan); font-family: var(--fb); font-size: .8rem;
+  outline: none;
+}
+.dc-ai-send {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--gold); border: none; cursor: pointer;
+  color: #fff; font-size: .9rem;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Memory Book */
+.dc-memory {
+  background: var(--dark);
+  padding: 100px 40px;
+  border-top: 1px solid rgba(156,123,60,.1);
+  text-align: center;
+}
+.dc-memory-inner { max-width: 800px; margin: 0 auto; }
+.dc-memory-photos {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 8px; margin-top: 48px; margin-bottom: 48px;
+}
+.dc-mem-photo {
+  aspect-ratio: 1; border-radius: 10px; overflow: hidden;
+}
+.dc-mem-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.vis { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+</style>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js" defer></script>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- Hero -->
+<section class="dc-hero">
+  <div class="dc-hero-gradient"></div>
+  <div class="dc-hero-img"></div>
+  <div class="dc-hero-inner">
+    <div>
+      <div class="sec-eyebrow reveal" style="color:var(--gold)">Guest Experience Platform</div>
+      <h1 class="sec-title sec-title-dark reveal" style="font-size:clamp(2.5rem,5vw,4.2rem)">The Digital<br><em>Concierge</em></h1>
+      <p class="sec-sub reveal" style="color:var(--grey);max-width:440px">Your guests arrive expecting a great hotel. They leave raving about the city — because we made Prague feel personal, curated, and effortless for them.</p>
+      <div class="reveal" style="display:flex;gap:14px;margin-top:36px">
+        <a href="extras.html" class="btn-gold" data-nav>Browse Experiences</a>
+        <a href="by-passion.html" class="btn-outline btn-outline-light" data-nav>Prague by Passion</a>
+      </div>
+    </div>
+    <div class="dc-hero-phone reveal reveal-delay-2">
+      <div class="dc-phone-bar">
+        <div class="dc-phone-title">Czech Inn Concierge</div>
+        <div class="dc-phone-status"><span class="dc-phone-dot"></span>Live</div>
+      </div>
+      <p class="dc-phone-greeting">Good evening, welcome to <strong style="color:var(--cream)">Czech Inn Dlouhá</strong>. Your guided Kafka tour is booked for tomorrow at 10am. Tonight, might we suggest…</p>
+      <div class="dc-phone-tiles">
+        <div class="dc-tile">
+          <span class="dc-tile-icon">🌙</span>
+          <div class="dc-tile-name">After Dark</div>
+          <div class="dc-tile-sub">Jazz · Cocktails · Views</div>
+        </div>
+        <div class="dc-tile">
+          <span class="dc-tile-icon">🍽</span>
+          <div class="dc-tile-name">Dinner Tonight</div>
+          <div class="dc-tile-sub">Reservations available</div>
+        </div>
+        <div class="dc-tile">
+          <span class="dc-tile-icon">🗺️</span>
+          <div class="dc-tile-name">My Tours</div>
+          <div class="dc-tile-sub">Tomorrow: Kafka 10am</div>
+        </div>
+        <div class="dc-tile">
+          <span class="dc-tile-icon">❤️</span>
+          <div class="dc-tile-name">By Passion</div>
+          <div class="dc-tile-sub">Personalise Prague</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="dc-features">
+  <div class="dc-features-inner">
+    <div class="sec-eyebrow reveal">Platform Features</div>
+    <h2 class="sec-title reveal reveal-delay-1">Everything a Guest<br><em>Could Wish For</em></h2>
+
+    <div class="dc-features-grid">
+      <div class="dc-feat reveal">
+        <span class="dc-feat-icon">📱</span>
+        <div class="dc-feat-title">QR-Access, No App Required</div>
+        <p class="dc-feat-desc">Guests scan a QR code on their room key card or table topper — the full experience hub opens instantly in their browser. No app download, no account creation, no friction.</p>
+      </div>
+      <div class="dc-feat reveal reveal-delay-1">
+        <span class="dc-feat-icon">🌍</span>
+        <div class="dc-feat-title">Multilingual Support</div>
+        <p class="dc-feat-desc">English, Czech, German, French, and Spanish interfaces. Auto-detected from browser language. Your international guests feel at home from the moment they arrive.</p>
+      </div>
+      <div class="dc-feat reveal reveal-delay-2">
+        <span class="dc-feat-icon">📅</span>
+        <div class="dc-feat-title">Live Booking & Availability</div>
+        <p class="dc-feat-desc">Real-time tour availability, instant confirmation, and WhatsApp or email ticket delivery. No calling, no waiting, no "check with reception."</p>
+      </div>
+      <div class="dc-feat reveal">
+        <span class="dc-feat-icon">🤖</span>
+        <div class="dc-feat-title">AI Recommendation Engine</div>
+        <p class="dc-feat-desc">Based on check-in details — travel party, interests, weather, and time of day — the concierge surfaces the three most relevant experiences. Conversion rates 3× higher than static menus.</p>
+      </div>
+      <div class="dc-feat reveal reveal-delay-1">
+        <span class="dc-feat-icon">📸</span>
+        <div class="dc-feat-title">Guest Memory Book</div>
+        <p class="dc-feat-desc">After each tour, guides upload photos to a private guest album. Guests receive a beautiful digital "memory book" — and a gentle review request. Average review rate: 68%.</p>
+      </div>
+      <div class="dc-feat reveal reveal-delay-2">
+        <span class="dc-feat-icon">🔔</span>
+        <div class="dc-feat-title">Smart Pre-Arrival Emails</div>
+        <p class="dc-feat-desc">48 hours before check-in, guests receive a personalised email — weather forecast, top 3 tour recommendations, and a direct booking link. Conversion on these emails: 22%.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Guest Journey -->
+<section class="dc-journey">
+  <div class="dc-journey-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">Guest Journey</div>
+    <h2 class="sec-title sec-title-dark reveal reveal-delay-1">From Booking <em>Confirmation</em><br>to Five-Star Review</h2>
+
+    <div class="dc-journey-steps">
+      <div class="dc-j-step reveal">
+        <div class="dc-j-num">1</div>
+        <div class="dc-j-when">48 hrs before arrival</div>
+        <div class="dc-j-title">Pre-Arrival Email</div>
+        <p class="dc-j-desc">Personalised experience suggestions, Prague weather, and a direct booking link arrive in the guest's inbox. 22% convert to a booking before they even land.</p>
+      </div>
+      <div class="dc-j-step reveal reveal-delay-1">
+        <div class="dc-j-num">2</div>
+        <div class="dc-j-when">At check-in</div>
+        <div class="dc-j-title">QR Welcome Pack</div>
+        <p class="dc-j-desc">Reception hands guests a branded key card with QR code. "Scan to discover Prague" — the concierge hub opens in 2 seconds on their phone, ready to explore.</p>
+      </div>
+      <div class="dc-j-step reveal reveal-delay-2">
+        <div class="dc-j-num">3</div>
+        <div class="dc-j-when">During stay</div>
+        <div class="dc-j-title">Live Concierge Hub</div>
+        <p class="dc-j-desc">Book tours, browse extras, chat with the AI concierge, check dinner recommendations — all from their phone, all branded Czech Inn Hotels.</p>
+      </div>
+      <div class="dc-j-step reveal reveal-delay-3">
+        <div class="dc-j-num">4</div>
+        <div class="dc-j-when">After experience</div>
+        <div class="dc-j-title">Memory Book + Review</div>
+        <p class="dc-j-desc">Tour guide photos delivered as a private digital album. A single-tap review request sent at the perfect emotional moment — when the guest is happiest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI Assistant Demo -->
+<section class="dc-ai">
+  <div class="dc-ai-inner">
+    <div>
+      <div class="sec-eyebrow reveal">AI Concierge</div>
+      <h2 class="sec-title reveal reveal-delay-1">A Conversation<br><em>That Converts</em></h2>
+      <p class="sec-sub reveal reveal-delay-2" style="max-width:400px">The AI concierge understands context — who the guest is, what the weather is, what's available tonight — and gives a recommendation that feels human.</p>
+      <div class="reveal reveal-delay-3" style="margin-top:32px">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="color:var(--gold);font-size:1rem">✦</span>
+            <span style="font-size:.83rem;color:var(--tan)">Knows guest's room type and travel party</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="color:var(--gold);font-size:1rem">✦</span>
+            <span style="font-size:.83rem;color:var(--tan)">Checks real-time tour availability</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="color:var(--gold);font-size:1rem">✦</span>
+            <span style="font-size:.83rem;color:var(--tan)">Responds in the guest's language</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="color:var(--gold);font-size:1rem">✦</span>
+            <span style="font-size:.83rem;color:var(--tan)">Completes bookings within the chat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dc-ai-chat reveal reveal-delay-2">
+      <div class="dc-ai-chat-bar">
+        <div class="dc-ai-avatar">✦</div>
+        <div>
+          <div class="dc-ai-name">Czech Inn Concierge</div>
+          <div class="dc-ai-online">● Online now</div>
+        </div>
+      </div>
+      <div class="dc-ai-messages">
+        <div class="dc-msg dc-msg-bot">Good morning! Your Kafka Walking Tour starts at 10am tomorrow from the Old Town Square. Tonight, the weather looks perfect for a rooftop bar — T-Anker has the best view in Prague. Shall I reserve a table?</div>
+        <div class="dc-msg dc-msg-user">Yes please, for 2 people at 8pm</div>
+        <div class="dc-msg dc-msg-bot">Done ✓ Table for 2 at T-Anker at 8pm tonight. I've sent the confirmation to your email. Anything else — restaurant tomorrow after the tour, or tickets to the Mozart concert at Lobkowicz Palace?</div>
+        <div class="dc-msg dc-msg-user">Mozart sounds amazing, yes!</div>
+        <div class="dc-msg dc-msg-bot">2 tickets for the 7:30pm Mozart concert at Lobkowicz Palace — €29/person. Shall I add them to your stay? Payment at checkout. ✦</div>
+      </div>
+      <div class="dc-ai-input">
+        <input class="dc-ai-input-field" placeholder="Ask anything about Prague…" readonly/>
+        <button class="dc-ai-send">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Memory Book -->
+<section class="dc-memory">
+  <div class="dc-memory-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">Guest Memories</div>
+    <h2 class="sec-title sec-title-dark reveal reveal-delay-1">Every Tour Ends with<br><em>A Memory Book</em></h2>
+    <p class="sec-sub reveal reveal-delay-2" style="max-width:520px;margin:0 auto 0">After every guided experience, guests receive a private digital album of professional photos from their tour. It's the moment they share on Instagram — and remember forever.</p>
+    <div class="dc-memory-photos reveal reveal-delay-3">
+      <div class="dc-mem-photo"><img src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&w=400&q=80" alt="Prague memory" loading="lazy"/></div>
+      <div class="dc-mem-photo"><img src="https://images.unsplash.com/photo-1541777901-fd5cc5e5fc2e?auto=format&fit=crop&w=400&q=80" alt="Prague memory" loading="lazy"/></div>
+      <div class="dc-mem-photo"><img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=400&q=80" alt="Prague memory" loading="lazy"/></div>
+      <div class="dc-mem-photo"><img src="https://images.unsplash.com/photo-1592906209472-a36b1f3782ef?auto=format&fit=crop&w=400&q=80" alt="Prague memory" loading="lazy"/></div>
+    </div>
+    <a href="by-passion.html" class="btn-gold reveal" data-nav>Personalise Prague by Passion →</a>
+  </div>
+</section>
+
+</div><!-- /page-wrap -->
+
+<script src="js/nav.js"></script>
+<script src="js/data.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+});
+</script>
+</body>
+</html>

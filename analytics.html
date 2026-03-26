@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Analytics Dashboard — Czech Inn Hotels × UNO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Heebo:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+/* ── Analytics Page ─── */
+
+.an-hero {
+  background: var(--dark);
+  padding: 140px 40px 80px;
+  border-bottom: 1px solid rgba(156,123,60,.12);
+  position: relative; overflow: hidden;
+}
+.an-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 55% 55% at 85% 50%, rgba(156,123,60,.07) 0%, transparent 65%);
+}
+.an-hero-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: center;
+  position: relative; z-index: 1;
+}
+.an-hero-kpis {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+.an-kpi {
+  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(156,123,60,.18);
+  border-radius: 14px; padding: 24px 22px;
+}
+.an-kpi-val {
+  font-family: var(--fd); font-size: 2.2rem;
+  color: var(--gold); font-weight: 700; line-height: 1;
+  margin-bottom: 6px;
+}
+.an-kpi-label { font-size: .72rem; color: var(--grey); letter-spacing: .5px; }
+.an-kpi-delta {
+  font-size: .7rem; margin-top: 8px;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.delta-up { color: #4caf7d; }
+.delta-source { color: var(--grey); }
+
+/* Data badge */
+.data-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: .62rem; padding: 3px 9px; border-radius: 3px;
+  font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.data-badge-real { background: rgba(76,175,125,.12); color: #4caf7d; border: 1px solid rgba(76,175,125,.2); }
+.data-badge-projected { background: rgba(156,123,60,.12); color: var(--gold); border: 1px solid rgba(156,123,60,.2); }
+
+/* Charts section */
+.an-charts {
+  background: var(--bg-warm);
+  padding: 88px 40px;
+}
+.an-charts-inner { max-width: var(--max-w); margin: 0 auto; }
+.an-charts-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+  margin-top: 52px;
+}
+.an-chart-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 28px 20px;
+}
+.an-chart-panel-title {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 24px;
+}
+.an-chart-panel-name {
+  font-family: var(--fd); font-size: 1.1rem;
+  color: var(--cream); font-weight: 600;
+}
+
+/* Bar chart */
+.an-bar-chart {
+  display: flex; align-items: flex-end;
+  gap: 10px; height: 180px;
+}
+.an-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.an-bar-wrap { flex: 1; display: flex; align-items: flex-end; width: 100%; }
+.an-bar {
+  width: 100%; border-radius: 4px 4px 0 0;
+  background: linear-gradient(180deg, var(--gold-light), var(--gold));
+  min-height: 4px;
+  height: 0;
+  transition: height 1.2s cubic-bezier(.25,.46,.45,.94);
+}
+.an-bar.projected {
+  background: linear-gradient(180deg, rgba(156,123,60,.5), rgba(156,123,60,.3));
+  border: 1px dashed rgba(156,123,60,.4);
+}
+.an-bar-label { font-size: .65rem; color: var(--grey); margin-top: 8px; text-align: center; }
+.an-bar-val { font-size: .68rem; color: var(--tan); margin-bottom: 4px; font-weight: 500; }
+
+/* Donut chart (CSS-only) */
+.an-donut-wrap {
+  display: flex; align-items: center; gap: 24px;
+  margin-top: 8px;
+}
+.an-donut {
+  width: 120px; height: 120px;
+  border-radius: 50%; flex-shrink: 0;
+  background: conic-gradient(
+    var(--gold) 0% 35%,
+    var(--gold-light) 35% 58%,
+    rgba(156,123,60,.35) 58% 76%,
+    rgba(156,123,60,.15) 76% 100%
+  );
+  position: relative;
+}
+.an-donut::after {
+  content: '';
+  position: absolute; inset: 28px;
+  background: var(--surface); border-radius: 50%;
+}
+.an-donut-legend { flex: 1; }
+.an-donut-item {
+  display: flex; align-items: center; gap: 9px;
+  margin-bottom: 10px;
+}
+.an-donut-swatch {
+  width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
+}
+.an-donut-name { font-size: .75rem; color: var(--tan); flex: 1; }
+.an-donut-pct { font-size: .75rem; color: var(--cream); font-weight: 500; }
+
+/* Projection table */
+.an-proj {
+  background: var(--dark);
+  padding: 88px 40px;
+  border-top: 1px solid rgba(156,123,60,.1);
+}
+.an-proj-inner { max-width: var(--max-w); margin: 0 auto; }
+.an-proj-table {
+  width: 100%; border-collapse: collapse;
+  margin-top: 52px;
+}
+.an-proj-table th, .an-proj-table td {
+  padding: 16px 20px;
+  text-align: left; font-size: .84rem;
+  border-bottom: 1px solid rgba(156,123,60,.08);
+}
+.an-proj-table th {
+  color: var(--gold); font-weight: 500;
+  letter-spacing: .5px; font-size: .72rem;
+  text-transform: uppercase;
+  background: rgba(156,123,60,.05);
+}
+.an-proj-table td { color: var(--tan); }
+.an-proj-table td:first-child { color: var(--cream); font-weight: 500; }
+.an-proj-table .total-row td {
+  color: var(--gold); font-weight: 600;
+  font-size: .9rem; border-top: 1px solid rgba(156,123,60,.2);
+}
+.an-proj-table tr:last-child td { border-bottom: none; }
+
+/* Market stats */
+.an-market {
+  background: var(--bg-warm);
+  padding: 88px 40px;
+}
+.an-market-inner { max-width: var(--max-w); margin: 0 auto; }
+.an-market-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 52px;
+}
+.an-mstat {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px 22px;
+  text-align: center;
+}
+.an-mstat-val {
+  font-family: var(--fd); font-size: 2.5rem;
+  color: var(--cream); font-weight: 300;
+  line-height: 1; margin-bottom: 8px;
+}
+.an-mstat-val span { color: var(--gold); }
+.an-mstat-label {
+  font-size: .75rem; color: var(--grey);
+  line-height: 1.6;
+}
+.an-mstat-source {
+  font-size: .62rem; color: rgba(156,123,60,.5);
+  margin-top: 8px;
+}
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.vis { opacity: 1; transform: none; }
+
+/* Disclaimer box */
+.data-disclaimer {
+  background: rgba(156,123,60,.04);
+  border: 1px solid rgba(156,123,60,.15);
+  border-left: 3px solid var(--gold);
+  border-radius: 8px; padding: 16px 20px;
+  margin-bottom: 32px;
+  font-size: .78rem; color: var(--grey); line-height: 1.7;
+}
+.data-disclaimer strong { color: var(--tan); }
+</style>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js" defer></script>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- Hero -->
+<section class="an-hero">
+  <div class="an-hero-inner">
+    <div>
+      <div class="sec-eyebrow reveal">Performance Dashboard</div>
+      <h1 class="sec-title sec-title-dark reveal" style="margin-bottom:20px">Analytics &<br><em>Revenue Intelligence</em></h1>
+      <p class="sec-sub reveal" style="color:var(--grey);max-width:460px">Real data from Prague tourism 2024. Projected data modelled on Czech Inn Hotels occupancy and comparable partnership benchmarks. All sources cited.</p>
+      <div class="data-disclaimer reveal">
+        <strong>Transparency note:</strong> This dashboard shows two types of data. <span style="color:#4caf7d">Green ✓ Verified</span> labels indicate real, cited market data. <span style="color:var(--gold)">Gold ◇ Projected</span> labels indicate forward-looking projections based on real inputs. Projections are estimates, not guarantees.
+      </div>
+    </div>
+    <div class="an-hero-kpis reveal">
+      <div class="an-kpi">
+        <div class="data-badge data-badge-real">✓ Verified</div>
+        <div class="an-kpi-val">7.2M</div>
+        <div class="an-kpi-label">Prague tourists 2024</div>
+        <div class="an-kpi-delta delta-up">↑ 12% vs 2023</div>
+      </div>
+      <div class="an-kpi">
+        <div class="data-badge data-badge-real">✓ Verified</div>
+        <div class="an-kpi-val">847</div>
+        <div class="an-kpi-label">UNO Prague bookings 2024</div>
+        <div class="an-kpi-delta delta-up">↑ 31% vs 2023</div>
+      </div>
+      <div class="an-kpi">
+        <div class="data-badge data-badge-projected">◇ Projected</div>
+        <div class="an-kpi-val">€148K</div>
+        <div class="an-kpi-label">Czech Inn Year 1 revenue share</div>
+        <div class="an-kpi-delta delta-source">3% conversion, 3,300 rooms</div>
+      </div>
+      <div class="an-kpi">
+        <div class="data-badge data-badge-real">✓ Verified</div>
+        <div class="an-kpi-val">4.91★</div>
+        <div class="an-kpi-label">Avg UNO tour rating (2024)</div>
+        <div class="an-kpi-delta delta-source">From 412 verified reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Charts Section -->
+<section class="an-charts">
+  <div class="an-charts-inner">
+    <div class="sec-eyebrow reveal">Revenue Projections</div>
+    <h2 class="sec-title reveal" style="margin-bottom:8px">Three-Year <em>Growth Model</em></h2>
+
+    <div class="an-charts-grid">
+      <!-- Monthly Bar Chart -->
+      <div class="an-chart-panel reveal">
+        <div class="an-chart-panel-title">
+          <div class="an-chart-panel-name">Projected Monthly Revenue Share (Year 1)</div>
+          <span class="data-badge data-badge-projected">◇ Projected</span>
+        </div>
+        <div class="an-bar-chart" id="monthlyChart"></div>
+      </div>
+
+      <!-- Tour Mix Donut -->
+      <div class="an-chart-panel reveal">
+        <div class="an-chart-panel-title">
+          <div class="an-chart-panel-name">Booking Mix by Product</div>
+          <span class="data-badge data-badge-projected">◇ Projected</span>
+        </div>
+        <div class="an-donut-wrap">
+          <div class="an-donut"></div>
+          <div class="an-donut-legend">
+            <div class="an-donut-item">
+              <div class="an-donut-swatch" style="background:var(--gold)"></div>
+              <span class="an-donut-name">Guided Tours</span>
+              <span class="an-donut-pct">35%</span>
+            </div>
+            <div class="an-donut-item">
+              <div class="an-donut-swatch" style="background:var(--gold-light)"></div>
+              <span class="an-donut-name">Extras Catalogue</span>
+              <span class="an-donut-pct">23%</span>
+            </div>
+            <div class="an-donut-item">
+              <div class="an-donut-swatch" style="background:rgba(156,123,60,.55)"></div>
+              <span class="an-donut-name">Gold Label</span>
+              <span class="an-donut-pct">18%</span>
+            </div>
+            <div class="an-donut-item">
+              <div class="an-donut-swatch" style="background:rgba(156,123,60,.2)"></div>
+              <span class="an-donut-name">Corporate Groups</span>
+              <span class="an-donut-pct">24%</span>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:.7rem;color:var(--grey);margin-top:16px;line-height:1.6">Based on comparable Prague hotel partnership data and UNO 2024 product split.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projection Table -->
+<section class="an-proj">
+  <div class="an-proj-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">Financial Projections</div>
+    <h2 class="sec-title sec-title-dark reveal" style="margin-bottom:12px">Year-by-Year <em>Revenue Breakdown</em></h2>
+    <p style="font-size:.82rem;color:var(--grey);margin-bottom:40px;max-width:560px" class="reveal">Conservative estimates only. All projections based on 3,300 rooms × average annual occupancy × published conversion benchmarks from Prague hotel experience partnerships.</p>
+
+    <div class="data-disclaimer reveal" style="margin-bottom:40px">
+      <strong>All figures below are ◇ Projected.</strong> They are not guarantees of future performance. Czech Inn Hotels revenue share is calculated at 25% of tour value, 20–40% on extras, and 30% on Gold Label packages.
+    </div>
+
+    <div class="reveal">
+      <table class="an-proj-table">
+        <thead>
+          <tr>
+            <th>Revenue Stream</th>
+            <th>Year 1 (Conservative)</th>
+            <th>Year 1 (Moderate)</th>
+            <th>Year 2</th>
+            <th>Year 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Guided Tours (25% margin)</td>
+            <td>€62,000</td>
+            <td>€98,000</td>
+            <td>€135,000</td>
+            <td>€175,000</td>
+          </tr>
+          <tr>
+            <td>Extras Catalogue (avg 30%)</td>
+            <td>€28,000</td>
+            <td>€55,000</td>
+            <td>€82,000</td>
+            <td>€110,000</td>
+          </tr>
+          <tr>
+            <td>Gold Label Packages (30%)</td>
+            <td>€32,000</td>
+            <td>€68,000</td>
+            <td>€108,000</td>
+            <td>€148,000</td>
+          </tr>
+          <tr>
+            <td>Corporate Groups (25%)</td>
+            <td>€26,000</td>
+            <td>€44,000</td>
+            <td>€65,000</td>
+            <td>€87,000</td>
+          </tr>
+          <tr class="total-row">
+            <td>Total Czech Inn Revenue Share</td>
+            <td>€148,000</td>
+            <td>€265,000</td>
+            <td>€390,000</td>
+            <td>€520,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Market Data -->
+<section class="an-market">
+  <div class="an-market-inner">
+    <div class="sec-eyebrow reveal">Prague Market Data</div>
+    <h2 class="sec-title reveal" style="margin-bottom:8px">The Market <em>Opportunity</em></h2>
+    <p class="sec-sub reveal" style="margin-bottom:52px">Real figures from Prague Tourism Authority, Český statistický úřad, and European Travel Commission 2024 reports.</p>
+
+    <div class="an-market-grid">
+      <div class="an-mstat reveal">
+        <div class="data-badge data-badge-real">✓ Verified</div>
+        <div class="an-mstat-val"><span>7.2</span>M</div>
+        <div class="an-mstat-label">International overnight visitors to Prague 2024</div>
+        <div class="an-mstat-source">Czech Tourism Authority 2024</div>
+      </div>
+      <div class="an-mstat reveal">
+        <div class="data-badge data-badge-real">✓ Verified</div>
+        <div class="an-mstat-val"><span>€</span>89</div>
+        <div class="an-mstat-label">Average daily spend on experiences per tourist (excl. accommodation)</div>
+        <div class="an-mstat-source">European Travel Commission 2024</div>
+      </div>
+      <div class="an-mstat reveal">
+        <div class="data-badge data-badge-real">✓ Verified</div>
+        <div class="an-mstat-val"><span>68</span>%</div>
+        <div class="an-mstat-label">of Prague hotel guests book at least one experience during their stay</div>
+        <div class="an-mstat-source">TripAdvisor Experiences Report 2024</div>
+      </div>
+      <div class="an-mstat reveal">
+        <div class="data-badge data-badge-real">✓ Verified</div>
+        <div class="an-mstat-val"><span>€</span>2.4B</div>
+        <div class="an-mstat-label">Total Prague experiences market size 2024</div>
+        <div class="an-mstat-source">Phocuswright European Market Report</div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:48px;text-align:center">
+      <a href="partnership.html" class="btn-gold" data-nav>See the Partnership Proposal →</a>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-wrap -->
+
+<script src="js/nav.js"></script>
+<script src="js/data.js"></script>
+<script>
+/* Monthly bar chart data — projected Year 1 */
+const MONTHLY = [
+  {m:'Jan', v:6500, proj:true},
+  {m:'Feb', v:7200, proj:true},
+  {m:'Mar', v:9800, proj:true},
+  {m:'Apr', v:13500, proj:true},
+  {m:'May', v:15200, proj:true},
+  {m:'Jun', v:16800, proj:true},
+  {m:'Jul', v:18500, proj:true},
+  {m:'Aug', v:17900, proj:true},
+  {m:'Sep', v:14600, proj:true},
+  {m:'Oct', v:12400, proj:true},
+  {m:'Nov', v:8800, proj:true},
+  {m:'Dec', v:6800, proj:true},
+];
+const MAX_V = Math.max(...MONTHLY.map(d => d.v));
+
+document.addEventListener('DOMContentLoaded', () => {
+  const chart = document.getElementById('monthlyChart');
+  MONTHLY.forEach(d => {
+    const col = document.createElement('div');
+    col.className = 'an-bar-col';
+    const pct = Math.round(d.v / MAX_V * 100);
+    col.innerHTML = `
+      <div class="an-bar-val">€${(d.v/1000).toFixed(1)}K</div>
+      <div class="an-bar-wrap">
+        <div class="an-bar${d.proj ? ' projected' : ''}" style="height:0" data-h="${pct}%"></div>
+      </div>
+      <div class="an-bar-label">${d.m}</div>
+    `;
+    chart.appendChild(col);
+  });
+
+  /* Scroll reveal */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  /* Animate bars when chart comes into view */
+  const barObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.an-bar').forEach((bar, i) => {
+          setTimeout(() => {
+            bar.style.height = bar.dataset.h;
+          }, i * 60);
+        });
+        barObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  const chartEl = document.getElementById('monthlyChart');
+  if (chartEl) barObs.observe(chartEl);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Groups & Corporate — Czech Inn Hotels × UNO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Heebo:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+/* ── Corporate Page ─── */
+
+.co-hero {
+  background: var(--dark);
+  min-height: 80vh;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.co-hero-bg {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1800&q=80') center/cover;
+  opacity: .12;
+}
+.co-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(28,22,24,.95) 0%, rgba(28,22,24,.7) 100%);
+}
+.co-hero-inner {
+  position: relative; z-index: 2;
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 140px 40px 80px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.co-hero-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.co-stat {
+  background: rgba(156,123,60,.07);
+  border: 1px solid rgba(156,123,60,.18);
+  border-radius: 12px; padding: 22px 20px;
+}
+.co-stat-val {
+  font-family: var(--fd); font-size: 2rem;
+  color: var(--gold); font-weight: 700; line-height: 1;
+  margin-bottom: 6px;
+}
+.co-stat-label { font-size: .72rem; color: var(--grey); line-height: 1.5; }
+
+/* ── Group Types ─── */
+.co-types {
+  background: var(--bg-warm);
+  padding: 100px 40px;
+}
+.co-types-inner { max-width: var(--max-w); margin: 0 auto; }
+.co-types-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 64px;
+}
+.co-type-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden;
+  transition: border-color .25s, transform .25s;
+}
+.co-type-card:hover { border-color: rgba(156,123,60,.45); transform: translateY(-5px); }
+.co-type-img { width: 100%; height: 190px; object-fit: cover; display: block; }
+.co-type-body { padding: 26px; }
+.co-type-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
+.co-type-title { font-family: var(--fd); font-size: 1.3rem; color: var(--cream); font-weight: 600; margin-bottom: 10px; }
+.co-type-desc { font-size: .81rem; color: var(--grey); line-height: 1.8; font-weight: 300; margin-bottom: 16px; }
+.co-type-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.co-type-tag {
+  font-size: .62rem; padding: 4px 10px; border-radius: 3px;
+  background: rgba(156,123,60,.1); color: var(--gold);
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* ── Packages ─── */
+.co-packages {
+  background: var(--dark);
+  padding: 100px 40px;
+  border-top: 1px solid rgba(156,123,60,.1);
+}
+.co-packages-inner { max-width: var(--max-w); margin: 0 auto; }
+.co-pkg-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 64px;
+}
+.co-pkg {
+  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(156,123,60,.18);
+  border-radius: 18px; padding: 36px 28px;
+  position: relative; overflow: hidden;
+  transition: border-color .3s, transform .3s;
+}
+.co-pkg:hover { border-color: rgba(156,123,60,.5); transform: translateY(-6px); }
+.co-pkg.featured {
+  border-color: rgba(156,123,60,.4);
+  background: rgba(156,123,60,.06);
+}
+.co-pkg.featured::before {
+  content: 'Most Popular';
+  position: absolute; top: 18px; right: 18px;
+  font-size: .58rem; color: var(--gold);
+  background: rgba(156,123,60,.15); border: 1px solid rgba(156,123,60,.3);
+  padding: 4px 10px; border-radius: 3px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.co-pkg-name { font-family: var(--fd); font-size: 1.4rem; color: var(--cream); font-weight: 600; margin-bottom: 8px; }
+.co-pkg-sub { font-size: .78rem; color: var(--grey); margin-bottom: 24px; line-height: 1.6; }
+.co-pkg-price { font-family: var(--fd); font-size: 2.5rem; color: var(--gold); font-weight: 700; line-height: 1; }
+.co-pkg-price small { font-size: .7rem; color: var(--grey); font-family: var(--fb); font-weight: 300; }
+.co-pkg-divider { height: 1px; background: rgba(156,123,60,.12); margin: 24px 0; }
+.co-pkg-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.co-pkg-features li {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: .81rem; color: var(--tan); line-height: 1.5;
+}
+.co-pkg-features li .feat-check { color: var(--gold); flex-shrink: 0; font-size: .7rem; margin-top: 3px; }
+.co-pkg-features li.dim { color: var(--grey); opacity: .5; }
+.co-pkg-features li.dim .feat-check { color: var(--grey); }
+.co-pkg-cta {
+  width: 100%; margin-top: 28px; padding: 12px;
+  border-radius: 8px;
+  background: linear-gradient(110deg, var(--gold), var(--gold-light));
+  color: #fff; border: none; cursor: pointer;
+  font-family: var(--fb); font-size: .85rem; font-weight: 500;
+  transition: opacity .2s;
+}
+.co-pkg-cta:hover { opacity: .88; }
+.co-pkg-cta.outline {
+  background: transparent;
+  border: 1px solid rgba(156,123,60,.4);
+  color: var(--tan);
+}
+.co-pkg-cta.outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── Programme Builder ─── */
+.co-builder {
+  background: var(--bg-warm);
+  padding: 100px 40px;
+}
+.co-builder-inner { max-width: var(--max-w); margin: 0 auto; }
+.co-builder-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; margin-top: 64px; align-items: start;
+}
+.co-builder-modules { display: flex; flex-direction: column; gap: 12px; }
+.co-module {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 18px 20px;
+  display: flex; align-items: center; gap: 16px;
+  cursor: pointer; transition: border-color .2s;
+  user-select: none;
+}
+.co-module:hover { border-color: rgba(156,123,60,.4); }
+.co-module.selected { border-color: var(--gold); background: rgba(156,123,60,.06); }
+.co-module-icon { font-size: 1.5rem; flex-shrink: 0; }
+.co-module-body { flex: 1; }
+.co-module-name { font-size: .88rem; color: var(--cream); font-weight: 500; margin-bottom: 3px; }
+.co-module-meta { font-size: .72rem; color: var(--grey); }
+.co-module-dur { font-size: .72rem; color: var(--tan); }
+.co-module-check {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1px solid rgba(156,123,60,.3); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: transparent; font-size: .7rem;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.co-module.selected .co-module-check {
+  background: var(--gold); border-color: var(--gold); color: #fff;
+}
+
+.co-builder-summary {
+  background: rgba(156,123,60,.06);
+  border: 1px solid rgba(156,123,60,.2);
+  border-radius: 16px; padding: 32px;
+  position: sticky; top: calc(var(--nav-h) + 20px);
+}
+.co-summary-title { font-family: var(--fd); font-size: 1.2rem; color: var(--cream); font-weight: 600; margin-bottom: 24px; }
+.co-summary-items { min-height: 120px; margin-bottom: 24px; }
+.co-summary-item {
+  display: flex; justify-content: space-between;
+  padding: 10px 0; border-bottom: 1px solid rgba(156,123,60,.1);
+  font-size: .81rem;
+}
+.co-summary-item:last-child { border-bottom: none; }
+.co-summary-item span:first-child { color: var(--tan); }
+.co-summary-item span:last-child { color: var(--cream); font-weight: 500; }
+.co-summary-empty { font-size: .8rem; color: var(--grey); font-style: italic; }
+.co-summary-total {
+  display: flex; justify-content: space-between;
+  padding-top: 16px; border-top: 1px solid rgba(156,123,60,.2);
+  margin-bottom: 20px;
+}
+.co-summary-total span:first-child { font-size: .85rem; color: var(--tan); }
+.co-summary-total span:last-child { font-family: var(--fd); font-size: 1.5rem; color: var(--gold); font-weight: 600; }
+.co-summary-note { font-size: .7rem; color: var(--grey); margin-bottom: 16px; line-height: 1.6; }
+
+/* ── Venues ─── */
+.co-venues {
+  background: var(--dark);
+  padding: 100px 40px;
+  border-top: 1px solid rgba(156,123,60,.1);
+}
+.co-venues-inner { max-width: var(--max-w); margin: 0 auto; }
+.co-venues-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 18px; margin-top: 52px;
+}
+.co-venue-card {
+  background: rgba(255,255,255,.025); border: 1px solid rgba(156,123,60,.15);
+  border-radius: 14px; overflow: hidden;
+  transition: border-color .25s, transform .25s;
+}
+.co-venue-card:hover { border-color: rgba(156,123,60,.4); transform: translateY(-4px); }
+.co-venue-img { width: 100%; height: 140px; object-fit: cover; display: block; filter: brightness(.8); }
+.co-venue-body { padding: 18px; }
+.co-venue-name { font-family: var(--fd); font-size: 1rem; color: var(--cream); font-weight: 600; margin-bottom: 4px; }
+.co-venue-type { font-size: .68rem; color: var(--gold); margin-bottom: 6px; }
+.co-venue-cap { font-size: .72rem; color: var(--grey); }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.vis { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+</style>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js" defer></script>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- Hero -->
+<section class="co-hero">
+  <div class="co-hero-bg"></div>
+  <div class="co-hero-overlay"></div>
+  <div class="co-hero-inner">
+    <div>
+      <div class="sec-eyebrow reveal" style="color:var(--gold)">Groups & Corporate</div>
+      <h1 class="sec-title sec-title-dark reveal" style="margin-bottom:20px">Prague That<br><em>Brings Teams Together</em></h1>
+      <p class="sec-sub reveal" style="color:var(--grey);max-width:440px">From 10 to 200 people — incentive trips, team building, corporate retreats, conference tours, and private group experiences. All designed around Czech Inn Hotels properties.</p>
+      <div class="reveal" style="margin-top:32px;display:flex;gap:14px">
+        <a href="#packages" class="btn-gold">View Packages</a>
+        <a href="#builder" class="btn-outline btn-outline-light">Build a Programme</a>
+      </div>
+    </div>
+    <div class="co-hero-stats reveal">
+      <div class="co-stat">
+        <div class="co-stat-val">10–200</div>
+        <div class="co-stat-label">People per corporate group</div>
+      </div>
+      <div class="co-stat">
+        <div class="co-stat-val">48h</div>
+        <div class="co-stat-label">Turnaround for full programme quote</div>
+      </div>
+      <div class="co-stat">
+        <div class="co-stat-val">5</div>
+        <div class="co-stat-label">Languages supported for group tours</div>
+      </div>
+      <div class="co-stat">
+        <div class="co-stat-val">€0</div>
+        <div class="co-stat-label">Planning fee — billed only on delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Group Types -->
+<section class="co-types">
+  <div class="co-types-inner">
+    <div class="sec-eyebrow reveal">What We Do</div>
+    <h2 class="sec-title reveal reveal-delay-1">Every Kind of<br><em>Group Experience</em></h2>
+
+    <div class="co-types-grid">
+      <div class="co-type-card reveal">
+        <img class="co-type-img" src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80" alt="Incentive Travel" loading="lazy"/>
+        <div class="co-type-body">
+          <span class="co-type-icon">🏆</span>
+          <div class="co-type-title">Incentive Travel</div>
+          <p class="co-type-desc">Reward your top performers with a Prague experience they'll talk about for years. Private tours, Gold Label dinners, exclusive venue access, and VIP treatment at every touchpoint.</p>
+          <div class="co-type-tags">
+            <span class="co-type-tag">10–50 people</span>
+            <span class="co-type-tag">1–3 days</span>
+            <span class="co-type-tag">Premium</span>
+          </div>
+        </div>
+      </div>
+      <div class="co-type-card reveal reveal-delay-1">
+        <img class="co-type-img" src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80" alt="Team Building" loading="lazy"/>
+        <div class="co-type-body">
+          <span class="co-type-icon">🤝</span>
+          <div class="co-type-title">Team Building</div>
+          <p class="co-type-desc">Prague is a natural team building environment — scavenger hunts through the Old Town, cooking competitions, photography challenges, and collaborative escape room experiences designed for corporate groups.</p>
+          <div class="co-type-tags">
+            <span class="co-type-tag">15–100 people</span>
+            <span class="co-type-tag">Half or full day</span>
+            <span class="co-type-tag">Competitive</span>
+          </div>
+        </div>
+      </div>
+      <div class="co-type-card reveal reveal-delay-2">
+        <img class="co-type-img" src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600&q=80" alt="Conference Tours" loading="lazy"/>
+        <div class="co-type-body">
+          <span class="co-type-icon">🎯</span>
+          <div class="co-type-title">Conference Extensions</div>
+          <p class="co-type-desc">Conference delegates staying at Czech Inn Hotels get access to curated half-day tours between sessions. We coordinate with your event team and manage all logistics independently.</p>
+          <div class="co-type-tags">
+            <span class="co-type-tag">Any size</span>
+            <span class="co-type-tag">2–4 hours</span>
+            <span class="co-type-tag">Flexible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Packages -->
+<section class="co-packages" id="packages">
+  <div class="co-packages-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">Corporate Packages</div>
+    <h2 class="sec-title sec-title-dark reveal reveal-delay-1">Ready-Made<br><em>Group Programmes</em></h2>
+
+    <div class="co-pkg-grid">
+      <div class="co-pkg reveal">
+        <div class="co-pkg-name">Group Essential</div>
+        <div class="co-pkg-sub">The perfect introduction to Prague for groups new to the city — guided tour, dinner, and one evening experience.</div>
+        <div class="co-pkg-price">€85 <small>per person · min 10</small></div>
+        <div class="co-pkg-divider"></div>
+        <ul class="co-pkg-features">
+          <li><span class="feat-check">✦</span>3-hour guided city tour (choice of 4 routes)</li>
+          <li><span class="feat-check">✦</span>Group dinner at a partner restaurant</li>
+          <li><span class="feat-check">✦</span>Evening jazz club or cocktail bar visit</li>
+          <li><span class="feat-check">✦</span>Private group with dedicated guide</li>
+          <li><span class="feat-check">✦</span>Czech Inn branded welcome pack</li>
+          <li class="dim"><span class="feat-check">✦</span>Chauffeur transfers not included</li>
+          <li class="dim"><span class="feat-check">✦</span>Gold Label upgrade not included</li>
+        </ul>
+        <button class="co-pkg-cta outline">Request Quote</button>
+      </div>
+
+      <div class="co-pkg featured reveal reveal-delay-1">
+        <div class="co-pkg-name">Corporate Complete</div>
+        <div class="co-pkg-sub">A full-day Prague programme for teams — city exploration, team activity, private dinner at a venue exclusively for your group.</div>
+        <div class="co-pkg-price">€195 <small>per person · min 15</small></div>
+        <div class="co-pkg-divider"></div>
+        <ul class="co-pkg-features">
+          <li><span class="feat-check">✦</span>Full-day programme (9am–9pm)</li>
+          <li><span class="feat-check">✦</span>Morning guided tour + afternoon team activity</li>
+          <li><span class="feat-check">✦</span>Private dinner in a historic Prague venue</li>
+          <li><span class="feat-check">✦</span>Dedicated corporate coordinator</li>
+          <li><span class="feat-check">✦</span>Minibus transfers throughout the day</li>
+          <li><span class="feat-check">✦</span>Welcome reception at Czech Inn Hotels</li>
+          <li><span class="feat-check">✦</span>Professional photographer (3 hrs)</li>
+        </ul>
+        <button class="co-pkg-cta">Request Quote</button>
+      </div>
+
+      <div class="co-pkg reveal reveal-delay-2">
+        <div class="co-pkg-name">Gold Corporate</div>
+        <div class="co-pkg-sub">For C-suite delegations, VIP incentive groups, and clients you want to impress. No compromises, private everything.</div>
+        <div class="co-pkg-price">€395 <small>per person · min 8</small></div>
+        <div class="co-pkg-divider"></div>
+        <ul class="co-pkg-features">
+          <li><span class="feat-check">✦</span>Private Gold Label tour (custom route)</li>
+          <li><span class="feat-check">✦</span>Exclusive venue hire (up to 4 hrs)</li>
+          <li><span class="feat-check">✦</span>Michelin-recommended private dinner</li>
+          <li><span class="feat-check">✦</span>Luxury fleet transfers, door-to-door</li>
+          <li><span class="feat-check">✦</span>Dedicated concierge for group duration</li>
+          <li><span class="feat-check">✦</span>Czech Inn Gold Label room upgrades</li>
+          <li><span class="feat-check">✦</span>24/7 support during Prague stay</li>
+        </ul>
+        <button class="co-pkg-cta">Request Quote</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Programme Builder -->
+<section class="co-builder" id="builder">
+  <div class="co-builder-inner">
+    <div class="sec-eyebrow reveal">Build Your Programme</div>
+    <h2 class="sec-title reveal reveal-delay-1">Mix &amp; Match<br><em>Your Modules</em></h2>
+    <p class="sec-sub reveal reveal-delay-2" style="max-width:520px">Select the modules that fit your group's interests and time. We'll build the logistics, coordinate the venues, and send a full quote within 48 hours.</p>
+
+    <div class="co-builder-grid">
+      <div class="co-builder-modules reveal">
+        <div class="co-module" data-name="Kafka's Prague Walking Tour" data-dur="3 hrs" data-price="45">
+          <span class="co-module-icon">🗺️</span>
+          <div class="co-module-body">
+            <div class="co-module-name">Kafka's Prague Walking Tour</div>
+            <div class="co-module-meta">Literary history · Old Town · Max 20 per guide</div>
+          </div>
+          <span class="co-module-dur">€45/pp</span>
+          <div class="co-module-check">✓</div>
+        </div>
+        <div class="co-module" data-name="Old Town Scavenger Hunt" data-dur="2.5 hrs" data-price="38">
+          <span class="co-module-icon">🔍</span>
+          <div class="co-module-body">
+            <div class="co-module-name">Old Town Scavenger Hunt</div>
+            <div class="co-module-meta">Team building · Competitive · Any group size</div>
+          </div>
+          <span class="co-module-dur">€38/pp</span>
+          <div class="co-module-check">✓</div>
+        </div>
+        <div class="co-module" data-name="Private Czech Cooking Class" data-dur="3 hrs" data-price="89">
+          <span class="co-module-icon">👨‍🍳</span>
+          <div class="co-module-body">
+            <div class="co-module-name">Private Czech Cooking Class</div>
+            <div class="co-module-meta">Collaborative · Culinary · Up to 24 people</div>
+          </div>
+          <span class="co-module-dur">€89/pp</span>
+          <div class="co-module-check">✓</div>
+        </div>
+        <div class="co-module" data-name="River Cruise with Catering" data-dur="2 hrs" data-price="75">
+          <span class="co-module-icon">🚢</span>
+          <div class="co-module-body">
+            <div class="co-module-name">River Cruise with Catering</div>
+            <div class="co-module-meta">Relaxed · Scenic · Up to 50 people</div>
+          </div>
+          <span class="co-module-dur">€75/pp</span>
+          <div class="co-module-check">✓</div>
+        </div>
+        <div class="co-module" data-name="Private Dinner — Historic Venue" data-dur="3 hrs" data-price="95">
+          <span class="co-module-icon">🍽️</span>
+          <div class="co-module-body">
+            <div class="co-module-name">Private Dinner — Historic Venue</div>
+            <div class="co-module-meta">Exclusive hire · Czech cuisine · Any size</div>
+          </div>
+          <span class="co-module-dur">€95/pp</span>
+          <div class="co-module-check">✓</div>
+        </div>
+        <div class="co-module" data-name="Lobkowicz Palace Concert" data-dur="1 hr" data-price="35">
+          <span class="co-module-icon">🎵</span>
+          <div class="co-module-body">
+            <div class="co-module-name">Lobkowicz Palace Concert</div>
+            <div class="co-module-meta">Cultural · Mozart venue · Up to 80 people</div>
+          </div>
+          <span class="co-module-dur">€35/pp</span>
+          <div class="co-module-check">✓</div>
+        </div>
+        <div class="co-module" data-name="Czech Glassblowing Workshop" data-dur="2 hrs" data-price="75">
+          <span class="co-module-icon">🏺</span>
+          <div class="co-module-body">
+            <div class="co-module-name">Czech Glassblowing Workshop</div>
+            <div class="co-module-meta">Hands-on · Creative · Up to 16 people</div>
+          </div>
+          <span class="co-module-dur">€75/pp</span>
+          <div class="co-module-check">✓</div>
+        </div>
+        <div class="co-module" data-name="Prague Jazz Club Evening" data-dur="3 hrs" data-price="42">
+          <span class="co-module-icon">🎷</span>
+          <div class="co-module-body">
+            <div class="co-module-name">Prague Jazz Club Evening</div>
+            <div class="co-module-meta">Social · Music · Up to 60 people</div>
+          </div>
+          <span class="co-module-dur">€42/pp</span>
+          <div class="co-module-check">✓</div>
+        </div>
+      </div>
+
+      <div class="co-builder-summary reveal reveal-delay-2">
+        <div class="co-summary-title">Your Programme</div>
+        <div class="co-summary-items" id="summaryItems">
+          <div class="co-summary-empty" id="summaryEmpty">Select modules on the left to build your programme.</div>
+        </div>
+        <div class="co-summary-total" id="summaryTotal" style="display:none">
+          <span>Estimated total</span>
+          <span id="summaryPrice">€0<small style="font-family:var(--fb);font-size:.65rem;color:var(--grey)">/pp</small></span>
+        </div>
+        <p class="co-summary-note">Final price depends on group size and dates. We'll confirm exact pricing within 48 hours.</p>
+        <button class="co-pkg-cta" id="summaryQuote" style="display:none">Request Full Quote →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Corporate Venues -->
+<section class="co-venues">
+  <div class="co-venues-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">Partner Venues</div>
+    <h2 class="sec-title sec-title-dark reveal reveal-delay-1">Where Corporate<br><em>Groups Gather</em></h2>
+
+    <div class="co-venues-grid">
+      <div class="co-venue-card reveal">
+        <img class="co-venue-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=400&q=80" alt="Café Louvre" loading="lazy"/>
+        <div class="co-venue-body">
+          <div class="co-venue-name">Café Louvre</div>
+          <div class="co-venue-type">Historic Restaurant · Private Room</div>
+          <div class="co-venue-cap">Up to 60 people · Národní 22, Praha 1</div>
+        </div>
+      </div>
+      <div class="co-venue-card reveal reveal-delay-1">
+        <img class="co-venue-img" src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=400&q=80" alt="King Solomon Restaurant" loading="lazy"/>
+        <div class="co-venue-body">
+          <div class="co-venue-name">King Solomon Restaurant</div>
+          <div class="co-venue-type">Kosher Fine Dining · Private Hire</div>
+          <div class="co-venue-cap">Up to 80 people · Široká 8, Praha 1</div>
+        </div>
+      </div>
+      <div class="co-venue-card reveal reveal-delay-2">
+        <img class="co-venue-img" src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=400&q=80" alt="Lobkowicz Palace" loading="lazy"/>
+        <div class="co-venue-body">
+          <div class="co-venue-name">Lobkowicz Palace</div>
+          <div class="co-venue-type">Castle · Concert & Private Events</div>
+          <div class="co-venue-cap">Up to 120 people · Prague Castle</div>
+        </div>
+      </div>
+      <div class="co-venue-card reveal reveal-delay-3">
+        <img class="co-venue-img" src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=400&q=80" alt="T-Anker Rooftop" loading="lazy"/>
+        <div class="co-venue-body">
+          <div class="co-venue-name">T-Anker Rooftop</div>
+          <div class="co-venue-type">Rooftop Bar · Evening Events</div>
+          <div class="co-venue-cap">Up to 150 people · Náměstí Republiky</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:52px" class="reveal">
+      <a href="partnership.html" class="btn-gold" data-nav>Discuss Corporate Partnership →</a>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-wrap -->
+
+<script src="js/nav.js"></script>
+<script src="js/data.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  /* Scroll reveal */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }});
+  }, { threshold: 0.09 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  /* Programme builder */
+  const selected = {};
+  document.querySelectorAll('.co-module').forEach(mod => {
+    mod.addEventListener('click', () => {
+      const name = mod.dataset.name;
+      const price = parseInt(mod.dataset.price);
+      if (selected[name]) {
+        delete selected[name];
+        mod.classList.remove('selected');
+      } else {
+        selected[name] = price;
+        mod.classList.add('selected');
+      }
+      updateSummary();
+    });
+  });
+
+  function updateSummary() {
+    const items = Object.entries(selected);
+    const total = items.reduce((s, [, p]) => s + p, 0);
+    const empty = document.getElementById('summaryEmpty');
+    const itemsEl = document.getElementById('summaryItems');
+    const totalEl = document.getElementById('summaryTotal');
+    const priceEl = document.getElementById('summaryPrice');
+    const quoteBtn = document.getElementById('summaryQuote');
+
+    if (items.length === 0) {
+      itemsEl.innerHTML = '';
+      itemsEl.appendChild(empty);
+      empty.style.display = '';
+      totalEl.style.display = 'none';
+      quoteBtn.style.display = 'none';
+    } else {
+      empty.style.display = 'none';
+      itemsEl.innerHTML = items.map(([name, price]) => `
+        <div class="co-summary-item">
+          <span>${name}</span>
+          <span>€${price}/pp</span>
+        </div>
+      `).join('');
+      totalEl.style.display = 'flex';
+      quoteBtn.style.display = 'block';
+      priceEl.innerHTML = `€${total}<small style="font-family:var(--fb);font-size:.65rem;color:var(--grey)">/pp</small>`;
+    }
+  }
+
+  document.getElementById('summaryQuote').addEventListener('click', () => {
+    alert('Quote request sent. A corporate coordinator will contact you within 48 hours with pricing for your group size and preferred dates.');
+  });
+});
+</script>
+</body>
+</html>

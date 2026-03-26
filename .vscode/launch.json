@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="premium">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Black Label — Czech Inn Hotels Premium Experiences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Heebo:wght@100;200;300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+
+<style>
+/* ═══════════════════════════════════════════
+   BLACK LABEL PAGE-SPECIFIC STYLES
+   ═══════════════════════════════════════════ */
+
+/* Hero with Ken Burns */
+.bl-hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.bl-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(184,147,58,.06) 0%,transparent 60%);z-index:1}
+.bl-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:240px;background:linear-gradient(transparent,var(--bg));z-index:1}
+.bl-hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=1800&q=80') center/cover;filter:brightness(.15) saturate(.4);animation:kenBurns 20s ease infinite alternate}
+.bl-hero-content{position:relative;z-index:2;padding:40px}
+.bl-label-tag{display:inline-block;padding:8px 28px;border:1px solid var(--accent);font-size:.6rem;color:var(--accent);text-transform:uppercase;letter-spacing:8px;margin-bottom:28px;opacity:0;animation:fadeUp .8s .3s forwards;transform:translateY(20px)}
+.bl-hero h1{font-family:var(--fd);font-size:clamp(3rem,6vw,5.5rem);font-weight:300;color:var(--brand-cream);line-height:1.05;letter-spacing:-1px;opacity:0;animation:fadeUp .8s .6s forwards;transform:translateY(30px)}
+.bl-hero h1 em{font-style:italic;color:var(--accent);font-weight:400}
+.bl-hero-line{width:60px;height:1px;background:var(--accent);margin:28px auto;opacity:0;animation:fadeUp .8s .9s forwards;transform:translateY(10px)}
+.bl-hero p{font-size:1rem;color:var(--brand-tan);font-weight:200;max-width:540px;margin:0 auto;line-height:1.8;letter-spacing:.3px;opacity:0;animation:fadeUp .8s 1.1s forwards;transform:translateY(20px)}
+.bl-hero-cta{margin-top:36px;opacity:0;animation:fadeUp .8s 1.4s forwards;transform:translateY(20px)}
+.bl-hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:2;color:var(--accent);font-size:.64rem;letter-spacing:3px;text-transform:uppercase;opacity:0;animation:fadeUp .8s 1.7s forwards}
+.bl-hero-scroll::after{content:'';display:block;width:1px;height:40px;background:var(--accent);margin:8px auto 0;opacity:.4}
+
+/* Section dark override for premium */
+.bl-sec-dark{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:100px 40px}
+.bl-sec-dark .bl-inner{max-width:1240px;margin:0 auto}
+
+/* Upgrade grid */
+.up-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.up-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:26px 22px;transition:border-color .3s,transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+.up-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--shimmer);background-size:200% auto;animation:shim 3s linear infinite;opacity:0;transition:opacity .3s}
+.up-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--card-hover-shadow)}
+.up-card:hover::before{opacity:1}
+.up-icon{font-size:1.6rem;margin-bottom:12px}
+.up-card h4{font-family:var(--fd);font-size:1.1rem;font-weight:500;color:var(--heading);margin-bottom:5px}
+.up-card p{font-size:.76rem;color:var(--text-l);line-height:1.7;font-weight:200;margin-bottom:12px}
+.up-price{font-family:var(--fd);font-size:1.05rem;font-weight:600;color:var(--accent)}
+
+/* Experience cards (large image) */
+.exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.exp-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;position:relative}
+.exp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--shimmer);background-size:200% auto;animation:shim 3s linear infinite;opacity:0;transition:opacity .3s;z-index:2}
+.exp-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:var(--card-hover-shadow)}
+.exp-card:hover::before{opacity:1}
+.exp-img{height:210px;overflow:hidden;position:relative}
+.exp-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(.6);transition:all .6s}
+.exp-card:hover .exp-img img{filter:brightness(.6) saturate(.7);transform:scale(1.04)}
+.exp-img-badge{position:absolute;top:12px;left:12px;padding:4px 12px;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(184,147,58,.3);backdrop-filter:blur(8px);background:rgba(15,13,15,.6);border-radius:3px}
+.exp-img-price{position:absolute;bottom:12px;right:14px;font-family:var(--fd);font-size:1.3rem;font-weight:600;color:var(--accent);text-shadow:0 2px 12px rgba(0,0,0,.7)}
+.exp-body{padding:22px}
+.exp-body h3{font-family:var(--fd);font-size:1.2rem;font-weight:500;color:var(--heading);margin-bottom:4px}
+.exp-meta{font-size:.7rem;color:var(--accent);letter-spacing:.5px;margin-bottom:8px}
+.exp-body>p{font-size:.78rem;color:var(--text-l);line-height:1.7;font-weight:200;margin-bottom:12px}
+.exp-details{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.exp-det{font-size:.7rem;color:var(--text-l);display:flex;align-items:center;gap:3px}
+.exp-det span{color:var(--accent)}
+.exp-book{display:block;width:100%;padding:12px;background:transparent;border:1px solid var(--accent);color:var(--accent);font-family:var(--fb);font-size:.76rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:5px;transition:all .3s;text-align:center}
+.exp-book:hover{background:var(--accent);color:var(--bg)}
+
+/* Concierge grid */
+.con-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.con-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px 16px;text-align:center;transition:border-color .3s,transform .3s}
+.con-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.con-icon{font-size:1.5rem;margin-bottom:8px}
+.con-card h4{font-family:var(--fd);font-size:.92rem;font-weight:500;color:var(--heading);margin-bottom:3px}
+.con-card p{font-size:.7rem;color:var(--text-l);line-height:1.6;font-weight:200;margin-bottom:8px}
+.con-price{font-family:var(--fd);font-size:.92rem;font-weight:600;color:var(--accent)}
+
+/* Package cards */
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pkg-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s;position:relative}
+.pkg-card.featured{border-color:var(--accent);animation:glow 4s infinite}
+.pkg-card:hover{transform:translateY(-4px)}
+.pkg-head{padding:26px 22px;text-align:center;border-bottom:1px solid var(--border)}
+.pkg-badge{font-size:.58rem;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+.pkg-head h3{font-family:var(--fd);font-size:1.5rem;font-weight:400;color:var(--heading)}
+.pkg-price{font-family:var(--fd);font-size:2rem;font-weight:600;color:var(--accent);margin-top:6px}
+.pkg-per{font-size:.7rem;color:var(--text-l);font-weight:200}
+.pkg-body{padding:22px}
+.pkg-item{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid rgba(184,147,58,.06);font-size:.78rem;color:var(--text-l);line-height:1.5}
+.pkg-item:last-child{border-bottom:none}
+.pkg-check{color:var(--accent);flex-shrink:0}
+.pkg-cta{display:block;width:calc(100% - 44px);margin:0 22px 22px;padding:13px;text-align:center;border-radius:5px;font-family:var(--fb);font-size:.76rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.pkg-cta-outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+.pkg-cta-outline:hover{background:var(--accent);color:var(--bg)}
+.pkg-cta-gold{background:var(--shimmer);background-size:200% auto;animation:shim 3s linear infinite;border:none;color:#fff}
+.pkg-cta-gold:hover{box-shadow:0 8px 24px rgba(184,147,58,.3)}
+
+/* Revenue mini section */
+.rev-compare{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:stretch;margin-top:48px}
+.rev-col{border-radius:12px;padding:32px 28px;border:1px solid var(--border)}
+.rev-std{background:var(--surface)}
+.rev-prem{background:linear-gradient(135deg,rgba(184,147,58,.08),rgba(184,147,58,.02));border-color:var(--accent)}
+.rev-vs{display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--accent)}
+.rev-col h4{font-family:var(--fd);font-size:1.2rem;font-weight:500;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.rev-metric{display:flex;justify-content:space-between;padding:8px 0;font-size:.82rem;border-bottom:1px solid rgba(184,147,58,.06)}
+.rev-metric:last-child{border-bottom:none}
+.rev-metric .rv{font-family:var(--fd);font-weight:700}
+
+/* Seasonal cards */
+.season-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.season-card{border-radius:14px;overflow:hidden;position:relative;min-height:320px;display:flex;align-items:flex-end;transition:transform .3s}
+.season-card:hover{transform:translateY(-4px)}
+.season-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3);transition:filter .4s}
+.season-card:hover img{filter:brightness(.4)}
+.season-content{position:relative;z-index:2;padding:28px;width:100%}
+.season-tag{display:inline-block;padding:4px 12px;border:1px solid var(--accent);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);border-radius:3px;margin-bottom:10px}
+.season-content h3{font-family:var(--fd);font-size:1.6rem;font-weight:400;color:var(--brand-cream);margin-bottom:6px}
+.season-content p{font-size:.8rem;color:var(--brand-tan);font-weight:200;line-height:1.7;margin-bottom:12px}
+.season-items{display:flex;flex-wrap:wrap;gap:6px}
+.season-item{padding:4px 10px;background:rgba(184,147,58,.12);border-radius:3px;font-size:.68rem;color:var(--accent)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="site-nav-logo"><b>CZECH INN</b> Hotels</div>
+  <div class="site-nav-links">
+    <a href="czechinn-demo.html">Home</a>
+    <a href="analytics-v2.html">Analytics</a>
+    <a href="black-label-v2.html" class="active">Black Label</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="bl-hero">
+  <div class="bl-hero-bg"></div>
+  <div class="bl-hero-content">
+    <div class="bl-label-tag">Czech Inn Hotels</div>
+    <h1>Black <em>Label</em></h1>
+    <div class="bl-hero-line"></div>
+    <p>Private guides. Luxury vehicles. After-hours access. Helicopter flights. Fine dining. Every experience, elevated to its highest form.</p>
+    <div class="bl-hero-cta"><a href="#experiences" class="btn btn-outline-gold" style="padding:14px 40px">Explore Experiences</a></div>
+  </div>
+  <div class="bl-hero-scroll">Discover</div>
+</section>
+
+<!-- FEATURED IN BAR -->
+<div class="featured-bar" style="background:var(--surface)">
+  <span class="featured-bar-label">As recognized by</span>
+  <span class="featured-bar-item">CNBC</span>
+  <span class="featured-bar-item">Forbes Czech</span>
+  <span class="featured-bar-item">Czech Elite TOP 100</span>
+  <span class="featured-bar-item">2M+ Guests in 2024</span>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="sec reveal">
+  <div class="sec-line"></div>
+  <div class="sec-stitle">How It Works</div>
+  <div class="sec-title">Three Steps to <em>Extraordinary</em></div>
+  <div class="sec-sub">From QR scan to unforgettable memory — seamlessly integrated into every Czech Inn Hotels property.</div>
+  <div class="hiw-strip" style="background:var(--surface)">
+    <div class="hiw-step"><div class="hiw-num">01</div><h4>Guest Discovers</h4><p>QR code in room, concierge tablet, or lobby screen. Black Label stands out with premium presentation.</p></div>
+    <div class="hiw-step"><div class="hiw-num">02</div><h4>Concierge Curates</h4><p>24/7 WhatsApp concierge builds a bespoke itinerary. Or the guest self-selects from the premium catalogue.</p></div>
+    <div class="hiw-step"><div class="hiw-num">03</div><h4>Experience Delivered</h4><p>Private guide, luxury vehicle, and every detail handled. Guest returns to the hotel with a story to tell forever.</p></div>
+  </div>
+</section>
+
+<!-- PRIVATE TOUR UPGRADES -->
+<section class="sec reveal" id="upgrades">
+  <div class="sec-line"></div>
+  <div class="sec-stitle">Elevate Any Tour</div>
+  <div class="sec-title">Private Tour <em>Upgrades</em></div>
+  <div class="sec-sub">Transform any of our 4 signature tours into an exclusive private experience. Every upgrade can be combined.</div>
+  <div class="up-grid" id="upgradeGrid"></div>
+</section>
+
+<!-- STANDALONE EXPERIENCES -->
+<div class="bl-sec-dark" id="experiences">
+  <div class="bl-inner reveal">
+    <div class="sec-line"></div>
+    <div class="sec-stitle">Exclusive Experiences</div>
+    <div class="sec-title" style="color:var(--heading)">Beyond the <em>Ordinary</em></div>
+    <div class="sec-sub">22 standalone luxury experiences available to all Czech Inn Hotels guests.</div>
+    <div class="exp-grid" id="expGrid"></div>
+  </div>
+</div>
+
+<!-- VIP CONCIERGE -->
+<section class="sec reveal" id="concierge">
+  <div class="sec-line"></div>
+  <div class="sec-stitle">At Your Service</div>
+  <div class="sec-title">VIP <em>Concierge</em></div>
+  <div class="sec-sub">White-glove services available 24/7 to every Black Label guest across all 28 properties.</div>
+  <div class="con-grid" id="conGrid"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<div class="bl-sec-dark">
+  <div class="bl-inner">
+    <div class="sec-line"></div>
+    <div class="sec-stitle">Guest Voices</div>
+    <div class="sec-title" style="color:var(--heading)">What They <em>Say</em></div>
+    <div style="height:16px"></div>
+    <div class="testi-wrap" id="testiWrap">
+      <div class="testi-track">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"The helicopter over Karlštejn at sunset was the single most breathtaking moment of our entire European trip. The champagne landing was the perfect finish."</div>
+          <div class="testi-author"><b>Alexander & Maria</b> · Grand Mark Prague · Helicopter Experience</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"Our private nighttime access to Prague Castle was surreal — completely empty, lit by moonlight. The guide's storytelling gave me chills. Worth every cent."</div>
+          <div class="testi-author"><b>James R.</b> · Grand Hotel Prague Towers · Nighttime Castle</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"My husband proposed on the private yacht with fireworks over the Vltava. The concierge team planned everything — flowers, photographer, the ring moment. I said yes."</div>
+          <div class="testi-author"><b>Sophie & David</b> · Don Giovanni · Proposal Package</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">"The kids still talk about their 'secret castle mission' at Karlštejn. Having a private guide who made it feel like an adventure game was genius."</div>
+          <div class="testi-author"><b>The Chen Family</b> · Josephine Old Town · Family Black Label</div>
+        </div>
+      </div>
+      <div class="testi-dots"><div class="testi-dot active"></div><div class="testi-dot"></div><div class="testi-dot"></div><div class="testi-dot"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SEASONAL EXPERIENCES -->
+<section class="sec reveal" id="seasonal">
+  <div class="sec-line"></div>
+  <div class="sec-stitle">Limited Editions</div>
+  <div class="sec-title">Seasonal <em>Collections</em></div>
+  <div class="sec-sub">Exclusive experiences available only during specific seasons. Book early — they sell out.</div>
+  <div class="season-grid">
+    <div class="season-card">
+      <img src="https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=800&q=80" alt="Winter"/>
+      <div class="season-content">
+        <div class="season-tag">December – February</div>
+        <h3>Winter <em>Black Label</em></h3>
+        <p>Prague transforms into a fairy tale. Private access to Christmas markets, New Year's rooftop gala, ice skating on a private rink, mulled wine tasting in medieval cellars.</p>
+        <div class="season-items">
+          <span class="season-item">Private Christmas Market Tour</span>
+          <span class="season-item">NYE Rooftop Gala</span>
+          <span class="season-item">Ice Skating Private Rink</span>
+          <span class="season-item">Mulled Wine Cellar Tasting</span>
+          <span class="season-item">Snow Globe Photo Session</span>
+        </div>
+      </div>
+    </div>
+    <div class="season-card">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Summer"/>
+      <div class="season-content">
+        <div class="season-tag">June – September</div>
+        <h3>Summer <em>Black Label</em></h3>
+        <p>Long golden evenings, open-air dining, balloon flights at dawn, yacht cruises at sunset. Prague's warmest season is also its most luxurious.</p>
+        <div class="season-items">
+          <span class="season-item">Balloon + Yacht Combo Day</span>
+          <span class="season-item">Rooftop Garden Dinner</span>
+          <span class="season-item">Sunrise Yoga at Vyšehrad</span>
+          <span class="season-item">Vltava Paddleboard + Picnic</span>
+          <span class="season-item">Open-Air Jazz Private Concert</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORPORATE TIER -->
+<div class="bl-sec-dark">
+  <div class="bl-inner reveal" id="corporate">
+    <div class="sec-line"></div>
+    <div class="sec-stitle">For Business</div>
+    <div class="sec-title" style="color:var(--heading)">Corporate <em>Black Label</em></div>
+    <div class="sec-sub">Team building, incentive travel, and conference add-ons. Tailored for Don Giovanni, Grand Hotel International, Wellness Hotel Step, and all business-focused properties.</div>
+    <div class="up-grid">
+      <div class="up-card"><div class="up-icon">🏢</div><h4>Team Building Day</h4><p>Cooking class + treasure hunt + brewery buyout. Full-day program for 10-50 people with facilitator, photos, and awards dinner.</p><div class="up-price">From €120 pp</div></div>
+      <div class="up-card"><div class="up-icon">🎯</div><h4>Incentive Reward Package</h4><p>Top performers earn: helicopter flight, VIP spa day, or private yacht dinner. Fully branded with your company logo and messaging.</p><div class="up-price">From €400 pp</div></div>
+      <div class="up-card"><div class="up-icon">🎤</div><h4>Conference Add-On</h4><p>Post-conference experiences: private brewery tour, castle visit, or jazz club buyout. Seamlessly scheduled after your final session.</p><div class="up-price">From €80 pp</div></div>
+      <div class="up-card"><div class="up-icon">🤝</div><h4>Client Entertainment</h4><p>Impress clients with a private rooftop dinner, vintage car tour, or exclusive concert. Branded welcome gifts and photography included.</p><div class="up-price">From €250 pp</div></div>
+      <div class="up-card"><div class="up-icon">🏆</div><h4>Award Ceremonies</h4><p>Host in a medieval hall, aboard a yacht, or in a baroque palace. Full AV, catering, entertainment, and event coordination.</p><div class="up-price">From €3,000</div></div>
+      <div class="up-card"><div class="up-icon">🌍</div><h4>Multi-City Package</h4><p>Prague + Budapest (Hotel Achat) + Brno (Grand Palace). Cross-border incentive programs across the Czech Inn Hotels network.</p><div class="up-price">Custom pricing</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PACKAGES -->
+<section class="sec reveal" id="packages">
+  <div class="sec-line"></div>
+  <div class="sec-stitle">Curated Packages</div>
+  <div class="sec-title">The Complete <em>Experience</em></div>
+  <div class="sec-sub">Pre-designed packages that combine the best of Black Label into unforgettable multi-day journeys.</div>
+  <div class="pkg-grid">
+    <div class="pkg-card"><div class="pkg-head"><div class="pkg-badge">Romantic</div><h3>Prague for Two</h3><div class="pkg-price">€1,480</div><div class="pkg-per">per couple · 2 days</div></div><div class="pkg-body"><div class="pkg-item"><span class="pkg-check">✓</span>Private Mucha tour with photographer</div><div class="pkg-item"><span class="pkg-check">✓</span>Vintage car city cruise</div><div class="pkg-item"><span class="pkg-check">✓</span>Private rooftop dinner + live violin</div><div class="pkg-item"><span class="pkg-check">✓</span>Vltava yacht cruise with chef</div><div class="pkg-item"><span class="pkg-check">✓</span>Airport limousine + welcome package</div><div class="pkg-item"><span class="pkg-check">✓</span>24/7 WhatsApp concierge</div></div><a class="pkg-cta pkg-cta-outline">Book This Package</a></div>
+    <div class="pkg-card featured"><div class="pkg-head"><div class="pkg-badge">★ Most Popular</div><h3>Ultimate Prague</h3><div class="pkg-price">€3,200</div><div class="pkg-per">per person · 3 days</div></div><div class="pkg-body"><div class="pkg-item"><span class="pkg-check">✓</span>Private Kafka + Jewish Heritage tours</div><div class="pkg-item"><span class="pkg-check">✓</span>Helicopter over Karlštejn Castle</div><div class="pkg-item"><span class="pkg-check">✓</span>Nighttime Prague Castle private access</div><div class="pkg-item"><span class="pkg-check">✓</span>Private yacht dinner cruise</div><div class="pkg-item"><span class="pkg-check">✓</span>VIP Spa day + fine dining upgrade</div><div class="pkg-item"><span class="pkg-check">✓</span>Professional photographer + limo + concierge</div></div><a class="pkg-cta pkg-cta-gold">Book This Package</a></div>
+    <div class="pkg-card"><div class="pkg-head"><div class="pkg-badge">Family</div><h3>Legend Quest VIP</h3><div class="pkg-price">€2,100</div><div class="pkg-per">family of 4 · 2 days</div></div><div class="pkg-body"><div class="pkg-item"><span class="pkg-check">✓</span>Private Kids Legend Quest + photographer</div><div class="pkg-item"><span class="pkg-check">✓</span>Hot air balloon (whole family)</div><div class="pkg-item"><span class="pkg-check">✓</span>Private cooking class (family edition)</div><div class="pkg-item"><span class="pkg-check">✓</span>Karlštejn Castle private excursion</div><div class="pkg-item"><span class="pkg-check">✓</span>Vintage car ride + family concierge</div><div class="pkg-item"><span class="pkg-check">✓</span>Airport limo + welcome + babysitter evening</div></div><a class="pkg-cta pkg-cta-outline">Book This Package</a></div>
+  </div>
+</section>
+
+<!-- REVENUE COMPARISON (for Jaroslav) -->
+<div class="bl-sec-dark">
+  <div class="bl-inner reveal" id="revenue">
+    <div class="sec-line"></div>
+    <div class="sec-stitle">For Jaroslav</div>
+    <div class="sec-title" style="color:var(--heading)">Why <em>Black Label</em> Matters</div>
+    <div class="sec-sub">Premium experiences generate 5-8x the revenue per booking with 45% margins. Only 5% of guests need to convert.</div>
+    <div class="rev-compare">
+      <div class="rev-col rev-std">
+        <h4 style="color:var(--heading)">Standard Tours</h4>
+        <div class="rev-metric"><span>Avg. ticket</span><span class="rv" style="color:var(--text-l)">€55</span></div>
+        <div class="rev-metric"><span>Margin</span><span class="rv" style="color:var(--text-l)">25%</span></div>
+        <div class="rev-metric"><span>Commission/booking</span><span class="rv" style="color:var(--text-l)">€14</span></div>
+        <div class="rev-metric"><span>Bookings needed for €100K</span><span class="rv" style="color:var(--text-l)">7,143</span></div>
+        <div class="rev-metric"><span>Guest conversion needed</span><span class="rv" style="color:var(--text-l)">8-10%</span></div>
+      </div>
+      <div class="rev-vs">VS</div>
+      <div class="rev-col rev-prem">
+        <h4 style="color:var(--accent)">Black Label</h4>
+        <div class="rev-metric"><span>Avg. ticket</span><span class="rv" style="color:var(--accent)">€420</span></div>
+        <div class="rev-metric"><span>Margin</span><span class="rv" style="color:var(--accent)">45%</span></div>
+        <div class="rev-metric"><span>Commission/booking</span><span class="rv" style="color:var(--accent)">€189</span></div>
+        <div class="rev-metric"><span>Bookings needed for €100K</span><span class="rv" style="color:var(--accent)">529</span></div>
+        <div class="rev-metric"><span>Guest conversion needed</span><span class="rv" style="color:var(--accent)">Only 3-5%</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;padding:24px;background:rgba(184,147,58,.06);border:1px solid var(--border);border-radius:10px">
+      <div style="font-family:var(--fd);font-size:1.8rem;font-weight:600;color:var(--accent)">2M+ guests × 5% conversion × €420 avg = €42M potential</div>
+      <div style="font-size:.82rem;color:var(--text-l);margin-top:6px">Your 25% commission: <strong style="color:var(--accent);font-family:var(--fd);font-size:1.1rem">€10.5M annually</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="sec-line"></div>
+  <p><b>BLACK LABEL</b> — Premium Experiences by Czech Inn Hotels</p>
+  <p style="margin-top:4px">Proposed for <b>Jaroslav Svoboda</b>, Founder & CEO</p>
+  <p style="margin-top:4px;opacity:.4;font-size:.66rem">All experiences are real, operational, and priced at market rates. Ready to deploy across 28 properties.</p>
+  <div class="site-footer-links">
+    <a href="czechinn-demo.html">Home Demo</a>
+    <a href="analytics-v2.html">Analytics</a>
+    <a href="black-label-v2.html">Black Label</a>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+/* ═══════════════════════════════════════════
+   UPGRADE CARDS DATA
+   ═══════════════════════════════════════════ */
+const UPGRADES=[
+  {i:"👤",t:"Private Guide",d:"Dedicated licensed guide exclusively for your group. Full flexibility to pause, explore, and ask anything.",p:"From €180 / group"},
+  {i:"🚘",t:"Luxury Vehicle",d:"Mercedes S-Class or BMW 7 Series. Hotel pickup, air-conditioned comfort between every stop.",p:"From €250 / tour"},
+  {i:"🚗",t:"Vintage Car Experience",d:"Restored 1930s convertible with white-glove chauffeur, photo stops, champagne on board.",p:"From €350 / couple"},
+  {i:"📸",t:"Professional Photographer",d:"80-120 edited high-res photos delivered in 48 hours. Cinematic candid style throughout the tour.",p:"From €220 / session"},
+  {i:"⚡",t:"Skip-All-Lines + After-Hours",d:"VIP fast-track at Prague Castle, Jewish Quarter, museums. After-hours Golden Lane access.",p:"From €120 / person"},
+  {i:"🍷",t:"Fine Dining Upgrade",d:"Michelin-recommended restaurants replace café stops. Multi-course tasting menus with wine pairings.",p:"From €150 / person"},
+];
+document.getElementById("upgradeGrid").innerHTML=UPGRADES.map(u=>`<div class="up-card"><div class="up-icon">${u.i}</div><h4>${u.t}</h4><p>${u.d}</p><div class="up-price">${u.p}</div></div>`).join("");
+
+/* ═══════════════════════════════════════════
+   EXPERIENCES DATA (22 total)
+   ═══════════════════════════════════════════ */
+const EXPS=[
+  {t:"Helicopter Over Karlštejn Castle",cat:"Aerial",p:"€650 pp",m:"1hr flight · Hotel transfer · Champagne toast",d:"Soar above Bohemian countryside in a private Bell 206. Fly over Karlštejn, medieval villages, rivers, forests. Champagne celebration on landing.",det:["✈ Up to 4 pax","📍 From Prague","⏰ ~4 hours"],img:"https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=800&q=80"},
+  {t:"Private Hot Air Balloon",cat:"Aerial",p:"€400 pp",m:"1hr flight · Sunrise/sunset · Champagne & diploma",d:"Private balloon for 2-4 over Central Bohemia castles. Traditional champagne toast, balloon baptism diploma. Hotel transfer included.",det:["🎈 Private (2-4)","🏰 Castle flyover","📸 Photo ops"],img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"},
+  {t:"Private Yacht Charter with Chef",cat:"River",p:"€950 group",m:"3hrs · Private chef · Unlimited premium drinks",d:"Most prestigious yacht on the Vltava. Private chef, 5-course meal, Charles Bridge, Prague Castle views. Two bedrooms, bar, terrace.",det:["🛥️ Up to 14","👨‍🍳 Onboard chef","🍾 Premium bar"],img:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80"},
+  {t:"Private Rooftop Dinner",cat:"Dining",p:"€280 pp",m:"3hrs · 7-course tasting · Wine pairing · Live music",d:"Exclusive rooftop table with Prague Castle, Charles Bridge, Old Town views. 7-course chef's tasting with sommelier pairing.",det:["🌃 Sunset slot","🎵 Live violin","💐 Custom decor"],img:"https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80"},
+  {t:"Private Classical Concert",cat:"Cultural",p:"€1,800 group",m:"90min · Municipal House or baroque church",d:"String quartet or chamber orchestra performs exclusively for your party. Candlelit setting, champagne intermission.",det:["🎻 4-12 musicians","🏛️ Iconic venue","🍾 Champagne"],img:"https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=800&q=80"},
+  {t:"Nighttime Prague Castle",cat:"Exclusive",p:"€350 pp",m:"2hrs · After-hours · Private guide · Champagne in Golden Lane",d:"Castle gates close at 6 PM — but not for you. Empty courtyards, St. Vitus Cathedral, Golden Lane in complete silence, night lights only.",det:["🏰 After-hours","🌙 Night lighting","👥 Up to 12"],img:"https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=800&q=80"},
+  {t:"Exclusive Mikulov Wine Cellar",cat:"Wine",p:"€180 pp",m:"Full day · Hotel Voyage · Sommelier · 12 wines",d:"Private visit to historic Moravian wine cellars. 12-wine tasting with sommelier, traditional lunch, vineyard walk. Hotel Voyage connection.",det:["🍇 Moravia's best","🏨 Hotel Voyage","🚗 Lux transfer"],img:"https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=800&q=80"},
+  {t:"VIP Spa & Wellness Day",cat:"Wellness",p:"€220 pp",m:"Full day · Wellness Hotel Step · Private suite",d:"Full-day retreat at Wellness Hotel Step. Private treatment suite, thermal pools, aromatherapy massage, detox lunch.",det:["💆 3 treatments","🏊 Pool+sauna","🥗 Wellness lunch"],img:"https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80"},
+  {t:"Personal Shopper — Czech Design",cat:"Lifestyle",p:"€200 pp",m:"4hrs · Crystal · Garnet jewelry · Fashion",d:"Expert stylist guides you through design studios, crystal workshops, garnet jewelry ateliers, fashion boutiques. VIP appointments.",det:["💎 Bohemian garnet","🔮 Crystal","📦 Shipping"],img:"https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80"},
+  {t:"Private Czech Cooking Class",cat:"Culinary",p:"€160 pp",m:"3hrs · Market visit · 4-course meal",d:"Start at farmers' market, cook traditional Czech meal with professional chef. Svíčková, trdelník, knedlíky. Eat your creation with wine.",det:["👨‍🍳 Pro chef","🛒 Market tour","🍽️ Full meal"],img:"https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80"},
+  {t:"VIP Shooting Range",cat:"Adventure",p:"€190 pp",m:"2hrs · Private range · 8+ weapons · Instructor",d:"Private shooting range with professional instructor. Handguns, rifles, shotguns, historical weapons. All ammo, targets, refreshments included.",det:["🔫 8+ weapons","🎯 Private range","🏆 Certificate"],img:"https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=800&q=80"},
+  {t:"Private Karlštejn Castle Visit",cat:"Heritage",p:"€320 group",m:"5hrs · Private guide + driver · Castle interiors · Lunch",d:"Half-day to the 14th-century Gothic castle of Charles IV. Royal chambers, Chapel of the Holy Cross, medieval village. Czech tavern lunch.",det:["🏰 Full interior","🚘 Private transfer","🍺 Tavern lunch"],img:"https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80"},
+  {t:"Private Fireworks Over Vltava",cat:"Celebration",p:"€3,500",m:"15min display · Best viewed from yacht · Custom colors",d:"Professional fireworks display over the Vltava River. Perfect for proposals, anniversaries, milestone celebrations. Custom colors and timing.",det:["🎆 Professional crew","🛥️ Yacht viewing","💍 Proposals"],img:"https://images.unsplash.com/photo-1498931299472-f7a63a5a1cfa?w=800&q=80"},
+  {t:"Exclusive Brewery Buyout",cat:"Beer",p:"€140 pp",m:"Evening · Craft brewery · Brew your own beer",d:"Private evening at a Prague craft brewery. Brew your own batch, unlimited tasting, brewery dinner. Label your bottles and take them home.",det:["🍺 Brew your own","🏭 Full brewery","🏷️ Custom labels"],img:"https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=800&q=80"},
+  {t:"Private Opera Box — Estates Theatre",cat:"Cultural",p:"€800 group",m:"Evening · Where Mozart premiered Don Giovanni",d:"Your own private box at the historic Estates Theatre — where Mozart himself premiered Don Giovanni in 1787. Champagne and chocolate included.",det:["🎭 Private box","🎶 Mozart's theatre","🍫 Champagne"],img:"https://images.unsplash.com/photo-1580809361436-42a7ec204889?w=800&q=80"},
+  {t:"Luxury E-Bike to Troja Château",cat:"Active",p:"€120 pp",m:"4hrs · Parks · Baroque gardens · Wine tasting",d:"E-bike through Prague's parks to the stunning Troja Château. Baroque gardens, wine tasting at Prague's only vineyard, riverside picnic.",det:["🚲 Premium e-bike","🏰 Troja Château","🍷 Wine tasting"],img:"https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=800&q=80"},
+  {t:"Cigar & Whisky Evening",cat:"Lifestyle",p:"€160 pp",m:"2.5hrs · Private lounge · Master blender",d:"Private session in an exclusive cigar lounge with a master blender. 4 premium whisky pairings, cigar selection guidance, leather armchair comfort.",det:["🥃 4 whiskies","💨 Premium cigars","🪑 Private lounge"],img:"https://images.unsplash.com/photo-1527281400683-1aae777175f8?w=800&q=80"},
+  {t:"Bohemian Glassblowing Masterclass",cat:"Artisan",p:"€130 pp",m:"3hrs · Private workshop · Take your creation home",d:"Private session at a Bohemian crystal workshop. Learn centuries-old techniques, create your own piece, watch master glassblowers at work.",det:["🔮 Hands-on","👨‍🎨 Master craftsman","🎁 Take home"],img:"https://images.unsplash.com/photo-1590508291916-0dbdf72e1cf0?w=800&q=80"},
+  {t:"Street Art Creation — Lennon Wall",cat:"Creative",p:"€110 pp",m:"3hrs · Graffiti artist · Create your own piece",d:"Professional graffiti artist teaches you techniques near the Lennon Wall. Create your own canvas. Includes all materials and a gallery walk.",det:["🎨 Professional artist","🖼️ Your own canvas","📍 Lennon Wall area"],img:"https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=800&q=80"},
+  {t:"Sunrise Yoga at Vyšehrad",cat:"Wellness",p:"€80 pp",m:"90min · Private instructor · Fortress views",d:"Private yoga session on the ramparts of Vyšehrad Fortress as the sun rises over Prague. Meditation, breathwork, and herbal tea ceremony after.",det:["🧘 Private instructor","🌅 Sunrise slot","🍵 Tea ceremony"],img:"https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80"},
+  {t:"Underground Jazz Club Buyout",cat:"Nightlife",p:"€1,200 group",m:"Evening · Live band · Cocktails · Private venue",d:"Exclusive buyout of an atmospheric underground jazz club. Live band performs for your group only. Premium cocktail bar, tapas menu, intimate vibe.",det:["🎷 Live jazz band","🍸 Open cocktail bar","🔒 Private venue"],img:"https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=800&q=80"},
+  {t:"Falconry at a Medieval Castle",cat:"Adventure",p:"€200 pp",m:"Half day · Hawks & falcons · Castle grounds",d:"Private falconry experience on medieval castle grounds outside Prague. Handle hawks and falcons, learn ancient hunting techniques, medieval lunch.",det:["🦅 Live raptors","🏰 Castle grounds","🍖 Medieval lunch"],img:"https://images.unsplash.com/photo-1557401620-67270b4f9067?w=800&q=80"},
+];
+document.getElementById("expGrid").innerHTML=EXPS.map(e=>`<div class="exp-card"><div class="exp-img"><img src="${e.img}" alt="${e.t}" loading="lazy"/><div class="exp-img-badge">${e.cat}</div><div class="exp-img-price">${e.p}</div></div><div class="exp-body"><h3>${e.t}</h3><div class="exp-meta">${e.m}</div><p>${e.d}</p><div class="exp-details">${e.det.map(d=>`<div class="exp-det"><span>${d.split(' ')[0]}</span>${d.substring(d.indexOf(' '))}</div>`).join('')}</div><button class="exp-book">Reserve This Experience</button></div></div>`).join("");
+
+/* ═══════════════════════════════════════════
+   CONCIERGE DATA
+   ═══════════════════════════════════════════ */
+const CONCIERGE=[
+  {i:"🛬",t:"Airport Limousine",d:"Mercedes S-Class pickup with welcome champagne, chilled towels, and Prague briefing en route.",p:"From €120"},
+  {i:"🎁",t:"Welcome Package",d:"Czech wine, artisan chocolates, fresh flowers, handwritten card, Black Label itinerary portfolio.",p:"From €95"},
+  {i:"💬",t:"24/7 WhatsApp Concierge",d:"Dedicated concierge from booking to departure. Reservations, changes, recommendations — instant.",p:"Complimentary"},
+  {i:"📋",t:"Custom Multi-Day Itinerary",d:"Bespoke itinerary by our travel architects. Tours, dining, experiences, free time — seamless flow.",p:"From €180"},
+  {i:"💍",t:"Proposal & Anniversary",d:"Charles Bridge at dawn, castle at sunset, or aboard your yacht. Photographer, flowers, musician.",p:"From €450"},
+  {i:"🎂",t:"Birthday & Celebration",d:"In-room decoration, private dinner, personalized cake, entertainment, curated experience.",p:"From €350"},
+  {i:"👶",t:"Family Concierge",d:"Child-proofing, babysitter, kid-friendly itinerary, stroller rental, family vehicle.",p:"From €80"},
+  {i:"🩺",t:"Medical & Special Needs",d:"Wheelchair routing, dietary coordination, pharmacy delivery, private medical assistance.",p:"Complimentary"},
+];
+document.getElementById("conGrid").innerHTML=CONCIERGE.map(c=>`<div class="con-card"><div class="con-icon">${c.i}</div><h4>${c.t}</h4><p>${c.d}</p><div class="con-price">${c.p}</div></div>`).join("");
+
+/* Init testimonial carousel */
+initTestimonialCarousel('testiWrap');
+</script>
+</body>
+</html>

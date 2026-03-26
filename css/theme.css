@@ -1,0 +1,197 @@
+/* ═══════════════════════════════════════════════════════
+   THEME.CSS — Design Tokens & Global Base
+   Czech Inn Hotels × UNO Guided Tours — Partnership Pitch
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Brand Color Palette ───────────────────────────── */
+:root {
+  --cream:        #DBDBD7;
+  --dark:         #1C1618;
+  --dark-alt:     #2A2327;
+  --wine:         #663E37;
+  --grey:         #746F65;
+  --gold:         #9C7B3C;
+  --gold-light:   #C9A84C;
+  --gold-pale:    #D4B87A;
+  --tan:          #AA9A77;
+
+  /* Semantic */
+  --bg:           #F4F1EC;
+  --bg-warm:      #EDE8E1;
+  --surface:      #FFFFFF;
+  --text:         #2A2327;
+  --text-l:       #746F65;
+  --border:       rgba(156,123,60,.18);
+  --border-dark:  rgba(156,123,60,.25);
+
+  /* Gold Label surface */
+  --gl-bg:        #0D0B0D;
+  --gl-surface:   #161214;
+  --gl-border:    rgba(184,147,58,.22);
+  --gl-accent:    #B8933A;
+  --gl-cream:     #F0EBE0;
+
+  /* Typography */
+  --fd: 'Cormorant Garamond', Georgia, serif;
+  --fb: 'Heebo', -apple-system, sans-serif;
+
+  /* Effects */
+  --shimmer: linear-gradient(110deg, #9C7B3C 0%, #C9A84C 40%, #E0C070 52%, #C9A84C 60%, #9C7B3C 100%);
+  --shimmer-gl: linear-gradient(110deg, #7A5E28 0%, #B8933A 40%, #D4AD50 52%, #B8933A 60%, #7A5E28 100%);
+  --tex: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23AA9A77' fill-opacity='.035'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+
+  /* Shadow */
+  --shadow-sm:    0 2px 8px rgba(42,35,39,.07);
+  --shadow-md:    0 8px 28px rgba(42,35,39,.10);
+  --shadow-lg:    0 20px 60px rgba(42,35,39,.14);
+  --glow-gold:    0 0 32px rgba(156,123,60,.25);
+  --card-hover:   0 16px 48px rgba(42,35,39,.12);
+
+  /* Layout */
+  --max-w:        1340px;
+  --nav-h:        64px;
+
+  /* Transitions */
+  --t-fast:       .18s ease;
+  --t-med:        .32s ease;
+  --t-slow:       .55s ease;
+}
+
+/* ── Global Reset ───────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--fb);
+  background: var(--bg);
+  background-image: var(--tex);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--fb); cursor: pointer; }
+ul, ol { list-style: none; }
+
+/* ── Utility Classes ────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s var(--t-slow), transform .7s var(--t-slow);
+}
+.reveal.vis { opacity: 1; transform: translateY(0); }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity .65s, transform .65s;
+}
+.reveal-left.vis { opacity: 1; transform: translateX(0); }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity .65s, transform .65s;
+}
+.reveal-right.vis { opacity: 1; transform: translateX(0); }
+
+/* ── Typography Helpers ─────────────────────────────── */
+.sec-line {
+  width: 32px; height: 2px;
+  background: var(--gold);
+  margin: 0 auto 16px;
+}
+.sec-line-left { margin-left: 0; }
+
+.sec-eyebrow {
+  font-size: .68rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.sec-eyebrow-left { text-align: left; }
+
+.sec-title {
+  font-family: var(--fd);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+  line-height: 1.15;
+  text-align: center;
+  color: var(--text);
+}
+.sec-title span { color: var(--wine); }
+.sec-title-light { color: var(--cream); }
+.sec-title-light span { color: var(--gold); }
+.sec-title-left { text-align: left; }
+
+.sec-sub {
+  text-align: center;
+  color: var(--text-l);
+  font-size: .9rem;
+  max-width: 580px;
+  margin: 12px auto 48px;
+  font-weight: 300;
+  line-height: 1.75;
+}
+.sec-sub-dark { color: var(--tan); }
+.sec-sub-left { text-align: left; margin-left: 0; }
+
+/* ── Data Label Badges ──────────────────────────────── */
+.data-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.data-badge-real {
+  background: rgba(58,143,92,.12);
+  color: #2d7a52;
+  border: 1px solid rgba(58,143,92,.25);
+}
+.data-badge-real::before { content: '✓ '; }
+
+.data-badge-projected {
+  background: rgba(156,123,60,.10);
+  color: var(--gold);
+  border: 1px solid rgba(156,123,60,.2);
+}
+.data-badge-projected::before { content: '◇ '; }
+
+/* ── Keyframe Animations ────────────────────────────── */
+@keyframes spin     { to { transform: rotate(360deg); } }
+@keyframes pulse    { 0%,100% { opacity:.4; } 50% { opacity:.95; } }
+@keyframes fu       { to { opacity: 1; transform: translateY(0); } }
+@keyframes shim     { to { background-position: 200% center; } }
+@keyframes slideUp  { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes modalIn  { from { opacity:0; transform: translateY(24px) scale(.98); } to { opacity:1; transform: translateY(0) scale(1); } }
+@keyframes popIn    { from { transform: scale(0) rotate(-10deg); } to { transform: scale(1) rotate(0); } }
+@keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.06); } }
+@keyframes glow     {
+  0%,100% { box-shadow: 0 0 18px rgba(156,123,60,.2); }
+  50%     { box-shadow: 0 0 36px rgba(156,123,60,.42); }
+}
+@keyframes float    {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-8px); }
+}
+@keyframes dotPulse {
+  0%,100% { transform: scale(1); opacity:.5; }
+  50%     { transform: scale(1.4); opacity:1; }
+}

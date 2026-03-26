@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Gold Label — Czech Inn Hotels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Heebo:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+/* ═══════════════════════════════════════════════
+   GOLD LABEL PAGE — Pure dark luxury
+   ═══════════════════════════════════════════════ */
+
+/* Force dark body for this page */
+body {
+  background: var(--gl-bg) !important;
+  background-image: none !important;
+  color: var(--gl-cream);
+}
+.page-wrap { background: var(--gl-bg); }
+
+/* ── Keyframes ──────────────────────────────────── */
+@keyframes goldLineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 28px rgba(184,147,58,.25), inset 0 0 28px rgba(184,147,58,.05); }
+  50%      { box-shadow: 0 0 56px rgba(184,147,58,.50), inset 0 0 56px rgba(184,147,58,.10); }
+}
+@keyframes shimGL {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes floatBadge {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-6px); }
+}
+
+/* ── Hero ───────────────────────────────────────── */
+.gl-hero {
+  position: relative;
+  height: 100vh;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.gl-hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1800&q=80');
+  background-size: cover;
+  background-position: center 30%;
+  filter: brightness(.28) saturate(.6);
+  animation: kenBurns 22s ease-in-out infinite alternate;
+}
+.gl-hero-vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(13,11,13,.92) 100%);
+  pointer-events: none;
+}
+.gl-hero-content {
+  position: relative; z-index: 2;
+  text-align: center;
+  padding: 40px 40px;
+  max-width: 860px;
+}
+.gl-hero-crown {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  animation: floatBadge 3.5s ease-in-out infinite;
+  display: block;
+}
+.gl-hero-eyebrow {
+  font-size: .65rem;
+  color: var(--gl-accent);
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fu .9s .2s ease forwards;
+}
+.gl-hero-title {
+  font-family: var(--fd);
+  font-size: clamp(3.5rem, 9vw, 7.5rem);
+  font-weight: 300;
+  color: var(--gl-cream);
+  line-height: 1.0;
+  letter-spacing: -1px;
+  margin-bottom: 6px;
+  opacity: 0;
+  animation: fu .9s .4s ease forwards;
+}
+.gl-hero-title em {
+  font-style: italic;
+  color: var(--gl-accent);
+  font-weight: 400;
+}
+.gl-hero-subtitle {
+  font-family: var(--fd);
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(240,235,224,.5);
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fu .9s .6s ease forwards;
+}
+.gl-gold-line {
+  width: 120px;
+  height: 1px;
+  background: var(--shimmer-gl);
+  background-size: 300% auto;
+  margin: 0 auto 40px;
+  transform-origin: left;
+  opacity: 0;
+  animation: fu .5s .8s ease forwards, shimGL 4s 1.3s linear infinite;
+}
+.gl-hero-desc {
+  font-size: .95rem;
+  color: rgba(240,235,224,.58);
+  line-height: 1.85;
+  font-weight: 300;
+  max-width: 560px;
+  margin: 0 auto 48px;
+  opacity: 0;
+  animation: fu .9s .9s ease forwards;
+}
+.gl-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 44px;
+  border-radius: 6px;
+  background: linear-gradient(110deg, #7A5E28 0%, var(--gl-accent) 45%, #D4AD50 55%, var(--gl-accent) 70%, #7A5E28 100%);
+  background-size: 200% auto;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: var(--fb);
+  font-size: .88rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: background-position .6s, transform .25s, box-shadow .25s;
+  opacity: 0;
+  animation: fu .9s 1.1s ease forwards;
+}
+.gl-hero-cta:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(184,147,58,.4);
+}
+.gl-hero-scroll {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: .4;
+  animation: pulse 2.5s infinite;
+}
+.gl-hero-scroll span {
+  font-size: .6rem; color: var(--gl-accent); letter-spacing: 3px; text-transform: uppercase;
+}
+.gl-hero-scroll-arrow {
+  width: 1px; height: 28px; background: var(--gl-accent);
+}
+
+/* ── Section base ───────────────────────────────── */
+.gl-section {
+  padding: 100px 40px;
+  max-width: var(--max-w); margin: 0 auto;
+}
+.gl-section-full {
+  background: var(--gl-surface);
+  border-top: 1px solid var(--gl-border);
+  border-bottom: 1px solid var(--gl-border);
+  padding: 100px 40px;
+}
+.gl-section-inner {
+  max-width: var(--max-w); margin: 0 auto;
+}
+
+/* ── Section typography ─────────────────────────── */
+.gl-eyebrow {
+  font-size: .62rem;
+  color: var(--gl-accent);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.gl-eyebrow-left { text-align: left; }
+.gl-title {
+  font-family: var(--fd);
+  font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+  font-weight: 300;
+  color: var(--gl-cream);
+  line-height: 1.12;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.gl-title em { color: var(--gl-accent); font-style: italic; font-weight: 400; }
+.gl-title-left { text-align: left; }
+.gl-sub {
+  text-align: center;
+  color: rgba(240,235,224,.48);
+  font-size: .88rem;
+  max-width: 560px;
+  margin: 0 auto 56px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+.gl-sub-left { text-align: left; margin-left: 0; }
+.gl-line {
+  width: 36px; height: 1px;
+  background: var(--gl-accent);
+  margin: 0 auto 18px;
+  opacity: .7;
+}
+.gl-line-left { margin-left: 0; }
+
+/* ── What is Gold Label — 3 col features ───────── */
+.gl-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 56px;
+  border: 1px solid var(--gl-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.gl-feature {
+  background: rgba(22,18,20,.7);
+  padding: 48px 36px;
+  transition: background .3s;
+  position: relative;
+}
+.gl-feature::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gl-accent), transparent);
+  opacity: 0;
+  transition: opacity .35s;
+}
+.gl-feature:hover { background: rgba(22,18,20,1); }
+.gl-feature:hover::after { opacity: 1; }
+.gl-feature-icon {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  display: block;
+}
+.gl-feature-title {
+  font-family: var(--fd);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--gl-cream);
+  margin-bottom: 10px;
+}
+.gl-feature-desc {
+  font-size: .84rem;
+  color: rgba(240,235,224,.5);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* ── Cards (generic dark) ───────────────────────── */
+.gl-card {
+  background: var(--gl-surface);
+  border: 1px solid var(--gl-border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+}
+.gl-card:hover {
+  border-color: rgba(184,147,58,.5);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 30px rgba(184,147,58,.1);
+}
+
+/* ── Private Tours ──────────────────────────────── */
+.gl-tours-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 52px;
+}
+.gl-tour-card {
+  background: var(--gl-surface);
+  border: 1px solid var(--gl-border);
+  border-radius: 14px;
+  padding: 0;
+  overflow: hidden;
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+}
+.gl-tour-card:hover {
+  border-color: rgba(184,147,58,.55);
+  transform: translateY(-5px);
+  box-shadow: 0 24px 64px rgba(0,0,0,.6), 0 0 32px rgba(184,147,58,.12);
+}
+.gl-tour-card-top {
+  padding: 28px 28px 20px;
+  border-bottom: 1px solid var(--gl-border);
+}
+.gl-tour-card-icon {
+  font-size: 1.3rem; margin-bottom: 14px;
+}
+.gl-tour-card-name {
+  font-family: var(--fd);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gl-cream);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.gl-tour-card-desc {
+  font-size: .82rem;
+  color: rgba(240,235,224,.5);
+  line-height: 1.65;
+  font-weight: 300;
+}
+.gl-tour-card-bottom {
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.gl-price-tag {
+  font-family: var(--fd);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--gl-accent);
+}
+.gl-price-tag span {
+  font-size: .75rem;
+  font-family: var(--fb);
+  color: rgba(240,235,224,.35);
+  font-weight: 300;
+}
+.gl-guests-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--gl-border);
+  border-radius: 20px;
+  font-size: .7rem;
+  color: rgba(240,235,224,.5);
+  white-space: nowrap;
+}
+.gl-dur-pill {
+  font-size: .7rem;
+  color: rgba(184,147,58,.7);
+  font-weight: 500;
+}
+
+/* ── Room Upgrades ──────────────────────────────── */
+.gl-upgrades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 52px;
+}
+.gl-upgrade-card {
+  background: var(--gl-surface);
+  border: 1px solid var(--gl-border);
+  border-radius: 14px;
+  padding: 32px 28px;
+  transition: border-color .3s, transform .3s, box-shadow .3s;
+  position: relative;
+  overflow: hidden;
+}
+.gl-upgrade-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--gl-accent) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity .35s;
+}
+.gl-upgrade-card:hover {
+  border-color: rgba(184,147,58,.5);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 56px rgba(0,0,0,.5);
+}
+.gl-upgrade-card:hover::before { opacity: 1; }
+.gl-upgrade-icon {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+}
+.gl-upgrade-name {
+  font-family: var(--fd);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gl-cream);
+  margin-bottom: 8px;
+}
+.gl-upgrade-price {
+  font-family: var(--fd);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--gl-accent);
+  margin-bottom: 12px;
+}
+.gl-upgrade-price span {
+  font-size: .72rem;
+  font-family: var(--fb);
+  color: rgba(240,235,224,.35);
+  font-weight: 300;
+}
+.gl-upgrade-desc {
+  font-size: .82rem;
+  color: rgba(240,235,224,.5);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* ── Concierge ──────────────────────────────────── */
+.gl-concierge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 52px;
+}
+.gl-concierge-card {
+  background: rgba(22,18,20,.6);
+  border: 1px solid var(--gl-border);
+  border-radius: 14px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color .3s, transform .3s;
+}
+.gl-concierge-card:hover {
+  border-color: rgba(184,147,58,.45);
+  transform: translateY(-4px);
+}
+.gl-concierge-name {
+  font-family: var(--fd);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gl-cream);
+  line-height: 1.3;
+}
+.gl-concierge-desc {
+  font-size: .82rem;
+  color: rgba(240,235,224,.5);
+  line-height: 1.65;
+  font-weight: 300;
+  flex: 1;
+}
+.gl-concierge-price {
+  font-family: var(--fd);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--gl-accent);
+}
+.gl-concierge-price span {
+  font-size: .7rem;
+  font-family: var(--fb);
+  color: rgba(240,235,224,.35);
+  font-weight: 300;
+}
+.gl-concierge-num {
+  font-size: .6rem;
+  color: rgba(184,147,58,.5);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+/* ── Packages ───────────────────────────────────── */
+.gl-packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 52px;
+  align-items: start;
+}
+.gl-package {
+  background: var(--gl-surface);
+  border: 1px solid var(--gl-border);
+  border-radius: 16px;
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .3s, box-shadow .3s;
+}
+.gl-package:hover { transform: translateY(-4px); }
+.gl-package.featured {
+  border-color: rgba(184,147,58,.5);
+  background: rgba(22,18,20,.95);
+  transform: scale(1.04);
+  animation: glowPulse 3.5s ease-in-out infinite;
+  z-index: 2;
+}
+.gl-package.featured:hover { transform: scale(1.04) translateY(-4px); }
+.gl-package-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  background: rgba(184,147,58,.18);
+  border: 1px solid rgba(184,147,58,.35);
+  border-radius: 20px;
+  font-size: .62rem;
+  color: var(--gl-accent);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.gl-package.featured .gl-package-badge {
+  background: var(--gl-accent);
+  color: var(--gl-bg);
+  border-color: var(--gl-accent);
+}
+.gl-package-name {
+  font-family: var(--fd);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--gl-cream);
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+.gl-package.featured .gl-package-name { font-weight: 600; }
+.gl-package-price {
+  font-family: var(--fd);
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--gl-accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.gl-package-per {
+  font-size: .72rem;
+  color: rgba(240,235,224,.35);
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+.gl-package-divider {
+  width: 100%; height: 1px;
+  background: var(--gl-border);
+  margin-bottom: 24px;
+}
+.gl-package-includes {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin-bottom: 32px;
+}
+.gl-package-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: .82rem;
+  color: rgba(240,235,224,.6);
+  line-height: 1.5;
+  font-weight: 300;
+}
+.gl-package-check {
+  width: 17px; height: 17px;
+  border-radius: 50%;
+  background: rgba(184,147,58,.15);
+  border: 1px solid rgba(184,147,58,.3);
+  color: var(--gl-accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .55rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.gl-package.featured .gl-package-item { color: rgba(240,235,224,.75); }
+.gl-package-btn {
+  display: block; width: 100%;
+  padding: 14px 24px;
+  text-align: center;
+  border-radius: 7px;
+  font-family: var(--fb);
+  font-size: .84rem;
+  font-weight: 500;
+  letter-spacing: .5px;
+  cursor: pointer;
+  transition: all .25s;
+  text-decoration: none;
+}
+.gl-package-btn-outline {
+  background: transparent;
+  border: 1px solid rgba(184,147,58,.35);
+  color: rgba(184,147,58,.75);
+}
+.gl-package-btn-outline:hover {
+  border-color: var(--gl-accent);
+  color: var(--gl-accent);
+  background: rgba(184,147,58,.06);
+}
+.gl-package-btn-gold {
+  background: linear-gradient(110deg, #7A5E28 0%, var(--gl-accent) 45%, #D4AD50 55%, var(--gl-accent) 70%, #7A5E28 100%);
+  background-size: 200% auto;
+  border: none;
+  color: #fff;
+}
+.gl-package-btn-gold:hover {
+  background-position: right center;
+  box-shadow: 0 8px 28px rgba(184,147,58,.4);
+}
+
+/* ── Revenue Uplift ──────────────────────────────── */
+.gl-revenue-card {
+  background: rgba(13,11,13,.8);
+  border: 1px solid var(--gl-border);
+  border-radius: 16px;
+  padding: 56px 52px;
+  max-width: 860px;
+  margin: 52px auto 0;
+}
+.gl-revenue-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 48px;
+}
+.gl-rev-col { text-align: center; }
+.gl-rev-label {
+  font-size: .6rem;
+  color: rgba(240,235,224,.4);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.gl-rev-amount {
+  font-family: var(--fd);
+  font-size: 3.2rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.gl-rev-amount.standard { color: rgba(240,235,224,.35); }
+.gl-rev-amount.gold { color: var(--gl-accent); }
+.gl-rev-per {
+  font-size: .78rem;
+  color: rgba(240,235,224,.35);
+  font-weight: 300;
+}
+.gl-rev-arrow {
+  font-size: 1.5rem;
+  color: var(--gl-accent);
+  opacity: .6;
+}
+.gl-revenue-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding-top: 36px;
+  border-top: 1px solid var(--gl-border);
+}
+.gl-rev-stat {
+  text-align: center;
+}
+.gl-rev-stat-num {
+  font-family: var(--fd);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--gl-accent);
+  margin-bottom: 4px;
+}
+.gl-rev-stat-label {
+  font-size: .72rem;
+  color: rgba(240,235,224,.4);
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+/* ── Final CTA ───────────────────────────────────── */
+.gl-cta {
+  padding: 120px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.gl-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(184,147,58,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.gl-cta-inner {
+  position: relative; z-index: 1;
+  max-width: 680px; margin: 0 auto;
+}
+.gl-cta-crown {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 24px;
+  animation: floatBadge 3s ease-in-out infinite;
+}
+.gl-cta-title {
+  font-family: var(--fd);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 300;
+  color: var(--gl-cream);
+  line-height: 1.12;
+  margin-bottom: 20px;
+}
+.gl-cta-title em { color: var(--gl-accent); font-style: italic; font-weight: 600; }
+.gl-cta-sub {
+  font-size: .9rem;
+  color: rgba(240,235,224,.45);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 48px;
+  max-width: 500px; margin-left: auto; margin-right: auto; margin-bottom: 48px;
+}
+.gl-cta-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.gl-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 34px;
+  border-radius: 7px;
+  background: transparent;
+  border: 1px solid rgba(184,147,58,.35);
+  color: rgba(184,147,58,.75);
+  font-family: var(--fb);
+  font-size: .86rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all .25s;
+  text-decoration: none;
+}
+.gl-btn-outline:hover {
+  border-color: var(--gl-accent);
+  color: var(--gl-accent);
+  background: rgba(184,147,58,.06);
+}
+
+/* ── Reveal override for dark page ─────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .75s, transform .75s;
+}
+.reveal.vis { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- ── Hero ────────────────────────────────────── -->
+  <section class="gl-hero">
+    <div class="gl-hero-bg"></div>
+    <div class="gl-hero-vignette"></div>
+    <div class="gl-hero-content">
+      <span class="gl-hero-crown">✦</span>
+      <div class="gl-hero-eyebrow">Czech Inn Hotels — Premium Tier</div>
+      <h1 class="gl-hero-title">Gold<br><em>Label</em></h1>
+      <p class="gl-hero-subtitle">Curated. Private. Unmistakable.</p>
+      <div class="gl-gold-line"></div>
+      <p class="gl-hero-desc">An elevated tier of experiences for guests who want something extraordinary — private tours, penthouse upgrades, bespoke concierge services, and complete Prague itineraries assembled for individuals, couples, and corporate groups.</p>
+      <a href="partnership.html" class="gl-hero-cta" data-nav>Activate Gold Label →</a>
+    </div>
+    <div class="gl-hero-scroll">
+      <span>Discover</span>
+      <div class="gl-hero-scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ── What is Gold Label ──────────────────────── -->
+  <section class="gl-section-full" id="what">
+    <div class="gl-section-inner">
+      <div class="gl-line"></div>
+      <div class="gl-eyebrow">The Difference</div>
+      <h2 class="gl-title reveal">What is <em>Gold Label</em>?</h2>
+      <p class="gl-sub reveal">Gold Label is not a package — it is a philosophy. Every element is curated to remove friction, add meaning, and create moments your guests will describe for years. Three pillars make it possible.</p>
+      <div class="gl-features-grid reveal">
+        <div class="gl-feature">
+          <span class="gl-feature-icon">🔒</span>
+          <div class="gl-feature-title">Private Tours</div>
+          <p class="gl-feature-desc">Every Gold Label tour is exclusive to your guests — no shared groups, no strangers, no compromises on pace or depth. Your guide is a specialist, not a generalist. Four tours, four Prague stories, all available privately from two guests upward.</p>
+        </div>
+        <div class="gl-feature">
+          <span class="gl-feature-icon">🏨</span>
+          <div class="gl-feature-title">Room Upgrades</div>
+          <p class="gl-feature-desc">From penthouse suites with castle views to honeymoon surprises with French Champagne and rose petals — room upgrade packages that transform a check-in into a memory. Each is delivered before arrival, with a handwritten welcome note.</p>
+        </div>
+        <div class="gl-feature">
+          <span class="gl-feature-icon">🎩</span>
+          <div class="gl-feature-title">Concierge Services</div>
+          <p class="gl-feature-desc">Airport Mercedes transfers, private wine cellar evenings, curated restaurant reservations at Prague's five best tables, spa day coordination. A dedicated concierge who knows every door in the city and when to knock.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Private Tours ───────────────────────────── -->
+  <section class="gl-section" id="private-tours">
+    <div class="gl-line"></div>
+    <div class="gl-eyebrow">Exclusively Yours</div>
+    <h2 class="gl-title reveal">Private <em>Tour Collection</em></h2>
+    <p class="gl-sub reveal">All four signature tours reimagined for private groups. No shared tickets, no time pressure, no strangers. Just your guests, one expert guide, and Prague's finest stories unfolding at precisely the right pace.</p>
+    <div class="gl-tours-grid" id="privateTourGrid"></div>
+  </section>
+
+  <!-- ── Room Upgrades ───────────────────────────── -->
+  <section class="gl-section-full" id="room-upgrades">
+    <div class="gl-section-inner">
+      <div class="gl-line"></div>
+      <div class="gl-eyebrow">Arrive to Something Special</div>
+      <h2 class="gl-title reveal">Room <em>Upgrade Packages</em></h2>
+      <p class="gl-sub reveal">The moment a guest opens their hotel room door sets the tone for their entire stay. These upgrades ensure that moment is extraordinary — from the penthouse suite to the thoughtful family welcome kit.</p>
+      <div class="gl-upgrades-grid" id="upgradesGrid"></div>
+    </div>
+  </section>
+
+  <!-- ── Concierge Services ──────────────────────── -->
+  <section class="gl-section" id="concierge">
+    <div class="gl-line"></div>
+    <div class="gl-eyebrow">Every Detail Handled</div>
+    <h2 class="gl-title reveal">Concierge <em>Services</em></h2>
+    <p class="gl-sub reveal">From the moment the car meets them at arrivals to a sommelier-led tasting in a 15th-century wine cellar — our concierge services are available individually or as part of any Gold Label package.</p>
+    <div class="gl-concierge-grid" id="conciergeGrid"></div>
+  </section>
+
+  <!-- ── Packages ────────────────────────────────── -->
+  <section class="gl-section-full" id="packages">
+    <div class="gl-section-inner">
+      <div class="gl-line"></div>
+      <div class="gl-eyebrow">Curated Combinations</div>
+      <h2 class="gl-title reveal">Gold Label <em>Packages</em></h2>
+      <p class="gl-sub reveal">Three packages built for different guests and budgets — from the first-time premium traveller to the corporate group that expects everything to be perfect without being asked.</p>
+      <div class="gl-packages-grid" id="packagesGrid"></div>
+    </div>
+  </section>
+
+  <!-- ── Revenue Uplift ──────────────────────────── -->
+  <section class="gl-section" id="revenue">
+    <div class="gl-line"></div>
+    <div class="gl-eyebrow">The Business Case</div>
+    <h2 class="gl-title reveal">Revenue <em>Uplift</em></h2>
+    <p class="gl-sub reveal">Gold Label isn't just a better guest experience — it's a measurable revenue driver. The comparison below shows the difference between a standard booking and a Gold Label stay at Czech Inn Hotels.</p>
+    <div class="gl-revenue-card reveal" id="revenueCard"></div>
+  </section>
+
+  <!-- ── Final CTA ───────────────────────────────── -->
+  <section class="gl-cta" id="activate">
+    <div class="gl-cta-inner">
+      <span class="gl-cta-crown">✦</span>
+      <h2 class="gl-cta-title reveal">Activate <em>Gold Label</em><br>at Czech Inn Hotels</h2>
+      <p class="gl-cta-sub reveal">Gold Label is ready to deploy at all 28 Czech Inn Hotels properties from day one. There is no technology to install, no staff retraining required, and no upfront cost — just a partnership that begins generating premium revenue immediately.</p>
+      <div class="gl-cta-btns reveal">
+        <a href="partnership.html" class="gl-hero-cta" data-nav>Start the Partnership →</a>
+        <a href="tours.html" class="gl-btn-outline" data-nav>View All Tours</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end .page-wrap -->
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/data.js"></script>
+<script>
+/* ═══════════════════════════════════════════════
+   GOLD LABEL PAGE SCRIPT
+   ═══════════════════════════════════════════════ */
+
+(function() {
+
+  const tourIcons = { kafka:'📚', mucha:'🎨', jewish:'✡️', kids:'🎭' };
+  const conciergeIcons = ['🚘','🍽️','🍷','🧖'];
+
+  /* ── Private Tours ─────────────────────────────── */
+  function buildPrivateTours() {
+    const grid = document.getElementById('privateTourGrid');
+    if (!grid) return;
+
+    GOLD_LABEL.private_tours.forEach((tour, i) => {
+      const id = ['kafka','mucha','jewish','kids'][i] || '';
+      const card = document.createElement('div');
+      card.className = 'gl-tour-card reveal';
+      card.innerHTML = `
+        <div class="gl-tour-card-top">
+          <div class="gl-tour-card-icon">${tourIcons[id] || '✦'}</div>
+          <div class="gl-tour-card-name">${tour.name}</div>
+          <p class="gl-tour-card-desc">${tour.desc}</p>
+        </div>
+        <div class="gl-tour-card-bottom">
+          <div>
+            <div class="gl-price-tag">€${tour.price} <span>/ group</span></div>
+            <div class="gl-dur-pill">⏱ ${tour.dur}</div>
+          </div>
+          <span class="gl-guests-pill">👥 ${tour.guests}</span>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  /* ── Room Upgrades ─────────────────────────────── */
+  function buildUpgrades() {
+    const grid = document.getElementById('upgradesGrid');
+    if (!grid) return;
+
+    GOLD_LABEL.room_upgrades.forEach(upg => {
+      const card = document.createElement('div');
+      card.className = 'gl-upgrade-card reveal';
+      card.innerHTML = `
+        <div class="gl-upgrade-icon">${upg.icon}</div>
+        <div class="gl-upgrade-name">${upg.name}</div>
+        <div class="gl-upgrade-price">+€${upg.price} <span>/ stay</span></div>
+        <p class="gl-upgrade-desc">${upg.desc}</p>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  /* ── Concierge Services ────────────────────────── */
+  function buildConcierge() {
+    const grid = document.getElementById('conciergeGrid');
+    if (!grid) return;
+
+    GOLD_LABEL.concierge.forEach((svc, i) => {
+      const card = document.createElement('div');
+      card.className = 'gl-concierge-card reveal';
+      card.innerHTML = `
+        <div class="gl-concierge-num">Service ${String(i+1).padStart(2,'0')}</div>
+        <div class="gl-concierge-name">${conciergeIcons[i] || '✦'} ${svc.name}</div>
+        <p class="gl-concierge-desc">${svc.desc}</p>
+        <div class="gl-concierge-price">€${svc.price} <span>/ booking</span></div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  /* ── Packages ──────────────────────────────────── */
+  function buildPackages() {
+    const grid = document.getElementById('packagesGrid');
+    if (!grid) return;
+
+    GOLD_LABEL.packages.forEach((pkg, i) => {
+      const isFeatured = i === 1; // Gold Complete is center/featured
+      const card = document.createElement('div');
+      card.className = 'gl-package reveal' + (isFeatured ? ' featured' : '');
+      card.innerHTML = `
+        <div class="gl-package-badge">${pkg.badge}</div>
+        <div class="gl-package-name">${pkg.name}</div>
+        <div class="gl-package-price">€${pkg.price.toLocaleString()}</div>
+        <div class="gl-package-per">per guest / per stay</div>
+        <div class="gl-package-divider"></div>
+        <ul class="gl-package-includes">
+          ${pkg.includes.map(item => `
+            <li class="gl-package-item">
+              <span class="gl-package-check">✓</span>
+              <span>${item}</span>
+            </li>
+          `).join('')}
+        </ul>
+        <a href="partnership.html" class="gl-package-btn ${isFeatured ? 'gl-package-btn-gold' : 'gl-package-btn-outline'}" data-nav>
+          ${isFeatured ? 'Get Gold Complete →' : 'Learn More'}
+        </a>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  /* ── Revenue Uplift Card ───────────────────────── */
+  function buildRevenue() {
+    const card = document.getElementById('revenueCard');
+    if (!card) return;
+
+    card.innerHTML = `
+      <div class="gl-revenue-grid">
+        <div class="gl-rev-col">
+          <div class="gl-rev-label">Standard Booking</div>
+          <div class="gl-rev-amount standard">€55</div>
+          <div class="gl-rev-per">average spend per guest<br>on tours &amp; extras</div>
+        </div>
+        <div class="gl-rev-arrow">→</div>
+        <div class="gl-rev-col">
+          <div class="gl-rev-label">Gold Label Booking</div>
+          <div class="gl-rev-amount gold">€320</div>
+          <div class="gl-rev-per">average spend per guest<br>with Gold Label package</div>
+        </div>
+      </div>
+      <div class="gl-revenue-stats">
+        <div class="gl-rev-stat">
+          <div class="gl-rev-stat-num">+482%</div>
+          <div class="gl-rev-stat-label">Revenue uplift per<br>Gold Label guest</div>
+        </div>
+        <div class="gl-rev-stat">
+          <div class="gl-rev-stat-num">€265</div>
+          <div class="gl-rev-stat-label">Additional revenue<br>generated per guest</div>
+        </div>
+        <div class="gl-rev-stat">
+          <div class="gl-rev-stat-num">~12%</div>
+          <div class="gl-rev-stat-label">Conversion rate to<br>Gold Label (projected)</div>
+        </div>
+      </div>
+    `;
+  }
+
+  /* ── Scroll Reveal ─────────────────────────────── */
+  function initReveal() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('vis');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
+
+  /* ── Hover micro-animations ────────────────────── */
+  function initHoverAnimations() {
+    // Cards get a subtle gold shimmer line on top on hover (handled by CSS ::before)
+    // Package featured card pulsing glow handled by CSS animation: glowPulse
+  }
+
+  /* ── Init ──────────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded', () => {
+    buildPrivateTours();
+    buildUpgrades();
+    buildConcierge();
+    buildPackages();
+    buildRevenue();
+    setTimeout(initReveal, 200);
+    initHoverAnimations();
+  });
+
+})();
+</script>
+</body>
+</html>

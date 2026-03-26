@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Czech Inn Hotels — Guided Experiences Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Heebo:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+/* ── HOME PAGE ─────────────────────────────────────────── */
+
+/* Hero */
+.hero {
+  position:relative; width:100%; height:100vh;
+  overflow:hidden; display:flex;
+  align-items:center; justify-content:center;
+}
+.hero-bg {
+  position:absolute; inset:0;
+  background:url('https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=1800&q=80') center/cover;
+  filter:brightness(.28) saturate(.7);
+  animation:kenBurns 22s ease infinite alternate;
+}
+.hero-bg::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to bottom, transparent 40%, rgba(28,22,24,.9) 100%);
+}
+.hero-content {
+  position:relative; z-index:2;
+  text-align:center; padding:40px;
+  max-width:900px;
+}
+.hero-for {
+  display:inline-block; font-size:.65rem;
+  color:rgba(156,123,60,.8); letter-spacing:5px;
+  text-transform:uppercase; margin-bottom:20px;
+  border:1px solid rgba(156,123,60,.25); padding:7px 22px;
+  border-radius:3px; opacity:0;
+  animation:fu .7s .3s forwards; transform:translateY(18px);
+}
+.hero-title {
+  font-family:var(--fd); font-weight:600;
+  font-size:clamp(2.8rem,6vw,5.2rem);
+  color:var(--cream); line-height:1.08;
+  letter-spacing:-1px; margin-bottom:10px;
+  opacity:0; animation:fu .8s .6s forwards; transform:translateY(28px);
+}
+.hero-title em { font-style:italic; color:var(--gold); }
+.hero-divider {
+  width:48px; height:1px; background:var(--gold);
+  margin:24px auto; opacity:0;
+  animation:fu .6s .9s forwards;
+}
+.hero-sub {
+  font-size:1.05rem; color:var(--tan); font-weight:300;
+  line-height:1.8; max-width:640px; margin:0 auto 36px;
+  opacity:0; animation:fu .7s 1.1s forwards; transform:translateY(16px);
+}
+.hero-btns {
+  display:flex; gap:16px; justify-content:center;
+  opacity:0; animation:fu .7s 1.4s forwards;
+}
+.hero-scroll {
+  position:absolute; bottom:36px; left:50%;
+  transform:translateX(-50%); z-index:2;
+  color:var(--gold); font-size:.6rem;
+  letter-spacing:3px; text-transform:uppercase;
+  opacity:0; animation:fu .6s 2s forwards;
+}
+.hero-scroll::after {
+  content:''; display:block; width:1px;
+  height:36px; background:var(--gold);
+  margin:8px auto 0; opacity:.4;
+}
+
+/* Stats bar */
+.stats-bar {
+  background:var(--dark);
+  border-bottom:1px solid rgba(156,123,60,.15);
+  display:flex; justify-content:center;
+}
+.stat-item {
+  flex:1; max-width:220px; text-align:center;
+  padding:34px 16px;
+  border-right:1px solid rgba(156,123,60,.1);
+}
+.stat-item:last-child { border-right:none; }
+.stat-num {
+  font-family:var(--fd); font-size:2.8rem;
+  font-weight:700; color:var(--gold); line-height:1;
+}
+.stat-label {
+  font-size:.68rem; color:var(--tan);
+  text-transform:uppercase; letter-spacing:2.5px;
+  margin-top:6px;
+}
+
+/* Opportunity gap */
+.gap-grid {
+  display:grid; grid-template-columns:1fr 60px 1fr;
+  gap:0; margin-top:52px; align-items:stretch;
+}
+.gap-col {
+  border-radius:16px; padding:38px 34px;
+  border:1px solid var(--border);
+}
+.gap-before { background:var(--bg-warm); }
+.gap-after  { background:var(--dark); border-color:rgba(156,123,60,.25); }
+.gap-vs {
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--fd); font-size:1.1rem;
+  font-weight:700; color:var(--gold);
+}
+.gap-label {
+  font-size:.65rem; text-transform:uppercase;
+  letter-spacing:2px; font-weight:600; margin-bottom:14px;
+}
+.gap-before .gap-label { color:var(--wine); }
+.gap-after  .gap-label { color:var(--gold); }
+.gap-col h3 {
+  font-family:var(--fd); font-size:1.6rem;
+  font-weight:600; margin-bottom:22px;
+}
+.gap-before h3 { color:var(--text); }
+.gap-after  h3 { color:var(--cream); }
+.gap-row {
+  display:flex; gap:12px; padding:11px 0;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  font-size:.85rem; line-height:1.55;
+}
+.gap-after .gap-row { border-bottom-color:rgba(156,123,60,.1); }
+.gap-row:last-child { border-bottom:none; }
+.gap-row-icon { font-size:1rem; flex-shrink:0; margin-top:1px; }
+.gap-competitors {
+  margin-top:20px; padding:14px;
+  background:rgba(102,62,55,.06);
+  border-radius:8px; border:1px solid rgba(102,62,55,.12);
+  font-size:.78rem; color:var(--text-l); line-height:1.7;
+}
+.gap-competitors strong { display:block; color:var(--wine); margin-bottom:6px; font-size:.75rem; letter-spacing:.5px; }
+
+/* Proof banner */
+.proof-banner {
+  background:var(--dark);
+  border-top:1px solid rgba(156,123,60,.12);
+  border-bottom:1px solid rgba(156,123,60,.12);
+  padding:80px 40px;
+}
+.proof-inner { max-width:var(--max-w); margin:0 auto; }
+.proof-live-dot {
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:.65rem; color:var(--gold); letter-spacing:3px;
+  text-transform:uppercase; margin-bottom:16px;
+}
+.proof-live-dot::before {
+  content:''; width:7px; height:7px; border-radius:50%;
+  background:#4caf7d; box-shadow:0 0 10px rgba(76,175,125,.6);
+  animation:pulse 1.8s infinite;
+}
+.proof-grid {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:20px; margin-top:48px;
+}
+.proof-card {
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(156,123,60,.12);
+  border-radius:14px; padding:28px 22px;
+  text-align:center; transition:border-color .3s,transform .3s;
+}
+.proof-card:hover { border-color:rgba(156,123,60,.35); transform:translateY(-4px); }
+.proof-icon { font-size:2rem; margin-bottom:12px; }
+.proof-num {
+  font-family:var(--fd); font-size:2.4rem;
+  font-weight:700; color:var(--gold); line-height:1;
+}
+.proof-card-label { font-size:.68rem; color:var(--tan); text-transform:uppercase; letter-spacing:2px; margin-top:6px; }
+.proof-card-desc { font-size:.78rem; color:var(--grey); line-height:1.6; margin-top:8px; font-weight:300; }
+
+/* Platform overview cards */
+.platform-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:22px; margin-top:52px;
+}
+.plat-card {
+  background:var(--surface); border-radius:16px;
+  border:1px solid var(--border); overflow:hidden;
+  transition:border-color .3s, transform .3s, box-shadow .3s;
+  display:flex; flex-direction:column;
+}
+.plat-card:hover {
+  border-color:rgba(156,123,60,.45);
+  transform:translateY(-5px);
+  box-shadow:var(--card-hover);
+}
+.plat-card-img {
+  height:180px; overflow:hidden; position:relative;
+}
+.plat-card-img img {
+  width:100%; height:100%; object-fit:cover;
+  filter:brightness(.55) saturate(.7);
+  transition:filter .5s, transform .5s;
+}
+.plat-card:hover .plat-card-img img { filter:brightness(.7) saturate(.85); transform:scale(1.04); }
+.plat-card-badge {
+  position:absolute; top:12px; left:12px;
+  padding:4px 12px; font-size:.6rem; letter-spacing:2px;
+  text-transform:uppercase; color:var(--gold);
+  border:1px solid rgba(156,123,60,.35);
+  background:rgba(28,22,24,.75);
+  border-radius:3px;
+}
+.plat-card-body { padding:24px; flex:1; display:flex; flex-direction:column; }
+.plat-card-title {
+  font-family:var(--fd); font-size:1.25rem;
+  font-weight:600; margin-bottom:8px;
+}
+.plat-card-desc {
+  font-size:.83rem; color:var(--text-l);
+  line-height:1.7; font-weight:300; flex:1;
+  margin-bottom:18px;
+}
+.plat-card-link {
+  font-size:.78rem; color:var(--gold);
+  font-weight:500; letter-spacing:.5px;
+  transition:letter-spacing .2s;
+}
+.plat-card:hover .plat-card-link { letter-spacing:1.5px; }
+
+/* CTA section */
+.home-cta {
+  background:linear-gradient(135deg, #1C1618 0%, #0F0D0F 100%);
+  border-top:1px solid rgba(156,123,60,.15);
+  padding:100px 40px; text-align:center;
+}
+.home-cta-eyebrow {
+  font-size:.65rem; color:var(--gold); letter-spacing:4px;
+  text-transform:uppercase; margin-bottom:16px;
+}
+.home-cta h2 {
+  font-family:var(--fd); font-size:clamp(2.2rem,4vw,3.4rem);
+  font-weight:600; color:var(--cream); line-height:1.15;
+  max-width:680px; margin:0 auto 16px;
+}
+.home-cta h2 em { font-style:italic; color:var(--gold); }
+.home-cta p {
+  color:var(--tan); font-size:.95rem; font-weight:300;
+  max-width:520px; margin:0 auto 40px; line-height:1.8;
+}
+.home-cta-btns { display:flex; gap:16px; justify-content:center; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-for">Prepared exclusively for Jaroslav Svoboda — Czech Inn Hotels s.r.o.</div>
+    <h1 class="hero-title">A New Revenue Stream for<br><em>28 Hotels &amp; 3,300+ Rooms</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Turn every guest into a premium experience buyer — 4 curated tours, 26 extras, Gold Label tier, and a white-label booking engine ready to deploy across your entire portfolio. Zero investment. Zero risk.</p>
+    <div class="hero-btns">
+      <a href="business-plan.html" class="btn-gold" data-nav>See the Business Plan →</a>
+      <a href="tours.html" class="btn-outline btn-outline-light" data-nav>Explore Tours</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll to explore</div>
+</section>
+
+<!-- ── STATS BAR ─────────────────────────────────────────── -->
+<div class="stats-bar reveal">
+  <div class="stat-item"><div class="stat-num" data-count="28">0</div><div class="stat-label">Hotels</div></div>
+  <div class="stat-item"><div class="stat-num" data-count="3300">0</div><div class="stat-label">Rooms</div></div>
+  <div class="stat-item"><div class="stat-num" data-count="4">0</div><div class="stat-label">Signature Tours</div></div>
+  <div class="stat-item"><div class="stat-num" data-count="26">0</div><div class="stat-label">Premium Extras</div></div>
+  <div class="stat-item"><div class="stat-num" data-count="847">0</div><div class="stat-label">Bookings — Prague 2024</div></div>
+</div>
+
+<!-- ── OPPORTUNITY GAP ───────────────────────────────────── -->
+<section class="section reveal">
+  <div class="sec-eyebrow">The Opportunity</div>
+  <div class="sec-line"></div>
+  <h2 class="sec-title">The Gap Your Guests Experience <span>Today</span></h2>
+  <p class="sec-sub">Every night, thousands of guests in your hotels want curated experiences. Right now, that revenue goes entirely to third-party agencies. Here's what changes.</p>
+
+  <div class="gap-grid">
+    <div class="gap-col gap-before">
+      <div class="gap-label">❌ Current State — Czech Inn Hotels</div>
+      <h3>No Experience Platform</h3>
+      <div class="gap-row"><span class="gap-row-icon">🚫</span><span>Guest asks about tours — no structured offering exists</span></div>
+      <div class="gap-row"><span class="gap-row-icon">🚫</span><span>100% of experience revenue goes to third-party agencies</span></div>
+      <div class="gap-row"><span class="gap-row-icon">🚫</span><span>No branded guest experience beyond the hotel room</span></div>
+      <div class="gap-row"><span class="gap-row-icon">🚫</span><span>Zero data on what guests do after check-in</span></div>
+      <div class="gap-row"><span class="gap-row-icon">🚫</span><span>No differentiation from 2,800+ competing Prague hotels</span></div>
+      <div class="gap-competitors">
+        <strong>Your competitors already have this:</strong>
+        Four Seasons Prague — private guided experiences via Tully Luxury Travel.
+        Alchymist Grand Hotel — in-house concierge booking with commission model.
+        Maximilian Hotel — integrated tour desks at reception.
+        Grandior Hotel (Le Hotels Group) — full concierge service with partner tours.
+      </div>
+    </div>
+    <div class="gap-vs">VS</div>
+    <div class="gap-col gap-after">
+      <div class="gap-label">✓ With This Platform</div>
+      <h3 style="color:var(--cream)">A Complete Experience Engine</h3>
+      <div class="gap-row"><span class="gap-row-icon">✅</span><span style="color:var(--tan)"><strong style="color:var(--cream)">Instant booking</strong> — guest scans QR or taps tablet → booked in 60 seconds</span></div>
+      <div class="gap-row"><span class="gap-row-icon">✅</span><span style="color:var(--tan)"><strong style="color:var(--cream)">25% commission</strong> on every booking flows to your hotels automatically</span></div>
+      <div class="gap-row"><span class="gap-row-icon">✅</span><span style="color:var(--tan)"><strong style="color:var(--cream)">White-label branding</strong> — platform carries Czech Inn Hotels identity</span></div>
+      <div class="gap-row"><span class="gap-row-icon">✅</span><span style="color:var(--tan)"><strong style="color:var(--cream)">Full analytics</strong> — know what every guest books, spends, and prefers</span></div>
+      <div class="gap-row"><span class="gap-row-icon">✅</span><span style="color:var(--tan)"><strong style="color:var(--cream)">First-mover advantage</strong> — the only hotel group in Prague with a proprietary experience platform</span></div>
+      <div class="gap-row"><span class="gap-row-icon">✅</span><span style="color:var(--tan)"><strong style="color:var(--cream)">Prague Pass synergy</strong> — integrate with your existing discount programme</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LIVE PROOF ─────────────────────────────────────────── -->
+<div class="proof-banner reveal">
+  <div class="proof-inner">
+    <div class="proof-live-dot">Live &amp; Operational</div>
+    <div class="sec-line" style="margin:0 0 16px"></div>
+    <h2 class="sec-title sec-title-light" style="text-align:left">This Isn't a Concept — <em style="font-style:italic;color:var(--gold)">It's Running</em></h2>
+    <p class="sec-sub sec-sub-dark" style="text-align:left;margin-left:0;margin-right:0;max-width:580px">Tours, guides, content, booking infrastructure, and 847 real Prague bookings in 2024 — fully built and operational. All that's missing is your hotels.</p>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-icon">🎯</div>
+        <div class="proof-num">4</div>
+        <div class="proof-card-label">Signature Tours</div>
+        <div class="proof-card-desc">Fully scripted, stop-by-stop itineraries with food, activities & quotes</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-icon">🌍</div>
+        <div class="proof-num">12</div>
+        <div class="proof-card-label">Languages</div>
+        <div class="proof-card-desc">EN, DE, FR, ES, IT, RU, ZH, JA, HE, AR, CZ + more on request</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-icon">👥</div>
+        <div class="proof-num">15+</div>
+        <div class="proof-card-label">Licensed Guides</div>
+        <div class="proof-card-desc">Certified local guides, trained on every tour route, story, and stop</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-icon">⭐</div>
+        <div class="proof-num">4.91</div>
+        <div class="proof-card-label">Average Rating</div>
+        <div class="proof-card-desc">847 verified guest reviews across Prague 2024 season</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PLATFORM OVERVIEW ──────────────────────────────────── -->
+<section class="section reveal">
+  <div class="sec-eyebrow">The Platform</div>
+  <div class="sec-line"></div>
+  <h2 class="sec-title">Everything Your Hotels <span>Need</span></h2>
+  <p class="sec-sub">A complete experience ecosystem — from the first tour to Gold Label packages, from guest digital concierge to real-time analytics. All white-labelled under Czech Inn Hotels.</p>
+
+  <div class="platform-grid" id="platformGrid"></div>
+</section>
+
+<!-- ── HOME CTA ───────────────────────────────────────────── -->
+<div class="home-cta reveal">
+  <div class="home-cta-eyebrow">The Partnership</div>
+  <h2>Ready to Become Prague's <em>First Hotel Group</em> with a Proprietary Experience Platform?</h2>
+  <p>Zero setup cost. Zero monthly fee. A 25% commission on every booking — and a first-mover advantage that will take competitors 18 months to match.</p>
+  <div class="home-cta-btns">
+    <a href="partnership.html" class="btn-gold" data-nav>See the Partnership Proposal →</a>
+    <a href="business-plan.html" class="btn-outline btn-outline-light" data-nav>Read the Business Plan</a>
+  </div>
+</div>
+
+</div><!-- /page-wrap -->
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/data.js"></script>
+<script>
+/* ── Stats counters ─────────────────────────────────────── */
+const stObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el  = e.target;
+    const tgt = parseFloat(el.dataset.count);
+    let c = 0;
+    const step = tgt / 60;
+    const iv = setInterval(() => {
+      c += step;
+      if (c >= tgt) { c = tgt; clearInterval(iv); }
+      el.textContent = tgt >= 100 ? Math.floor(c).toLocaleString() : Math.floor(c);
+    }, 28);
+    stObs.unobserve(el);
+  });
+}, { threshold:.5 });
+document.querySelectorAll('[data-count]').forEach(el => stObs.observe(el));
+
+/* ── Scroll reveal ──────────────────────────────────────── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+}, { threshold:.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ── Platform overview cards ────────────────────────────── */
+const PAGES = [
+  { title:"Guided Tours",        badge:"4 Signature Tours",  href:"tours.html",         img:"https://images.unsplash.com/photo-1458150945447-7fb764c11a92?auto=format&fit=crop&w=600&q=80",  desc:"Kafka, Mucha, Jewish Heritage, Kids Legend Quest — each with full itineraries, partner venues, and everything guests need." },
+  { title:"Gold Label",          badge:"Premium Tier",       href:"gold-label.html",     img:"https://images.unsplash.com/photo-1559329007-40df8a9345d8?auto=format&fit=crop&w=600&q=80",  desc:"Private tours, room upgrades, VIP concierge, and exclusive packages for Czech Inn's most discerning guests." },
+  { title:"Extras Catalogue",    badge:"26 Add-Ons",         href:"extras.html",         img:"https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=600&q=80",  desc:"From beer spas to helicopter tours — 26 premium extras your guests can add to any tour booking." },
+  { title:"Digital Concierge",   badge:"Guest Experience",   href:"concierge.html",      img:"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80", desc:"A personal Prague journey — welcome videos, live photo uploads, memory books, AI assistant, and more." },
+  { title:"Analytics",           badge:"Real-Time Data",     href:"analytics.html",      img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",  desc:"Live dashboard showing bookings, revenue, guest nationalities, and property performance across all 28 hotels." },
+  { title:"Partnership Proposal",badge:"For Jaroslav",       href:"partnership.html",    img:"https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=600&q=80", desc:"The complete proposal — terms, implementation timeline, financial projections, and one clear next step." }
+];
+
+const g = document.getElementById('platformGrid');
+PAGES.forEach(p => {
+  const d = document.createElement('div');
+  d.className = 'plat-card';
+  d.innerHTML = `
+    <div class="plat-card-img">
+      <img src="${p.img}" alt="${p.title}" loading="lazy"/>
+      <div class="plat-card-badge">${p.badge}</div>
+    </div>
+    <div class="plat-card-body">
+      <div class="plat-card-title">${p.title}</div>
+      <div class="plat-card-desc">${p.desc}</div>
+      <a href="${p.href}" class="plat-card-link" data-nav>Explore ${p.title} →</a>
+    </div>`;
+  g.appendChild(d);
+});
+</script>
+</body>
+</html>

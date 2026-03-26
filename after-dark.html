@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Prague After Dark — Czech Inn Hotels Experiences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Heebo:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+/* ── After Dark Page ─── */
+
+.ad-hero {
+  min-height: 100vh;
+  background: #050305;
+  display: flex; align-items: flex-end;
+  position: relative; overflow: hidden;
+}
+.ad-hero-bg {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1800&q=80') center/cover;
+  opacity: .35;
+}
+.ad-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(5,3,5,.2) 0%, rgba(5,3,5,.95) 75%);
+}
+.ad-hero-content {
+  position: relative; z-index: 2;
+  padding: 0 40px 80px;
+  max-width: var(--max-w); margin: 0 auto; width: 100%;
+}
+.ad-hero-eyebrow {
+  font-size: .65rem; color: rgba(156,123,60,.8);
+  letter-spacing: 5px; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.ad-hero-title {
+  font-family: var(--fd);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 300; color: #fff;
+  line-height: .95; margin-bottom: 28px;
+}
+.ad-hero-title em { font-style: italic; color: var(--gold); }
+.ad-hero-desc {
+  font-size: 1rem; color: rgba(219,219,215,.65);
+  max-width: 480px; line-height: 1.9; font-weight: 300;
+  margin-bottom: 40px;
+}
+.ad-hero-pills {
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+.ad-hero-pill {
+  padding: 8px 18px; border-radius: 100px;
+  border: 1px solid rgba(156,123,60,.3);
+  font-size: .75rem; color: var(--tan);
+  letter-spacing: .5px;
+}
+
+/* ── Category tabs ─── */
+.ad-tabs {
+  background: #0a0807;
+  border-bottom: 1px solid rgba(156,123,60,.12);
+  position: sticky; top: var(--nav-h); z-index: 100;
+}
+.ad-tabs-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  padding: 0 40px;
+  display: flex; gap: 0;
+}
+.ad-tab {
+  padding: 18px 24px; font-family: var(--fb);
+  font-size: .8rem; color: var(--grey);
+  border: none; background: transparent; cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  white-space: nowrap;
+}
+.ad-tab:hover { color: var(--tan); }
+.ad-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ── Venue cards ─── */
+.ad-section {
+  background: #0a0807;
+  padding: 80px 40px;
+  border-bottom: 1px solid rgba(156,123,60,.08);
+}
+.ad-section-inner { max-width: var(--max-w); margin: 0 auto; }
+.ad-cat-header {
+  display: flex; align-items: baseline; gap: 16px;
+  margin-bottom: 40px;
+}
+.ad-cat-icon { font-size: 1.6rem; }
+.ad-cat-title {
+  font-family: var(--fd); font-size: 1.8rem;
+  color: var(--cream); font-weight: 400;
+}
+.ad-cat-count { font-size: .72rem; color: var(--grey); }
+
+.ad-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.ad-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(156,123,60,.15);
+  border-radius: 16px; overflow: hidden;
+  transition: border-color .3s, transform .3s;
+  position: relative;
+}
+.ad-card:hover {
+  border-color: rgba(156,123,60,.45);
+  transform: translateY(-5px);
+}
+.ad-card-img {
+  width: 100%; height: 200px;
+  object-fit: cover; display: block;
+  filter: brightness(.85);
+  transition: filter .3s;
+}
+.ad-card:hover .ad-card-img { filter: brightness(1); }
+.ad-card-body { padding: 22px 22px 20px; }
+.ad-card-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.ad-badge {
+  font-size: .58rem; padding: 3px 8px; border-radius: 3px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.ad-badge-type { background: rgba(156,123,60,.12); color: var(--gold); }
+.ad-badge-price { background: rgba(255,255,255,.05); color: var(--grey); }
+.ad-badge-area { background: rgba(255,255,255,.04); color: rgba(219,219,215,.4); }
+.ad-card-name {
+  font-family: var(--fd); font-size: 1.25rem;
+  color: var(--cream); font-weight: 600; margin-bottom: 6px;
+}
+.ad-card-addr {
+  font-size: .72rem; color: var(--grey); margin-bottom: 10px;
+}
+.ad-card-desc {
+  font-size: .8rem; color: rgba(219,219,215,.55);
+  line-height: 1.8; font-weight: 300; margin-bottom: 16px;
+}
+.ad-card-tip {
+  display: flex; gap: 8px; align-items: flex-start;
+  padding: 10px 12px;
+  background: rgba(156,123,60,.07);
+  border-radius: 8px; border: 1px solid rgba(156,123,60,.12);
+}
+.ad-card-tip-icon { font-size: .85rem; flex-shrink: 0; margin-top: 1px; }
+.ad-card-tip-text { font-size: .75rem; color: var(--tan); line-height: 1.5; }
+
+/* ── Night Map ─── */
+.ad-map {
+  background: #070506;
+  padding: 80px 40px;
+  border-top: 1px solid rgba(156,123,60,.1);
+}
+.ad-map-inner { max-width: var(--max-w); margin: 0 auto; }
+.ad-map-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 52px; margin-top: 52px; align-items: start;
+}
+.ad-neighbourhood { margin-bottom: 28px; }
+.ad-neighbourhood-name {
+  font-family: var(--fd); font-size: 1.1rem;
+  color: var(--cream); font-weight: 600; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.ad-neighbourhood-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0;
+}
+.ad-neighbourhood-venues {
+  display: flex; flex-direction: column; gap: 8px;
+  padding-left: 18px;
+  border-left: 1px solid rgba(156,123,60,.15);
+}
+.ad-venue-line {
+  font-size: .8rem; color: var(--tan);
+  display: flex; align-items: center; gap: 8px;
+}
+.ad-venue-line span { color: var(--grey); font-size: .72rem; }
+
+/* ── After Dark CTA ─── */
+.ad-cta {
+  background: #050305; padding: 80px 40px;
+  text-align: center;
+  border-top: 1px solid rgba(156,123,60,.1);
+}
+.ad-cta-inner { max-width: 600px; margin: 0 auto; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.vis { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+</style>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js" defer></script>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- Hero -->
+<section class="ad-hero">
+  <div class="ad-hero-bg"></div>
+  <div class="ad-hero-overlay"></div>
+  <div class="ad-hero-content">
+    <div class="ad-hero-eyebrow">Czech Inn Hotels × UNO</div>
+    <h1 class="ad-hero-title">Prague<br><em>After Dark</em></h1>
+    <p class="ad-hero-desc">When the daytime tours end, the real Prague begins. Jazz cellars, rooftop bars with castle views, legendary cocktail haunts, and theatres that exist nowhere else on earth.</p>
+    <div class="ad-hero-pills">
+      <span class="ad-hero-pill">🎷 Jazz Clubs</span>
+      <span class="ad-hero-pill">🍸 Cocktail Bars</span>
+      <span class="ad-hero-pill">🌃 Rooftop Bars</span>
+      <span class="ad-hero-pill">🎭 Live Shows</span>
+    </div>
+  </div>
+</section>
+
+<!-- Tabs -->
+<div class="ad-tabs">
+  <div class="ad-tabs-inner">
+    <button class="ad-tab active" data-tab="jazz">🎷 Jazz</button>
+    <button class="ad-tab" data-tab="rooftop">🌃 Rooftop</button>
+    <button class="ad-tab" data-tab="cocktail">🍸 Cocktails</button>
+    <button class="ad-tab" data-tab="shows">🎭 Shows</button>
+  </div>
+</div>
+
+<!-- Jazz -->
+<section class="ad-section" id="tab-jazz">
+  <div class="ad-section-inner">
+    <div class="ad-cat-header reveal">
+      <span class="ad-cat-icon">🎷</span>
+      <div class="ad-cat-title">Jazz Clubs</div>
+      <span class="ad-cat-count">4 venues</span>
+    </div>
+    <div class="ad-grid">
+      <div class="ad-card reveal">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&w=600&q=80" alt="Jazz Dock" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Jazz Club</span>
+            <span class="ad-badge ad-badge-price">€10–20 cover</span>
+            <span class="ad-badge ad-badge-area">Smíchov</span>
+          </div>
+          <div class="ad-card-name">Jazz Dock</div>
+          <div class="ad-card-addr">Janáčkovo nábřeží 2, Praha 5</div>
+          <p class="ad-card-desc">Prague's finest jazz venue, built over the Vltava river. Glass walls overlooking the water, world-class international and local jazz acts nightly. One of the most atmospheric rooms in Europe.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">Book a river-facing table at least 48 hours ahead — they sell out every weekend without exception.</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-1">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=600&q=80" alt="AghaRTA Jazz Centrum" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Jazz Club</span>
+            <span class="ad-badge ad-badge-price">€8–15 cover</span>
+            <span class="ad-badge ad-badge-area">Old Town</span>
+          </div>
+          <div class="ad-card-name">AghaRTA Jazz Centrum</div>
+          <div class="ad-card-addr">Železná 16, Praha 1</div>
+          <p class="ad-card-desc">Underground jazz in a Gothic cellar in the Old Town — intimate, dark, and legendary. Running since 1991, this is where Prague's serious jazz scene lives. Three sets nightly.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">Arrive early for the 9pm set — the cellar holds only 60 people and late-comers stand.</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-2">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80" alt="Reduta Jazz Club" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Jazz Club</span>
+            <span class="ad-badge ad-badge-price">€12–18 cover</span>
+            <span class="ad-badge ad-badge-area">New Town</span>
+          </div>
+          <div class="ad-card-name">Reduta Jazz Club</div>
+          <div class="ad-card-addr">Národní 20, Praha 1</div>
+          <p class="ad-card-desc">The oldest jazz club in Central Europe — opened in 1958. Bill Clinton famously played the saxophone here during his 1994 Prague visit. History on every wall.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">Ask for the table by the stage left corner — best sightlines in the house.</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-3">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=600&q=80" alt="Ungelt Jazz & Blues Club" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Jazz & Blues</span>
+            <span class="ad-badge ad-badge-price">€8–14 cover</span>
+            <span class="ad-badge ad-badge-area">Old Town</span>
+          </div>
+          <div class="ad-card-name">Ungelt Jazz & Blues Club</div>
+          <div class="ad-card-addr">Týn 2, Praha 1</div>
+          <p class="ad-card-desc">Hidden in the ancient Ungelt courtyard behind the Týn Church. Medieval vaulted ceilings, Czech and international acts, and an expertly curated whisky selection to accompany the music.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">The Ungelt courtyard itself is stunning even before you go inside — arrive 20 minutes early to soak it in.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rooftop -->
+<section class="ad-section" id="tab-rooftop" style="display:none">
+  <div class="ad-section-inner">
+    <div class="ad-cat-header reveal">
+      <span class="ad-cat-icon">🌃</span>
+      <div class="ad-cat-title">Rooftop Bars</div>
+      <span class="ad-cat-count">3 venues</span>
+    </div>
+    <div class="ad-grid">
+      <div class="ad-card reveal">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" alt="T-Anker" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Rooftop Bar</span>
+            <span class="ad-badge ad-badge-price">€€</span>
+            <span class="ad-badge ad-badge-area">Old Town</span>
+          </div>
+          <div class="ad-card-name">T-Anker</div>
+          <div class="ad-card-addr">Náměstí Republiky 8, Praha 1</div>
+          <p class="ad-card-desc">The best rooftop in Prague, full stop. Perched above Náměstí Republiky with unobstructed 360° views — Prague Castle, the Old Town rooftops, and the Powder Tower glowing at night.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">The concierge platform reserves tables here — walk-ins on Friday and Saturday evenings are nearly impossible.</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-1">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="Cloud 9 Sky Bar" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Sky Bar</span>
+            <span class="ad-badge ad-badge-price">€€€</span>
+            <span class="ad-badge ad-badge-area">New Town</span>
+          </div>
+          <div class="ad-card-name">Cloud 9 Sky Bar & Lounge</div>
+          <div class="ad-card-addr">Hilton Prague, Pobřežní 1</div>
+          <p class="ad-card-desc">On the 9th floor of the Hilton Prague, with a wraparound terrace and indoor cocktail lounge. Sophisticated, quieter than T-Anker, perfect for business drinks or a romantic evening with castle views.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">The west-facing terrace seats catch the last light of sunset over Prague Castle — arrive by 7pm in summer.</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-2">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=600&q=80" alt="Vyšehrad Terrace" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Terrace Bar</span>
+            <span class="ad-badge ad-badge-price">€</span>
+            <span class="ad-badge ad-badge-area">Vyšehrad</span>
+          </div>
+          <div class="ad-card-name">Café Citadela at Vyšehrad</div>
+          <div class="ad-card-addr">V Pevnosti 159/5b, Praha 2</div>
+          <p class="ad-card-desc">The hidden gem of Prague's evening scene — a terrace bar inside the Vyšehrad fortress walls, with views of the Vltava valley that most tourists never find. Remarkably good value.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">Combine with the Vyšehrad cemetery visit at dusk — the fortress is magical when the crowds are gone.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cocktail Bars -->
+<section class="ad-section" id="tab-cocktail" style="display:none">
+  <div class="ad-section-inner">
+    <div class="ad-cat-header reveal">
+      <span class="ad-cat-icon">🍸</span>
+      <div class="ad-cat-title">Cocktail Bars</div>
+      <span class="ad-cat-count">4 venues</span>
+    </div>
+    <div class="ad-grid">
+      <div class="ad-card reveal">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1559181567-c3190ca9d222?auto=format&fit=crop&w=600&q=80" alt="Hemingway Bar" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">World's Best Bars</span>
+            <span class="ad-badge ad-badge-price">€€€</span>
+            <span class="ad-badge ad-badge-area">Old Town</span>
+          </div>
+          <div class="ad-card-name">Hemingway Bar</div>
+          <div class="ad-card-addr">Karolíny Světlé 26, Praha 1</div>
+          <p class="ad-card-desc">Ranked among the World's 50 Best Bars. Art Deco interior, over 200 absinthe varieties, and bartenders who treat cocktail-making as a fine art. The Czech absinthe ritual here is unmissable.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">Order the Sidecar — it has been on the menu since day one and is still the best drink they make.</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-1">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=600&q=80" alt="Black Angel's Bar" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Speakeasy</span>
+            <span class="ad-badge ad-badge-price">€€€</span>
+            <span class="ad-badge ad-badge-area">Old Town</span>
+          </div>
+          <div class="ad-card-name">Black Angel's Bar</div>
+          <div class="ad-card-addr">Staroměstské náměstí 29, Praha 1</div>
+          <p class="ad-card-desc">A 1930s-inspired prohibition bar hidden beneath the Old Town Square — exposed brick vaults, dim candlelight, and cocktails that won the Diageo World Class competition. Exceptional by any standard.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">Request the tasting menu — six miniature cocktails spanning the full history of the bar's signature drinks.</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-2">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1582192730841-2a682d7375f9?auto=format&fit=crop&w=600&q=80" alt="Bar, Bistro & Books" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Cocktail Bar</span>
+            <span class="ad-badge ad-badge-price">€€</span>
+            <span class="ad-badge ad-badge-area">Vinohrady</span>
+          </div>
+          <div class="ad-card-name">Bitte</div>
+          <div class="ad-card-addr">Mánesova 13, Praha 2</div>
+          <p class="ad-card-desc">A neighbourhood cocktail bar in beautiful Vinohrady that locals fiercely guard from tourist lists. Exceptional seasonal cocktails, a remarkable natural wine selection, and the best playlist in Prague.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">The bar opens at 5pm — arrive then to get a seat. By 8pm it becomes standing-room only.</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-3">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="Parlour" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Cocktail Bar</span>
+            <span class="ad-badge ad-badge-price">€€</span>
+            <span class="ad-badge ad-badge-area">Žižkov</span>
+          </div>
+          <div class="ad-card-name">Parlour</div>
+          <div class="ad-card-addr">Blanická 26, Praha 2</div>
+          <p class="ad-card-desc">A beautifully designed cocktail parlour that changed the Prague cocktail scene when it opened. Serious technique, approachable menu, and a rare selection of Czech spirits not found elsewhere.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">Ask the bartender what they're proud of this week — the answer is always interesting and usually delicious.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Shows -->
+<section class="ad-section" id="tab-shows" style="display:none">
+  <div class="ad-section-inner">
+    <div class="ad-cat-header reveal">
+      <span class="ad-cat-icon">🎭</span>
+      <div class="ad-cat-title">Live Shows</div>
+      <span class="ad-cat-count">4 venues</span>
+    </div>
+    <div class="ad-grid">
+      <div class="ad-card reveal">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=600&q=80" alt="Image Theatre" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Black Light Theatre</span>
+            <span class="ad-badge ad-badge-price">€25–40</span>
+            <span class="ad-badge ad-badge-area">Old Town</span>
+          </div>
+          <div class="ad-card-name">Image Theatre</div>
+          <div class="ad-card-addr">Pařížská 4, Praha 1</div>
+          <p class="ad-card-desc">Prague's most acclaimed Black Light Theatre — a genre that was essentially invented in this city. Spectacular visual performances combining dance, mime, and lighting that exist nowhere else in the world.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">Premium seats are worth the extra €10 — front rows get the full dimensional effect of the performance.</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-1">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" alt="Lobkowicz Palace" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Classical Concert</span>
+            <span class="ad-badge ad-badge-price">€29–55</span>
+            <span class="ad-badge ad-badge-area">Prague Castle</span>
+          </div>
+          <div class="ad-card-name">Lobkowicz Palace Concerts</div>
+          <div class="ad-card-addr">Jiřská 3, Praha 1 (Castle)</div>
+          <p class="ad-card-desc">Chamber concerts in the Baroque palace where Mozart himself once performed. The Lobkowicz family owns original scores by Beethoven and Handel — the same music performed in the room it was written for.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">Combine with the palace museum in the afternoon — concert-goers receive a 20% museum entry discount.</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-2">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1603190287605-e6ade32fa852?auto=format&fit=crop&w=600&q=80" alt="Estates Theatre" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Opera & Ballet</span>
+            <span class="ad-badge ad-badge-price">€18–120</span>
+            <span class="ad-badge ad-badge-area">Old Town</span>
+          </div>
+          <div class="ad-card-name">Estates Theatre</div>
+          <div class="ad-card-addr">Ovocný trh 1, Praha 1</div>
+          <p class="ad-card-desc">The theatre where Mozart premiered Don Giovanni in 1787 — one of the most historically significant opera houses in the world. Still staging full-scale opera, ballet, and drama in its original 18th-century hall.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">Upper-circle tickets start at €18 — excellent value for a world-class performance in a stunning historic space.</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-3">
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt="La Fabrika" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Live Music Venue</span>
+            <span class="ad-badge ad-badge-price">€12–30</span>
+            <span class="ad-badge ad-badge-area">Holešovice</span>
+          </div>
+          <div class="ad-card-name">La Fabrika</div>
+          <div class="ad-card-addr">Komunardů 30, Praha 7</div>
+          <p class="ad-card-desc">A converted industrial factory in the trendy Holešovice district — Prague's best mid-sized live music and cultural venue. International touring acts, theatre productions, and some of Prague's best club nights.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon">✦</span>
+            <span class="ad-card-tip-text">Holešovice is Prague's most interesting neighbourhood right now — combine La Fabrika with dinner at any of the restaurants on Komunardů street.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Night Map -->
+<section class="ad-map">
+  <div class="ad-map-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">Prague by Night</div>
+    <h2 class="sec-title sec-title-dark reveal" style="margin-bottom:8px">The <em>Neighbourhood</em> Guide</h2>
+    <div class="ad-map-grid">
+      <div class="reveal">
+        <div class="ad-neighbourhood">
+          <div class="ad-neighbourhood-name"><div class="ad-neighbourhood-dot"></div>Staré Město (Old Town)</div>
+          <div class="ad-neighbourhood-venues">
+            <div class="ad-venue-line">Hemingway Bar <span>· Best cocktails in Prague</span></div>
+            <div class="ad-venue-line">Black Angel's Bar <span>· Under the Old Town Square</span></div>
+            <div class="ad-venue-line">AghaRTA Jazz Centrum <span>· Gothic cellar jazz</span></div>
+            <div class="ad-venue-line">Ungelt Jazz Club <span>· Medieval courtyard</span></div>
+            <div class="ad-venue-line">Image Theatre <span>· Black Light spectacle</span></div>
+          </div>
+        </div>
+        <div class="ad-neighbourhood">
+          <div class="ad-neighbourhood-name"><div class="ad-neighbourhood-dot" style="background:var(--gold-light)"></div>Nové Město (New Town)</div>
+          <div class="ad-neighbourhood-venues">
+            <div class="ad-venue-line">Reduta Jazz Club <span>· Central Europe's oldest jazz bar</span></div>
+            <div class="ad-venue-line">T-Anker Rooftop <span>· Best city view bar</span></div>
+            <div class="ad-venue-line">Estates Theatre <span>· Mozart's premiere venue</span></div>
+            <div class="ad-venue-line">Parlour <span>· Czech-spirit cocktails</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="ad-neighbourhood">
+          <div class="ad-neighbourhood-name"><div class="ad-neighbourhood-dot" style="background:rgba(156,123,60,.5)"></div>Vinohrady & Žižkov</div>
+          <div class="ad-neighbourhood-venues">
+            <div class="ad-venue-line">Bitte <span>· Local favourite, hidden gem</span></div>
+            <div class="ad-venue-line">Oblaca Bar <span>· TV Tower bar at 66 metres</span></div>
+            <div class="ad-venue-line">Riegrovy sady Beer Garden <span>· Open-air, city views</span></div>
+          </div>
+        </div>
+        <div class="ad-neighbourhood">
+          <div class="ad-neighbourhood-name"><div class="ad-neighbourhood-dot" style="background:rgba(156,123,60,.35)"></div>Smíchov & Beyond</div>
+          <div class="ad-neighbourhood-venues">
+            <div class="ad-venue-line">Jazz Dock <span>· On the Vltava river</span></div>
+            <div class="ad-venue-line">La Fabrika, Holešovice <span>· Industrial live music</span></div>
+            <div class="ad-venue-line">Café Citadela, Vyšehrad <span>· Fortress terrace</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ad-cta">
+  <div class="ad-cta-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">Book Tonight</div>
+    <h2 class="sec-title sec-title-dark reveal" style="margin-bottom:20px;font-size:2.5rem">Reserve Your <em>Evening</em><br>Through the Concierge</h2>
+    <p class="reveal" style="font-size:.88rem;color:var(--grey);line-height:1.9;margin-bottom:36px">All venues on this page can be reserved through the Czech Inn Hotels Digital Concierge — priority booking, no walk-in queues, and same-day confirmation.</p>
+    <a href="concierge.html" class="btn-gold reveal" data-nav>Open Digital Concierge →</a>
+  </div>
+</section>
+
+</div><!-- /page-wrap -->
+
+<script src="js/nav.js"></script>
+<script src="js/data.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  /* Tab switching */
+  const tabs = document.querySelectorAll('.ad-tab');
+  const sections = { jazz: document.getElementById('tab-jazz'), rooftop: document.getElementById('tab-rooftop'), cocktail: document.getElementById('tab-cocktail'), shows: document.getElementById('tab-shows') };
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      Object.values(sections).forEach(s => s.style.display = 'none');
+      const target = sections[tab.dataset.tab];
+      if (target) {
+        target.style.display = '';
+        target.querySelectorAll('.reveal').forEach(el => { el.classList.remove('vis'); });
+        setTimeout(() => initReveal(), 50);
+      }
+    });
+  });
+
+  function initReveal() {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }});
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal:not(.vis)').forEach(el => obs.observe(el));
+  }
+  initReveal();
+});
+</script>
+</body>
+</html>

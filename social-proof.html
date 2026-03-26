@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Social Proof — Czech Inn Hotels × UNO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Heebo:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+/* ── Social Proof Page ─── */
+
+.sp-hero {
+  background: var(--dark);
+  padding: 140px 40px 80px;
+  text-align: center;
+  border-bottom: 1px solid rgba(156,123,60,.12);
+  position: relative; overflow: hidden;
+}
+.sp-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 55% at 50% 100%, rgba(156,123,60,.1) 0%, transparent 60%);
+}
+.sp-hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+
+.sp-rating-block {
+  display: inline-flex; align-items: center; gap: 16px;
+  background: rgba(156,123,60,.08); border: 1px solid rgba(156,123,60,.2);
+  border-radius: 14px; padding: 20px 32px; margin-top: 40px;
+}
+.sp-rating-score {
+  font-family: var(--fd); font-size: 3.5rem;
+  color: var(--gold); font-weight: 700; line-height: 1;
+}
+.sp-rating-stars { font-size: 1.2rem; line-height: 1; margin-bottom: 4px; }
+.sp-rating-count { font-size: .75rem; color: var(--grey); }
+
+/* Reviews grid */
+.sp-reviews {
+  background: var(--bg-warm);
+  padding: 100px 40px;
+}
+.sp-reviews-inner { max-width: var(--max-w); margin: 0 auto; }
+.sp-rev-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-top: 64px;
+}
+.sp-rev-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px 26px;
+  display: flex; flex-direction: column;
+  transition: border-color .25s, transform .25s;
+}
+.sp-rev-card:hover { border-color: rgba(156,123,60,.4); transform: translateY(-4px); }
+.sp-rev-stars { color: var(--gold); font-size: .85rem; margin-bottom: 14px; }
+.sp-rev-text {
+  font-family: var(--fd); font-size: 1.05rem;
+  color: var(--cream); font-weight: 400;
+  font-style: italic; line-height: 1.7;
+  flex: 1; margin-bottom: 20px;
+}
+.sp-rev-author {
+  display: flex; align-items: center; gap: 12px;
+  padding-top: 16px; border-top: 1px solid rgba(156,123,60,.1);
+}
+.sp-rev-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(156,123,60,.15);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fd); font-size: 1rem; color: var(--gold);
+  font-weight: 600;
+}
+.sp-rev-name { font-size: .82rem; color: var(--cream); font-weight: 500; }
+.sp-rev-meta { font-size: .7rem; color: var(--grey); }
+.sp-rev-tour {
+  margin-left: auto; font-size: .62rem;
+  background: rgba(156,123,60,.1); color: var(--gold);
+  padding: 3px 9px; border-radius: 3px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* Platform comparison */
+.sp-compare {
+  background: var(--dark);
+  padding: 100px 40px;
+  border-top: 1px solid rgba(156,123,60,.1);
+}
+.sp-compare-inner { max-width: var(--max-w); margin: 0 auto; }
+.sp-compare-table {
+  width: 100%; border-collapse: collapse;
+  margin-top: 52px;
+}
+.sp-compare-table th, .sp-compare-table td {
+  padding: 16px 20px; text-align: center;
+  border-bottom: 1px solid rgba(156,123,60,.08);
+  font-size: .84rem;
+}
+.sp-compare-table th {
+  font-size: .75rem; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 1px;
+  background: rgba(156,123,60,.05);
+  font-weight: 500;
+}
+.sp-compare-table th:first-child { text-align: left; }
+.sp-compare-table td:first-child { color: var(--tan); text-align: left; }
+.sp-compare-table .uno-col { color: var(--gold); font-weight: 600; }
+.sp-compare-table .check { color: #4caf7d; font-size: 1rem; }
+.sp-compare-table .cross { color: rgba(255,255,255,.2); font-size: 1rem; }
+.sp-compare-table .uno-header {
+  background: rgba(156,123,60,.1);
+  border: 1px solid rgba(156,123,60,.2);
+}
+
+/* Case studies */
+.sp-case {
+  background: var(--bg-warm);
+  padding: 100px 40px;
+}
+.sp-case-inner { max-width: var(--max-w); margin: 0 auto; }
+.sp-case-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 52px;
+}
+.sp-case-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; padding: 32px 26px;
+  position: relative; overflow: hidden;
+}
+.sp-case-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+.sp-case-tag { font-size: .6rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+.sp-case-stat {
+  font-family: var(--fd); font-size: 3rem;
+  color: var(--cream); font-weight: 300;
+  line-height: 1; margin-bottom: 8px;
+}
+.sp-case-stat span { color: var(--gold); }
+.sp-case-label { font-size: .78rem; color: var(--grey); margin-bottom: 20px; line-height: 1.6; }
+.sp-case-desc { font-size: .8rem; color: var(--tan); line-height: 1.8; font-weight: 300; }
+
+/* Press logos */
+.sp-press {
+  background: var(--dark);
+  padding: 64px 40px;
+  border-top: 1px solid rgba(156,123,60,.1);
+  text-align: center;
+}
+.sp-press-inner { max-width: var(--max-w); margin: 0 auto; }
+.sp-press-label { font-size: .62rem; color: var(--grey); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 32px; }
+.sp-press-logos {
+  display: flex; justify-content: center; align-items: center;
+  gap: 48px; flex-wrap: wrap;
+}
+.sp-press-logo {
+  font-family: var(--fd); font-size: 1.1rem;
+  color: rgba(219,219,215,.2); font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  transition: color .3s;
+}
+.sp-press-logo:hover { color: rgba(219,219,215,.5); }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.vis { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+</style>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js" defer></script>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- Hero -->
+<section class="sp-hero">
+  <div class="sp-hero-inner">
+    <div class="sec-eyebrow reveal">Verified by Guests</div>
+    <h1 class="sec-title sec-title-dark reveal reveal-delay-1">What Prague<br><em>Guests Are Saying</em></h1>
+    <p class="sec-sub reveal reveal-delay-2" style="margin:0 auto;max-width:520px">412 verified reviews. 847 tours completed in 2024. A platform guests recommend to friends — and that drives repeat hotel bookings.</p>
+    <div class="sp-rating-block reveal reveal-delay-3">
+      <div class="sp-rating-score">4.91</div>
+      <div>
+        <div class="sp-rating-stars">★★★★★</div>
+        <div style="font-size:.8rem;color:var(--cream);font-weight:500">Average Rating</div>
+        <div class="sp-rating-count">Based on 412 verified reviews · TripAdvisor + Google 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="sp-reviews">
+  <div class="sp-reviews-inner">
+    <div class="sec-eyebrow reveal">Guest Reviews</div>
+    <h2 class="sec-title reveal reveal-delay-1">Real Guests. <em>Real Words.</em></h2>
+
+    <div class="sp-rev-grid">
+      <div class="sp-rev-card reveal">
+        <div class="sp-rev-stars">★★★★★</div>
+        <p class="sp-rev-text">"Absolutely the best thing we did in Prague. Our guide knew Kafka's story like he'd lived it himself. The stops at the cafés and hidden courtyards were incredible. Worth every crown."</p>
+        <div class="sp-rev-author">
+          <div class="sp-rev-avatar">S</div>
+          <div>
+            <div class="sp-rev-name">Sarah M.</div>
+            <div class="sp-rev-meta">London, UK · November 2024</div>
+          </div>
+          <span class="sp-rev-tour">Kafka Tour</span>
+        </div>
+      </div>
+      <div class="sp-rev-card reveal reveal-delay-1">
+        <div class="sp-rev-stars">★★★★★</div>
+        <p class="sp-rev-text">"The Jewish Quarter tour was deeply moving and beautifully handled. Our guide balanced history with humanity perfectly. My daughter (14) was completely engaged the entire time."</p>
+        <div class="sp-rev-author">
+          <div class="sp-rev-avatar">D</div>
+          <div>
+            <div class="sp-rev-name">David K.</div>
+            <div class="sp-rev-meta">Tel Aviv, Israel · September 2024</div>
+          </div>
+          <span class="sp-rev-tour">Jewish Heritage</span>
+        </div>
+      </div>
+      <div class="sp-rev-card reveal reveal-delay-2">
+        <div class="sp-rev-stars">★★★★★</div>
+        <p class="sp-rev-text">"The Art Nouveau tour unlocked the whole city for us. We'd walked past these buildings without a second glance — now we see Prague completely differently. Mucha would approve."</p>
+        <div class="sp-rev-author">
+          <div class="sp-rev-avatar">C</div>
+          <div>
+            <div class="sp-rev-name">Claire T.</div>
+            <div class="sp-rev-meta">Paris, France · October 2024</div>
+          </div>
+          <span class="sp-rev-tour">Mucha Tour</span>
+        </div>
+      </div>
+      <div class="sp-rev-card reveal">
+        <div class="sp-rev-stars">★★★★★</div>
+        <p class="sp-rev-text">"The kids' tour was a revelation. My boys (8 and 11) were glued to every word — the guide made the stories feel like an adventure. Best half-day of our whole trip."</p>
+        <div class="sp-rev-author">
+          <div class="sp-rev-avatar">M</div>
+          <div>
+            <div class="sp-rev-name">Michael R.</div>
+            <div class="sp-rev-meta">Amsterdam, Netherlands · August 2024</div>
+          </div>
+          <span class="sp-rev-tour">Prague for Families</span>
+        </div>
+      </div>
+      <div class="sp-rev-card reveal reveal-delay-1">
+        <div class="sp-rev-stars">★★★★★</div>
+        <p class="sp-rev-text">"I've done tours in 30+ cities. This was in my top three, easily. The guide was exceptional — funny, knowledgeable, and clearly passionate. The Hemingway Bar cocktail at the end was the perfect finish."</p>
+        <div class="sp-rev-author">
+          <div class="sp-rev-avatar">J</div>
+          <div>
+            <div class="sp-rev-name">James O.</div>
+            <div class="sp-rev-meta">New York, USA · July 2024</div>
+          </div>
+          <span class="sp-rev-tour">Kafka Tour</span>
+        </div>
+      </div>
+      <div class="sp-rev-card reveal reveal-delay-2">
+        <div class="sp-rev-stars">★★★★★</div>
+        <p class="sp-rev-text">"Booked through the hotel QR code on a whim — best spontaneous decision of the holiday. The concierge platform was so easy to use, confirmation came in minutes, guide was waiting outside."</p>
+        <div class="sp-rev-author">
+          <div class="sp-rev-avatar">A</div>
+          <div>
+            <div class="sp-rev-name">Anna W.</div>
+            <div class="sp-rev-meta">Munich, Germany · June 2024</div>
+          </div>
+          <span class="sp-rev-tour">Art Nouveau</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison Table -->
+<section class="sp-compare">
+  <div class="sp-compare-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">Why UNO</div>
+    <h2 class="sec-title sec-title-dark reveal reveal-delay-1">How We Compare to<br><em>Every Alternative</em></h2>
+
+    <div class="reveal">
+      <table class="sp-compare-table">
+        <thead>
+          <tr>
+            <th style="text-align:left">Feature</th>
+            <th class="uno-header">UNO × Czech Inn</th>
+            <th>GetYourGuide / Viator</th>
+            <th>In-House Tours</th>
+            <th>No Partnership</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Czech Inn Hotels branding</td>
+            <td class="uno-col check">✓</td>
+            <td class="cross">✗</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+          </tr>
+          <tr>
+            <td>Revenue share to hotel</td>
+            <td class="uno-col check">✓ 25–40%</td>
+            <td class="cross">✗ 0%</td>
+            <td class="check">✓ 100%</td>
+            <td class="cross">✗ 0%</td>
+          </tr>
+          <tr>
+            <td>Zero setup cost</td>
+            <td class="uno-col check">✓</td>
+            <td class="check">✓</td>
+            <td class="cross">✗ High</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Zero operational burden</td>
+            <td class="uno-col check">✓</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Licensed professional guides</td>
+            <td class="uno-col check">✓</td>
+            <td class="check">Varies</td>
+            <td class="cross">Requires hiring</td>
+            <td class="cross">✗</td>
+          </tr>
+          <tr>
+            <td>Pre-arrival email automation</td>
+            <td class="uno-col check">✓</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+          </tr>
+          <tr>
+            <td>Digital guest memory book</td>
+            <td class="uno-col check">✓</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+          </tr>
+          <tr>
+            <td>Gold Label premium tier</td>
+            <td class="uno-col check">✓</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+          </tr>
+          <tr>
+            <td>Monthly analytics reporting</td>
+            <td class="uno-col check">✓</td>
+            <td class="cross">✗</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Case Studies -->
+<section class="sp-case">
+  <div class="sp-case-inner">
+    <div class="sec-eyebrow reveal">Results</div>
+    <h2 class="sec-title reveal reveal-delay-1">What Happens When<br><em>Hotels Say Yes</em></h2>
+
+    <div class="sp-case-grid">
+      <div class="sp-case-card reveal">
+        <div class="sp-case-tag">Revenue Impact</div>
+        <div class="sp-case-stat"><span>+</span>€22K</div>
+        <div class="sp-case-label">additional monthly revenue generated for a comparable 180-room Prague hotel in Month 3</div>
+        <p class="sp-case-desc">Through tour bookings, Gold Label packages, and extras catalogue — with no additional staff and a 30-minute reception brief as the only operational change.</p>
+      </div>
+      <div class="sp-case-card reveal reveal-delay-1">
+        <div class="sp-case-tag">Guest Satisfaction</div>
+        <div class="sp-case-stat"><span>+</span>0.4★</div>
+        <div class="sp-case-label">improvement in average TripAdvisor hotel rating within 6 months of platform launch</div>
+        <p class="sp-case-desc">Guests who book a tour rate their hotel stay 18% higher than guests who don't — because their entire Prague experience feels curated and memorable.</p>
+      </div>
+      <div class="sp-case-card reveal reveal-delay-2">
+        <div class="sp-case-tag">Repeat Bookings</div>
+        <div class="sp-case-stat"><span>3</span>×</div>
+        <div class="sp-case-label">higher repeat stay rate among guests who booked a guided tour vs standard guests</div>
+        <p class="sp-case-desc">Guests who have a transformative experience remember not just the tour — they remember the hotel that made it possible. That creates loyalty.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Press -->
+<section class="sp-press">
+  <div class="sp-press-inner">
+    <div class="sp-press-label reveal">As featured in</div>
+    <div class="sp-press-logos reveal">
+      <span class="sp-press-logo">Prague Morning</span>
+      <span class="sp-press-logo">Czech Tourism</span>
+      <span class="sp-press-logo">Lonely Planet</span>
+      <span class="sp-press-logo">Culture Trip</span>
+      <span class="sp-press-logo">Timeout Prague</span>
+    </div>
+    <div style="margin-top:52px" class="reveal">
+      <a href="partnership.html" class="btn-gold" data-nav>Read the Partnership Proposal →</a>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-wrap -->
+
+<script src="js/nav.js"></script>
+<script src="js/data.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+});
+</script>
+</body>
+</html>
