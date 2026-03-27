@@ -340,6 +340,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 });
+
+document.addEventListener('click', e => {
+  const langBtn = e.target.closest('[data-lang]');
+  if (langBtn && document.getElementById('resultSection').style.display === 'block') {
+    setTimeout(showResult, 0);
+  }
+});
 </script>
 </body>
 </html>
