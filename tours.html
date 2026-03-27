@@ -708,22 +708,22 @@
       <div class="tours-hero-stats">
         <div class="hero-stat">
           <div class="hero-stat-num">847</div>
-          <div class="hero-stat-label">Tours Run<br>in 2024</div>
+          <div class="hero-stat-label" data-i18n="tours.stat1.label">Tours Run<br>in 2024</div>
         </div>
         <div class="hero-divider"></div>
         <div class="hero-stat">
           <div class="hero-stat-num">4.91★</div>
-          <div class="hero-stat-label">Average<br>Guest Rating</div>
+          <div class="hero-stat-label" data-i18n="tours.stat2.label">Average<br>Guest Rating</div>
         </div>
         <div class="hero-divider"></div>
         <div class="hero-stat">
           <div class="hero-stat-num">12</div>
-          <div class="hero-stat-label">Languages<br>Available</div>
+          <div class="hero-stat-label" data-i18n="tours.stat3.label">Languages<br>Available</div>
         </div>
         <div class="hero-divider"></div>
         <div class="hero-stat">
           <div class="hero-stat-num">€49</div>
-          <div class="hero-stat-label">Starting<br>Price</div>
+          <div class="hero-stat-label" data-i18n="tours.stat4.label">Starting<br>Price</div>
         </div>
       </div>
     </div>
@@ -741,9 +741,9 @@
   <section class="comparison-section">
     <div class="comparison-inner">
       <div class="sec-line"></div>
-      <div class="sec-eyebrow">Side by Side</div>
-      <h2 class="sec-title reveal">Tour <span>Comparison</span></h2>
-      <p class="sec-sub reveal">All four signature tours at a glance — choose what fits your guests best, or offer all four as a full Prague programme.</p>
+      <div class="sec-eyebrow" data-i18n="tours.cmp.eyebrow">Side by Side</div>
+      <h2 class="sec-title reveal" data-i18n-html="tours.cmp.title">Tour <span>Comparison</span></h2>
+      <p class="sec-sub reveal" data-i18n="tours.cmp.sub">All four signature tours at a glance — choose what fits your guests best, or offer all four as a full Prague programme.</p>
       <div class="comparison-table-wrap reveal">
         <table class="comparison-table" id="compTable"></table>
       </div>
@@ -754,22 +754,22 @@
   <section class="calendar-section">
     <div class="calendar-inner">
       <div class="sec-line"></div>
-      <div class="sec-eyebrow" style="color:var(--gold)">Planning Guide</div>
-      <h2 class="sec-title sec-title-light reveal">Seasonal <span>Calendar</span></h2>
-      <p class="sec-sub sec-sub-dark reveal">When to recommend each tour based on Prague's weather, crowds, and atmosphere. All tours run year-round — the calendar shows optimal seasons.</p>
+      <div class="sec-eyebrow" style="color:var(--gold)" data-i18n="tours.cal.eyebrow">Planning Guide</div>
+      <h2 class="sec-title sec-title-light reveal" data-i18n-html="tours.cal.title">Seasonal <span>Calendar</span></h2>
+      <p class="sec-sub sec-sub-dark reveal" data-i18n="tours.cal.sub">When to recommend each tour based on Prague's weather, crowds, and atmosphere. All tours run year-round — the calendar shows optimal seasons.</p>
       <div class="calendar-grid reveal" id="calendarGrid"></div>
       <div class="cal-legend">
         <div class="cal-legend-item">
           <div class="cal-legend-dot" style="background:rgba(156,123,60,.7)"></div>
-          <span>Peak season — ideal conditions</span>
+          <span data-i18n="tours.cal.legend.peak">Peak season — ideal conditions</span>
         </div>
         <div class="cal-legend-item">
           <div class="cal-legend-dot" style="background:rgba(156,123,60,.3)"></div>
-          <span>Good — recommended</span>
+          <span data-i18n="tours.cal.legend.good">Good — recommended</span>
         </div>
         <div class="cal-legend-item">
           <div class="cal-legend-dot" style="background:rgba(116,111,101,.2)"></div>
-          <span>Low season — still available</span>
+          <span data-i18n="tours.cal.legend.low">Low season — still available</span>
         </div>
       </div>
     </div>
@@ -779,12 +779,12 @@
   <section class="tours-cta">
     <div class="tours-cta-inner">
       <div class="sec-line"></div>
-      <div class="sec-eyebrow">Ready to Begin?</div>
-      <h2 class="sec-title reveal">Bring These Tours to<br><span>Your Guests</span></h2>
-      <p class="sec-sub reveal">All four tours are ready to deploy at Czech Inn Hotels properties. Book a partnership call to discuss pricing, logistics, and a phased launch plan tailored to your portfolio.</p>
+      <div class="sec-eyebrow" data-i18n="tours.cta2.eyebrow">Ready to Begin?</div>
+      <h2 class="sec-title reveal" data-i18n-html="tours.cta2.title">Bring These Tours to<br><span>Your Guests</span></h2>
+      <p class="sec-sub reveal" data-i18n="tours.cta2.sub">All four tours are ready to deploy at Czech Inn Hotels properties. Book a partnership call to discuss pricing, logistics, and a phased launch plan tailored to your portfolio.</p>
       <div class="reveal" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px">
-        <a href="partnership.html" class="btn-gold" data-nav>Book a Tour Group →</a>
-        <a href="gold-label.html" class="btn-outline" data-nav>Explore Gold Label</a>
+        <a href="partnership.html" class="btn-gold" data-nav data-i18n="tours.cta2.btn1">Book a Tour Group →</a>
+        <a href="gold-label.html" class="btn-outline" data-nav data-i18n="tours.cta2.btn2">Explore Gold Label</a>
       </div>
     </div>
   </section>
@@ -804,16 +804,30 @@
 
 (function() {
 
+  /* ── Language helper ─────────────────────────── */
+  function getLangT() {
+    const lang = document.documentElement.lang || 'en';
+    return { lang, t: (typeof T !== 'undefined' && T[lang]) ? T[lang] : (typeof T !== 'undefined' ? T.en : {}) };
+  }
+
+  /* ── Get tour field from T or fall back to data.js value ── */
+  function tv(t, id, field, fallback) {
+    return t['tours.t.' + id + '.' + field] || fallback;
+  }
+
   /* ── Build Tabs ──────────────────────────────── */
   function buildTabs() {
     const container = document.getElementById('tabsInner');
+    container.innerHTML = '';
+    const { t } = getLangT();
     TOURS.forEach((tour, i) => {
+      const name = tv(t, tour.id, 'name', tour.name);
       const btn = document.createElement('button');
       btn.className = 'tour-tab' + (i === 0 ? ' active' : '');
       btn.dataset.idx = i;
       btn.innerHTML = `
         <span class="tab-badge ${tour.badgeClass}">${tour.badge}</span>
-        ${tour.name}
+        ${name}
         <span class="tab-price">€${tour.price}</span>
       `;
       btn.addEventListener('click', () => activateTour(i));
@@ -838,24 +852,93 @@
   /* ── Build Tour Panels ───────────────────────── */
   function buildPanels() {
     const container = document.getElementById('tourPanels');
+    container.innerHTML = '';
+    const { t } = getLangT();
     TOURS.forEach((tour, i) => {
       const panel = document.createElement('div');
       panel.className = 'tour-panel' + (i === 0 ? ' active' : '');
-      panel.innerHTML = buildPanelHTML(tour);
+      panel.innerHTML = buildPanelHTML(tour, t);
       container.appendChild(panel);
     });
   }
 
-  function buildPanelHTML(tour) {
+  function buildPanelHTML(tour, t) {
+    const id = tour.id;
+    const name      = tv(t, id, 'name',   tour.name);
+    const sub       = tv(t, id, 'sub',    tour.sub);
+    const desc      = tv(t, id, 'desc',   tour.desc);
+    const dur       = tv(t, id, 'dur',    tour.dur);
+    const grp       = tv(t, id, 'grp',    tour.grp);
+    const lang      = tv(t, id, 'lang',   tour.lang);
+    const type      = tv(t, id, 'type',   tour.type);
+    const season    = tv(t, id, 'season', tour.season);
+
+    // Includes
+    const incItems = tour.includes.map((inc, idx) => {
+      const incT = tv(t, id, 'inc' + idx, inc);
+      return `<li class="includes-item"><span class="includes-check">✓</span><span>${incT}</span></li>`;
+    }).join('');
+
+    // UI labels
+    const lDuration  = t['tours.info.duration']  || 'Duration';
+    const lGroupSize = t['tours.info.groupsize']  || 'Group Size';
+    const lLanguages = t['tours.info.languages']  || 'Languages';
+    const lType      = t['tours.info.type']       || 'Tour Type';
+    const lSeason    = t['tours.info.season']     || 'Season';
+    const lPerPerson = t['tours.info.perperson']  || 'Per Person';
+    const lGuest     = t['tours.info.guest']      || '/ guest';
+    const lIncTitle  = t['tours.includes.title']  || "What's Included";
+    const lIncBtn    = t['tours.includes.btn']    || 'Book This Tour →';
+    const lStopTitle = t['tours.stop.title']      || 'Stop-by-Stop <span>Journey</span>';
+    const lStopLabel = t['tours.stop.label']      || 'Stop';
+    const lVenEyebr  = t['tours.venues.eyebrow']  || 'Insider Guide';
+    const lVenTitle  = t['tours.venues.title']    || 'Course Area & Partner Venues';
+    const lVenSub    = t['tours.venues.sub']      || 'Curated spots in and around the tour area — where to eat, drink, browse, and linger before or after the tour.';
+
+    // Stops
+    const stopsHTML = tour.stops.map((stop, si) => {
+      const sn       = tv(t, id, 's' + si + '.n',        stop.n);
+      const sstory   = tv(t, id, 's' + si + '.story',    stop.story);
+      const squote   = tv(t, id, 's' + si + '.quote',    stop.quote);
+      const sact     = tv(t, id, 's' + si + '.activity', stop.activity);
+      const sfood    = stop.food ? tv(t, id, 's' + si + '.food', stop.food) : '';
+      return `
+        <div class="stop reveal">
+          <div class="stop-dot"><div class="stop-dot-inner"></div></div>
+          <div class="stop-header">
+            <div>
+              <div class="stop-num">${lStopLabel} ${si + 1}</div>
+              <div class="stop-name">${sn}</div>
+              <div class="stop-addr"><iconify-icon icon="tabler:map-pin" style="font-size:13px;color:#C9A84C"></iconify-icon> ${stop.a}</div>
+            </div>
+            <span class="stop-dur-pill"><iconify-icon icon="tabler:clock" style="font-size:13px;color:#C9A84C"></iconify-icon> ${stop.dur}</span>
+          </div>
+          <p class="stop-story">${sstory}</p>
+          <blockquote class="stop-quote">${squote}</blockquote>
+          <div class="stop-meta">
+            <div class="stop-activity">
+              <span class="stop-meta-icon"><lord-icon src="https://cdn.lordicon.com/ibydboev.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:16px;height:16px"></lord-icon></span>
+              <span>${sact}</span>
+            </div>
+            ${sfood ? `
+            <div class="stop-food">
+              <span class="stop-meta-icon"><iconify-icon icon="tabler:tools-kitchen-2" style="font-size:16px;color:#C9A84C"></iconify-icon></span>
+              <span>${sfood}</span>
+            </div>` : ''}
+          </div>
+        </div>
+      `;
+    }).join('');
+
     return `
       <!-- Detail Hero -->
       <div class="tour-detail-hero">
-        <img src="${tour.img}&w=1400&q=85" alt="${tour.name}" loading="lazy"/>
+        <img src="${tour.img}&w=1400&q=85" alt="${name}" loading="lazy"/>
         <div class="tour-detail-hero-overlay">
           <div>
             <div class="tour-detail-badge ${tour.badgeClass}">${tour.badge}</div>
-            <div class="tour-detail-name">${tour.name}</div>
-            <div class="tour-detail-sub">${tour.sub}</div>
+            <div class="tour-detail-name">${name}</div>
+            <div class="tour-detail-sub">${sub}</div>
           </div>
         </div>
       </div>
@@ -865,32 +948,32 @@
         <div class="info-bar-inner">
           <div class="info-item">
             <span class="info-item-icon">⏱</span>
-            <span class="info-item-label">Duration</span>
-            <span class="info-item-value">${tour.dur}</span>
+            <span class="info-item-label">${lDuration}</span>
+            <span class="info-item-value">${dur}</span>
           </div>
           <div class="info-item">
             <span class="info-item-icon"><lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" colors="primary:#C9A84C" style="width:20px;height:20px"></lord-icon></span>
-            <span class="info-item-label">Group Size</span>
-            <span class="info-item-value">${tour.grp}</span>
+            <span class="info-item-label">${lGroupSize}</span>
+            <span class="info-item-value">${grp}</span>
           </div>
           <div class="info-item">
             <span class="info-item-icon"><iconify-icon icon="tabler:world" style="font-size:20px;color:#C9A84C"></iconify-icon></span>
-            <span class="info-item-label">Languages</span>
-            <span class="info-item-value">${tour.lang}</span>
+            <span class="info-item-label">${lLanguages}</span>
+            <span class="info-item-value">${lang}</span>
           </div>
           <div class="info-item">
             <span class="info-item-icon"><iconify-icon icon="tabler:walk" style="font-size:20px;color:#C9A84C"></iconify-icon></span>
-            <span class="info-item-label">Tour Type</span>
-            <span class="info-item-value">${tour.type}</span>
+            <span class="info-item-label">${lType}</span>
+            <span class="info-item-value">${type}</span>
           </div>
           <div class="info-item">
             <span class="info-item-icon"><iconify-icon icon="tabler:calendar" style="font-size:20px;color:#C9A84C"></iconify-icon></span>
-            <span class="info-item-label">Season</span>
-            <span class="info-item-value">${tour.season}</span>
+            <span class="info-item-label">${lSeason}</span>
+            <span class="info-item-value">${season}</span>
           </div>
           <div class="info-item">
-            <span class="info-item-label">Per Person</span>
-            <span class="info-item-price">€${tour.price} <span>/ guest</span></span>
+            <span class="info-item-label">${lPerPerson}</span>
+            <span class="info-item-price">€${tour.price} <span>${lGuest}</span></span>
           </div>
         </div>
       </div>
@@ -899,63 +982,29 @@
       <div class="tour-body">
         <div class="tour-body-grid">
           <div>
-            <p class="tour-desc-text">${tour.desc}</p>
+            <p class="tour-desc-text">${desc}</p>
           </div>
           <aside class="includes-box">
-            <div class="includes-title">What's Included</div>
-            <ul class="includes-list">
-              ${tour.includes.map(inc => `
-                <li class="includes-item">
-                  <span class="includes-check">✓</span>
-                  <span>${inc}</span>
-                </li>
-              `).join('')}
-            </ul>
-            <a href="partnership.html" class="btn-gold" data-nav style="width:100%;justify-content:center">Book This Tour →</a>
+            <div class="includes-title">${lIncTitle}</div>
+            <ul class="includes-list">${incItems}</ul>
+            <a href="partnership.html" class="btn-gold" data-nav style="width:100%;justify-content:center">${lIncBtn}</a>
           </aside>
         </div>
       </div>
 
       <!-- Stop Timeline -->
       <div class="stops-section">
-        <h3 class="stops-title">Stop-by-Stop <span>Journey</span></h3>
-        <div class="timeline">
-          ${tour.stops.map((stop, si) => `
-            <div class="stop reveal">
-              <div class="stop-dot"><div class="stop-dot-inner"></div></div>
-              <div class="stop-header">
-                <div>
-                  <div class="stop-num">Stop ${si + 1}</div>
-                  <div class="stop-name">${stop.n}</div>
-                  <div class="stop-addr"><iconify-icon icon="tabler:map-pin" style="font-size:13px;color:#C9A84C"></iconify-icon> ${stop.a}</div>
-                </div>
-                <span class="stop-dur-pill"><iconify-icon icon="tabler:clock" style="font-size:13px;color:#C9A84C"></iconify-icon> ${stop.dur}</span>
-              </div>
-              <p class="stop-story">${stop.story}</p>
-              <blockquote class="stop-quote">${stop.quote}</blockquote>
-              <div class="stop-meta">
-                <div class="stop-activity">
-                  <span class="stop-meta-icon"><lord-icon src="https://cdn.lordicon.com/ibydboev.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:16px;height:16px"></lord-icon></span>
-                  <span>${stop.activity}</span>
-                </div>
-                ${stop.food ? `
-                <div class="stop-food">
-                  <span class="stop-meta-icon"><iconify-icon icon="tabler:tools-kitchen-2" style="font-size:16px;color:#C9A84C"></iconify-icon></span>
-                  <span>${stop.food}</span>
-                </div>` : ''}
-              </div>
-            </div>
-          `).join('')}
-        </div>
+        <h3 class="stops-title">${lStopTitle}</h3>
+        <div class="timeline">${stopsHTML}</div>
       </div>
 
       <!-- Partner Venues -->
       <div class="venues-section">
         <div class="venues-inner">
           <div class="sec-line sec-line-left"></div>
-          <div class="sec-eyebrow sec-eyebrow-left">Insider Guide</div>
-          <h3 class="sec-title sec-title-left">Course Area &amp; Partner Venues</h3>
-          <p class="sec-sub sec-sub-left">Curated spots in and around the tour area — where to eat, drink, browse, and linger before or after the tour.</p>
+          <div class="sec-eyebrow sec-eyebrow-left">${lVenEyebr}</div>
+          <h3 class="sec-title sec-title-left">${lVenTitle}</h3>
+          <p class="sec-sub sec-sub-left">${lVenSub}</p>
           <div class="venues-grid">
             ${tour.venues.map(v => `
               <div class="venue-card reveal">
@@ -979,33 +1028,43 @@
   /* ── Comparison Table ────────────────────────── */
   function buildComparisonTable() {
     const table = document.getElementById('compTable');
+    table.innerHTML = '';
+    const { t } = getLangT();
 
-    const headers = ['Tour', 'Duration', 'Price', 'Group Size', 'Type', 'Season', 'Highlights'];
+    const headers = [
+      t['tours.cmp.th.tour']       || 'Tour',
+      t['tours.cmp.th.dur']        || 'Duration',
+      t['tours.cmp.th.price']      || 'Price',
+      t['tours.cmp.th.grp']        || 'Group Size',
+      t['tours.cmp.th.type']       || 'Type',
+      t['tours.cmp.th.season']     || 'Season',
+      t['tours.cmp.th.highlights'] || 'Highlights'
+    ];
     const thead = document.createElement('thead');
     thead.innerHTML = `<tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr>`;
     table.appendChild(thead);
 
-    const highlights = {
-      kafka:  'Kafka birthplace, Golden Lane, Café Louvre, Kafka Museum',
-      mucha:  'Mucha Museum, Municipal House, National Theatre, Charles Bridge',
-      jewish: 'Old-New Synagogue, Josefov, Kosher lunch, Walls of Names',
-      kids:   'Clock, Golem, Bridge hunt, Gelato, Mirror Maze, Puppet show'
-    };
-
     const tbody = document.createElement('tbody');
     TOURS.forEach(tour => {
+      const id = tour.id;
+      const name      = tv(t, id, 'name',       tour.name);
+      const dur       = tv(t, id, 'dur',        tour.dur);
+      const grp       = tv(t, id, 'grp',        tour.grp);
+      const type      = tv(t, id, 'type',       tour.type);
+      const season    = tv(t, id, 'season',     tour.season);
+      const highlights= tv(t, id, 'highlights', '');
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>
-          <div class="tour-name-cell">${tour.name}</div>
+          <div class="tour-name-cell">${name}</div>
           <span class="comp-badge ${tour.badgeClass}" style="margin-top:6px">${tour.badge}</span>
         </td>
-        <td>${tour.dur}</td>
+        <td>${dur}</td>
         <td class="price-cell">€${tour.price}</td>
-        <td>${tour.grp}</td>
-        <td>${tour.type}</td>
-        <td>${tour.season}</td>
-        <td style="font-size:.8rem">${highlights[tour.id]}</td>
+        <td>${grp}</td>
+        <td>${type}</td>
+        <td>${season}</td>
+        <td style="font-size:.8rem">${highlights}</td>
       `;
       tbody.appendChild(tr);
     });
@@ -1015,12 +1074,16 @@
   /* ── Seasonal Calendar ───────────────────────── */
   function buildCalendar() {
     const grid = document.getElementById('calendarGrid');
-    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    grid.innerHTML = '';
+    const { t } = getLangT();
+
+    const monthKeys = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+    const months = monthKeys.map(k => t['tours.cal.' + k] || k.charAt(0).toUpperCase() + k.slice(1));
 
     // Header row
     const headerBlank = document.createElement('div');
     headerBlank.className = 'cal-header';
-    headerBlank.textContent = 'Tour';
+    headerBlank.textContent = t['tours.cal.header'] || 'Tour';
     grid.appendChild(headerBlank);
     months.forEach(m => {
       const div = document.createElement('div');
@@ -1038,9 +1101,10 @@
     };
 
     TOURS.forEach(tour => {
+      const name = tv(t, tour.id, 'name', tour.name);
       const label = document.createElement('div');
       label.className = 'cal-tour-label';
-      label.textContent = tour.name.split("'")[0].trim().split(' ').slice(0,2).join(' ');
+      label.textContent = name.split("'")[0].trim().split(' ').slice(0,2).join(' ');
       grid.appendChild(label);
 
       const data = seasonData[tour.id];
@@ -1051,6 +1115,19 @@
       });
     });
   }
+
+  /* ── Full re-render on language change ───────── */
+  function renderTours() {
+    buildTabs();
+    buildPanels();
+    buildComparisonTable();
+    buildCalendar();
+    setTimeout(initReveal, 100);
+  }
+
+  document.addEventListener('click', e => {
+    if (e.target.closest('[data-lang]')) setTimeout(renderTours, 0);
+  });
 
   /* ── Scroll Reveal ───────────────────────────── */
   function initReveal() {
