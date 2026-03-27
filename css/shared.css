@@ -62,7 +62,7 @@
 .nav {
   position: fixed; top: 0; left: 0; right: 0;
   height: var(--nav-h); z-index: 998;
-  background: rgba(28,22,24,.97);
+  background: rgba(0,26,53,.97);
   border-bottom: 1px solid rgba(156,123,60,.22);
   transition: transform .35s ease;
 }
@@ -117,7 +117,7 @@
 .nav-mega {
   position: absolute; top: calc(100% + 14px);
   left: 50%; transform: translateX(-50%) translateY(-6px);
-  background: rgba(22,18,20,.98);
+  background: rgba(1,15,30,.98);
   border: 1px solid rgba(156,123,60,.18);
   border-radius: 14px; padding: 18px 22px;
   display: grid; grid-template-columns: 1fr 1fr;
@@ -130,7 +130,7 @@
   content: ''; position: absolute; top: -5px;
   left: 50%; transform: translateX(-50%) rotate(45deg);
   width: 9px; height: 9px;
-  background: rgba(22,18,20,.98);
+  background: rgba(1,15,30,.98);
   border-left: 1px solid rgba(156,123,60,.18);
   border-top: 1px solid rgba(156,123,60,.18);
 }
@@ -239,6 +239,14 @@
   background: var(--gold); margin-bottom: 18px;
 }
 
+/* ── Flag / Country Code Badge ──────────────────────────── */
+.flag-code {
+  font-family: var(--fb); font-size: .7rem; font-weight: 700;
+  letter-spacing: .1em; padding: 2px 7px;
+  background: var(--dark); color: #fff; border-radius: 3px;
+  display: inline-block;
+}
+
 /* ── Shared Section Helpers ─────────────────────────────── */
 .page-wrap {
   padding-top: var(--nav-h);
@@ -280,7 +288,7 @@
 }
 .page-hero-bg::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(28,22,24,.88) 0%, rgba(28,22,24,.6) 100%);
+  background: linear-gradient(135deg, rgba(0,26,53,.88) 0%, rgba(0,26,53,.6) 100%);
 }
 .page-hero-content {
   position: relative; z-index: 2;
@@ -347,3 +355,27 @@
   text-transform: uppercase; letter-spacing: 3px;
   margin-bottom: 16px; opacity: .8;
 }
+
+/* ── Floating Partnership CTA ───────────────────────────── */
+.float-cta {
+  position: fixed; bottom: 28px; right: 28px; z-index: 9000;
+  background: linear-gradient(110deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  background-size: 200% auto;
+  color: #fff; border-radius: 100px;
+  padding: 13px 26px; font-size: .8rem;
+  font-family: var(--fb); font-weight: 500;
+  letter-spacing: .4px; text-decoration: none;
+  box-shadow: 0 8px 28px rgba(156,123,60,.4);
+  transition: background-position .4s, transform .2s, box-shadow .2s, opacity .4s;
+  opacity: 0; pointer-events: none;
+}
+.float-cta.visible {
+  opacity: 1; pointer-events: auto;
+}
+.float-cta:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(156,123,60,.52);
+}
+/* Hide on partnership page itself */
+body.page-partnership .float-cta { display: none; }

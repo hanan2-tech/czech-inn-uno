@@ -53,11 +53,11 @@ const TOURS = [
         photo:"Prague at dusk from the river" }
     ],
     venues: [
-      { name:"Café Louvre", type:"Historic Café", addr:"Národní 22, Praha 1", what:"Order the Viennese Melange and the apple strudel — unchanged since Kafka's time. The upstairs billiard room is unchanged.", tip:"Arrive early — tables fill by 10am. Ask for a window seat overlooking Národní třída.", icon:"☕" },
-      { name:"Kafka Museum Bookshop", type:"Museum & Shop", addr:"Cihelná 2b, Malá Strana", what:"One of Prague's best bookshops. Editions of The Trial and The Castle in 30+ languages. Kafka postcards, posters, limited prints.", tip:"The staff speak English and are genuinely knowledgeable — ask them anything.", icon:"📚" },
-      { name:"Hemingway Bar", type:"Cocktail Bar", addr:"Karoliny Světlé 26, Praha 1", what:"The finest cocktail bar in Prague. Pre-Prohibition recipes, fresh ingredients, and an atmosphere that feels like 1930s Paris. The Kafka Sour is on the menu.", tip:"No reservations — arrive before 7pm or expect a wait. Worth every minute.", icon:"🍸" },
-      { name:"Shakespeare & Sons", type:"English Bookshop", addr:"Krymská 12, Praha 10", what:"Beloved independent bookshop. Best selection of Prague literature in English. Staff picks are excellent.", tip:"Check their events calendar — readings happen regularly in the back room.", icon:"📖" },
-      { name:"Golden Lane Wine Bar", type:"Wine Bar", addr:"Zlatá ulička courtyard area", what:"Small, atmospheric. Czech wines and Moravian reds. Perfect post-Golden Lane stop.", tip:"Sit outside in summer — the castle walls are 5 metres away.", icon:"🍷" }
+      { name:"Café Louvre", type:"Historic Café", addr:"Národní 22, Praha 1", what:"Order the Viennese Melange and the apple strudel — unchanged since Kafka's time. The upstairs billiard room is unchanged.", tip:"Arrive early — tables fill by 10am. Ask for a window seat overlooking Národní třída.", icon:'<iconify-icon icon="tabler:coffee" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+      { name:"Kafka Museum Bookshop", type:"Museum & Shop", addr:"Cihelná 2b, Malá Strana", what:"One of Prague's best bookshops. Editions of The Trial and The Castle in 30+ languages. Kafka postcards, posters, limited prints.", tip:"The staff speak English and are genuinely knowledgeable — ask them anything.", icon:'<lord-icon src="https://cdn.lordicon.com/kipaqhoz.json" trigger="hover" colors="primary:#C9A84C" style="width:20px;height:20px"></lord-icon>' },
+      { name:"Hemingway Bar", type:"Cocktail Bar", addr:"Karoliny Světlé 26, Praha 1", what:"The finest cocktail bar in Prague. Pre-Prohibition recipes, fresh ingredients, and an atmosphere that feels like 1930s Paris. The Kafka Sour is on the menu.", tip:"No reservations — arrive before 7pm or expect a wait. Worth every minute.", icon:'<iconify-icon icon="tabler:glass-cocktail" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+      { name:"Shakespeare & Sons", type:"English Bookshop", addr:"Krymská 12, Praha 10", what:"Beloved independent bookshop. Best selection of Prague literature in English. Staff picks are excellent.", tip:"Check their events calendar — readings happen regularly in the back room.", icon:'<lord-icon src="https://cdn.lordicon.com/kipaqhoz.json" trigger="hover" colors="primary:#C9A84C" style="width:20px;height:20px"></lord-icon>' },
+      { name:"Golden Lane Wine Bar", type:"Wine Bar", addr:"Zlatá ulička courtyard area", what:"Small, atmospheric. Czech wines and Moravian reds. Perfect post-Golden Lane stop.", tip:"Sit outside in summer — the castle walls are 5 metres away.", icon:'<iconify-icon icon="tabler:glass-wine" style="font-size:20px;color:#C9A84C"></iconify-icon>' }
     ]
   },
   {
@@ -98,11 +98,11 @@ const TOURS = [
         photo:"Bridge at dusk, statues against sky" }
     ],
     venues: [
-      { name:"Kavárna Obecní dům", type:"Historic Café", addr:"nám. Republiky 5", what:"One of the most beautiful café interiors in Europe. Art Nouveau at its absolute finest. The hot chocolate is legendary.", tip:"Sit in the main hall, not the side room. Worth the slightly higher prices.", icon:"☕" },
-      { name:"Alfons Mucha Museum Shop", type:"Art Shop", addr:"Panská 7", what:"Finest quality Mucha prints, postcards, and art books. Official reproductions of every major poster.", tip:"The large-format prints (A2) are worth the price — they're printed on archival paper.", icon:"🎨" },
-      { name:"DOX Centre for Contemporary Art", type:"Gallery", addr:"Poupětova 1, Praha 7", what:"Prague's finest contemporary art gallery. Regularly features Czech artists influenced by the Mucha legacy. The architecture itself is worth a visit.", tip:"The café has excellent coffee and the terrace overlooks a sculpture garden.", icon:"🏛️" },
-      { name:"Grand Café Orient", type:"Cubist Café", addr:"Ovocný trh 19", what:"The world's only Cubist café — the style that emerged in direct response to and rebellion against Art Nouveau. Understanding the contrast completes the story.", tip:"Try the Cubist cake — it's actually delicious, not just a novelty.", icon:"🔲" },
-      { name:"Galerie Moderního Umění", type:"Art Gallery", addr:"Husova 19–21, Praha 1", what:"Excellent collection of Czech modern art from 1890–1950. The Mucha and Art Nouveau rooms are the highlight.", tip:"Combined ticket with the adjacent Kinský Palace is worth it.", icon:"🖼️" }
+      { name:"Kavárna Obecní dům", type:"Historic Café", addr:"nám. Republiky 5", what:"One of the most beautiful café interiors in Europe. Art Nouveau at its absolute finest. The hot chocolate is legendary.", tip:"Sit in the main hall, not the side room. Worth the slightly higher prices.", icon:'<iconify-icon icon="tabler:coffee" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+      { name:"Alfons Mucha Museum Shop", type:"Art Shop", addr:"Panská 7", what:"Finest quality Mucha prints, postcards, and art books. Official reproductions of every major poster.", tip:"The large-format prints (A2) are worth the price — they're printed on archival paper.", icon:'<iconify-icon icon="tabler:palette" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+      { name:"DOX Centre for Contemporary Art", type:"Gallery", addr:"Poupětova 1, Praha 7", what:"Prague's finest contemporary art gallery. Regularly features Czech artists influenced by the Mucha legacy. The architecture itself is worth a visit.", tip:"The café has excellent coffee and the terrace overlooks a sculpture garden.", icon:'<iconify-icon icon="tabler:building-monument" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+      { name:"Grand Café Orient", type:"Cubist Café", addr:"Ovocný trh 19", what:"The world's only Cubist café — the style that emerged in direct response to and rebellion against Art Nouveau. Understanding the contrast completes the story.", tip:"Try the Cubist cake — it's actually delicious, not just a novelty.", icon:'<iconify-icon icon="tabler:building-monument" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+      { name:"Galerie Moderního Umění", type:"Art Gallery", addr:"Husova 19–21, Praha 1", what:"Excellent collection of Czech modern art from 1890–1950. The Mucha and Art Nouveau rooms are the highlight.", tip:"Combined ticket with the adjacent Kinský Palace is worth it.", icon:'<iconify-icon icon="tabler:photo" style="font-size:20px;color:#C9A84C"></iconify-icon>' }
     ]
   },
   {
@@ -143,11 +143,11 @@ const TOURS = [
         photo:"Walls of Names, children's drawings from Terezín" }
     ],
     venues: [
-      { name:"King Solomon Restaurant", type:"Kosher Restaurant", addr:"Široká 8, Praha 1", what:"The finest kosher restaurant in Prague — possibly in Central Europe. Traditional Ashkenazi cuisine with impeccable service. Fully certified.", tip:"Reservations essential. Ask for the chef's recommendation — it changes seasonally.", icon:"🍽️" },
-      { name:"Judaica Shop Josefov", type:"Heritage Shop", addr:"Maiselova 15, Praha 1", what:"Authentic Judaica — menorahs, mezuzot, books, art. Everything here is made by real craftspeople, not tourist factories.", tip:"The handmade silver items are genuinely exceptional quality and fairly priced.", icon:"✡️" },
-      { name:"Café Savoy", type:"Elegant Café", addr:"Vítězná 5, Praha 1", what:"Prague's most beautiful café interior — a restored Neo-Renaissance masterpiece. Perfect for a reflective coffee after the Pinkas Synagogue.", tip:"The pastry counter is extraordinary. The Savoy cake is their signature — order it.", icon:"☕" },
-      { name:"Prague Jewish Town Hall", type:"Cultural Site", addr:"Maiselova 18, Praha 1", what:"The only Jewish Town Hall in the world with two clocks — one Hebrew (running right to left), one Czech. A symbol of two identities coexisting.", tip:"The clock tower is visible from the street — look for it above the entrance.", icon:"🕐" },
-      { name:"Terezín Memorial", type:"Day Trip Extension", addr:"Terezín (45 min from Prague)", what:"The concentration camp and ghetto museum — an essential extension for groups wanting the complete historical context.", tip:"Full day needed. Combine with the Pinkas tour for maximum impact.", icon:"🕍" }
+      { name:"King Solomon Restaurant", type:"Kosher Restaurant", addr:"Široká 8, Praha 1", what:"The finest kosher restaurant in Prague — possibly in Central Europe. Traditional Ashkenazi cuisine with impeccable service. Fully certified.", tip:"Reservations essential. Ask for the chef's recommendation — it changes seasonally.", icon:'<iconify-icon icon="tabler:tools-kitchen-2" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+      { name:"Judaica Shop Josefov", type:"Heritage Shop", addr:"Maiselova 15, Praha 1", what:"Authentic Judaica — menorahs, mezuzot, books, art. Everything here is made by real craftspeople, not tourist factories.", tip:"The handmade silver items are genuinely exceptional quality and fairly priced.", icon:'<iconify-icon icon="tabler:star-of-david" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+      { name:"Café Savoy", type:"Elegant Café", addr:"Vítězná 5, Praha 1", what:"Prague's most beautiful café interior — a restored Neo-Renaissance masterpiece. Perfect for a reflective coffee after the Pinkas Synagogue.", tip:"The pastry counter is extraordinary. The Savoy cake is their signature — order it.", icon:'<iconify-icon icon="tabler:coffee" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+      { name:"Prague Jewish Town Hall", type:"Cultural Site", addr:"Maiselova 18, Praha 1", what:"The only Jewish Town Hall in the world with two clocks — one Hebrew (running right to left), one Czech. A symbol of two identities coexisting.", tip:"The clock tower is visible from the street — look for it above the entrance.", icon:'<lord-icon src="https://cdn.lordicon.com/abgtphux.json" trigger="hover" colors="primary:#C9A84C" style="width:20px;height:20px"></lord-icon>' },
+      { name:"Terezín Memorial", type:"Day Trip Extension", addr:"Terezín (45 min from Prague)", what:"The concentration camp and ghetto museum — an essential extension for groups wanting the complete historical context.", tip:"Full day needed. Combine with the Pinkas tour for maximum impact.", icon:'<iconify-icon icon="tabler:building-arch" style="font-size:20px;color:#C9A84C"></iconify-icon>' }
     ]
   },
   {
@@ -196,11 +196,11 @@ const TOURS = [
         food:"Popcorn and juice during the show" }
     ],
     venues: [
-      { name:"Angelato Gelato", type:"Gelateria", addr:"Rytířská 27, Praha 1", what:"The best gelato in Central Europe — made fresh each morning with natural Czech ingredients. 40 flavours. The seasonal fruit sorbets are extraordinary.", tip:"The wild strawberry sorbet in summer is the best thing you'll eat in Prague. Guaranteed.", icon:"🍦" },
-      { name:"National Marionette Theatre", type:"Puppet Theatre", addr:"Žatecká 1, Praha 1", what:"The finest puppet theatre in Prague — Don Giovanni performed by marionettes is their signature show. Genuinely moving for adults, magical for children.", tip:"Book the Don Giovanni evening show for parents — one of Prague's most unique cultural experiences.", icon:"🎭" },
-      { name:"Prague Castle Toy Museum", type:"Museum", addr:"Jiřská 6, Praha Castle", what:"Europe's largest private collection of toys — from ancient Greece to Barbie. Children and adults are equally enchanted.", tip:"Allow 90 minutes minimum. The mechanical toy section is extraordinary.", icon:"🧸" },
-      { name:"Hamleys Prague", type:"Toy Shop", addr:"Na Příkopě 14, Praha 1", what:"Five floors of toys, games, and magic. Staff demonstrate products in the aisles — it's a show as much as a shop.", tip:"The Harry Potter section has Prague-exclusive items. Check the basement for LEGO.", icon:"🎮" },
-      { name:"Petřín Funicular", type:"Transport + Experience", addr:"Újezd, Praha 1", what:"The historic funicular railway up Petřín Hill — a ride in itself. Has run since 1891.", tip:"Buy the ticket at the bottom. Ride up, take the tower + maze, walk down through the orchards.", icon:"🚡" }
+      { name:"Angelato Gelato", type:"Gelateria", addr:"Rytířská 27, Praha 1", what:"The best gelato in Central Europe — made fresh each morning with natural Czech ingredients. 40 flavours. The seasonal fruit sorbets are extraordinary.", tip:"The wild strawberry sorbet in summer is the best thing you'll eat in Prague. Guaranteed.", icon:'<iconify-icon icon="tabler:ice-cream" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+      { name:"National Marionette Theatre", type:"Puppet Theatre", addr:"Žatecká 1, Praha 1", what:"The finest puppet theatre in Prague — Don Giovanni performed by marionettes is their signature show. Genuinely moving for adults, magical for children.", tip:"Book the Don Giovanni evening show for parents — one of Prague's most unique cultural experiences.", icon:'<iconify-icon icon="tabler:masks-theater" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+      { name:"Prague Castle Toy Museum", type:"Museum", addr:"Jiřská 6, Praha Castle", what:"Europe's largest private collection of toys — from ancient Greece to Barbie. Children and adults are equally enchanted.", tip:"Allow 90 minutes minimum. The mechanical toy section is extraordinary.", icon:'<iconify-icon icon="tabler:mood-happy" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+      { name:"Hamleys Prague", type:"Toy Shop", addr:"Na Příkopě 14, Praha 1", what:"Five floors of toys, games, and magic. Staff demonstrate products in the aisles — it's a show as much as a shop.", tip:"The Harry Potter section has Prague-exclusive items. Check the basement for LEGO.", icon:'<iconify-icon icon="tabler:device-gamepad-2" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+      { name:"Petřín Funicular", type:"Transport + Experience", addr:"Újezd, Praha 1", what:"The historic funicular railway up Petřín Hill — a ride in itself. Has run since 1891.", tip:"Buy the ticket at the bottom. Ride up, take the tower + maze, walk down through the orchards.", icon:'<iconify-icon icon="tabler:roller-coaster" style="font-size:20px;color:#C9A84C"></iconify-icon>' }
     ]
   }
 ];
@@ -249,10 +249,10 @@ const GOLD_LABEL = {
     { name:"Private Family Legend Quest",      guests:"1 family", price:280, dur:"5 hrs", desc:"Your family, your pace, your guide. All activities exclusive to your group. Photo album included." }
   ],
   room_upgrades: [
-    { name:"Penthouse for a Night",    price:180, desc:"Upgrade any room to a castle-view penthouse suite. Champagne and hand-written welcome note included.", icon:"🏰" },
-    { name:"Honeymoon Surprise",       price:120, desc:"Rose petals, French Champagne, in-room flowers, and a private table at a rooftop restaurant.", icon:"💍" },
-    { name:"Business Elite Package",   price: 95, desc:"Premium check-in, newspaper, express breakfast, car transfer to any meeting in Prague 1.", icon:"💼" },
-    { name:"Family Welcome Kit",       price: 65, desc:"Kids' activity pack, Czech phrase cards, folding city map, and a bag of local Czech sweets.", icon:"👨‍👩‍👧" }
+    { name:"Penthouse for a Night",    price:180, desc:"Upgrade any room to a castle-view penthouse suite. Champagne and hand-written welcome note included.", icon:'<iconify-icon icon="tabler:castle" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+    { name:"Honeymoon Surprise",       price:120, desc:"Rose petals, French Champagne, in-room flowers, and a private table at a rooftop restaurant.", icon:'<iconify-icon icon="tabler:diamond" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+    { name:"Business Elite Package",   price: 95, desc:"Premium check-in, newspaper, express breakfast, car transfer to any meeting in Prague 1.", icon:'<iconify-icon icon="tabler:briefcase" style="font-size:20px;color:#C9A84C"></iconify-icon>' },
+    { name:"Family Welcome Kit",       price: 65, desc:"Kids' activity pack, Czech phrase cards, folding city map, and a bag of local Czech sweets.", icon:'<iconify-icon icon="tabler:users-group" style="font-size:20px;color:#C9A84C"></iconify-icon>' }
   ],
   concierge: [
     { name:"Airport Private Car Transfer",      price: 65, desc:"Mercedes-class vehicle, professional driver, nameplate pickup at arrivals." },
@@ -301,12 +301,12 @@ const ANALYTICS = {
     avg_rating: 4.91,
     top_tour: "Jewish Heritage",
     nationality_breakdown: [
-      { country:"USA", pct:28, flag:"🇺🇸" },
-      { country:"UK",  pct:18, flag:"🇬🇧" },
-      { country:"Germany", pct:14, flag:"🇩🇪" },
-      { country:"Israel", pct:11, flag:"🇮🇱" },
-      { country:"France", pct:9, flag:"🇫🇷" },
-      { country:"Other",  pct:20, flag:"🌍" }
+      { country:"USA", pct:28, flag:"US" },
+      { country:"UK",  pct:18, flag:"UK" },
+      { country:"Germany", pct:14, flag:"DE" },
+      { country:"Israel", pct:11, flag:"IL" },
+      { country:"France", pct:9, flag:"FR" },
+      { country:"Other",  pct:20, flag:"OTHER" }
     ],
     monthly: [
       { m:"Jan", v:38 },{ m:"Feb", v:52 },{ m:"Mar", v:89 },

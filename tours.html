@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Our Signature Tours — Czech Inn Hotels</title>
+<meta name="description" content="Four signature Prague tours — Kafka, Art Nouveau & Mucha, Jewish Heritage, and Prague for Families. 4.91★ rated. 12 languages. 847 tours completed in 2024. From €49."/>
+<title>Prague Signature Tours — Czech Inn Hotels × UNO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Heebo:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/shared.css">
 <style>
 /* ── Tour Badge Colors ─────────────────────────── */
 .bg-kafka  { background: rgba(102,62,55,.15); color: #8B4F47; border: 1px solid rgba(102,62,55,.3); }
 .bg-mucha  { background: rgba(156,123,60,.15); color: var(--gold); border: 1px solid rgba(156,123,60,.3); }
-.bg-jewish { background: rgba(28,22,24,.15); color: var(--grey); border: 1px solid rgba(28,22,24,.25); }
+.bg-jewish { background: rgba(0,26,53,.15); color: var(--grey); border: 1px solid rgba(0,26,53,.25); }
 .bg-kids   { background: rgba(170,154,119,.15); color: var(--tan); border: 1px solid rgba(170,154,119,.3); }
 
 /* ── Page Hero ─────────────────────────────────── */
@@ -33,7 +34,7 @@
 .tours-hero-bg::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(28,22,24,.97) 0%, rgba(28,22,24,.65) 55%, rgba(28,22,24,.25) 100%);
+  background: linear-gradient(to top, rgba(0,26,53,.97) 0%, rgba(0,26,53,.65) 55%, rgba(0,26,53,.25) 100%);
 }
 .tours-hero-content {
   position: relative; z-index: 2;
@@ -179,7 +180,7 @@
 .tour-detail-hero:hover img { transform: scale(1.04); }
 .tour-detail-hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(28,22,24,.85) 0%, rgba(28,22,24,.35) 60%, transparent 100%);
+  background: linear-gradient(to right, rgba(0,26,53,.85) 0%, rgba(0,26,53,.35) 60%, transparent 100%);
   display: flex; align-items: flex-end;
   padding: 48px 56px;
 }
@@ -614,7 +615,7 @@
   overflow: hidden;
 }
 .cal-header {
-  background: rgba(28,22,24,.8);
+  background: rgba(0,26,53,.8);
   padding: 12px 10px;
   text-align: center;
   font-size: .62rem;
@@ -624,7 +625,7 @@
   font-weight: 500;
 }
 .cal-tour-label {
-  background: rgba(22,18,20,.9);
+  background: rgba(1,15,30,.9);
   padding: 14px 16px;
   font-family: var(--fd);
   font-size: .88rem;
@@ -634,7 +635,7 @@
   align-items: center;
 }
 .cal-cell {
-  background: rgba(22,18,20,.6);
+  background: rgba(1,15,30,.6);
   padding: 14px 8px;
   text-align: center;
   font-size: .62rem;
@@ -650,7 +651,7 @@
   color: var(--tan);
 }
 .cal-cell.low {
-  background: rgba(22,18,20,.4);
+  background: rgba(1,15,30,.4);
   color: rgba(116,111,101,.4);
 }
 .cal-cell.peak::after { content: '●'; }
@@ -693,8 +694,8 @@
     <div class="tours-hero-bg"></div>
     <div class="tours-hero-content">
       <div class="tours-hero-eyebrow">4 Tours · 12 Languages · 4.91★ Rating</div>
-      <h1 class="tours-hero-title">Our Signature<br><em>Tours</em></h1>
-      <p class="tours-hero-desc">Four deeply researched, professionally guided journeys through Prague's most compelling stories. Every tour is available in 12 languages, designed for hotel groups of 25–35 guests, and backed by 847 real tours run in 2024.</p>
+      <h1 class="tours-hero-title">Four Stories Prague Has<br><em>Never Told Quite Like This</em></h1>
+      <p class="tours-hero-desc">Every stop chosen deliberately. Every story told by someone who's spent their life here. Every tour rated 4.91 stars by guests who came back to the hotel talking.</p>
       <div class="tours-hero-stats">
         <div class="hero-stat">
           <div class="hero-stat-num">847</div>
@@ -782,6 +783,8 @@
 </div><!-- end .page-wrap -->
 
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js"></script>
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/data.js"></script>
 <script>
@@ -856,22 +859,22 @@
             <span class="info-item-value">${tour.dur}</span>
           </div>
           <div class="info-item">
-            <span class="info-item-icon">👥</span>
+            <span class="info-item-icon"><lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" colors="primary:#C9A84C" style="width:20px;height:20px"></lord-icon></span>
             <span class="info-item-label">Group Size</span>
             <span class="info-item-value">${tour.grp}</span>
           </div>
           <div class="info-item">
-            <span class="info-item-icon">🌐</span>
+            <span class="info-item-icon"><iconify-icon icon="tabler:world" style="font-size:20px;color:#C9A84C"></iconify-icon></span>
             <span class="info-item-label">Languages</span>
             <span class="info-item-value">${tour.lang}</span>
           </div>
           <div class="info-item">
-            <span class="info-item-icon">🚶</span>
+            <span class="info-item-icon"><iconify-icon icon="tabler:walk" style="font-size:20px;color:#C9A84C"></iconify-icon></span>
             <span class="info-item-label">Tour Type</span>
             <span class="info-item-value">${tour.type}</span>
           </div>
           <div class="info-item">
-            <span class="info-item-icon">📅</span>
+            <span class="info-item-icon"><iconify-icon icon="tabler:calendar" style="font-size:20px;color:#C9A84C"></iconify-icon></span>
             <span class="info-item-label">Season</span>
             <span class="info-item-value">${tour.season}</span>
           </div>
@@ -914,20 +917,20 @@
                 <div>
                   <div class="stop-num">Stop ${si + 1}</div>
                   <div class="stop-name">${stop.n}</div>
-                  <div class="stop-addr">📍 ${stop.a}</div>
+                  <div class="stop-addr"><iconify-icon icon="tabler:map-pin" style="font-size:13px;color:#C9A84C"></iconify-icon> ${stop.a}</div>
                 </div>
-                <span class="stop-dur-pill">⏱ ${stop.dur}</span>
+                <span class="stop-dur-pill"><iconify-icon icon="tabler:clock" style="font-size:13px;color:#C9A84C"></iconify-icon> ${stop.dur}</span>
               </div>
               <p class="stop-story">${stop.story}</p>
               <blockquote class="stop-quote">${stop.quote}</blockquote>
               <div class="stop-meta">
                 <div class="stop-activity">
-                  <span class="stop-meta-icon">🎯</span>
+                  <span class="stop-meta-icon"><lord-icon src="https://cdn.lordicon.com/ibydboev.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:16px;height:16px"></lord-icon></span>
                   <span>${stop.activity}</span>
                 </div>
                 ${stop.food ? `
                 <div class="stop-food">
-                  <span class="stop-meta-icon">🍽️</span>
+                  <span class="stop-meta-icon"><iconify-icon icon="tabler:tools-kitchen-2" style="font-size:16px;color:#C9A84C"></iconify-icon></span>
                   <span>${stop.food}</span>
                 </div>` : ''}
               </div>
@@ -949,10 +952,10 @@
                 <div class="venue-icon">${v.icon}</div>
                 <div class="venue-type">${v.type}</div>
                 <div class="venue-name">${v.name}</div>
-                <div class="venue-addr">📍 ${v.addr}</div>
+                <div class="venue-addr"><iconify-icon icon="tabler:map-pin" style="font-size:13px;color:#C9A84C"></iconify-icon> ${v.addr}</div>
                 <p class="venue-what">${v.what}</p>
                 <div class="venue-tip">
-                  <span>💡</span>
+                  <span><iconify-icon icon="tabler:bulb" style="font-size:14px;color:#C9A84C"></iconify-icon></span>
                   <span>${v.tip}</span>
                 </div>
               </div>

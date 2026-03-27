@@ -5,47 +5,47 @@
 
 /* ── Brand Color Palette ───────────────────────────── */
 :root {
-  --cream:        #DBDBD7;
-  --dark:         #1C1618;
-  --dark-alt:     #2A2327;
+  --cream:        #E8EDF4;
+  --dark:         #001A35;
+  --dark-alt:     #071E38;
   --wine:         #663E37;
-  --grey:         #746F65;
+  --grey:         #5A6475;
   --gold:         #9C7B3C;
   --gold-light:   #C9A84C;
   --gold-pale:    #D4B87A;
   --tan:          #AA9A77;
 
   /* Semantic */
-  --bg:           #F4F1EC;
-  --bg-warm:      #EDE8E1;
+  --bg:           #F2F6FB;
+  --bg-warm:      #E8EEF5;
   --surface:      #FFFFFF;
-  --text:         #2A2327;
-  --text-l:       #746F65;
+  --text:         #1C1C1C;
+  --text-l:       #636363;
   --border:       rgba(156,123,60,.18);
   --border-dark:  rgba(156,123,60,.25);
 
   /* Gold Label surface */
-  --gl-bg:        #0D0B0D;
-  --gl-surface:   #161214;
+  --gl-bg:        #010F1E;
+  --gl-surface:   #05152A;
   --gl-border:    rgba(184,147,58,.22);
   --gl-accent:    #B8933A;
-  --gl-cream:     #F0EBE0;
+  --gl-cream:     #E8EDF4;
 
   /* Typography */
-  --fd: 'Cormorant Garamond', Georgia, serif;
-  --fb: 'Heebo', -apple-system, sans-serif;
+  --fd: 'Montserrat', sans-serif;
+  --fb: 'Rubik', sans-serif;
 
   /* Effects */
   --shimmer: linear-gradient(110deg, #9C7B3C 0%, #C9A84C 40%, #E0C070 52%, #C9A84C 60%, #9C7B3C 100%);
   --shimmer-gl: linear-gradient(110deg, #7A5E28 0%, #B8933A 40%, #D4AD50 52%, #B8933A 60%, #7A5E28 100%);
-  --tex: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23AA9A77' fill-opacity='.035'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+  --tex: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%235A6475' fill-opacity='.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
 
   /* Shadow */
-  --shadow-sm:    0 2px 8px rgba(42,35,39,.07);
-  --shadow-md:    0 8px 28px rgba(42,35,39,.10);
-  --shadow-lg:    0 20px 60px rgba(42,35,39,.14);
+  --shadow-sm:    0 2px 8px rgba(0,26,53,.09);
+  --shadow-md:    0 8px 28px rgba(0,26,53,.13);
+  --shadow-lg:    0 20px 60px rgba(0,26,53,.18);
   --glow-gold:    0 0 32px rgba(156,123,60,.25);
-  --card-hover:   0 16px 48px rgba(42,35,39,.12);
+  --card-hover:   0 16px 48px rgba(0,26,53,.15);
 
   /* Layout */
   --max-w:        1340px;
@@ -81,6 +81,7 @@ img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; }
 button { font-family: var(--fb); cursor: pointer; }
 ul, ol { list-style: none; }
+lord-icon, iconify-icon { display: inline-block; vertical-align: middle; }
 
 /* ── Utility Classes ────────────────────────────────── */
 .reveal {
@@ -131,7 +132,7 @@ ul, ol { list-style: none; }
   text-align: center;
   color: var(--text);
 }
-.sec-title span { color: var(--wine); }
+.sec-title span { color: var(--gold); }
 .sec-title-light { color: var(--cream); }
 .sec-title-light span { color: var(--gold); }
 .sec-title-left { text-align: left; }

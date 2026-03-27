@@ -39,35 +39,35 @@ const NAV_HTML = `
           <div class="mega-col">
             <div class="mega-col-label">Tours & Experiences</div>
             <a href="tours.html" class="mega-link" data-nav>
-              <span class="mega-link-icon">🗺️</span>
+              <span class="mega-link-icon"><iconify-icon icon="tabler:map" style="font-size:22px;color:#C9A84C"></iconify-icon></span>
               <span class="mega-link-text">Guided Tours</span>
             </a>
             <a href="gold-label.html" class="mega-link" data-nav>
-              <span class="mega-link-icon">✦</span>
+              <span class="mega-link-icon"><iconify-icon icon="tabler:crown" style="font-size:22px;color:#C9A84C"></iconify-icon></span>
               <span class="mega-link-text">Gold Label</span>
               <span class="mega-link-badge">Premium</span>
             </a>
             <a href="extras.html" class="mega-link" data-nav>
-              <span class="mega-link-icon">🎯</span>
+              <span class="mega-link-icon"><lord-icon src="https://cdn.lordicon.com/ibydboev.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text">Extras Catalogue</span>
             </a>
             <a href="after-dark.html" class="mega-link" data-nav>
-              <span class="mega-link-icon">🌙</span>
+              <span class="mega-link-icon"><iconify-icon icon="tabler:moon" style="font-size:22px;color:#C9A84C"></iconify-icon></span>
               <span class="mega-link-text">Prague After Dark</span>
             </a>
           </div>
           <div class="mega-col">
             <div class="mega-col-label">Guest Experience</div>
             <a href="concierge.html" class="mega-link" data-nav>
-              <span class="mega-link-icon">📱</span>
+              <span class="mega-link-icon"><iconify-icon icon="tabler:device-mobile" style="font-size:22px;color:#C9A84C"></iconify-icon></span>
               <span class="mega-link-text">Digital Concierge</span>
             </a>
             <a href="by-passion.html" class="mega-link" data-nav>
-              <span class="mega-link-icon">❤️</span>
+              <span class="mega-link-icon"><lord-icon src="https://cdn.lordicon.com/xyboiuok.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text">Prague by Passion</span>
             </a>
             <a href="corporate.html" class="mega-link" data-nav>
-              <span class="mega-link-icon">🤝</span>
+              <span class="mega-link-icon"><lord-icon src="https://cdn.lordicon.com/zpxybbhl.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text">Groups & Corporate</span>
             </a>
           </div>
@@ -83,22 +83,22 @@ const NAV_HTML = `
           <div class="mega-col">
             <div class="mega-col-label">Strategy & Revenue</div>
             <a href="business-plan.html" class="mega-link" data-nav>
-              <span class="mega-link-icon">📄</span>
+              <span class="mega-link-icon"><lord-icon src="https://cdn.lordicon.com/nocovwne.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text">Business Plan</span>
             </a>
             <a href="analytics.html" class="mega-link" data-nav>
-              <span class="mega-link-icon">📊</span>
+              <span class="mega-link-icon"><lord-icon src="https://cdn.lordicon.com/uukerzzv.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text">Analytics</span>
             </a>
           </div>
           <div class="mega-col">
             <div class="mega-col-label">Operations & Trust</div>
             <a href="integration.html" class="mega-link" data-nav>
-              <span class="mega-link-icon">🔗</span>
+              <span class="mega-link-icon"><lord-icon src="https://cdn.lordicon.com/jdsvypqr.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text">Integration</span>
             </a>
             <a href="social-proof.html" class="mega-link" data-nav>
-              <span class="mega-link-icon">⭐</span>
+              <span class="mega-link-icon"><lord-icon src="https://cdn.lordicon.com/tyvtvbcy.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text">Social Proof</span>
             </a>
           </div>
@@ -167,6 +167,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inject footer at bottom of body
   document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
 
+  // Inject floating contact CTA
+  document.body.insertAdjacentHTML('beforeend', `
+    <a href="partnership.html#ask" class="float-cta" data-nav id="floatCta">
+      Start the Partnership →
+    </a>
+  `);
+
   // Init all modules
   initLoader();
   initActiveNav();
@@ -183,6 +190,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+/* ── Floating CTA Visibility ─────────────────────────────── */
+(function() {
+  const btn = document.getElementById('floatCta');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  }, { passive: true });
+})();
 
 /* ── Page Loader ─────────────────────────────────────────── */
 function initLoader() {
