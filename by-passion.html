@@ -57,6 +57,15 @@
 
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .reveal.vis{opacity:1;transform:none}
+
+@media(max-width:768px) {
+  .quiz-wrap, .result-wrap { padding: 56px 20px; }
+  .result-profile { grid-template-columns: 1fr; gap: 28px; }
+  .result-cta { flex-direction: column; }
+}
+@media(max-width:480px) {
+  .quiz-options { grid-template-columns: 1fr; }
+}
 </style>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -67,9 +76,9 @@
 
 <section class="bp2-hero">
   <div class="bp2-hero-inner">
-    <div class="sec-eyebrow reveal">Czech Inn Hotels</div>
-    <h1 class="sec-title sec-title-dark reveal" style="margin-bottom:16px">Prague <em>by Passion</em></h1>
-    <p class="sec-sub reveal" style="max-width:500px;margin:0 auto">Answer four questions. Get a personalised Prague itinerary built around what you actually love — not what everyone else does.</p>
+    <div class="sec-eyebrow reveal" data-i18n="byp.eyebrow">Czech Inn Hotels</div>
+    <h1 class="sec-title sec-title-dark reveal" style="margin-bottom:16px" data-i18n-html="byp.title">Prague <em>by Passion</em></h1>
+    <p class="sec-sub reveal" style="max-width:500px;margin:0 auto" data-i18n="byp.sub">Answer four questions. Get a personalised Prague itinerary built around what you actually love — not what everyone else does.</p>
   </div>
 </section>
 
@@ -241,6 +250,7 @@
 </div>
 
 <script src="js/nav.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/data.js"></script>
 <script>
 const answers = {};

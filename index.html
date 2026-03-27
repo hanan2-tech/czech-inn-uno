@@ -255,6 +255,19 @@
   max-width:520px; margin:0 auto 40px; line-height:1.8;
 }
 .home-cta-btns { display:flex; gap:16px; justify-content:center; }
+
+@media(max-width:768px) {
+  .hero-content    { padding: 24px 20px; }
+  .proof-banner    { padding: 56px 20px; }
+  .proof-grid      { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .gap-grid        { grid-template-columns: 1fr; gap: 28px; }
+  .platform-grid   { grid-template-columns: 1fr; }
+  .home-cta        { padding: 64px 20px; }
+  .home-cta-btns   { flex-wrap: wrap; justify-content: center; }
+}
+@media(max-width:480px) {
+  .proof-grid      { grid-template-columns: 1fr 1fr; }
+}
 </style>
 </head>
 <body>
@@ -269,9 +282,9 @@
   </div>
   <div class="hero-content">
     <div class="hero-for">Prepared exclusively for Jaroslav Svoboda — Czech Inn Hotels s.r.o.</div>
-    <h1 class="hero-title">Prague's Guests Are Spending Millions on Experiences.<br><em>None of It Is Going to Czech Inn Hotels.</em></h1>
+    <h1 class="hero-title" data-i18n-html="idx.hero.title">Prague's Guests Are Spending Millions on Experiences.<br><em>None of It Is Going to Czech Inn Hotels.</em></h1>
     <div class="hero-divider"></div>
-    <p class="hero-sub">Every night, 3,300 guests check into your hotels. Most will book experiences before they leave Prague — just not through you. Until now.</p>
+    <p class="hero-sub" data-i18n="idx.hero.sub">Every night, 3,300 guests check into your hotels. Most will book experiences before they leave Prague — just not through you. Until now.</p>
     <div class="hero-btns">
       <a href="business-plan.html" class="btn-gold" data-nav>See the Business Plan →</a>
       <a href="tours.html" class="btn-outline btn-outline-light" data-nav>Explore Tours</a>
@@ -390,6 +403,7 @@
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 <script src="js/nav.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/data.js"></script>
 <script>
 /* ── Stats counters ─────────────────────────────────────── */

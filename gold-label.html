@@ -753,6 +753,13 @@ body {
   transition: opacity .75s, transform .75s;
 }
 .reveal.vis { opacity: 1; transform: translateY(0); }
+
+@media(max-width:768px) {
+  .gl-hero-content   { padding: 24px 20px; }
+  .gl-section,
+  .gl-section-full   { padding: 64px 20px; }
+  .gl-features-grid  { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -764,9 +771,9 @@ body {
     <div class="gl-hero-vignette"></div>
     <div class="gl-hero-content">
       <span class="gl-hero-crown"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="1000" colors="primary:#C9A84C" style="width:40px;height:40px"></lord-icon></span>
-      <div class="gl-hero-eyebrow">Czech Inn Hotels — Premium Tier</div>
-      <h1 class="gl-hero-title">Gold<br><em>Label</em></h1>
-      <p class="gl-hero-subtitle">Curated. Private. Unmistakable.</p>
+      <div class="gl-hero-eyebrow" data-i18n="gl.eyebrow">Czech Inn Hotels — Premium Tier</div>
+      <h1 class="gl-hero-title" data-i18n-html="gl.title">Gold<br><em>Label</em></h1>
+      <p class="gl-hero-subtitle" data-i18n="gl.sub">Curated. Private. Unmistakable.</p>
       <div class="gl-gold-line"></div>
       <p class="gl-hero-desc">An elevated tier of experiences for guests who want something extraordinary — private tours, penthouse upgrades, bespoke concierge services, and complete Prague itineraries assembled for individuals, couples, and corporate groups.</p>
       <a href="partnership.html" class="gl-hero-cta" data-nav>Activate Gold Label →</a>
@@ -872,6 +879,7 @@ body {
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 <script src="js/nav.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/data.js"></script>
 <script>
 /* ═══════════════════════════════════════════════

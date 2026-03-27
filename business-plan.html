@@ -1062,6 +1062,15 @@
   .calc-result { grid-template-columns: 1fr; }
   .first-mover { grid-template-columns: 1fr; }
 }
+@media(max-width:768px) {
+  .bp-hero-grid           { padding: 72px 20px 56px; grid-template-columns: 1fr; gap: 40px; }
+  .exec-bullets           { grid-template-columns: 1fr; }
+  .opp-grid               { grid-template-columns: 1fr; gap: 32px; }
+  .solution-feature-grid  { grid-template-columns: 1fr 1fr; }
+  .solution-diff          { grid-template-columns: 1fr 1fr; }
+  .stat-cards             { grid-template-columns: 1fr 1fr; }
+  .bp-hero-kpi-grid       { grid-template-columns: 1fr 1fr; }
+}
 @media (max-width: 680px) {
   .section, .section-dark { padding: 60px 20px; }
   .stat-cards { grid-template-columns: 1fr 1fr; }
@@ -1082,7 +1091,7 @@
       <div>
         <div class="bp-hero-badge">Confidential Document</div>
         <div class="bp-hero-eyebrow">Prepared for Jaroslav Svoboda, CEO — Czech Inn Hotels s.r.o.</div>
-        <h1 class="bp-hero-title">
+        <h1 class="bp-hero-title" data-i18n-html="bp.title">
           Business Plan —<br>
           <em>Czech Inn Hotels</em><br>
           Guided Experiences Platform
@@ -1850,6 +1859,7 @@
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 <script src="js/nav.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/data.js"></script>
 <script>
 /* ── Scroll Reveal ─────────────────────────── */

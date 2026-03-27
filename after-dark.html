@@ -196,6 +196,155 @@
 .reveal-delay-1 { transition-delay: .1s; }
 .reveal-delay-2 { transition-delay: .2s; }
 .reveal-delay-3 { transition-delay: .3s; }
+
+/* ── Hero video ─── */
+.ad-hero-video {
+  position: absolute; inset: 0; z-index: 1;
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(.18) saturate(.4);
+}
+.ad-hero-bg { z-index: 0; }
+.ad-hero-overlay { z-index: 2; }
+.ad-hero-content { z-index: 3; }
+
+/* ── Practical strip ─── */
+.ad-practical-strip {
+  background: #080608;
+  border-bottom: 1px solid rgba(156,123,60,.12);
+  padding: 20px 40px;
+}
+.ad-practical-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 24px;
+}
+.ad-practical-item { display: flex; align-items: flex-start; gap: 12px; }
+.ad-practical-icon { flex-shrink: 0; color: var(--gold); margin-top: 2px; }
+.ad-practical-label { font-size: .6rem; color: var(--grey); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+.ad-practical-value { font-size: .74rem; color: var(--tan); line-height: 1.55; }
+
+/* ── Filter bar ─── */
+.ad-filters {
+  background: rgba(10,8,7,.98);
+  border-bottom: 1px solid rgba(156,123,60,.06);
+  padding: 9px 40px;
+  position: sticky; top: calc(var(--nav-h) + 58px); z-index: 99;
+}
+.ad-filters-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; gap: 7px; flex-wrap: wrap; align-items: center;
+}
+.ad-filters-label { font-size: .6rem; color: rgba(219,219,215,.28); text-transform: uppercase; letter-spacing: 1px; margin-right: 4px; }
+.ad-filter-btn {
+  padding: 4px 12px; border-radius: 100px;
+  border: 1px solid rgba(156,123,60,.18); background: transparent;
+  font-size: .67rem; color: var(--grey); cursor: pointer; transition: all .2s;
+}
+.ad-filter-btn:hover { border-color: rgba(156,123,60,.45); color: var(--tan); }
+.ad-filter-btn.active { background: rgba(156,123,60,.14); border-color: var(--gold); color: var(--gold); }
+.ad-filters-hint { margin-left: auto; font-size: .6rem; color: rgba(219,219,215,.22); font-style: italic; }
+.ad-card.ad-hidden-filter { display: none !important; }
+
+/* ── Card enhancements ─── */
+.ad-card-img { transition: filter .3s, transform .8s ease; }
+.ad-card:hover .ad-card-img { filter: brightness(1); transform: scale(1.04); }
+.ad-card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; flex-wrap: wrap; }
+.ad-card-hours { font-size: .67rem; color: rgba(219,219,215,.38); display: flex; align-items: center; gap: 4px; }
+.ad-booking-badge { font-size: .55rem; padding: 2px 7px; border-radius: 3px; text-transform: uppercase; letter-spacing: .8px; }
+.ad-booking-required { background: rgba(180,60,60,.1); color: #c07070; border: 1px solid rgba(180,60,60,.18); }
+.ad-booking-walkin { background: rgba(60,140,80,.08); color: #70b080; border: 1px solid rgba(60,140,80,.18); }
+.ad-card-tip { margin-bottom: 12px; }
+.ad-card-cta {
+  display: flex; align-items: center; justify-content: center;
+  padding: 9px 16px;
+  background: rgba(156,123,60,.08); border: 1px solid rgba(156,123,60,.22);
+  border-radius: 8px; font-size: .72rem; font-family: var(--fb);
+  color: var(--gold); text-decoration: none; transition: all .25s; letter-spacing: .5px;
+}
+.ad-card-cta:hover { background: rgba(156,123,60,.18); border-color: var(--gold); color: #fff; }
+.ad-popular-badge {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  background: rgba(5,3,5,.88); border: 1px solid rgba(156,123,60,.5); color: var(--gold);
+  font-size: .54rem; padding: 3px 10px; border-radius: 100px;
+  letter-spacing: .8px; text-transform: uppercase; backdrop-filter: blur(4px);
+}
+.ad-card-pick {
+  position: absolute; top: 10px; right: 10px; z-index: 2;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(5,3,5,.82); border: 1px solid rgba(156,123,60,.4);
+  color: var(--gold); font-size: 1rem; line-height: 1;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all .2s; backdrop-filter: blur(4px); font-family: monospace;
+}
+.ad-card-pick:hover { background: rgba(156,123,60,.25); }
+.ad-card.ad-selected { border-color: var(--gold) !important; }
+.ad-card.ad-selected .ad-card-pick { background: var(--gold); color: #050305; font-size: .8rem; }
+
+/* ── Evening Routes ─── */
+.ad-routes {
+  background: #070506; padding: 80px 40px;
+  border-top: 1px solid rgba(156,123,60,.1);
+  border-bottom: 1px solid rgba(156,123,60,.08);
+}
+.ad-routes-inner { max-width: var(--max-w); margin: 0 auto; }
+.ad-routes-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(320px,1fr)); gap: 20px; margin-top: 48px; }
+.ad-route-card {
+  background: rgba(255,255,255,.025); border: 1px solid rgba(156,123,60,.15);
+  border-radius: 16px; overflow: hidden; transition: border-color .3s, transform .3s;
+}
+.ad-route-card:hover { border-color: rgba(156,123,60,.4); transform: translateY(-4px); }
+.ad-route-card-img { width: 100%; height: 155px; object-fit: cover; filter: brightness(.55); transition: filter .4s; }
+.ad-route-card:hover .ad-route-card-img { filter: brightness(.75); }
+.ad-route-card-body { padding: 22px 24px 24px; }
+.ad-route-mood { font-size: .6rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+.ad-route-title { font-family: var(--fd); font-size: 1.25rem; color: var(--cream); font-weight: 600; margin-bottom: 14px; }
+.ad-route-stops { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.ad-route-stop { display: flex; align-items: center; gap: 8px; font-size: .72rem; color: rgba(219,219,215,.5); }
+.ad-route-stop-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; opacity: .5; }
+.ad-route-stop strong { color: var(--tan); }
+.ad-route-meta { display: flex; gap: 14px; margin-bottom: 18px; font-size: .67rem; color: var(--grey); }
+.ad-route-meta span { display: flex; align-items: center; gap: 4px; }
+
+/* ── Build Your Night panel ─── */
+.ad-build-summary {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(5,3,5,.96); border-top: 1px solid rgba(156,123,60,.35);
+  padding: 13px 40px; display: none; align-items: center;
+  justify-content: space-between; gap: 14px; flex-wrap: wrap;
+  backdrop-filter: blur(10px);
+}
+.ad-build-summary.visible { display: flex; }
+.ad-build-label { font-size: .6rem; color: var(--grey); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+.ad-build-venues { font-size: .78rem; color: rgba(219,219,215,.7); }
+.ad-build-venues strong { color: var(--gold); }
+.ad-build-right { display: flex; align-items: center; gap: 14px; }
+.ad-build-price { font-size: .72rem; color: var(--grey); white-space: nowrap; }
+.ad-build-clear { font-size: .68rem; color: var(--grey); cursor: pointer; border: none; background: none; padding: 0; text-decoration: underline; }
+.ad-build-clear:hover { color: var(--tan); }
+
+/* ── Hidden tab badge ─── */
+.ad-tab-secret { font-size: .5rem; background: rgba(156,123,60,.18); color: var(--gold); padding: 1px 5px; border-radius: 3px; text-transform: uppercase; letter-spacing: .5px; }
+
+@media(max-width:768px) {
+  .ad-hero-content    { padding: 0 20px 60px; }
+  .ad-tabs-inner      { padding: 0 8px; overflow-x: auto; scrollbar-width: none; }
+  .ad-tabs-inner::-webkit-scrollbar { display: none; }
+  .ad-tab             { padding: 16px 14px; font-size: .75rem; }
+  .ad-section         { padding: 56px 20px; }
+  .ad-map             { padding: 56px 20px; }
+  .ad-map-grid        { grid-template-columns: 1fr; gap: 28px; }
+  .ad-routes          { padding: 56px 20px; }
+  .ad-cta             { padding: 56px 20px; }
+  .ad-practical-strip { padding: 16px 20px; }
+  .ad-practical-inner { grid-template-columns: 1fr 1fr; }
+  .ad-filters         { padding: 9px 20px; }
+  .ad-build-summary   { padding: 13px 20px; }
+}
+@media(max-width:480px) {
+  .ad-grid            { grid-template-columns: 1fr; }
+  .ad-routes-grid     { grid-template-columns: 1fr; }
+  .ad-practical-inner { grid-template-columns: 1fr; }
+  .ad-map-grid        { margin-top: 28px; }
+}
 </style>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -207,19 +356,45 @@
 <!-- Hero -->
 <section class="ad-hero">
   <div class="ad-hero-bg"></div>
+  <video class="ad-hero-video" autoplay muted loop playsinline>
+    <source src="hero.mp4" type="video/mp4">
+  </video>
   <div class="ad-hero-overlay"></div>
   <div class="ad-hero-content">
-    <div class="ad-hero-eyebrow">Czech Inn Hotels × UNO</div>
-    <h1 class="ad-hero-title">Prague<br><em>After Dark</em></h1>
-    <p class="ad-hero-desc">When the daytime tours end, the real Prague begins. The version most tourists never find — jazz cellars, rooftop bars with castle views, legendary cocktail haunts, and theatres that exist nowhere else on earth.</p>
+    <div class="ad-hero-eyebrow" data-i18n="ad.eyebrow">Czech Inn Hotels × UNO</div>
+    <h1 class="ad-hero-title" data-i18n-html="ad.title">Prague<br><em>After Dark</em></h1>
+    <p class="ad-hero-desc" data-i18n="ad.sub">When the daytime tours end, the real Prague begins. The version most tourists never find — jazz cellars, rooftop bars with castle views, legendary cocktail haunts, and theatres that exist nowhere else on earth.</p>
     <div class="ad-hero-pills">
       <span class="ad-hero-pill"><iconify-icon icon="tabler:music" style="font-size:14px;color:currentColor"></iconify-icon> Jazz Clubs</span>
       <span class="ad-hero-pill"><iconify-icon icon="tabler:glass-cocktail" style="font-size:14px;color:currentColor"></iconify-icon> Cocktail Bars</span>
       <span class="ad-hero-pill"><iconify-icon icon="tabler:building-skyscraper" style="font-size:14px;color:currentColor"></iconify-icon> Rooftop Bars</span>
       <span class="ad-hero-pill"><iconify-icon icon="tabler:masks-theater" style="font-size:14px;color:currentColor"></iconify-icon> Live Shows</span>
+      <span class="ad-hero-pill"><iconify-icon icon="tabler:eye-off" style="font-size:14px;color:currentColor"></iconify-icon> Hidden Bars</span>
     </div>
   </div>
 </section>
+
+<!-- Practical Strip -->
+<div class="ad-practical-strip">
+  <div class="ad-practical-inner">
+    <div class="ad-practical-item">
+      <div class="ad-practical-icon"><iconify-icon icon="tabler:shirt" style="font-size:20px"></iconify-icon></div>
+      <div><div class="ad-practical-label">Dress code</div><div class="ad-practical-value">Smart casual for jazz & shows · Casual for bars & rooftops</div></div>
+    </div>
+    <div class="ad-practical-item">
+      <div class="ad-practical-icon"><iconify-icon icon="tabler:calendar-week" style="font-size:20px"></iconify-icon></div>
+      <div><div class="ad-practical-label">Best nights</div><div class="ad-practical-value">Thu–Sat for shows & rooftops · Any night for jazz & cocktails</div></div>
+    </div>
+    <div class="ad-practical-item">
+      <div class="ad-practical-icon"><iconify-icon icon="tabler:clock" style="font-size:20px"></iconify-icon></div>
+      <div><div class="ad-practical-label">Booking lead time</div><div class="ad-practical-value">24–48 hrs for shows & top bars · Same-day for most others</div></div>
+    </div>
+    <div class="ad-practical-item">
+      <div class="ad-practical-icon"><iconify-icon icon="tabler:car" style="font-size:20px"></iconify-icon></div>
+      <div><div class="ad-practical-label">Getting there</div><div class="ad-practical-value">Uber or Bolt after midnight — metro ends ~12:20am</div></div>
+    </div>
+  </div>
+</div>
 
 <!-- Tabs -->
 <div class="ad-tabs">
@@ -228,6 +403,21 @@
     <button class="ad-tab" data-tab="rooftop"><iconify-icon icon="tabler:building-skyscraper" style="font-size:14px;color:currentColor"></iconify-icon> Rooftop</button>
     <button class="ad-tab" data-tab="cocktail"><iconify-icon icon="tabler:glass-cocktail" style="font-size:14px;color:currentColor"></iconify-icon> Cocktails</button>
     <button class="ad-tab" data-tab="shows"><iconify-icon icon="tabler:masks-theater" style="font-size:14px;color:currentColor"></iconify-icon> Shows</button>
+    <button class="ad-tab" data-tab="hidden"><iconify-icon icon="tabler:eye-off" style="font-size:14px;color:currentColor"></iconify-icon> Hidden <span class="ad-tab-secret">Local Only</span></button>
+  </div>
+</div>
+
+<!-- Filter Bar -->
+<div class="ad-filters">
+  <div class="ad-filters-inner">
+    <span class="ad-filters-label">Filter</span>
+    <button class="ad-filter-btn active" data-filter="all">All</button>
+    <button class="ad-filter-btn" data-filter="budget">€ Budget</button>
+    <button class="ad-filter-btn" data-filter="mid">€€ Mid</button>
+    <button class="ad-filter-btn" data-filter="premium">€€€ Premium</button>
+    <button class="ad-filter-btn" data-filter="walkin">Walk-in OK</button>
+    <button class="ad-filter-btn" data-filter="required">Book Required</button>
+    <span class="ad-filters-hint">Click + on any card to add to your evening</span>
   </div>
 </div>
 
@@ -240,7 +430,9 @@
       <span class="ad-cat-count">4 venues</span>
     </div>
     <div class="ad-grid">
-      <div class="ad-card reveal">
+      <div class="ad-card reveal" data-price="mid" data-booking="required" data-cost="45">
+        <span class="ad-popular-badge">Most booked by Czech Inn guests</span>
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&w=600&q=80" alt="Jazz Dock" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -250,14 +442,21 @@
           </div>
           <div class="ad-card-name">Jazz Dock</div>
           <div class="ad-card-addr">Janáčkovo nábřeží 2, Praha 5</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 7pm · Last entry midnight</span>
+            <span class="ad-booking-badge ad-booking-required">Booking required</span>
+          </div>
           <p class="ad-card-desc">Prague's finest jazz venue, built over the Vltava river. Glass walls overlooking the water, world-class international and local jazz acts nightly. One of the most atmospheric rooms in Europe.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">Book a river-facing table at least 48 hours ahead — they sell out every weekend without exception.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
-      <div class="ad-card reveal reveal-delay-1">
+      <div class="ad-card reveal reveal-delay-1" data-price="budget" data-booking="walkin" data-cost="20">
+        <span class="ad-popular-badge">47 Czech Inn guests this month</span>
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=600&q=80" alt="AghaRTA Jazz Centrum" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -267,14 +466,20 @@
           </div>
           <div class="ad-card-name">AghaRTA Jazz Centrum</div>
           <div class="ad-card-addr">Železná 16, Praha 1</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 8pm · 3 sets nightly</span>
+            <span class="ad-booking-badge ad-booking-walkin">Walk-ins welcome</span>
+          </div>
           <p class="ad-card-desc">Underground jazz in a Gothic cellar in the Old Town — intimate, dark, and legendary. Running since 1991, this is where Prague's serious jazz scene lives. Three sets nightly.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">Arrive early for the 9pm set — the cellar holds only 60 people and late-comers stand.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
-      <div class="ad-card reveal reveal-delay-2">
+      <div class="ad-card reveal reveal-delay-2" data-price="mid" data-booking="required" data-cost="30">
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=600&q=80" alt="Reduta Jazz Club" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -284,14 +489,20 @@
           </div>
           <div class="ad-card-name">Reduta Jazz Club</div>
           <div class="ad-card-addr">Národní 20, Praha 1</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 9pm · Last entry midnight</span>
+            <span class="ad-booking-badge ad-booking-required">Booking required</span>
+          </div>
           <p class="ad-card-desc">The oldest jazz club in Central Europe — opened in 1958. Bill Clinton famously played the saxophone here during his 1994 Prague visit. History on every wall.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">Ask for the table by the stage left corner — best sightlines in the house.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
-      <div class="ad-card reveal reveal-delay-3">
+      <div class="ad-card reveal reveal-delay-3" data-price="budget" data-booking="walkin" data-cost="25">
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=600&q=80" alt="Ungelt Jazz & Blues Club" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -301,11 +512,16 @@
           </div>
           <div class="ad-card-name">Ungelt Jazz & Blues Club</div>
           <div class="ad-card-addr">Týn 2, Praha 1</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 8pm · Last entry 1am</span>
+            <span class="ad-booking-badge ad-booking-walkin">Walk-ins welcome</span>
+          </div>
           <p class="ad-card-desc">Hidden in the ancient Ungelt courtyard behind the Týn Church. Medieval vaulted ceilings, Czech and international acts, and an expertly curated whisky selection to accompany the music.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">The Ungelt courtyard itself is stunning even before you go inside — arrive 20 minutes early to soak it in.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
     </div>
@@ -321,7 +537,9 @@
       <span class="ad-cat-count">3 venues</span>
     </div>
     <div class="ad-grid">
-      <div class="ad-card reveal">
+      <div class="ad-card reveal" data-price="mid" data-booking="required" data-cost="40">
+        <span class="ad-popular-badge">Most booked by Czech Inn guests</span>
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" alt="T-Anker" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -331,14 +549,20 @@
           </div>
           <div class="ad-card-name">T-Anker</div>
           <div class="ad-card-addr">Náměstí Republiky 8, Praha 1</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 10am · Last orders 11pm</span>
+            <span class="ad-booking-badge ad-booking-required">Book Fri–Sat</span>
+          </div>
           <p class="ad-card-desc">The best rooftop in Prague, full stop. Perched above Náměstí Republiky with unobstructed 360° views — Prague Castle, the Old Town rooftops, and the Powder Tower glowing at night.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">The concierge platform reserves tables here — walk-ins on Friday and Saturday evenings are nearly impossible.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
-      <div class="ad-card reveal reveal-delay-1">
+      <div class="ad-card reveal reveal-delay-1" data-price="premium" data-booking="required" data-cost="65">
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="Cloud 9 Sky Bar" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -348,14 +572,20 @@
           </div>
           <div class="ad-card-name">Cloud 9 Sky Bar & Lounge</div>
           <div class="ad-card-addr">Hilton Prague, Pobřežní 1</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 6pm · Last entry midnight</span>
+            <span class="ad-booking-badge ad-booking-required">Booking required</span>
+          </div>
           <p class="ad-card-desc">On the 9th floor of the Hilton Prague, with a wraparound terrace and indoor cocktail lounge. Sophisticated, quieter than T-Anker, perfect for business drinks or a romantic evening with castle views.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">The west-facing terrace seats catch the last light of sunset over Prague Castle — arrive by 7pm in summer.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
-      <div class="ad-card reveal reveal-delay-2">
+      <div class="ad-card reveal reveal-delay-2" data-price="budget" data-booking="walkin" data-cost="15">
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=600&q=80" alt="Vyšehrad Terrace" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -365,11 +595,16 @@
           </div>
           <div class="ad-card-name">Café Citadela at Vyšehrad</div>
           <div class="ad-card-addr">V Pevnosti 159/5b, Praha 2</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> May–Oct · Opens 2pm · Closes at dusk</span>
+            <span class="ad-booking-badge ad-booking-walkin">Walk-ins welcome</span>
+          </div>
           <p class="ad-card-desc">The hidden gem of Prague's evening scene — a terrace bar inside the Vyšehrad fortress walls, with views of the Vltava valley that most tourists never find. Remarkably good value.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">Combine with the Vyšehrad cemetery visit at dusk — the fortress is magical when the crowds are gone.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
     </div>
@@ -385,7 +620,9 @@
       <span class="ad-cat-count">4 venues</span>
     </div>
     <div class="ad-grid">
-      <div class="ad-card reveal">
+      <div class="ad-card reveal" data-price="premium" data-booking="required" data-cost="55">
+        <span class="ad-popular-badge">Most booked by Czech Inn guests</span>
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1559181567-c3190ca9d222?auto=format&fit=crop&w=600&q=80" alt="Hemingway Bar" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -395,14 +632,20 @@
           </div>
           <div class="ad-card-name">Hemingway Bar</div>
           <div class="ad-card-addr">Karolíny Světlé 26, Praha 1</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 7pm · Last entry 1am</span>
+            <span class="ad-booking-badge ad-booking-required">Booking required</span>
+          </div>
           <p class="ad-card-desc">Ranked among the World's 50 Best Bars. Art Deco interior, over 200 absinthe varieties, and bartenders who treat cocktail-making as a fine art. The Czech absinthe ritual here is unmissable.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">Order the Sidecar — it has been on the menu since day one and is still the best drink they make.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
-      <div class="ad-card reveal reveal-delay-1">
+      <div class="ad-card reveal reveal-delay-1" data-price="premium" data-booking="required" data-cost="50">
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=600&q=80" alt="Black Angel's Bar" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -412,15 +655,21 @@
           </div>
           <div class="ad-card-name">Black Angel's Bar</div>
           <div class="ad-card-addr">Staroměstské náměstí 29, Praha 1</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 7pm · Last entry 2am</span>
+            <span class="ad-booking-badge ad-booking-required">Booking required</span>
+          </div>
           <p class="ad-card-desc">A 1930s-inspired prohibition bar hidden beneath the Old Town Square — exposed brick vaults, dim candlelight, and cocktails that won the Diageo World Class competition. Exceptional by any standard.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">Request the tasting menu — six miniature cocktails spanning the full history of the bar's signature drinks.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
-      <div class="ad-card reveal reveal-delay-2">
-        <img class="ad-card-img" src="https://images.unsplash.com/photo-1582192730841-2a682d7375f9?auto=format&fit=crop&w=600&q=80" alt="Bar, Bistro & Books" loading="lazy"/>
+      <div class="ad-card reveal reveal-delay-2" data-price="mid" data-booking="walkin" data-cost="35">
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1582192730841-2a682d7375f9?auto=format&fit=crop&w=600&q=80" alt="Bitte" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
             <span class="ad-badge ad-badge-type">Cocktail Bar</span>
@@ -429,14 +678,20 @@
           </div>
           <div class="ad-card-name">Bitte</div>
           <div class="ad-card-addr">Mánesova 13, Praha 2</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 5pm · Closes midnight</span>
+            <span class="ad-booking-badge ad-booking-walkin">Walk-ins welcome</span>
+          </div>
           <p class="ad-card-desc">A neighbourhood cocktail bar in beautiful Vinohrady that locals fiercely guard from tourist lists. Exceptional seasonal cocktails, a remarkable natural wine selection, and the best playlist in Prague.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">The bar opens at 5pm — arrive then to get a seat. By 8pm it becomes standing-room only.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
-      <div class="ad-card reveal reveal-delay-3">
+      <div class="ad-card reveal reveal-delay-3" data-price="mid" data-booking="walkin" data-cost="35">
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="Parlour" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -446,11 +701,16 @@
           </div>
           <div class="ad-card-name">Parlour</div>
           <div class="ad-card-addr">Blanická 26, Praha 2</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 6pm · Closes 1am</span>
+            <span class="ad-booking-badge ad-booking-walkin">Walk-ins welcome</span>
+          </div>
           <p class="ad-card-desc">A beautifully designed cocktail parlour that changed the Prague cocktail scene when it opened. Serious technique, approachable menu, and a rare selection of Czech spirits not found elsewhere.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">Ask the bartender what they're proud of this week — the answer is always interesting and usually delicious.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
     </div>
@@ -466,7 +726,9 @@
       <span class="ad-cat-count">4 venues</span>
     </div>
     <div class="ad-grid">
-      <div class="ad-card reveal">
+      <div class="ad-card reveal" data-price="mid" data-booking="required" data-cost="35">
+        <span class="ad-popular-badge">Top-rated show experience</span>
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?auto=format&fit=crop&w=600&q=80" alt="Image Theatre" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -476,14 +738,20 @@
           </div>
           <div class="ad-card-name">Image Theatre</div>
           <div class="ad-card-addr">Pařížská 4, Praha 1</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Shows 8pm & 10pm nightly</span>
+            <span class="ad-booking-badge ad-booking-required">Booking required</span>
+          </div>
           <p class="ad-card-desc">Prague's most acclaimed Black Light Theatre — a genre that was essentially invented in this city. Spectacular visual performances combining dance, mime, and lighting that exist nowhere else in the world.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">Premium seats are worth the extra €10 — front rows get the full dimensional effect of the performance.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
-      <div class="ad-card reveal reveal-delay-1">
+      <div class="ad-card reveal reveal-delay-1" data-price="premium" data-booking="required" data-cost="55">
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80" alt="Lobkowicz Palace" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -493,14 +761,20 @@
           </div>
           <div class="ad-card-name">Lobkowicz Palace Concerts</div>
           <div class="ad-card-addr">Jiřská 3, Praha 1 (Castle)</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Shows 7pm · Book 48 hrs ahead</span>
+            <span class="ad-booking-badge ad-booking-required">Booking required</span>
+          </div>
           <p class="ad-card-desc">Chamber concerts in the Baroque palace where Mozart himself once performed. The Lobkowicz family owns original scores by Beethoven and Handel — the same music performed in the room it was written for.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">Combine with the palace museum in the afternoon — concert-goers receive a 20% museum entry discount.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
-      <div class="ad-card reveal reveal-delay-2">
+      <div class="ad-card reveal reveal-delay-2" data-price="mid" data-booking="required" data-cost="35">
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1603190287605-e6ade32fa852?auto=format&fit=crop&w=600&q=80" alt="Estates Theatre" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -510,14 +784,20 @@
           </div>
           <div class="ad-card-name">Estates Theatre</div>
           <div class="ad-card-addr">Ovocný trh 1, Praha 1</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Performance times vary · Check schedule</span>
+            <span class="ad-booking-badge ad-booking-required">Booking required</span>
+          </div>
           <p class="ad-card-desc">The theatre where Mozart premiered Don Giovanni in 1787 — one of the most historically significant opera houses in the world. Still staging full-scale opera, ballet, and drama in its original 18th-century hall.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">Upper-circle tickets start at €18 — excellent value for a world-class performance in a stunning historic space.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
         </div>
       </div>
-      <div class="ad-card reveal reveal-delay-3">
+      <div class="ad-card reveal reveal-delay-3" data-price="mid" data-booking="walkin" data-cost="25">
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
         <img class="ad-card-img" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt="La Fabrika" loading="lazy"/>
         <div class="ad-card-body">
           <div class="ad-card-badges">
@@ -527,11 +807,188 @@
           </div>
           <div class="ad-card-name">La Fabrika</div>
           <div class="ad-card-addr">Komunardů 30, Praha 7</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Doors 7pm · Varies by show</span>
+            <span class="ad-booking-badge ad-booking-walkin">Walk-ins welcome</span>
+          </div>
           <p class="ad-card-desc">A converted industrial factory in the trendy Holešovice district — Prague's best mid-sized live music and cultural venue. International touring acts, theatre productions, and some of Prague's best club nights.</p>
           <div class="ad-card-tip">
             <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
             <span class="ad-card-tip-text">Holešovice is Prague's most interesting neighbourhood right now — combine La Fabrika with dinner at any of the restaurants on Komunardů street.</span>
           </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Reserve via Concierge →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Hidden & Underground -->
+<section class="ad-section" id="tab-hidden" style="display:none">
+  <div class="ad-section-inner">
+    <div class="ad-cat-header reveal">
+      <span class="ad-cat-icon"><iconify-icon icon="tabler:eye-off" style="font-size:28px;color:#C9A84C"></iconify-icon></span>
+      <div class="ad-cat-title">Hidden & Underground</div>
+      <span class="ad-cat-count">4 venues · The version most tourists never find</span>
+    </div>
+    <div class="ad-grid">
+      <div class="ad-card reveal" data-price="budget" data-booking="walkin" data-cost="12">
+        <span class="ad-popular-badge">Local legend · Est. 1930s</span>
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=600&q=80" alt="U Sudu" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Underground Cellar Bar</span>
+            <span class="ad-badge ad-badge-price">€ Beer & wine only</span>
+            <span class="ad-badge ad-badge-area">Vinohrady</span>
+          </div>
+          <div class="ad-card-name">U Sudu</div>
+          <div class="ad-card-addr">Vodičkova 10, Praha 1</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 4pm · Closes 4am</span>
+            <span class="ad-booking-badge ad-booking-walkin">Walk-ins only</span>
+          </div>
+          <p class="ad-card-desc">Prague's most surreal bar — a rabbit warren of interconnected Gothic cellars descending six levels beneath the street. Each tunnel leads to another. Locals have been getting lost here for decades. Czech beer at local prices, zero tourist markup.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
+            <span class="ad-card-tip-text">Keep descending — the lowest level is the most atmospheric. Not all guests discover it exists.</span>
+          </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Ask Concierge for Directions →</a>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-1" data-price="budget" data-booking="walkin" data-cost="15">
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Bukowski's Bar" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Literary Dive Bar</span>
+            <span class="ad-badge ad-badge-price">€ Cash only</span>
+            <span class="ad-badge ad-badge-area">Žižkov</span>
+          </div>
+          <div class="ad-card-name">Bukowski's Bar</div>
+          <div class="ad-card-addr">Bořivojova 86, Praha 3</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 3pm · Closes 5am</span>
+            <span class="ad-booking-badge ad-booking-walkin">Walk-ins only</span>
+          </div>
+          <p class="ad-card-desc">Named after Charles Bukowski, this Žižkov institution has no sign outside and serves some of the cheapest drinks in the city. Artists, writers, and night-owls from every walk of life — 3am conversations that go somewhere. The real Prague in one room.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
+            <span class="ad-card-tip-text">There is no sign. Look for a black door with a small sticker. If you find it, you belong there.</span>
+          </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Ask Concierge for Directions →</a>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-2" data-price="budget" data-booking="walkin" data-cost="15">
+        <span class="ad-popular-badge">Most unique venue in Prague</span>
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt="Cross Club" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Steampunk Club</span>
+            <span class="ad-badge ad-badge-price">€ Entry from €3</span>
+            <span class="ad-badge ad-badge-area">Holešovice</span>
+          </div>
+          <div class="ad-card-name">Cross Club</div>
+          <div class="ad-card-addr">Plynární 23, Praha 7</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 2pm · Closes 6am</span>
+            <span class="ad-booking-badge ad-booking-walkin">Walk-ins welcome</span>
+          </div>
+          <p class="ad-card-desc">An industrial steampunk universe spanning multiple floors — the interior was built entirely from salvaged machine parts, pipes, and scrap metal by the owner over 15 years. Rotating DJ nights, live music, and a terrace in the industrial wasteland of Holešovice. Utterly unlike anything else on earth.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
+            <span class="ad-card-tip-text">Explore all three levels — each has a completely different atmosphere. The top terrace is extraordinary.</span>
+          </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Ask Concierge for Directions →</a>
+        </div>
+      </div>
+      <div class="ad-card reveal reveal-delay-3" data-price="budget" data-booking="walkin" data-cost="10">
+        <button class="ad-card-pick" aria-label="Add to evening">+</button>
+        <img class="ad-card-img" src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&w=600&q=80" alt="Vzorkovna" loading="lazy"/>
+        <div class="ad-card-body">
+          <div class="ad-card-badges">
+            <span class="ad-badge ad-badge-type">Underground Bar</span>
+            <span class="ad-badge ad-badge-price">€ Local prices</span>
+            <span class="ad-badge ad-badge-area">Nové Město</span>
+          </div>
+          <div class="ad-card-name">Vzorkovna</div>
+          <div class="ad-card-addr">Náměstí Republiky 8 (basement), Praha 1</div>
+          <div class="ad-card-meta">
+            <span class="ad-card-hours"><iconify-icon icon="tabler:clock" style="font-size:11px"></iconify-icon> Opens 6pm · Closes 3am</span>
+            <span class="ad-booking-badge ad-booking-walkin">Walk-ins welcome</span>
+          </div>
+          <p class="ad-card-desc">Literally meaning "Sample Room" — a basement bar hidden directly under the Palladium shopping mall, completely invisible from street level. Czech students, artists, and off-duty bartenders from the city's cocktail scene. No pretension, €1.50 beers, outstanding atmosphere.</p>
+          <div class="ad-card-tip">
+            <span class="ad-card-tip-icon"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="2000" colors="primary:#C9A84C" style="width:18px;height:18px"></lord-icon></span>
+            <span class="ad-card-tip-text">The entrance is a plain door with no branding — just descend the stairs. Best on a Wednesday or Thursday.</span>
+          </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Ask Concierge for Directions →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Three Evenings, Three Moods -->
+<section class="ad-routes">
+  <div class="ad-routes-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">Curated by Czech Inn Hotels</div>
+    <h2 class="sec-title sec-title-dark reveal" style="margin-bottom:8px">Three Evenings, <em>Three Moods</em></h2>
+    <p class="reveal" style="font-size:.82rem;color:var(--grey);line-height:1.9;max-width:520px">Not sure where to start? Every route below can be arranged through the Digital Concierge — priority reservations at every venue, same-day confirmation.</p>
+    <div class="ad-routes-grid">
+      <div class="ad-route-card reveal">
+        <img class="ad-route-card-img" src="https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=700&q=80" alt="The Jazz Crawler" loading="lazy"/>
+        <div class="ad-route-card-body">
+          <div class="ad-route-mood">Classic Prague</div>
+          <div class="ad-route-title">The Jazz Crawler</div>
+          <div class="ad-route-stops">
+            <div class="ad-route-stop"><span class="ad-route-stop-dot"></span><strong>7pm</strong> — T-Anker rooftop for sunset drinks</div>
+            <div class="ad-route-stop"><span class="ad-route-stop-dot"></span><strong>9pm</strong> — Hemingway Bar for a Sidecar</div>
+            <div class="ad-route-stop"><span class="ad-route-stop-dot"></span><strong>10:30pm</strong> — Reduta Jazz for the late set</div>
+          </div>
+          <div class="ad-route-meta">
+            <span><iconify-icon icon="tabler:clock" style="font-size:12px"></iconify-icon> ~4.5 hours</span>
+            <span><iconify-icon icon="tabler:coin-euro" style="font-size:12px"></iconify-icon> ~€80–100/person</span>
+            <span><iconify-icon icon="tabler:map-pin" style="font-size:12px"></iconify-icon> Old Town + New Town</span>
+          </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Book This Route →</a>
+        </div>
+      </div>
+      <div class="ad-route-card reveal reveal-delay-1">
+        <img class="ad-route-card-img" src="https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=700&q=80" alt="The Hidden Night" loading="lazy"/>
+        <div class="ad-route-card-body">
+          <div class="ad-route-mood">Local Secret</div>
+          <div class="ad-route-title">The Hidden Night</div>
+          <div class="ad-route-stops">
+            <div class="ad-route-stop"><span class="ad-route-stop-dot"></span><strong>6pm</strong> — Bitte for seasonal cocktails</div>
+            <div class="ad-route-stop"><span class="ad-route-stop-dot"></span><strong>9pm</strong> — Black Angel's speakeasy under the Square</div>
+            <div class="ad-route-stop"><span class="ad-route-stop-dot"></span><strong>11pm</strong> — AghaRTA Jazz in a Gothic cellar</div>
+          </div>
+          <div class="ad-route-meta">
+            <span><iconify-icon icon="tabler:clock" style="font-size:12px"></iconify-icon> ~5 hours</span>
+            <span><iconify-icon icon="tabler:coin-euro" style="font-size:12px"></iconify-icon> ~€65–85/person</span>
+            <span><iconify-icon icon="tabler:map-pin" style="font-size:12px"></iconify-icon> Vinohrady + Old Town</span>
+          </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Book This Route →</a>
+        </div>
+      </div>
+      <div class="ad-route-card reveal reveal-delay-2">
+        <img class="ad-route-card-img" src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=700&q=80" alt="The Grand Evening" loading="lazy"/>
+        <div class="ad-route-card-body">
+          <div class="ad-route-mood">Premium</div>
+          <div class="ad-route-title">The Grand Evening</div>
+          <div class="ad-route-stops">
+            <div class="ad-route-stop"><span class="ad-route-stop-dot"></span><strong>7pm</strong> — Lobkowicz Palace concert</div>
+            <div class="ad-route-stop"><span class="ad-route-stop-dot"></span><strong>9:30pm</strong> — Cloud 9 Sky Bar for cocktails</div>
+            <div class="ad-route-stop"><span class="ad-route-stop-dot"></span><strong>Midnight</strong> — Parlour for a nightcap</div>
+          </div>
+          <div class="ad-route-meta">
+            <span><iconify-icon icon="tabler:clock" style="font-size:12px"></iconify-icon> ~5 hours</span>
+            <span><iconify-icon icon="tabler:coin-euro" style="font-size:12px"></iconify-icon> ~€110–140/person</span>
+            <span><iconify-icon icon="tabler:map-pin" style="font-size:12px"></iconify-icon> Castle + New Town</span>
+          </div>
+          <a href="concierge.html" class="ad-card-cta" data-nav>Book This Route →</a>
         </div>
       </div>
     </div>
@@ -571,14 +1028,16 @@
           <div class="ad-neighbourhood-venues">
             <div class="ad-venue-line">Bitte <span>· Local favourite, hidden gem</span></div>
             <div class="ad-venue-line">Oblaca Bar <span>· TV Tower bar at 66 metres</span></div>
-            <div class="ad-venue-line">Riegrovy sady Beer Garden <span>· Open-air, city views</span></div>
+            <div class="ad-venue-line">Bukowski's Bar <span>· Literary dive, no sign outside</span></div>
+            <div class="ad-venue-line">U Sudu <span>· Endless underground cellar tunnels</span></div>
           </div>
         </div>
         <div class="ad-neighbourhood">
-          <div class="ad-neighbourhood-name"><div class="ad-neighbourhood-dot" style="background:rgba(156,123,60,.35)"></div>Smíchov & Beyond</div>
+          <div class="ad-neighbourhood-name"><div class="ad-neighbourhood-dot" style="background:rgba(156,123,60,.35)"></div>Smíchov, Holešovice & Beyond</div>
           <div class="ad-neighbourhood-venues">
             <div class="ad-venue-line">Jazz Dock <span>· On the Vltava river</span></div>
-            <div class="ad-venue-line">La Fabrika, Holešovice <span>· Industrial live music</span></div>
+            <div class="ad-venue-line">La Fabrika <span>· Industrial live music, Holešovice</span></div>
+            <div class="ad-venue-line">Cross Club <span>· Steampunk underground, Holešovice</span></div>
             <div class="ad-venue-line">Café Citadela, Vyšehrad <span>· Fortress terrace</span></div>
           </div>
         </div>
@@ -599,31 +1058,120 @@
 
 </div><!-- /page-wrap -->
 
+<!-- Build Your Night sticky panel -->
+<div class="ad-build-summary" id="build-summary">
+  <div>
+    <div class="ad-build-label">Your Evening</div>
+    <div class="ad-build-venues" id="build-venues-list"></div>
+  </div>
+  <div class="ad-build-right">
+    <span class="ad-build-price" id="build-price"></span>
+    <a href="concierge.html" class="btn-gold" data-nav style="font-size:.75rem;padding:10px 20px">Book via Concierge →</a>
+    <button class="ad-build-clear" id="build-clear">Clear</button>
+  </div>
+</div>
+
 <script src="js/nav.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/data.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  /* Tab switching */
+
+  /* ── Tab switching ── */
   const tabs = document.querySelectorAll('.ad-tab');
-  const sections = { jazz: document.getElementById('tab-jazz'), rooftop: document.getElementById('tab-rooftop'), cocktail: document.getElementById('tab-cocktail'), shows: document.getElementById('tab-shows') };
+  const sections = {
+    jazz:     document.getElementById('tab-jazz'),
+    rooftop:  document.getElementById('tab-rooftop'),
+    cocktail: document.getElementById('tab-cocktail'),
+    shows:    document.getElementById('tab-shows'),
+    hidden:   document.getElementById('tab-hidden')
+  };
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
-      Object.values(sections).forEach(s => s.style.display = 'none');
+      Object.values(sections).forEach(s => { if (s) s.style.display = 'none'; });
       const target = sections[tab.dataset.tab];
       if (target) {
         target.style.display = '';
-        target.querySelectorAll('.reveal').forEach(el => { el.classList.remove('vis'); });
-        setTimeout(() => initReveal(), 50);
+        target.querySelectorAll('.reveal').forEach(el => el.classList.remove('vis'));
+        setTimeout(initReveal, 50);
       }
     });
   });
 
+  /* ── Filter bar ── */
+  const filterBtns = document.querySelectorAll('.ad-filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.ad-card').forEach(card => {
+        if (f === 'all') {
+          card.classList.remove('ad-hidden-filter');
+        } else if (f === 'walkin' || f === 'required') {
+          card.classList.toggle('ad-hidden-filter', card.dataset.booking !== f);
+        } else {
+          card.classList.toggle('ad-hidden-filter', card.dataset.price !== f);
+        }
+      });
+    });
+  });
+
+  /* ── Build Your Night ── */
+  const panel = document.getElementById('build-summary');
+  const venuesList = document.getElementById('build-venues-list');
+  const priceEl = document.getElementById('build-price');
+  let selected = [];
+
+  function updatePanel() {
+    if (!selected.length) { panel.classList.remove('visible'); return; }
+    panel.classList.add('visible');
+    venuesList.innerHTML = '<strong>' + selected.map(v => v.name).join(' → ') + '</strong>';
+    const total = selected.reduce((s, v) => s + v.cost, 0);
+    priceEl.textContent = '~€' + total + '/person';
+    const maxed = selected.length >= 3;
+    document.querySelectorAll('.ad-card-pick').forEach(btn => {
+      const isSelected = btn.closest('.ad-card').classList.contains('ad-selected');
+      btn.style.opacity = (!isSelected && maxed) ? '.3' : '';
+      btn.style.pointerEvents = (!isSelected && maxed) ? 'none' : '';
+    });
+  }
+
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.ad-card-pick');
+    if (!btn) return;
+    e.stopPropagation();
+    const card = btn.closest('.ad-card');
+    const name = card.querySelector('.ad-card-name').textContent.trim();
+    const cost = parseInt(card.dataset.cost || '35', 10);
+    if (card.classList.contains('ad-selected')) {
+      card.classList.remove('ad-selected');
+      btn.textContent = '+';
+      selected = selected.filter(v => v.name !== name);
+    } else if (selected.length < 3) {
+      card.classList.add('ad-selected');
+      btn.textContent = '✓';
+      selected.push({ name, cost });
+    }
+    updatePanel();
+  });
+
+  document.getElementById('build-clear').addEventListener('click', () => {
+    selected = [];
+    document.querySelectorAll('.ad-card.ad-selected').forEach(c => c.classList.remove('ad-selected'));
+    document.querySelectorAll('.ad-card-pick').forEach(b => {
+      b.textContent = '+'; b.style.opacity = ''; b.style.pointerEvents = '';
+    });
+    panel.classList.remove('visible');
+  });
+
+  /* ── Reveal on scroll ── */
   function initReveal() {
     const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }});
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal:not(.vis)').forEach(el => obs.observe(el));
   }

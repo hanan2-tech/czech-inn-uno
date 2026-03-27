@@ -215,6 +215,16 @@
   font-size: .78rem; color: var(--grey); line-height: 1.7;
 }
 .data-disclaimer strong { color: var(--tan); }
+
+@media(max-width:768px) {
+  .an-charts, .an-proj, .an-market { padding: 56px 20px; }
+  .an-charts-grid  { grid-template-columns: 1fr; gap: 24px; }
+  .an-market-grid  { grid-template-columns: 1fr 1fr; gap: 16px; }
+}
+@media(max-width:480px) {
+  .an-market-grid  { grid-template-columns: 1fr; }
+  .an-hero-kpis    { grid-template-columns: 1fr 1fr; }
+}
 </style>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -227,9 +237,9 @@
 <section class="an-hero">
   <div class="an-hero-inner">
     <div>
-      <div class="sec-eyebrow reveal">Performance Dashboard</div>
-      <h1 class="sec-title sec-title-dark reveal" style="margin-bottom:20px">The Numbers That Tell You<br><em>Exactly What You're Missing</em></h1>
-      <p class="sec-sub reveal" style="color:var(--grey);max-width:460px">Real data from Prague tourism 2024. Projected data modelled on Czech Inn Hotels occupancy and comparable partnership benchmarks. All sources cited.</p>
+      <div class="sec-eyebrow reveal" data-i18n="an.eyebrow">Performance Dashboard</div>
+      <h1 class="sec-title sec-title-dark reveal" style="margin-bottom:20px" data-i18n-html="an.title">The Numbers That Tell You<br><em>Exactly What You're Missing</em></h1>
+      <p class="sec-sub reveal" style="color:var(--grey);max-width:460px" data-i18n="an.sub">Real data from Prague tourism 2024. Projected data modelled on Czech Inn Hotels occupancy and comparable partnership benchmarks. All sources cited.</p>
       <div class="data-disclaimer reveal">
         <strong>Transparency note:</strong> This dashboard shows two types of data. <span style="color:#4caf7d">Green ✓ Verified</span> labels indicate real, cited market data. <span style="color:var(--gold)">Gold ◇ Projected</span> labels indicate forward-looking projections based on real inputs. Projections are estimates, not guarantees.
       </div>
@@ -405,6 +415,7 @@
 </div><!-- /page-wrap -->
 
 <script src="js/nav.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/data.js"></script>
 <script>
 /* Monthly bar chart data — projected Year 1 */

@@ -188,6 +188,19 @@
 .reveal-delay-1 { transition-delay: .1s; }
 .reveal-delay-2 { transition-delay: .2s; }
 .reveal-delay-3 { transition-delay: .3s; }
+
+@media(max-width:768px) {
+  .int-hero-inner  { padding: 80px 20px 56px; grid-template-columns: 1fr; gap: 40px; }
+  .int-touch,
+  .int-setup,
+  .int-materials   { padding: 56px 20px; }
+  .int-touch-grid  { grid-template-columns: 1fr; }
+  .int-setup-grid  { grid-template-columns: 1fr; gap: 32px; }
+  .int-mat-grid    { grid-template-columns: 1fr 1fr; gap: 16px; }
+}
+@media(max-width:480px) {
+  .int-mat-grid    { grid-template-columns: 1fr; }
+}
 </style>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -200,9 +213,9 @@
 <section class="int-hero">
   <div class="int-hero-inner">
     <div>
-      <div class="sec-eyebrow reveal">Hotel Integration</div>
-      <h1 class="sec-title sec-title-dark reveal" style="margin-bottom:20px">Zero Friction.<br><em>Zero Downtime.</em></h1>
-      <p class="sec-sub reveal" style="color:var(--grey);max-width:440px">The entire platform integrates with your hotel operations in under 30 days — no PMS disruption, no dedicated IT resource, no staff retraining.</p>
+      <div class="sec-eyebrow reveal" data-i18n="int.eyebrow">Hotel Integration</div>
+      <h1 class="sec-title sec-title-dark reveal" style="margin-bottom:20px" data-i18n-html="int.title">Zero Friction.<br><em>Zero Downtime.</em></h1>
+      <p class="sec-sub reveal" style="color:var(--grey);max-width:440px" data-i18n="int.sub">The entire platform integrates with your hotel operations in under 30 days — no PMS disruption, no dedicated IT resource, no staff retraining.</p>
       <div class="reveal" style="margin-top:32px">
         <a href="partnership.html" class="btn-gold" data-nav>See Partnership Terms →</a>
       </div>
@@ -403,6 +416,7 @@
 </div><!-- /page-wrap -->
 
 <script src="js/nav.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/data.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {

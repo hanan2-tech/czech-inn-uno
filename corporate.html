@@ -228,6 +228,22 @@
 .reveal-delay-1 { transition-delay: .1s; }
 .reveal-delay-2 { transition-delay: .2s; }
 .reveal-delay-3 { transition-delay: .3s; }
+
+@media(max-width:768px) {
+  .co-hero-inner   { padding: 80px 20px 56px; grid-template-columns: 1fr; gap: 40px; }
+  .co-types,
+  .co-packages,
+  .co-builder,
+  .co-venues       { padding: 56px 20px; }
+  .co-types-grid   { grid-template-columns: 1fr; }
+  .co-pkg-grid     { grid-template-columns: 1fr; }
+  .co-builder-grid { grid-template-columns: 1fr; gap: 32px; }
+  .co-venues-grid  { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .co-hero-stats   { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:480px) {
+  .co-venues-grid  { grid-template-columns: 1fr; }
+}
 </style>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -242,9 +258,9 @@
   <div class="co-hero-overlay"></div>
   <div class="co-hero-inner">
     <div>
-      <div class="sec-eyebrow reveal" style="color:var(--gold)">Groups & Corporate</div>
-      <h1 class="sec-title sec-title-dark reveal" style="margin-bottom:20px">When Your Team Leaves Prague,<br><em>They Leave Different.</em></h1>
-      <p class="sec-sub reveal" style="color:var(--grey);max-width:440px">The easiest brief your executive assistant will ever send you. Incentive trips, team building, retreats, and conference extensions — from 10 to 200 people, all built around Czech Inn Hotels properties.</p>
+      <div class="sec-eyebrow reveal" style="color:var(--gold)" data-i18n="corp.eyebrow">Groups & Corporate</div>
+      <h1 class="sec-title sec-title-dark reveal" style="margin-bottom:20px" data-i18n-html="corp.title">When Your Team Leaves Prague,<br><em>They Leave Different.</em></h1>
+      <p class="sec-sub reveal" style="color:var(--grey);max-width:440px" data-i18n="corp.sub">The easiest brief your executive assistant will ever send you. Incentive trips, team building, retreats, and conference extensions — from 10 to 200 people, all built around Czech Inn Hotels properties.</p>
       <div class="reveal" style="margin-top:32px;display:flex;gap:14px">
         <a href="#packages" class="btn-gold">View Packages</a>
         <a href="#builder" class="btn-outline btn-outline-light">Build a Programme</a>
@@ -531,6 +547,7 @@
 </div><!-- /page-wrap -->
 
 <script src="js/nav.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/data.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {

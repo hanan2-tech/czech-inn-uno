@@ -684,6 +684,15 @@
 .tours-cta-inner {
   max-width: 640px; margin: 0 auto;
 }
+
+@media(max-width:768px) {
+  .tours-hero-content { padding: 40px 20px 52px; }
+  .info-bar           { padding: 20px 20px; flex-wrap: wrap; gap: 16px; }
+  .tour-body          { padding: 48px 20px; }
+  .tour-body-grid     { grid-template-columns: 1fr; }
+  .stops-section      { padding: 0 20px 48px; }
+  .tours-cta          { padding: 56px 20px; }
+}
 </style>
 </head>
 <body>
@@ -693,9 +702,9 @@
   <section class="tours-hero">
     <div class="tours-hero-bg"></div>
     <div class="tours-hero-content">
-      <div class="tours-hero-eyebrow">4 Tours · 12 Languages · 4.91★ Rating</div>
-      <h1 class="tours-hero-title">Four Stories Prague Has<br><em>Never Told Quite Like This</em></h1>
-      <p class="tours-hero-desc">Every stop chosen deliberately. Every story told by someone who's spent their life here. Every tour rated 4.91 stars by guests who came back to the hotel talking.</p>
+      <div class="tours-hero-eyebrow" data-i18n="tours.eyebrow">4 Tours · 12 Languages · 4.91★ Rating</div>
+      <h1 class="tours-hero-title" data-i18n-html="tours.title">Four Stories Prague Has<br><em>Never Told Quite Like This</em></h1>
+      <p class="tours-hero-desc" data-i18n="tours.sub">Every stop chosen deliberately. Every story told by someone who's spent their life here. Every tour rated 4.91 stars by guests who came back to the hotel talking.</p>
       <div class="tours-hero-stats">
         <div class="hero-stat">
           <div class="hero-stat-num">847</div>
@@ -786,6 +795,7 @@
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 <script src="js/nav.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/data.js"></script>
 <script>
 /* ═══════════════════════════════════════════════

@@ -172,6 +172,16 @@
 .reveal-delay-1 { transition-delay: .1s; }
 .reveal-delay-2 { transition-delay: .2s; }
 .reveal-delay-3 { transition-delay: .3s; }
+
+@media(max-width:768px) {
+  .sp-hero                { padding: 80px 20px 56px; }
+  .sp-reviews,
+  .sp-compare,
+  .sp-case                { padding: 56px 20px; }
+  .sp-press               { padding: 48px 20px; }
+  .sp-rev-grid            { grid-template-columns: 1fr; }
+  .sp-case-grid           { grid-template-columns: 1fr; }
+}
 </style>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -183,9 +193,9 @@
 <!-- Hero -->
 <section class="sp-hero">
   <div class="sp-hero-inner">
-    <div class="sec-eyebrow reveal">Verified by Guests</div>
-    <h1 class="sec-title sec-title-dark reveal reveal-delay-1">847 Guests. 4.91 Stars.<br><em>Here Is What They Actually Said.</em></h1>
-    <p class="sec-sub reveal reveal-delay-2" style="margin:0 auto;max-width:520px">412 verified reviews. 847 tours completed in 2024. A platform guests recommend to friends — and that drives repeat hotel bookings.</p>
+    <div class="sec-eyebrow reveal" data-i18n="sp.eyebrow">Verified by Guests</div>
+    <h1 class="sec-title sec-title-dark reveal reveal-delay-1" data-i18n-html="sp.title">847 Guests. 4.91 Stars.<br><em>Here Is What They Actually Said.</em></h1>
+    <p class="sec-sub reveal reveal-delay-2" style="margin:0 auto;max-width:520px" data-i18n="sp.sub">412 verified reviews. 847 tours completed in 2024. A platform guests recommend to friends — and that drives repeat hotel bookings.</p>
     <div class="sp-rating-block reveal reveal-delay-3">
       <div class="sp-rating-score">4.91</div>
       <div>
@@ -437,6 +447,7 @@
 </div><!-- /page-wrap -->
 
 <script src="js/nav.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/data.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {

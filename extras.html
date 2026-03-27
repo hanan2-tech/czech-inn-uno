@@ -244,6 +244,14 @@
 
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.vis { opacity: 1; transform: none; }
+
+@media(max-width:768px) {
+  .ex-hero         { padding: 80px 20px 56px; }
+  .ex-section      { padding: 56px 20px; }
+  .ex-cart         { width: 100vw; border-left: none;
+                     border-top: 1px solid rgba(156,123,60,.18); }
+  .ex-cart-toggle  { bottom: 24px; right: 24px; width: 52px; height: 52px; }
+}
 </style>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -255,9 +263,9 @@
 <!-- Hero -->
 <section class="ex-hero">
   <div class="ex-hero-content">
-    <div class="sec-eyebrow reveal">Czech Inn Hotels Experiences</div>
-    <h1 class="sec-title reveal" style="margin-bottom:20px">26 Experiences <em>Prague Will Remember You For</em></h1>
-    <p class="sec-sub reveal" style="max-width:520px;margin:0 auto">26 hand-picked Prague experiences — from private cooking classes to helicopter flights. From €29 to €249. Book individually or bundle with any guided tour.</p>
+    <div class="sec-eyebrow reveal" data-i18n="ex.eyebrow">Czech Inn Hotels Experiences</div>
+    <h1 class="sec-title reveal" style="margin-bottom:20px" data-i18n-html="ex.title">26 Experiences <em>Prague Will Remember You For</em></h1>
+    <p class="sec-sub reveal" style="max-width:520px;margin:0 auto" data-i18n="ex.sub">26 hand-picked Prague experiences — from private cooking classes to helicopter flights. From €29 to €249. Book individually or bundle with any guided tour.</p>
   </div>
 </section>
 
@@ -305,6 +313,7 @@
 </div><!-- /page-wrap -->
 
 <script src="js/nav.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/data.js"></script>
 <script>
 /* ── Extras data ─── */

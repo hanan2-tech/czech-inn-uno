@@ -402,6 +402,20 @@
 .reveal-delay-2 { transition-delay: .2s; }
 .reveal-delay-3 { transition-delay: .3s; }
 .reveal-delay-4 { transition-delay: .4s; }
+
+@media(max-width:768px) {
+  .pt-hero-content  { padding: 80px 20px 56px; }
+  .pt-offer,
+  .pt-needs,
+  .pt-timeline,
+  .pt-finance,
+  .pt-guarantee     { padding: 56px 20px; }
+  .pt-ask           { padding: 80px 20px; }
+  .pt-offer-grid    { grid-template-columns: 1fr; }
+  .pt-needs-steps   { grid-template-columns: 1fr; }
+  .pt-tl-grid       { grid-template-columns: 1fr; }
+  .pt-finance-layout{ grid-template-columns: 1fr; gap: 32px; }
+}
 </style>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -416,10 +430,10 @@
   <div class="pt-hero-ring"></div>
   <div class="pt-hero-content">
     <div class="pt-hero-eyebrow">A proposal for Jaroslav Svoboda — Czech Inn Hotels</div>
-    <h1 class="pt-hero-title">
+    <h1 class="pt-hero-title" data-i18n-html="pp.title">
       The Partnership That<br><em>Pays for Itself</em> — Before<br>It Costs You Anything
     </h1>
-    <p class="pt-hero-desc">
+    <p class="pt-hero-desc" data-i18n="pp.sub">
       28 hotels. 3,300 rooms. Every guest arriving in Prague with money to spend on experiences — and nowhere to spend it. Until now.
     </p>
     <div class="pt-hero-cta-row">
@@ -739,6 +753,7 @@
 </div><!-- /page-wrap -->
 
 <script src="js/nav.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/data.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {

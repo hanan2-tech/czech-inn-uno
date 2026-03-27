@@ -168,6 +168,22 @@
   letter-spacing: 1px; text-transform: uppercase;
 }
 
+/* Language switcher */
+.nav-lang {
+  display: flex; align-items: center; gap: 2px;
+  margin-left: 12px; padding-left: 12px;
+  border-left: 1px solid rgba(156,123,60,.18);
+}
+.nav-lang-btn {
+  padding: 5px 8px; font-size: .72rem; font-weight: 500;
+  color: var(--grey); letter-spacing: .5px;
+  background: transparent; border: none; cursor: pointer;
+  border-radius: 4px; font-family: var(--fb);
+  transition: color .2s, background .2s;
+}
+.nav-lang-btn:hover { color: var(--tan); }
+.nav-lang-btn.active { color: var(--gold); }
+
 /* Partnership CTA pill */
 .nav-cta {
   background: linear-gradient(110deg, var(--gold), var(--gold-light) 50%, var(--gold)) !important;
@@ -379,3 +395,162 @@
 }
 /* Hide on partnership page itself */
 body.page-partnership .float-cta { display: none; }
+
+/* ── Hamburger Button ───────────────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 6px; width: 40px; height: 40px;
+  background: transparent; border: none; cursor: pointer; padding: 8px;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--tan); border-radius: 2px;
+  transition: transform .3s, opacity .3s, width .3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* ── Mobile Overlay ─────────────────────────────────────── */
+.nav-mobile-overlay {
+  position: fixed; inset: 0; z-index: 996;
+  background: rgba(0,0,0,.55);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .3s, visibility .3s;
+}
+.nav-mobile-overlay.open {
+  opacity: 1; visibility: visible; pointer-events: auto;
+}
+
+/* ── Mobile Drawer ──────────────────────────────────────── */
+.nav-mobile {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: min(320px, 85vw); z-index: 997;
+  background: rgba(0,15,30,.98);
+  border-left: 1px solid rgba(156,123,60,.18);
+  transform: translateX(100%);
+  transition: transform .35s cubic-bezier(.76,0,.24,1);
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+}
+.nav-mobile.open { transform: translateX(0); }
+
+.nav-mobile-header {
+  display: flex; align-items: center; gap: 4px;
+  padding: 0 20px; height: var(--nav-h);
+  border-bottom: 1px solid rgba(156,123,60,.12);
+  flex-shrink: 0;
+}
+.nav-mobile-header .nav-logo-brand {
+  font-family: var(--fd); font-size: 1.05rem;
+  font-weight: 700; color: var(--gold); letter-spacing: 2px;
+}
+.nav-mobile-header .nav-logo-hotel {
+  font-family: var(--fd); font-size: .9rem; color: var(--cream);
+}
+.nav-mobile-close {
+  margin-left: auto; background: transparent; border: none;
+  cursor: pointer; color: var(--grey); font-size: 1.1rem;
+  padding: 8px; transition: color .2s; line-height: 1;
+}
+.nav-mobile-close:hover { color: var(--cream); }
+
+.nav-mobile-links { padding: 12px 0; flex: 1; }
+.nav-mobile-links a {
+  display: block; padding: 11px 24px;
+  font-size: .88rem; color: var(--tan);
+  font-family: var(--fb); transition: color .2s, background .2s;
+}
+.nav-mobile-links a:hover,
+.nav-mobile-links a.active { color: var(--gold); background: rgba(156,123,60,.06); }
+
+.nav-mobile-section {
+  padding: 14px 24px 5px;
+  font-size: .6rem; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;
+}
+.nav-mobile-cta {
+  margin: 14px 20px 4px !important;
+  background: linear-gradient(110deg, var(--gold), var(--gold-light) 50%, var(--gold)) !important;
+  background-size: 200% auto !important;
+  color: #fff !important; border-radius: 6px !important;
+  text-align: center !important; font-weight: 500 !important;
+  padding: 12px 20px !important;
+}
+.nav-mobile-lang {
+  display: flex; gap: 4px;
+  padding: 16px 20px;
+  border-top: 1px solid rgba(156,123,60,.12);
+  flex-shrink: 0;
+}
+
+/* ── Mobile Breakpoint ──────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Nav */
+  .nav-links, .nav-lang { display: none !important; }
+  .nav-hamburger { display: flex; }
+  .nav-inner { padding: 0 20px; }
+
+  /* Sections */
+  .section         { padding: 56px 20px; }
+  .section-dark    { padding: 56px 20px; }
+  .section-cream   { padding: 56px 20px; }
+  .section-dark-inner,
+  .section-cream-inner { padding: 0; }
+
+  /* Page hero */
+  .page-hero-content { padding: 56px 20px; }
+
+  /* Footer */
+  .site-footer { padding: 48px 20px 28px; }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 24px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  /* Float CTA — smaller, stay clear of screen edge */
+  .float-cta {
+    bottom: 16px; right: 16px;
+    padding: 11px 20px; font-size: .75rem;
+  }
+
+  /* Buttons */
+  .btn-gold, .btn-outline { padding: 12px 24px; font-size: .84rem; }
+}
+
+/* ── Small screens (phones in portrait) ─────────────────── */
+@media (max-width: 480px) {
+  /* Footer single column */
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+
+  /* Section headings */
+  .sec-sub { margin-bottom: 32px; }
+
+  /* Prevent card grids from causing horizontal scroll */
+  [style*="minmax(280px"] { grid-template-columns: 1fr !important; }
+}
+
+/* ── RTL Overrides (Hebrew) ─────────────────────────────── */
+html[dir="rtl"] .float-cta {
+  right: auto; left: 28px;
+}
+html[dir="rtl"] .nav-mobile {
+  right: auto; left: 0;
+  border-left: none;
+  border-right: 1px solid rgba(156,123,60,.18);
+  transform: translateX(-100%);
+}
+html[dir="rtl"] .nav-mobile.open { transform: translateX(0); }
+html[dir="rtl"] .nav-mobile-close { margin-left: 0; margin-right: auto; }
+html[dir="rtl"] .nav-lang {
+  margin-left: 0; padding-left: 0; border-left: none;
+  margin-right: 12px; padding-right: 12px;
+  border-right: 1px solid rgba(156,123,60,.18);
+}
+html[dir="rtl"] .mega-link-badge { margin-left: 0; margin-right: auto; }
