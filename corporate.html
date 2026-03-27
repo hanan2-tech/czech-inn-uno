@@ -109,6 +109,8 @@
   padding: 4px 10px; border-radius: 3px;
   text-transform: uppercase; letter-spacing: 1px;
 }
+html[lang="he"] .co-pkg.featured::before { content: 'הפופולרי ביותר'; }
+html[lang="cs"] .co-pkg.featured::before { content: 'Nejoblíbenější'; }
 .co-pkg-name { font-family: var(--fd); font-size: 1.4rem; color: var(--cream); font-weight: 600; margin-bottom: 8px; }
 .co-pkg-sub { font-size: .78rem; color: var(--grey); margin-bottom: 24px; line-height: 1.6; }
 .co-pkg-price { font-family: var(--fd); font-size: 2.5rem; color: var(--gold); font-weight: 700; line-height: 1; }
@@ -258,30 +260,30 @@
   <div class="co-hero-overlay"></div>
   <div class="co-hero-inner">
     <div>
-      <div class="sec-eyebrow reveal" style="color:var(--gold)" data-i18n="corp.eyebrow">Groups & Corporate</div>
+      <div class="sec-eyebrow reveal" style="color:var(--gold)" data-i18n="corp.eyebrow">Groups &amp; Corporate</div>
       <h1 class="sec-title sec-title-dark reveal" style="margin-bottom:20px" data-i18n-html="corp.title">When Your Team Leaves Prague,<br><em>They Leave Different.</em></h1>
       <p class="sec-sub reveal" style="color:var(--grey);max-width:440px" data-i18n="corp.sub">The easiest brief your executive assistant will ever send you. Incentive trips, team building, retreats, and conference extensions — from 10 to 200 people, all built around Czech Inn Hotels properties.</p>
       <div class="reveal" style="margin-top:32px;display:flex;gap:14px">
-        <a href="#packages" class="btn-gold">View Packages</a>
-        <a href="#builder" class="btn-outline btn-outline-light">Build a Programme</a>
+        <a href="#packages" class="btn-gold" data-i18n="corp.cta.packages">View Packages</a>
+        <a href="#builder" class="btn-outline btn-outline-light" data-i18n="corp.cta.builder">Build a Programme</a>
       </div>
     </div>
     <div class="co-hero-stats reveal">
       <div class="co-stat">
         <div class="co-stat-val">10–200</div>
-        <div class="co-stat-label">People per corporate group</div>
+        <div class="co-stat-label" data-i18n="corp.stat1.label">People per corporate group</div>
       </div>
       <div class="co-stat">
         <div class="co-stat-val">48h</div>
-        <div class="co-stat-label">Turnaround for full programme quote</div>
+        <div class="co-stat-label" data-i18n="corp.stat2.label">Turnaround for full programme quote</div>
       </div>
       <div class="co-stat">
         <div class="co-stat-val">5</div>
-        <div class="co-stat-label">Languages supported for group tours</div>
+        <div class="co-stat-label" data-i18n="corp.stat3.label">Languages supported for group tours</div>
       </div>
       <div class="co-stat">
         <div class="co-stat-val">€0</div>
-        <div class="co-stat-label">Planning fee — billed only on delivery</div>
+        <div class="co-stat-label" data-i18n="corp.stat4.label">Planning fee — billed only on delivery</div>
       </div>
     </div>
   </div>
@@ -290,20 +292,20 @@
 <!-- Group Types -->
 <section class="co-types">
   <div class="co-types-inner">
-    <div class="sec-eyebrow reveal">What We Do</div>
-    <h2 class="sec-title reveal reveal-delay-1">Every Kind of<br><em>Group Experience</em></h2>
+    <div class="sec-eyebrow reveal" data-i18n="corp.types.eyebrow">What We Do</div>
+    <h2 class="sec-title reveal reveal-delay-1" data-i18n-html="corp.types.title">Every Kind of<br><em>Group Experience</em></h2>
 
     <div class="co-types-grid">
       <div class="co-type-card reveal">
         <img class="co-type-img" src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=600&q=80" alt="Incentive Travel" loading="lazy"/>
         <div class="co-type-body">
           <span class="co-type-icon"><iconify-icon icon="tabler:trophy" style="font-size:32px;color:#C9A84C"></iconify-icon></span>
-          <div class="co-type-title">Incentive Travel</div>
-          <p class="co-type-desc">Reward your top performers with a Prague experience they'll talk about for years. Private tours, Gold Label dinners, exclusive venue access, and VIP treatment at every touchpoint.</p>
+          <div class="co-type-title" data-i18n="corp.type1.title">Incentive Travel</div>
+          <p class="co-type-desc" data-i18n="corp.type1.desc">Reward your top performers with a Prague experience they'll talk about for years. Private tours, Gold Label dinners, exclusive venue access, and VIP treatment at every touchpoint.</p>
           <div class="co-type-tags">
-            <span class="co-type-tag">10–50 people</span>
-            <span class="co-type-tag">1–3 days</span>
-            <span class="co-type-tag">Premium</span>
+            <span class="co-type-tag" data-i18n="corp.type1.tag1">10–50 people</span>
+            <span class="co-type-tag" data-i18n="corp.type1.tag2">1–3 days</span>
+            <span class="co-type-tag" data-i18n="corp.type1.tag3">Premium</span>
           </div>
         </div>
       </div>
@@ -311,12 +313,12 @@
         <img class="co-type-img" src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80" alt="Team Building" loading="lazy"/>
         <div class="co-type-body">
           <span class="co-type-icon"><lord-icon src="https://cdn.lordicon.com/zpxybbhl.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:32px;height:32px"></lord-icon></span>
-          <div class="co-type-title">Team Building</div>
-          <p class="co-type-desc">Prague is a natural team building environment — scavenger hunts through the Old Town, cooking competitions, photography challenges, and collaborative escape room experiences designed for corporate groups.</p>
+          <div class="co-type-title" data-i18n="corp.type2.title">Team Building</div>
+          <p class="co-type-desc" data-i18n="corp.type2.desc">Prague is a natural team building environment — scavenger hunts through the Old Town, cooking competitions, photography challenges, and collaborative escape room experiences designed for corporate groups.</p>
           <div class="co-type-tags">
-            <span class="co-type-tag">15–100 people</span>
-            <span class="co-type-tag">Half or full day</span>
-            <span class="co-type-tag">Competitive</span>
+            <span class="co-type-tag" data-i18n="corp.type2.tag1">15–100 people</span>
+            <span class="co-type-tag" data-i18n="corp.type2.tag2">Half or full day</span>
+            <span class="co-type-tag" data-i18n="corp.type2.tag3">Competitive</span>
           </div>
         </div>
       </div>
@@ -324,12 +326,12 @@
         <img class="co-type-img" src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=600&q=80" alt="Conference Tours" loading="lazy"/>
         <div class="co-type-body">
           <span class="co-type-icon"><lord-icon src="https://cdn.lordicon.com/ibydboev.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:32px;height:32px"></lord-icon></span>
-          <div class="co-type-title">Conference Extensions</div>
-          <p class="co-type-desc">Conference delegates staying at Czech Inn Hotels get access to curated half-day tours between sessions. We coordinate with your event team and manage all logistics independently.</p>
+          <div class="co-type-title" data-i18n="corp.type3.title">Conference Extensions</div>
+          <p class="co-type-desc" data-i18n="corp.type3.desc">Conference delegates staying at Czech Inn Hotels get access to curated half-day tours between sessions. We coordinate with your event team and manage all logistics independently.</p>
           <div class="co-type-tags">
-            <span class="co-type-tag">Any size</span>
-            <span class="co-type-tag">2–4 hours</span>
-            <span class="co-type-tag">Flexible</span>
+            <span class="co-type-tag" data-i18n="corp.type3.tag1">Any size</span>
+            <span class="co-type-tag" data-i18n="corp.type3.tag2">2–4 hours</span>
+            <span class="co-type-tag" data-i18n="corp.type3.tag3">Flexible</span>
           </div>
         </div>
       </div>
@@ -340,59 +342,59 @@
 <!-- Packages -->
 <section class="co-packages" id="packages">
   <div class="co-packages-inner">
-    <div class="sec-eyebrow reveal" style="color:var(--gold)">Corporate Packages</div>
-    <h2 class="sec-title sec-title-dark reveal reveal-delay-1">Ready-Made<br><em>Group Programmes</em></h2>
+    <div class="sec-eyebrow reveal" style="color:var(--gold)" data-i18n="corp.pkg.eyebrow">Corporate Packages</div>
+    <h2 class="sec-title sec-title-dark reveal reveal-delay-1" data-i18n-html="corp.pkg.title">Ready-Made<br><em>Group Programmes</em></h2>
 
     <div class="co-pkg-grid">
       <div class="co-pkg reveal">
-        <div class="co-pkg-name">Group Essential</div>
-        <div class="co-pkg-sub">The perfect introduction to Prague for groups new to the city — guided tour, dinner, and one evening experience.</div>
-        <div class="co-pkg-price">€85 <small>per person · min 10</small></div>
+        <div class="co-pkg-name" data-i18n="corp.pkg1.name">Group Essential</div>
+        <div class="co-pkg-sub" data-i18n="corp.pkg1.sub">The perfect introduction to Prague for groups new to the city — guided tour, dinner, and one evening experience.</div>
+        <div class="co-pkg-price">€85 <small data-i18n="corp.pkg1.price">per person · min 10</small></div>
         <div class="co-pkg-divider"></div>
         <ul class="co-pkg-features">
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>3-hour guided city tour (choice of 4 routes)</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Group dinner at a partner restaurant</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Evening jazz club or cocktail bar visit</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Private group with dedicated guide</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Czech Inn branded welcome pack</li>
-          <li class="dim"><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Chauffeur transfers not included</li>
-          <li class="dim"><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Gold Label upgrade not included</li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg1.f1">3-hour guided city tour (choice of 4 routes)</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg1.f2">Group dinner at a partner restaurant</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg1.f3">Evening jazz club or cocktail bar visit</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg1.f4">Private group with dedicated guide</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg1.f5">Czech Inn branded welcome pack</span></li>
+          <li class="dim"><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg1.f6">Chauffeur transfers not included</span></li>
+          <li class="dim"><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg1.f7">Gold Label upgrade not included</span></li>
         </ul>
-        <button class="co-pkg-cta outline">Request Quote</button>
+        <button class="co-pkg-cta outline" data-i18n="corp.pkg.cta.quote">Request Quote</button>
       </div>
 
       <div class="co-pkg featured reveal reveal-delay-1">
-        <div class="co-pkg-name">Corporate Complete</div>
-        <div class="co-pkg-sub">A full-day Prague programme for teams — city exploration, team activity, private dinner at a venue exclusively for your group.</div>
-        <div class="co-pkg-price">€195 <small>per person · min 15</small></div>
+        <div class="co-pkg-name" data-i18n="corp.pkg2.name">Corporate Complete</div>
+        <div class="co-pkg-sub" data-i18n="corp.pkg2.sub">A full-day Prague programme for teams — city exploration, team activity, private dinner at a venue exclusively for your group.</div>
+        <div class="co-pkg-price">€195 <small data-i18n="corp.pkg2.price">per person · min 15</small></div>
         <div class="co-pkg-divider"></div>
         <ul class="co-pkg-features">
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Full-day programme (9am–9pm)</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Morning guided tour + afternoon team activity</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Private dinner in a historic Prague venue</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Dedicated corporate coordinator</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Minibus transfers throughout the day</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Welcome reception at Czech Inn Hotels</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Professional photographer (3 hrs)</li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg2.f1">Full-day programme (9am–9pm)</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg2.f2">Morning guided tour + afternoon team activity</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg2.f3">Private dinner in a historic Prague venue</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg2.f4">Dedicated corporate coordinator</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg2.f5">Minibus transfers throughout the day</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg2.f6">Welcome reception at Czech Inn Hotels</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg2.f7">Professional photographer (3 hrs)</span></li>
         </ul>
-        <button class="co-pkg-cta">Request Quote</button>
+        <button class="co-pkg-cta" data-i18n="corp.pkg.cta.quote">Request Quote</button>
       </div>
 
       <div class="co-pkg reveal reveal-delay-2">
-        <div class="co-pkg-name">Gold Corporate</div>
-        <div class="co-pkg-sub">For C-suite delegations, VIP incentive groups, and clients you want to impress. No compromises, private everything.</div>
-        <div class="co-pkg-price">€395 <small>per person · min 8</small></div>
+        <div class="co-pkg-name" data-i18n="corp.pkg3.name">Gold Corporate</div>
+        <div class="co-pkg-sub" data-i18n="corp.pkg3.sub">For C-suite delegations, VIP incentive groups, and clients you want to impress. No compromises, private everything.</div>
+        <div class="co-pkg-price">€395 <small data-i18n="corp.pkg3.price">per person · min 8</small></div>
         <div class="co-pkg-divider"></div>
         <ul class="co-pkg-features">
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Private Gold Label tour (custom route)</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Exclusive venue hire (up to 4 hrs)</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Michelin-recommended private dinner</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Luxury fleet transfers, door-to-door</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Dedicated concierge for group duration</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>Czech Inn Gold Label room upgrades</li>
-          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span>24/7 support during Prague stay</li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg3.f1">Private Gold Label tour (custom route)</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg3.f2">Exclusive venue hire (up to 4 hrs)</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg3.f3">Michelin-recommended private dinner</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg3.f4">Luxury fleet transfers, door-to-door</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg3.f5">Dedicated concierge for group duration</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg3.f6">Czech Inn Gold Label room upgrades</span></li>
+          <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg3.f7">24/7 support during Prague stay</span></li>
         </ul>
-        <button class="co-pkg-cta">Request Quote</button>
+        <button class="co-pkg-cta" data-i18n="corp.pkg.cta.quote">Request Quote</button>
       </div>
     </div>
   </div>
@@ -401,9 +403,9 @@
 <!-- Programme Builder -->
 <section class="co-builder" id="builder">
   <div class="co-builder-inner">
-    <div class="sec-eyebrow reveal">Build Your Programme</div>
-    <h2 class="sec-title reveal reveal-delay-1">Mix &amp; Match<br><em>Your Modules</em></h2>
-    <p class="sec-sub reveal reveal-delay-2" style="max-width:520px">Select the modules that fit your group's interests and time. We'll build the logistics, coordinate the venues, and send a full quote within 48 hours.</p>
+    <div class="sec-eyebrow reveal" data-i18n="corp.builder.eyebrow">Build Your Programme</div>
+    <h2 class="sec-title reveal reveal-delay-1" data-i18n-html="corp.builder.title">Mix &amp; Match<br><em>Your Modules</em></h2>
+    <p class="sec-sub reveal reveal-delay-2" style="max-width:520px" data-i18n="corp.builder.sub">Select the modules that fit your group's interests and time. We'll build the logistics, coordinate the venues, and send a full quote within 48 hours.</p>
 
     <div class="co-builder-grid">
       <div class="co-builder-modules reveal">
@@ -411,7 +413,7 @@
           <span class="co-module-icon"><iconify-icon icon="tabler:map" style="font-size:26px;color:#C9A84C"></iconify-icon></span>
           <div class="co-module-body">
             <div class="co-module-name">Kafka's Prague Walking Tour</div>
-            <div class="co-module-meta">Literary history · Old Town · Max 20 per guide</div>
+            <div class="co-module-meta" data-i18n="corp.mod1.meta">Literary history · Old Town · Max 20 per guide</div>
           </div>
           <span class="co-module-dur">€45/pp</span>
           <div class="co-module-check">✓</div>
@@ -420,7 +422,7 @@
           <span class="co-module-icon"><iconify-icon icon="tabler:search" style="font-size:26px;color:#C9A84C"></iconify-icon></span>
           <div class="co-module-body">
             <div class="co-module-name">Old Town Scavenger Hunt</div>
-            <div class="co-module-meta">Team building · Competitive · Any group size</div>
+            <div class="co-module-meta" data-i18n="corp.mod2.meta">Team building · Competitive · Any group size</div>
           </div>
           <span class="co-module-dur">€38/pp</span>
           <div class="co-module-check">✓</div>
@@ -429,7 +431,7 @@
           <span class="co-module-icon"><iconify-icon icon="tabler:chef-hat" style="font-size:26px;color:#C9A84C"></iconify-icon></span>
           <div class="co-module-body">
             <div class="co-module-name">Private Czech Cooking Class</div>
-            <div class="co-module-meta">Collaborative · Culinary · Up to 24 people</div>
+            <div class="co-module-meta" data-i18n="corp.mod3.meta">Collaborative · Culinary · Up to 24 people</div>
           </div>
           <span class="co-module-dur">€89/pp</span>
           <div class="co-module-check">✓</div>
@@ -438,7 +440,7 @@
           <span class="co-module-icon"><iconify-icon icon="tabler:ship" style="font-size:26px;color:#C9A84C"></iconify-icon></span>
           <div class="co-module-body">
             <div class="co-module-name">River Cruise with Catering</div>
-            <div class="co-module-meta">Relaxed · Scenic · Up to 50 people</div>
+            <div class="co-module-meta" data-i18n="corp.mod4.meta">Relaxed · Scenic · Up to 50 people</div>
           </div>
           <span class="co-module-dur">€75/pp</span>
           <div class="co-module-check">✓</div>
@@ -447,7 +449,7 @@
           <span class="co-module-icon"><iconify-icon icon="tabler:tools-kitchen-2" style="font-size:26px;color:#C9A84C"></iconify-icon></span>
           <div class="co-module-body">
             <div class="co-module-name">Private Dinner — Historic Venue</div>
-            <div class="co-module-meta">Exclusive hire · Czech cuisine · Any size</div>
+            <div class="co-module-meta" data-i18n="corp.mod5.meta">Exclusive hire · Czech cuisine · Any size</div>
           </div>
           <span class="co-module-dur">€95/pp</span>
           <div class="co-module-check">✓</div>
@@ -456,7 +458,7 @@
           <span class="co-module-icon"><iconify-icon icon="tabler:music-note" style="font-size:26px;color:#C9A84C"></iconify-icon></span>
           <div class="co-module-body">
             <div class="co-module-name">Lobkowicz Palace Concert</div>
-            <div class="co-module-meta">Cultural · Mozart venue · Up to 80 people</div>
+            <div class="co-module-meta" data-i18n="corp.mod6.meta">Cultural · Mozart venue · Up to 80 people</div>
           </div>
           <span class="co-module-dur">€35/pp</span>
           <div class="co-module-check">✓</div>
@@ -465,7 +467,7 @@
           <span class="co-module-icon"><iconify-icon icon="tabler:flame" style="font-size:26px;color:#C9A84C"></iconify-icon></span>
           <div class="co-module-body">
             <div class="co-module-name">Czech Glassblowing Workshop</div>
-            <div class="co-module-meta">Hands-on · Creative · Up to 16 people</div>
+            <div class="co-module-meta" data-i18n="corp.mod7.meta">Hands-on · Creative · Up to 16 people</div>
           </div>
           <span class="co-module-dur">€75/pp</span>
           <div class="co-module-check">✓</div>
@@ -474,7 +476,7 @@
           <span class="co-module-icon"><iconify-icon icon="tabler:music" style="font-size:26px;color:#C9A84C"></iconify-icon></span>
           <div class="co-module-body">
             <div class="co-module-name">Prague Jazz Club Evening</div>
-            <div class="co-module-meta">Social · Music · Up to 60 people</div>
+            <div class="co-module-meta" data-i18n="corp.mod8.meta">Social · Music · Up to 60 people</div>
           </div>
           <span class="co-module-dur">€42/pp</span>
           <div class="co-module-check">✓</div>
@@ -482,16 +484,16 @@
       </div>
 
       <div class="co-builder-summary reveal reveal-delay-2">
-        <div class="co-summary-title">Your Programme</div>
+        <div class="co-summary-title" data-i18n="corp.summary.title">Your Programme</div>
         <div class="co-summary-items" id="summaryItems">
-          <div class="co-summary-empty" id="summaryEmpty">Your Prague programme is 4 clicks away.</div>
+          <div class="co-summary-empty" id="summaryEmpty" data-i18n="corp.summary.empty">Your Prague programme is 4 clicks away.</div>
         </div>
         <div class="co-summary-total" id="summaryTotal" style="display:none">
-          <span>Estimated total</span>
+          <span data-i18n="corp.summary.est">Estimated total</span>
           <span id="summaryPrice">€0<small style="font-family:var(--fb);font-size:.65rem;color:var(--grey)">/pp</small></span>
         </div>
-        <p class="co-summary-note">Final price depends on group size and dates. We'll confirm exact pricing within 48 hours.</p>
-        <button class="co-pkg-cta" id="summaryQuote" style="display:none">Request Full Quote →</button>
+        <p class="co-summary-note" data-i18n="corp.summary.note">Final price depends on group size and dates. We'll confirm exact pricing within 48 hours.</p>
+        <button class="co-pkg-cta" id="summaryQuote" style="display:none" data-i18n="corp.summary.cta">Request Full Quote →</button>
       </div>
     </div>
   </div>
@@ -500,46 +502,46 @@
 <!-- Corporate Venues -->
 <section class="co-venues">
   <div class="co-venues-inner">
-    <div class="sec-eyebrow reveal" style="color:var(--gold)">Partner Venues</div>
-    <h2 class="sec-title sec-title-dark reveal reveal-delay-1">Where Corporate<br><em>Groups Gather</em></h2>
+    <div class="sec-eyebrow reveal" style="color:var(--gold)" data-i18n="corp.venues.eyebrow">Partner Venues</div>
+    <h2 class="sec-title sec-title-dark reveal reveal-delay-1" data-i18n-html="corp.venues.title">Where Corporate<br><em>Groups Gather</em></h2>
 
     <div class="co-venues-grid">
       <div class="co-venue-card reveal">
         <img class="co-venue-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=400&q=80" alt="Café Louvre" loading="lazy"/>
         <div class="co-venue-body">
           <div class="co-venue-name">Café Louvre</div>
-          <div class="co-venue-type">Historic Restaurant · Private Room</div>
-          <div class="co-venue-cap">Up to 60 people · Národní 22, Praha 1</div>
+          <div class="co-venue-type" data-i18n="corp.v1.type">Historic Restaurant · Private Room</div>
+          <div class="co-venue-cap" data-i18n="corp.v1.cap">Up to 60 people · Národní 22, Praha 1</div>
         </div>
       </div>
       <div class="co-venue-card reveal reveal-delay-1">
         <img class="co-venue-img" src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=400&q=80" alt="King Solomon Restaurant" loading="lazy"/>
         <div class="co-venue-body">
           <div class="co-venue-name">King Solomon Restaurant</div>
-          <div class="co-venue-type">Kosher Fine Dining · Private Hire</div>
-          <div class="co-venue-cap">Up to 80 people · Široká 8, Praha 1</div>
+          <div class="co-venue-type" data-i18n="corp.v2.type">Kosher Fine Dining · Private Hire</div>
+          <div class="co-venue-cap" data-i18n="corp.v2.cap">Up to 80 people · Široká 8, Praha 1</div>
         </div>
       </div>
       <div class="co-venue-card reveal reveal-delay-2">
         <img class="co-venue-img" src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=400&q=80" alt="Lobkowicz Palace" loading="lazy"/>
         <div class="co-venue-body">
           <div class="co-venue-name">Lobkowicz Palace</div>
-          <div class="co-venue-type">Castle · Concert & Private Events</div>
-          <div class="co-venue-cap">Up to 120 people · Prague Castle</div>
+          <div class="co-venue-type" data-i18n="corp.v3.type">Castle · Concert &amp; Private Events</div>
+          <div class="co-venue-cap" data-i18n="corp.v3.cap">Up to 120 people · Prague Castle</div>
         </div>
       </div>
       <div class="co-venue-card reveal reveal-delay-3">
         <img class="co-venue-img" src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=400&q=80" alt="T-Anker Rooftop" loading="lazy"/>
         <div class="co-venue-body">
           <div class="co-venue-name">T-Anker Rooftop</div>
-          <div class="co-venue-type">Rooftop Bar · Evening Events</div>
-          <div class="co-venue-cap">Up to 150 people · Náměstí Republiky</div>
+          <div class="co-venue-type" data-i18n="corp.v4.type">Rooftop Bar · Evening Events</div>
+          <div class="co-venue-cap" data-i18n="corp.v4.cap">Up to 150 people · Náměstí Republiky</div>
         </div>
       </div>
     </div>
 
     <div style="text-align:center;margin-top:52px" class="reveal">
-      <a href="partnership.html" class="btn-gold" data-nav>Discuss Corporate Partnership →</a>
+      <a href="partnership.html" class="btn-gold" data-nav data-i18n="corp.venues.cta">Discuss Corporate Partnership →</a>
     </div>
   </div>
 </section>
@@ -604,7 +606,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.getElementById('summaryQuote').addEventListener('click', () => {
-    alert('Quote request sent. A corporate coordinator will contact you within 48 hours with pricing for your group size and preferred dates.');
+    const lang = document.documentElement.lang || 'en';
+    const msgs = {
+      en: 'Quote request sent. A corporate coordinator will contact you within 48 hours with pricing for your group size and preferred dates.',
+      he: 'בקשת הצעת מחיר נשלחה. רכז תאגידי ייצור אתכם קשר תוך 48 שעות עם תמחור עבור גודל הקבוצה ותאריכים מועדפים.',
+      cs: 'Žádost o nabídku odeslána. Firemní koordinátor vás bude kontaktovat do 48 hodin s cenovou nabídkou pro váš počet osob a preferovaná data.'
+    };
+    alert(msgs[lang] || msgs.en);
   });
 });
 </script>

@@ -272,12 +272,12 @@
 <!-- Filter Bar -->
 <div class="ex-filter-bar">
   <div class="ex-filter-inner">
-    <button class="ex-filter-btn active" data-filter="all">All Experiences</button>
-    <button class="ex-filter-btn" data-filter="food"><iconify-icon icon="tabler:tools-kitchen-2" style="font-size:14px;color:currentColor"></iconify-icon> Food & Drink</button>
-    <button class="ex-filter-btn" data-filter="river"><iconify-icon icon="tabler:sailboat" style="font-size:14px;color:currentColor"></iconify-icon> River & Water</button>
-    <button class="ex-filter-btn" data-filter="cultural"><iconify-icon icon="tabler:masks-theater" style="font-size:14px;color:currentColor"></iconify-icon> Cultural</button>
-    <button class="ex-filter-btn" data-filter="daytrip"><iconify-icon icon="tabler:bus" style="font-size:14px;color:currentColor"></iconify-icon> Day Trips</button>
-    <button class="ex-filter-btn" data-filter="adventure"><iconify-icon icon="tabler:bolt" style="font-size:14px;color:currentColor"></iconify-icon> Adventure</button>
+    <button class="ex-filter-btn active" data-filter="all" data-i18n="ex.filter.all">All Experiences</button>
+    <button class="ex-filter-btn" data-filter="food"><iconify-icon icon="tabler:tools-kitchen-2" style="font-size:14px;color:currentColor"></iconify-icon> <span data-i18n="ex.filter.food">Food & Drink</span></button>
+    <button class="ex-filter-btn" data-filter="river"><iconify-icon icon="tabler:sailboat" style="font-size:14px;color:currentColor"></iconify-icon> <span data-i18n="ex.filter.river">River & Water</span></button>
+    <button class="ex-filter-btn" data-filter="cultural"><iconify-icon icon="tabler:masks-theater" style="font-size:14px;color:currentColor"></iconify-icon> <span data-i18n="ex.filter.cultural">Cultural</span></button>
+    <button class="ex-filter-btn" data-filter="daytrip"><iconify-icon icon="tabler:bus" style="font-size:14px;color:currentColor"></iconify-icon> <span data-i18n="ex.filter.daytrip">Day Trips</span></button>
+    <button class="ex-filter-btn" data-filter="adventure"><iconify-icon icon="tabler:bolt" style="font-size:14px;color:currentColor"></iconify-icon> <span data-i18n="ex.filter.adventure">Adventure</span></button>
     <span class="ex-filter-count" id="filterCount">26 experiences</span>
   </div>
 </div>
@@ -294,19 +294,19 @@
 <!-- Cart Sidebar -->
 <div class="ex-cart" id="extrasCart">
   <div class="ex-cart-header">
-    <div class="ex-cart-title">Your Extras</div>
+    <div class="ex-cart-title" data-i18n="ex.cart.title">Your Extras</div>
     <button class="ex-cart-close" id="cartClose">×</button>
   </div>
   <div class="ex-cart-items" id="cartItems">
-    <div class="ex-cart-empty" id="cartEmpty">Browse above — your concierge will confirm availability within hours.</div>
+    <div class="ex-cart-empty" id="cartEmpty" data-i18n="ex.cart.empty">Browse above — your concierge will confirm availability within hours.</div>
   </div>
   <div style="margin-top:auto">
     <div class="ex-cart-total" id="cartTotal" style="display:none">
-      <span>Total</span>
+      <span data-i18n="ex.cart.total">Total</span>
       <span id="cartTotalPrice">€0</span>
     </div>
-    <button class="ex-cart-checkout" id="cartCheckout" style="display:none">Request Booking →</button>
-    <p style="font-size:.7rem;color:var(--grey);text-align:center;margin-top:10px">Your concierge will confirm availability and pricing at check-in.</p>
+    <button class="ex-cart-checkout" id="cartCheckout" style="display:none" data-i18n="ex.cart.checkout">Request Booking →</button>
+    <p style="font-size:.7rem;color:var(--grey);text-align:center;margin-top:10px" data-i18n="ex.cart.note">Your concierge will confirm availability and pricing at check-in.</p>
   </div>
 </div>
 
@@ -360,7 +360,19 @@ const EXTRAS_DATA = [
 const cart = {};
 let activeFilter = 'all';
 
+function getLangT() {
+  const lang = document.documentElement.lang || 'en';
+  return { lang, t: (typeof T !== 'undefined' && T[lang]) ? T[lang] : (typeof T !== 'undefined' ? T.en : {}) };
+}
+
+function filterCountText(n, lang) {
+  if (lang === 'he') return n + ' חוויות';
+  if (lang === 'cs') return n + ' zážitků';
+  return n + ' experience' + (n !== 1 ? 's' : '');
+}
+
 function renderCatalogue() {
+  const { lang, t } = getLangT();
   const container = document.getElementById('exCatalogue');
   container.innerHTML = '';
   let total = 0;
@@ -369,13 +381,17 @@ function renderCatalogue() {
     const items = cat.items.filter(i => activeFilter === 'all' || cat.cat === activeFilter);
     if (!items.length) return;
     total += items.length;
+    const catLabel = t['ex.cat.' + cat.cat] || cat.catLabel;
+    const perPerson = t['ex.card.per.person'] || 'per person';
+    const addLabel = t['ex.card.add'] || '+ Add';
+    const addedLabel = t['ex.card.added'] || '✓ Added';
 
     const sec = document.createElement('div');
     sec.className = 'ex-section';
     sec.innerHTML = `
       <div class="ex-cat-title reveal">
         <span class="ex-cat-icon">${cat.icon}</span>
-        <div class="ex-cat-label">${cat.catLabel}</div>
+        <div class="ex-cat-label">${catLabel}</div>
         <div class="ex-cat-line"></div>
       </div>
       <div class="ex-grid">
@@ -384,7 +400,7 @@ function renderCatalogue() {
             <img class="ex-card-img" src="${item.img}" alt="${item.name}" loading="lazy"/>
             <div class="ex-card-body">
               <div class="ex-card-badges">
-                <span class="ex-badge ex-badge-cat">${cat.catLabel}</span>
+                <span class="ex-badge ex-badge-cat">${catLabel}</span>
                 <span class="ex-badge ex-badge-dur"><iconify-icon icon="tabler:clock" style="font-size:12px;color:currentColor"></iconify-icon> ${item.dur}</span>
                 <span class="ex-badge ex-badge-grp"><lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" colors="primary:#C9A84C" style="width:12px;height:12px"></lord-icon> ${item.grp}</span>
               </div>
@@ -393,12 +409,12 @@ function renderCatalogue() {
               <div class="ex-card-footer">
                 <div class="ex-card-price">
                   €${item.price}
-                  <small>per person</small>
+                  <small>${perPerson}</small>
                 </div>
                 <button class="ex-card-add ${cart[item.id] ? 'added' : ''}"
                   onclick="toggleCart('${item.id}','${item.name}',${item.price})"
                   id="add-${item.id}">
-                  ${cart[item.id] ? '✓ Added' : '+ Add'}
+                  ${cart[item.id] ? addedLabel : addLabel}
                 </button>
               </div>
             </div>
@@ -409,7 +425,7 @@ function renderCatalogue() {
     container.appendChild(sec);
   });
 
-  document.getElementById('filterCount').textContent = total + ' experience' + (total !== 1 ? 's' : '');
+  document.getElementById('filterCount').textContent = filterCountText(total, lang);
   initReveal();
 }
 
@@ -422,7 +438,8 @@ function toggleCart(id, name, price) {
   updateCartUI();
   const btn = document.getElementById('add-' + id);
   if (btn) {
-    btn.textContent = cart[id] ? '✓ Added' : '+ Add';
+    const { t } = getLangT();
+    btn.textContent = cart[id] ? (t['ex.card.added'] || '✓ Added') : (t['ex.card.add'] || '+ Add');
     btn.classList.toggle('added', !!cart[id]);
   }
 }
@@ -480,6 +497,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Re-render catalogue when language changes
+  document.addEventListener('click', e => {
+    const langBtn = e.target.closest('[data-lang]');
+    if (langBtn && typeof T !== 'undefined' && T[langBtn.dataset.lang]) {
+      setTimeout(renderCatalogue, 0);
+    }
+  });
+
   document.getElementById('cartToggle').addEventListener('click', () => {
     document.getElementById('extrasCart').classList.toggle('open');
   });
@@ -487,7 +512,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('extrasCart').classList.remove('open');
   });
   document.getElementById('cartCheckout').addEventListener('click', () => {
-    alert('Your extras request has been sent to your concierge. They will confirm availability and arrange payment at check-in.');
+    const { t } = getLangT();
+    alert(t['ex.checkout.alert'] || 'Your extras request has been sent to your concierge. They will confirm availability and arrange payment at check-in.');
   });
 });
 </script>
