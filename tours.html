@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <style>
 /* ── Tour Badge Colors ─────────────────────────── */
 .bg-kafka  { background: rgba(102,62,55,.15); color: #8B4F47; border: 1px solid rgba(102,62,55,.3); }
@@ -19,7 +20,7 @@
 /* ── Page Hero ─────────────────────────────────── */
 .tours-hero {
   position: relative;
-  min-height: 58vh;
+  min-height: 72vh;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -169,7 +170,7 @@
 
 .tour-detail-hero {
   position: relative;
-  height: 460px;
+  height: 520px;
   overflow: hidden;
 }
 .tour-detail-hero img {
@@ -685,6 +686,107 @@
   max-width: 640px; margin: 0 auto;
 }
 
+/* ── Photo Gallery Strip ────────────────────────── */
+.tour-gallery {
+  display: flex;
+  height: 240px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 3px;
+  background: var(--dark);
+}
+.tour-gallery::-webkit-scrollbar { display: none; }
+.tour-gallery-img {
+  height: 100%;
+  width: auto;
+  min-width: 320px;
+  max-width: 480px;
+  object-fit: cover;
+  flex-shrink: 0;
+  transition: transform .4s ease;
+  cursor: zoom-in;
+}
+.tour-gallery-img:hover { transform: scale(1.02); }
+
+/* ── Stop Card Photo ────────────────────────────── */
+.stop-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 20px;
+  align-items: start;
+}
+.stop-photo {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* ── Leaflet Map ────────────────────────────────── */
+.tour-map-wrap {
+  height: 340px;
+  border-top: 1px solid rgba(156,123,60,.1);
+  position: relative;
+}
+.tour-map {
+  height: 100%;
+  width: 100%;
+}
+.tour-map .leaflet-container {
+  font-family: var(--fb);
+}
+.map-pin {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--dark);
+  font-size: .72rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+
+/* ── Weather Bar ────────────────────────────────── */
+.weather-bar {
+  background: rgba(0,26,53,.85);
+  border-bottom: 1px solid rgba(156,123,60,.18);
+  padding: 11px 40px;
+  font-size: .75rem;
+  color: var(--tan);
+  letter-spacing: .5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.weather-hidden { display: none !important; }
+
+/* ── Guides / People Section ────────────────────── */
+.guides-section {
+  background: var(--dark);
+  padding: 88px 40px;
+  border-top: 1px solid rgba(156,123,60,.1);
+}
+.guides-inner {
+  max-width: var(--max-w); margin: 0 auto;
+}
+.guides-grid {
+  columns: 4;
+  column-gap: 8px;
+  margin-top: 48px;
+}
+.guides-img {
+  width: 100%;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  break-inside: avoid;
+  display: block;
+  object-fit: cover;
+  transition: opacity .3s;
+}
+.guides-img:hover { opacity: .88; }
+
 @media(max-width:768px) {
   .tours-hero-content { padding: 40px 20px 52px; }
   .info-bar           { padding: 20px 20px; flex-wrap: wrap; gap: 16px; }
@@ -692,6 +794,16 @@
   .tour-body-grid     { grid-template-columns: 1fr; }
   .stops-section      { padding: 0 20px 48px; }
   .tours-cta          { padding: 56px 20px; }
+  .stop-body-grid     { grid-template-columns: 1fr; }
+  .stop-photo         { height: 180px; }
+  .tour-gallery       { height: 180px; }
+  .tour-gallery-img   { min-width: 220px; }
+  .guides-grid        { columns: 2; }
+  .guides-section     { padding: 56px 20px; }
+  .weather-bar        { padding: 10px 20px; }
+}
+@media(max-width:480px) {
+  .guides-grid        { columns: 2; }
 }
 </style>
 </head>
@@ -750,6 +862,12 @@
     </div>
   </section>
 
+  <!-- ── Weather Bar ────────────────────────────── -->
+  <div class="weather-bar weather-hidden" id="weatherBar">
+    <iconify-icon icon="tabler:cloud" style="font-size:16px;color:#C9A84C"></iconify-icon>
+    <span id="weatherText">Loading Prague weather...</span>
+  </div>
+
   <!-- ── Seasonal Calendar ──────────────────────── -->
   <section class="calendar-section">
     <div class="calendar-inner">
@@ -775,6 +893,26 @@
     </div>
   </section>
 
+  <!-- ── Guides / People Section ───────────────── -->
+  <section class="guides-section">
+    <div class="guides-inner">
+      <div class="sec-line"></div>
+      <div class="sec-eyebrow" style="color:var(--gold)">In the Company of Prague</div>
+      <h2 class="sec-title sec-title-dark reveal">Guided by Locals.<br><em>Remembered Forever.</em></h2>
+      <p class="sec-sub sec-sub-dark reveal" style="margin-bottom:0">Every guide is a storyteller. Every guest leaves with something that cannot be photographed.</p>
+      <div class="guides-grid" style="margin-top:48px">
+        <img class="guides-img reveal" src="https://images.pexels.com/photos/3849558/pexels-photo-3849558.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Tour guide explaining Prague" loading="lazy" style="height:280px">
+        <img class="guides-img reveal" src="https://images.pexels.com/photos/1388030/pexels-photo-1388030.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="People walking through Prague" loading="lazy" style="height:200px">
+        <img class="guides-img reveal" src="https://images.pexels.com/photos/3064979/pexels-photo-3064979.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Couple at Charles Bridge" loading="lazy" style="height:200px">
+        <img class="guides-img reveal" src="https://images.pexels.com/photos/984498/pexels-photo-984498.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Children on tour" loading="lazy" style="height:280px">
+        <img class="guides-img reveal" src="https://images.pexels.com/photos/1467300/pexels-photo-1467300.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Family exploring Prague" loading="lazy" style="height:240px">
+        <img class="guides-img reveal" src="https://images.pexels.com/photos/3764958/pexels-photo-3764958.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Café conversation" loading="lazy" style="height:240px">
+        <img class="guides-img reveal" src="https://images.pexels.com/photos/13019654/pexels-photo-13019654.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Active Prague tour" loading="lazy" style="height:200px">
+        <img class="guides-img reveal" src="https://images.pexels.com/photos/2248713/pexels-photo-2248713.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Cycling along the Vltava" loading="lazy" style="height:200px">
+      </div>
+    </div>
+  </section>
+
   <!-- ── Final CTA ──────────────────────────────── -->
   <section class="tours-cta">
     <div class="tours-cta-inner">
@@ -794,6 +932,7 @@
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.min.js"></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WPcM=" crossorigin=""></script>
 <script src="js/nav.js"></script>
 <script src="js/lang.js"></script>
 <script src="js/data.js"></script>
@@ -902,6 +1041,7 @@
       const squote   = tv(t, id, 's' + si + '.quote',    stop.quote);
       const sact     = tv(t, id, 's' + si + '.activity', stop.activity);
       const sfood    = stop.food ? tv(t, id, 's' + si + '.food', stop.food) : '';
+      const hasPhoto = stop.photo && stop.photo.startsWith('http');
       return `
         <div class="stop reveal">
           <div class="stop-dot"><div class="stop-dot-inner"></div></div>
@@ -913,22 +1053,34 @@
             </div>
             <span class="stop-dur-pill"><iconify-icon icon="tabler:clock" style="font-size:13px;color:#C9A84C"></iconify-icon> ${stop.dur}</span>
           </div>
-          <p class="stop-story">${sstory}</p>
-          <blockquote class="stop-quote">${squote}</blockquote>
-          <div class="stop-meta">
-            <div class="stop-activity">
-              <span class="stop-meta-icon"><lord-icon src="https://cdn.lordicon.com/ibydboev.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:16px;height:16px"></lord-icon></span>
-              <span>${sact}</span>
+          <div class="${hasPhoto ? 'stop-body-grid' : ''}">
+            <div>
+              <p class="stop-story">${sstory}</p>
+              <blockquote class="stop-quote">${squote}</blockquote>
+              <div class="stop-meta">
+                <div class="stop-activity">
+                  <span class="stop-meta-icon"><lord-icon src="https://cdn.lordicon.com/ibydboev.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:16px;height:16px"></lord-icon></span>
+                  <span>${sact}</span>
+                </div>
+                ${sfood ? `
+                <div class="stop-food">
+                  <span class="stop-meta-icon"><iconify-icon icon="tabler:tools-kitchen-2" style="font-size:16px;color:#C9A84C"></iconify-icon></span>
+                  <span>${sfood}</span>
+                </div>` : ''}
+              </div>
             </div>
-            ${sfood ? `
-            <div class="stop-food">
-              <span class="stop-meta-icon"><iconify-icon icon="tabler:tools-kitchen-2" style="font-size:16px;color:#C9A84C"></iconify-icon></span>
-              <span>${sfood}</span>
-            </div>` : ''}
+            ${hasPhoto ? `<img class="stop-photo" src="${stop.photo}" alt="${sn}" loading="lazy">` : ''}
           </div>
         </div>
       `;
     }).join('');
+
+    // Gallery strip
+    const galleryHTML = (tour.photos && tour.photos.length) ? `
+      <div class="tour-gallery">
+        ${tour.photos.map(url => `<img class="tour-gallery-img" src="${url}" alt="${name}" loading="lazy">`).join('')}
+      </div>
+    ` : '';
 
     return `
       <!-- Detail Hero -->
@@ -978,6 +1130,9 @@
         </div>
       </div>
 
+      <!-- Photo Gallery Strip -->
+      ${galleryHTML}
+
       <!-- Tour Body: Desc + Includes -->
       <div class="tour-body">
         <div class="tour-body-grid">
@@ -996,6 +1151,11 @@
       <div class="stops-section">
         <h3 class="stops-title">${lStopTitle}</h3>
         <div class="timeline">${stopsHTML}</div>
+      </div>
+
+      <!-- Interactive Map -->
+      <div class="tour-map-wrap">
+        <div class="tour-map" id="map-${id}"></div>
       </div>
 
       <!-- Partner Venues -->
@@ -1116,6 +1276,48 @@
     });
   }
 
+  /* ── Leaflet Maps ────────────────────────────── */
+  const _maps = {};
+  function initMaps() {
+    if (typeof L === 'undefined') return;
+    TOURS.forEach(tour => {
+      const el = document.getElementById('map-' + tour.id);
+      if (!el || _maps[tour.id]) return;
+      const stops = tour.stops.filter(s => s.lat && s.lng);
+      if (!stops.length) return;
+      const map = L.map(el, { zoomControl: true, scrollWheelZoom: false });
+      _maps[tour.id] = map;
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+      const latlngs = stops.map(s => [s.lat, s.lng]);
+      L.polyline(latlngs, { color: '#C9A84C', weight: 2, opacity: .65, dashArray: '6 4' }).addTo(map);
+      stops.forEach((stop, i) => {
+        const icon = L.divIcon({ html: `<div class="map-pin">${i + 1}</div>`, className: '', iconSize: [28, 28], iconAnchor: [14, 14] });
+        L.marker([stop.lat, stop.lng], { icon }).addTo(map)
+          .bindPopup(`<strong style="font-family:sans-serif;font-size:13px">${stop.n}</strong><br><span style="font-size:12px;color:#666">${stop.a}</span>`);
+      });
+      map.fitBounds(latlngs, { padding: [24, 24] });
+    });
+  }
+
+  /* ── Live Weather ────────────────────────────── */
+  async function fetchWeather() {
+    try {
+      const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=50.08&longitude=14.42&current=temperature_2m,weather_code&timezone=Europe%2FPrague');
+      const d = await r.json();
+      const temp = Math.round(d.current.temperature_2m);
+      const code = d.current.weather_code;
+      const icn = code <= 1 ? '☀' : code <= 3 ? '⛅' : code <= 48 ? '🌫' : code <= 67 ? '🌧' : code <= 77 ? '❄' : '⛈';
+      const bar = document.getElementById('weatherBar');
+      const txt = document.getElementById('weatherText');
+      if (bar && txt) {
+        txt.textContent = `Prague right now: ${icn} ${temp}°C  ·  Best season for tours: April to October`;
+        bar.classList.remove('weather-hidden');
+      }
+    } catch(e) { /* silent fail */ }
+  }
+
   /* ── Full re-render on language change ───────── */
   function renderTours() {
     buildTabs();
@@ -1123,6 +1325,7 @@
     buildComparisonTable();
     buildCalendar();
     setTimeout(initReveal, 100);
+    setTimeout(initMaps, 200);
   }
 
   document.addEventListener('click', e => {
@@ -1164,11 +1367,16 @@
     buildComparisonTable();
     buildCalendar();
     setTimeout(initReveal, 200);
+    setTimeout(initMaps, 400);
+    fetchWeather();
 
-    // Re-init reveal when tab switches
+    // Re-init reveal + maps when tab switches
     const tabs = document.getElementById('tabsInner');
     if (tabs) {
-      tabs.addEventListener('click', () => setTimeout(refreshReveal, 100));
+      tabs.addEventListener('click', () => {
+        setTimeout(refreshReveal, 100);
+        setTimeout(initMaps, 200);
+      });
     }
   });
 
