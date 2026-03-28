@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Projection bars — animate on scroll
+  // Projection bars, animate on scroll
   const barObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {

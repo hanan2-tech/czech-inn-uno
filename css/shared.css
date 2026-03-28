@@ -554,3 +554,114 @@ html[dir="rtl"] .nav-lang {
   border-right: 1px solid rgba(156,123,60,.18);
 }
 html[dir="rtl"] .mega-link-badge { margin-left: 0; margin-right: auto; }
+
+/* ── Hotel Strip (shared "From Your Hotel" component) ─── */
+.hotel-strip {
+  background: var(--bg-warm);
+  padding: 72px 40px;
+  border-top: 1px solid var(--border);
+}
+.hotel-strip-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.hotel-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.hotel-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color .22s, box-shadow .22s, transform .22s;
+}
+.hotel-card:hover {
+  border-color: rgba(156,123,60,.4);
+  box-shadow: 0 6px 24px rgba(0,0,0,.07);
+  transform: translateY(-3px);
+}
+.hotel-card-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--gold);
+}
+.hotel-card-title {
+  font-family: var(--fd);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+.hotel-card-desc {
+  font-size: .8rem;
+  color: var(--text-l);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.hotel-card-link {
+  font-size: .75rem;
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: auto;
+}
+.hotel-card-link:hover { text-decoration: underline; }
+
+/* Prague Pass section */
+.pass-section {
+  background: var(--bg-warm);
+  padding: 72px 40px;
+  border-top: 1px solid var(--border);
+}
+.pass-section-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.pass-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+.pass-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pass-card-name {
+  font-family: var(--fd);
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.pass-card-discount {
+  font-size: .78rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+.pass-card-link {
+  font-size: .73rem;
+  color: var(--text-l);
+  line-height: 1.5;
+}
+
+@media(max-width:768px) {
+  .hotel-strip  { padding: 56px 20px; }
+  .pass-section { padding: 56px 20px; }
+  .hotel-strip-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .pass-grid    { grid-template-columns: 1fr 1fr; gap: 12px; }
+}
+@media(max-width:480px) {
+  .hotel-strip-grid { grid-template-columns: 1fr; }
+  .pass-grid    { grid-template-columns: 1fr; }
+}

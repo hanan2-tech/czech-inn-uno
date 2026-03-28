@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 });
 
-// ── Supercharged Concierge — 8 live phone capabilities ──
+// ── Supercharged Concierge, 8 live phone capabilities ──
 const sg = (() => {
   let activeStream = null;
   let activeBtn = null;
@@ -53,7 +53,7 @@ const sg = (() => {
     if (qrAnimFrame) { cancelAnimationFrame(qrAnimFrame); qrAnimFrame = null; }
   }
 
-  // 1 — Live Location
+  // 1, Live Location
   function demoLocation(btn) {
     setActive(btn); hideAll();
     setStatus('Locating…', '#f0c040');
@@ -82,12 +82,12 @@ const sg = (() => {
     }, { timeout: 8000, maximumAge: 60000 });
   }
 
-  // 2 — Camera AI
+  // 2, Camera AI
   async function demoCamera(btn) {
     setActive(btn); hideAll();
     setStatus('Camera…', '#f0c040');
     show('sgCameraWrap');
-    setHint('Camera opens — scene is auto-captured and analysed by AI vision.');
+    setHint('Camera opens, scene is auto-captured and analysed by AI vision.');
     try {
       activeStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
       document.getElementById('sgCameraVideo').srcObject = activeStream;
@@ -99,9 +99,9 @@ const sg = (() => {
       document.getElementById('sgAiBubble').innerHTML =
         '🔍 <strong>AI Vision (demo)</strong><br>I can see you\'re near Old Town Square. ' +
         'The Astronomical Clock is 80m north-east. Tonight\'s golden-hour shots are best from Charles Bridge (400m). ' +
-        'For dinner, Mlýnec has a terrace over the river — shall I reserve?';
+        'For dinner, Mlýnec has a terrace over the river, shall I reserve?';
       setStatus('Demo', '#f0c040');
-      setHint('Camera permission denied — showing simulated AI vision response.');
+      setHint('Camera permission denied, showing simulated AI vision response.');
     }
   }
 
@@ -120,14 +120,14 @@ const sg = (() => {
     setTimeout(() => {
       bubble.innerHTML =
         '📸 <strong>AI Vision:</strong> I can see Prague\'s Old Town. ' +
-        'Charles Bridge is visible in the background — perfect for the sunset walk. ' +
+        'Charles Bridge is visible in the background, perfect for the sunset walk. ' +
         'Nearest open bar: <strong>Hemingway Bar</strong> (3 min walk). ' +
         'Shall I show tonight\'s available tables?';
       setStatus('Analysis ✓', '#4caf7d');
     }, 1800);
   }
 
-  // 3 — Push Notifications
+  // 3, Push Notifications
   async function demoPush(btn) {
     setActive(btn); hideAll();
     setStatus('Requesting…', '#f0c040');
@@ -138,7 +138,7 @@ const sg = (() => {
       setTimeout(() => {
         try {
           new Notification('Czech Inn Concierge', {
-            body: 'Your rooftop table at T-Anker is ready — head up now for the best sunset view! 🌅',
+            body: 'Your rooftop table at T-Anker is ready, head up now for the best sunset view! 🌅',
             icon: '/manifest.json'
           });
         } catch(e) {}
@@ -146,23 +146,23 @@ const sg = (() => {
         setHint('A real browser notification was just delivered to your device.');
       }, 800);
     } else {
-      document.getElementById('sgNotifText').textContent = 'Your rooftop table at T-Anker is ready — head up for sunset! 🌅 (demo — allow notifications for real alerts)';
+      document.getElementById('sgNotifText').textContent = 'Your rooftop table at T-Anker is ready, head up for sunset! 🌅 (demo, allow notifications for real alerts)';
       setStatus('Demo', '#f0c040');
       setHint('Allow notifications in your browser to receive real-time concierge alerts.');
     }
     setTimeout(() => document.getElementById('sgNotif').classList.remove('active'), 5000);
   }
 
-  // 4 — Voice AI
+  // 4, Voice AI
   const VOICE_KB = {
     kafka: 'Your Kafka Walking Tour departs tomorrow at 10am from Old Town Square. Duration 2.5 hrs. Shall I send your confirmation?',
     tour: 'You have the Kafka Walking Tour at 10am tomorrow. Tickets also available for Jewish Quarter and Mucha Museum tours today.',
     restaurant: 'Top picks tonight: Mlýnec (river terrace, 400m), Café Imperial (art nouveau, 600m), Lokál Dlouhá (Czech classics, 200m). Shall I reserve?',
     dinner: 'Top picks tonight: Mlýnec (river terrace, 400m), Café Imperial (art nouveau, 600m), Lokál Dlouhá (Czech classics, 200m). Shall I reserve?',
-    bar: 'Hemingway Bar — best cocktails in Prague, 2 min walk. T-Anker rooftop has sunset views from 6pm. Jazz Dock has live music from 8pm.',
+    bar: 'Hemingway Bar, best cocktails in Prague, 2 min walk. T-Anker rooftop has sunset views from 6pm. Jazz Dock has live music from 8pm.',
     weather: 'Currently 18°C in Prague, partly cloudy. Perfect for a rooftop evening. Tomorrow morning looks clear for the walking tour.',
-    wifi: 'Wi-Fi: CzechInn_Guest — password at reception. Speed: 300Mbps. Works throughout the hotel and courtyard.',
-    checkout: 'Check-out is at 11am. Late check-out until 2pm available for €15 — shall I arrange it?',
+    wifi: 'Wi-Fi: CzechInn_Guest, password at reception. Speed: 300Mbps. Works throughout the hotel and courtyard.',
+    checkout: 'Check-out is at 11am. Late check-out until 2pm available for €15, shall I arrange it?',
     default: 'I\'m your Czech Inn AI Concierge! Try asking about tours, restaurants, bars, the weather, Wi-Fi, or checkout.'
   };
 
@@ -178,12 +178,12 @@ const sg = (() => {
         setResult('<strong>🎙 Heard:</strong> "Any Kafka tours tomorrow?"<br><br><strong>Concierge:</strong> ' + VOICE_KB.kafka);
         setStatus('Responded ✓', '#4caf7d');
       }, 2500);
-      setHint('Voice demo — Web Speech API not available on this browser. Showing scripted response.');
+      setHint('Voice demo, Web Speech API not available on this browser. Showing scripted response.');
       return;
     }
     show('sgVoiceWrap');
     setStatus('Listening…', '#4caf7d');
-    setHint('Speak now — try: "restaurants tonight", "Kafka tour", "weather", or "Wi-Fi"');
+    setHint('Speak now, try: "restaurants tonight", "Kafka tour", "weather", or "Wi-Fi"');
     recognition = new SR();
     recognition.lang = 'en-US'; recognition.interimResults = false; recognition.maxAlternatives = 1;
     recognition.start();
@@ -204,12 +204,12 @@ const sg = (() => {
     };
   }
 
-  // 5 — QR Scanner
+  // 5, QR Scanner
   async function demoQR(btn) {
     setActive(btn); hideAll();
     setStatus('Camera…', '#f0c040');
     show('sgQrOverlay');
-    setHint('Point camera at any QR code — the concierge handles check-in, tour links, or venue info.');
+    setHint('Point camera at any QR code, the concierge handles check-in, tour links, or venue info.');
     try {
       activeStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
       document.getElementById('sgQrVideo').srcObject = activeStream;
@@ -219,10 +219,10 @@ const sg = (() => {
       document.getElementById('sgQrOverlay').classList.remove('active');
       setStatus('Demo', '#f0c040');
       setResult(
-        '<strong>📷 QR Scanner Demo</strong><br>Camera access denied — in production, scanning a room key QR triggers:<br><br>' +
+        '<strong>📷 QR Scanner Demo</strong><br>Camera access denied, in production, scanning a room key QR triggers:<br><br>' +
         '✓ Guest profile loaded<br>✓ Personalised greeting shown<br>✓ Booked tours surfaced<br>✓ AI recommendations served'
       );
-      setHint('QR scanning uses jsQR — works in any browser without app install.');
+      setHint('QR scanning uses jsQR, works in any browser without app install.');
     }
   }
 
@@ -256,16 +256,16 @@ const sg = (() => {
     document.getElementById('sgQrOverlay').classList.remove('active');
     setStatus('Scanned ✓', '#4caf7d');
     const display = data.startsWith('http') ? `<a href="${data}" target="_blank" style="color:var(--gold)">${data}</a>` : data;
-    setResult(`<strong>📷 QR Code Detected</strong><br>${display}<br><br><strong>Concierge action:</strong><br>✓ Room 204 — guest profile loaded<br>✓ Kafka tour confirmed tomorrow 10am<br>✓ Personalised Prague map generated`);
+    setResult(`<strong>📷 QR Code Detected</strong><br>${display}<br><br><strong>Concierge action:</strong><br>✓ Room 204, guest profile loaded<br>✓ Kafka tour confirmed tomorrow 10am<br>✓ Personalised Prague map generated`);
     setHint('QR detected! In production this triggers a full personalised concierge session.');
   }
 
-  // 6 — WhatsApp
+  // 6, WhatsApp
   function demoWhatsApp(btn) {
     setActive(btn); hideAll();
     const msg = encodeURIComponent("Hi Czech Inn Concierge! I'm a guest at Czech Inn Dlouhá, room 204. Can you help me book a rooftop table tonight?");
     setResult(
-      '<strong>💬 WhatsApp Concierge</strong><br>Direct guest-to-concierge messaging — zero friction, zero app install.<br><br>' +
+      '<strong>💬 WhatsApp Concierge</strong><br>Direct guest-to-concierge messaging, zero friction, zero app install.<br><br>' +
       '✓ Booking confirmations via WhatsApp<br>✓ Tour reminders 1hr before start<br>✓ Memory book link post-tour<br><br>' +
       `<a href="https://wa.me/420777000000?text=${msg}" target="_blank" style="display:inline-block;background:#25d366;color:#fff;padding:8px 18px;border-radius:8px;text-decoration:none;font-size:.8rem;margin-top:4px">Open WhatsApp Chat →</a>`
     );
@@ -274,7 +274,7 @@ const sg = (() => {
     setTimeout(() => window.open(`https://wa.me/420777000000?text=${msg}`, '_blank'), 1200);
   }
 
-  // 7 — AR Venue Finder
+  // 7, AR Venue Finder
   async function demoAR(btn) {
     setActive(btn); hideAll();
     setStatus('Camera…', '#f0c040');
@@ -288,11 +288,11 @@ const sg = (() => {
       document.getElementById('sgArOverlay').classList.remove('active');
       setStatus('Demo', '#f0c040');
       setResult(
-        '<strong>🔭 AR Venue Finder Demo</strong><br>Camera points at the city — floating labels show nearby venues:<br><br>' +
-        '🏮 <strong>T-Anker Rooftop</strong> — 230m NE<br>' +
-        '🎷 <strong>Jazz Dock</strong> — 680m SW<br>' +
-        '🍸 <strong>Hemingway Bar</strong> — 120m E<br>' +
-        '🍽️ <strong>Mlýnec Restaurant</strong> — 400m W'
+        '<strong>🔭 AR Venue Finder Demo</strong><br>Camera points at the city, floating labels show nearby venues:<br><br>' +
+        '🏮 <strong>T-Anker Rooftop</strong>, 230m NE<br>' +
+        '🎷 <strong>Jazz Dock</strong>, 680m SW<br>' +
+        '🍸 <strong>Hemingway Bar</strong>, 120m E<br>' +
+        '🍽️ <strong>Mlýnec Restaurant</strong>, 400m W'
       );
       setHint('AR uses DeviceOrientation + camera stream. Works best outdoors with GPS permission.');
     }
@@ -318,7 +318,7 @@ const sg = (() => {
     if (window.DeviceOrientationEvent) window.addEventListener('deviceorientation', handler, { once: false });
   }
 
-  // 8 — PWA Install
+  // 8, PWA Install
   async function demoPWA(btn) {
     setActive(btn); hideAll();
     setStatus('Checking…', '#f0c040');
@@ -338,7 +338,7 @@ const sg = (() => {
       }
       setResult(
         `<strong>📲 PWA Ready</strong><br>Service Worker: <strong style="color:#4caf7d">${swState}</strong><br>` +
-        '3 core pages cached for offline use.<br>App loads instantly — even with no internet.' + installHtml
+        '3 core pages cached for offline use.<br>App loads instantly, even with no internet.' + installHtml
       );
       setStatus('SW Active ✓', '#4caf7d');
       setHint('Once installed, the concierge launches like a native app from the home screen.');
@@ -352,7 +352,7 @@ const sg = (() => {
     if (!deferredInstall) return;
     deferredInstall.prompt();
     deferredInstall.userChoice.then(r => {
-      setHint(r.outcome === 'accepted' ? '✓ App installed to your home screen!' : 'Installation skipped — available anytime via browser menu.');
+      setHint(r.outcome === 'accepted' ? '✓ App installed to your home screen!' : 'Installation skipped, available anytime via browser menu.');
       deferredInstall = null;
     });
   }

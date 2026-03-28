@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   NAV.JS — Shared Navigation, Mega-Menu, Lottie, Transitions
+   NAV.JS, Shared Navigation, Mega-Menu, Lottie, Transitions
    Czech Inn Hotels × UNO Platform
    ═══════════════════════════════════════════════════════════ */
 
@@ -131,7 +131,7 @@ const FOOTER_HTML = `
       <p class="footer-brand-desc" data-i18n="footer.desc">A proposed partnership bringing curated guided tours and premium guest experiences to all 28 Czech Inn Hotels properties across Prague.</p>
       <div class="footer-contact">
         <p><b>Czech Inn Hotels s.r.o.</b></p>
-        <p data-i18n="footer.address">Hybernská 24, Praha 1 — 110 00</p>
+        <p data-i18n="footer.address">Hybernská 24, Praha 1, 110 00</p>
         <p data-i18n="footer.stats">28 Hotels &nbsp;·&nbsp; 3,300+ Rooms</p>
       </div>
     </div>
@@ -164,7 +164,7 @@ const FOOTER_HTML = `
     </div>
   </div>
   <div class="footer-bottom">
-    <p><span data-i18n="footer.tagline">Guided Experiences Platform — proposed for</span> <b>Czech Inn Hotels s.r.o.</b> &nbsp;·&nbsp; <span data-i18n="footer.prepared">Prepared for</span> <b>Jaroslav Svoboda</b></p>
+    <p><span data-i18n="footer.tagline">Guided Experiences Platform, proposed for</span> <b>Czech Inn Hotels s.r.o.</b> &nbsp;·&nbsp; <span data-i18n="footer.prepared">Prepared for</span> <b>Jaroslav Svoboda</b></p>
     <p style="opacity:.45;font-size:.68rem" data-i18n="footer.sub">All tours, guides, and pricing are real and ready to deploy.</p>
   </div>
 </footer>`;

@@ -640,7 +640,7 @@
 }
 .cal-cell.low {
   background: rgba(1,15,30,.4);
-  color: rgba(116,111,101,.4);
+  color: rgba(116,111,101,.65);
 }
 .cal-cell.peak::after { content: ''; }
 .cal-cell.good::after { content: ''; }

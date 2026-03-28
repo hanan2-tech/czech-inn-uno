@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   DATA.JS — All Platform Data
+   DATA.JS, All Platform Data
    Tours · Extras · Partner Venues · Analytics · Gold Label
    ═══════════════════════════════════════════════════════════ */
 
@@ -318,7 +318,7 @@ const GOLD_LABEL = {
   ]
 };
 
-/* ── AFTER DARK — EVENING EXPERIENCES ───────────────────── */
+/* ── AFTER DARK, EVENING EXPERIENCES ───────────────────── */
 const AFTER_DARK = {
   jazz: [
     { name:"Jazz Dock", addr:"Janáčkovo nábřeží 2, Praha 5", type:"Jazz Club", desc:"Prague's finest jazz club, built directly on the Vltava riverbank. Live jazz nightly from 9pm. Book the riverside table for the best view.", price_from:15, img:"https://images.pexels.com/photos/4028878/pexels-photo-4028878.jpeg?auto=compress&cs=tinysrgb&w=600&q=80", tip:"The whisky selection is exceptional: 80+ single malts. Arrive by 8:30pm for the best seats." },

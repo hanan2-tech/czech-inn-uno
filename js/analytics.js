@@ -1,4 +1,4 @@
-/* Monthly bar chart data — projected Year 1 */
+/* Monthly bar chart data, projected Year 1 */
 const MONTHLY = [
   {m:'Jan', v:65000, proj:true},
   {m:'Feb', v:77000, proj:true},
