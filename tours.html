@@ -1041,7 +1041,7 @@
       const squote   = tv(t, id, 's' + si + '.quote',    stop.quote);
       const sact     = tv(t, id, 's' + si + '.activity', stop.activity);
       const sfood    = stop.food ? tv(t, id, 's' + si + '.food', stop.food) : '';
-      const hasPhoto = stop.photo && stop.photo.startsWith('http');
+      const hasPhoto = !!stop.photo;
       return `
         <div class="stop reveal">
           <div class="stop-dot"><div class="stop-dot-inner"></div></div>
@@ -1085,7 +1085,7 @@
     return `
       <!-- Detail Hero -->
       <div class="tour-detail-hero">
-        <img src="${tour.img}&w=1400&q=85" alt="${name}" loading="lazy"/>
+        <img src="${tour.img.startsWith('http') ? tour.img + '&w=1400&q=85' : tour.img}" alt="${name}" loading="lazy"/>
         <div class="tour-detail-hero-overlay">
           <div>
             <div class="tour-detail-badge ${tour.badgeClass}">${tour.badge}</div>
