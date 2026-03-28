@@ -23,8 +23,8 @@
 }
 .hero-content {
   position:relative; z-index:2;
-  text-align:center; padding:40px 60px;
-  max-width:820px;
+  text-align:center; padding:40px 80px;
+  max-width:680px;
 }
 .hero-for {
   display:inline-block; font-size:.65rem;
@@ -38,7 +38,7 @@
   font-family:var(--fd); font-weight:600;
   font-size:clamp(2rem,3.8vw,3.4rem);
   color:var(--cream); line-height:1.18;
-  letter-spacing:-.5px; margin-bottom:10px;
+  letter-spacing:-.5px; margin:28px 0 20px;
   opacity:0; animation:fu .8s .6s forwards; transform:translateY(28px);
 }
 .hero-title em { font-style:italic; color:var(--gold); }
