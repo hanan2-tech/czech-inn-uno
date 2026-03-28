@@ -135,6 +135,8 @@ lord-icon, iconify-icon { display: inline-block; vertical-align: middle; }
 .sec-title span { color: var(--gold); }
 .sec-title-light { color: var(--cream); }
 .sec-title-light span { color: var(--gold); }
+.sec-title-dark { color: var(--cream); }
+.sec-title-dark span { color: var(--gold); }
 .sec-title-left { text-align: left; }
 
 .sec-sub {
@@ -166,14 +168,11 @@ lord-icon, iconify-icon { display: inline-block; vertical-align: middle; }
   color: #2d7a52;
   border: 1px solid rgba(58,143,92,.25);
 }
-.data-badge-real::before { content: '✓ '; }
-
 .data-badge-projected {
   background: rgba(156,123,60,.10);
   color: var(--gold);
   border: 1px solid rgba(156,123,60,.2);
 }
-.data-badge-projected::before { content: '◇ '; }
 
 /* ── Keyframe Animations ────────────────────────────── */
 @keyframes spin     { to { transform: rotate(360deg); } }
