@@ -13,6 +13,10 @@
   background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(156,123,60,.09) 0%, transparent 65%);
 }
 .ex-hero-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+.ex-hero .sec-eyebrow { color: var(--gold); }
+.ex-hero .sec-title  { color: #fff; }
+.ex-hero .sec-title em { color: var(--gold-light); }
+.ex-hero .sec-sub    { color: var(--tan); }
 
 /* Filter bar */
 .ex-filter-bar {
