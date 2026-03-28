@@ -131,6 +131,9 @@ lord-icon, iconify-icon { display: inline-block; vertical-align: middle; }
   line-height: 1.15;
   text-align: center;
   color: var(--text);
+  padding: 0 20px;
+  margin-top: 16px;
+  margin-bottom: 8px;
 }
 .sec-title span { color: var(--gold); }
 .sec-title-light { color: var(--cream); }
@@ -147,6 +150,7 @@ lord-icon, iconify-icon { display: inline-block; vertical-align: middle; }
   margin: 12px auto 48px;
   font-weight: 300;
   line-height: 1.75;
+  padding: 0 20px;
 }
 .sec-sub-dark { color: var(--tan); }
 .sec-sub-left { text-align: left; margin-left: 0; }
