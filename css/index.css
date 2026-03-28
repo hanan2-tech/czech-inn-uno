@@ -36,7 +36,7 @@
 }
 .hero-title {
   font-family:var(--fd); font-weight:600;
-  font-size:clamp(2rem,3.8vw,3.4rem);
+  font-size:clamp(1.8rem,3vw,2.8rem);
   color:var(--cream); line-height:1.18;
   letter-spacing:-.5px; margin:28px 0 20px;
   opacity:0; animation:fu .8s .6s forwards; transform:translateY(28px);
