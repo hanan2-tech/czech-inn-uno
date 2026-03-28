@@ -141,7 +141,7 @@ html[lang="cs"] .co-pkg.featured::before { content: 'Nejoblíbenější'; }
 .co-builder-modules { display: flex; flex-direction: column; gap: 12px; }
 .co-module {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 12px; padding: 18px 20px;
+  border-radius: 12px; padding: 20px;
   display: flex; align-items: center; gap: 16px;
   cursor: pointer; transition: border-color .2s;
   user-select: none;
@@ -208,7 +208,7 @@ html[lang="cs"] .co-pkg.featured::before { content: 'Nejoblíbenější'; }
 }
 .co-venue-card:hover { border-color: rgba(156,123,60,.4); transform: translateY(-4px); }
 .co-venue-img { width: 100%; height: 140px; object-fit: cover; display: block; filter: brightness(.8); }
-.co-venue-body { padding: 18px; }
+.co-venue-body { padding: 20px; }
 .co-venue-name { font-family: var(--fd); font-size: 1rem; color: var(--cream); font-weight: 600; margin-bottom: 4px; }
 .co-venue-type { font-size: .68rem; color: var(--gold); margin-bottom: 6px; }
 .co-venue-cap { font-size: .72rem; color: var(--grey); }

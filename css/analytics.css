@@ -198,7 +198,7 @@
   background: rgba(156,123,60,.04);
   border: 1px solid rgba(156,123,60,.15);
   border-left: 3px solid var(--gold);
-  border-radius: 8px; padding: 16px 20px;
+  border-radius: 8px; padding: 20px;
   margin-bottom: 32px;
   font-size: .78rem; color: var(--grey); line-height: 1.7;
 }

@@ -130,7 +130,7 @@
 .int-compat-list { display: flex; flex-direction: column; gap: 14px; }
 .int-compat-item {
   display: flex; align-items: center; gap: 14px;
-  padding: 14px 18px;
+  padding: 20px;
   background: rgba(255,255,255,.03);
   border: 1px solid rgba(156,123,60,.1);
   border-radius: 10px;
