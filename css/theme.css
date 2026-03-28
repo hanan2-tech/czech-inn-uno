@@ -132,8 +132,8 @@ lord-icon, iconify-icon { display: inline-block; vertical-align: middle; }
   text-align: center;
   color: var(--text);
   padding: 0 20px;
-  margin-top: 16px;
-  margin-bottom: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .sec-title span { color: var(--gold); }
 .sec-title-light { color: var(--cream); }
