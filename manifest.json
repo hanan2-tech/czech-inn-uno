@@ -1,0 +1,24 @@
+{
+  "name": "Czech Inn Hotels Concierge",
+  "short_name": "Concierge",
+  "description": "Your personal Prague guide — book tours, discover venues, get concierge help instantly.",
+  "start_url": "/concierge.html",
+  "display": "standalone",
+  "background_color": "#0d0b0e",
+  "theme_color": "#9C7B3C",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=192&h=192&fit=crop&q=80",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=512&h=512&fit=crop&q=80",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
