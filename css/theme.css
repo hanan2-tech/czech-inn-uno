@@ -147,7 +147,7 @@ lord-icon, iconify-icon { display: inline-block; vertical-align: middle; }
   color: var(--text-l);
   font-size: .9rem;
   max-width: 580px;
-  margin: 12px auto 48px;
+  margin: 20px auto 48px;
   font-weight: 300;
   line-height: 1.75;
   padding: 0 20px;
