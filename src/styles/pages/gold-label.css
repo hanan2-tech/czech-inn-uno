@@ -742,9 +742,194 @@ body {
 }
 .reveal.vis { opacity: 1; transform: translateY(0); }
 
+/* ── Video Section ───────────────────────────────── */
+.gl-video-section {
+  background: var(--gl-bg);
+  border-top: 1px solid var(--gl-border);
+}
+
+.gl-video-stage {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gl-video-poster {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.55);
+  transition: filter 0.4s ease, transform 0.6s ease;
+}
+
+.gl-video-stage:hover .gl-video-poster {
+  filter: brightness(0.4);
+  transform: scale(1.02);
+}
+
+.gl-video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gl-video-play-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gl-video-play-btn:hover { transform: scale(1.08); }
+
+.gl-video-play-btn svg {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 4px 24px rgba(201,168,76,0.4));
+}
+
+.gl-video-play-btn span {
+  font-family: var(--fd);
+  font-size: .75rem;
+  color: rgba(245,237,214,.7);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+/* ── Upgrade Cards — Photo Flip ──────────────────── */
+.gl-upgrade-card.has-photo {
+  padding: 0;
+  height: 260px;
+  perspective: 1200px;
+  background: transparent;
+  border: none;
+}
+
+.gl-upgrade-card.has-photo .flip-card-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.gl-upgrade-card.has-photo .flip-card-front {
+  background: var(--gl-surface);
+  border: 1px solid var(--gl-border);
+  border-radius: 14px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gl-upgrade-card.has-photo .flip-card-back {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.3);
+}
+
+.gl-upgrade-card.has-photo .flip-card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gl-upgrade-card.has-photo .flip-back-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,.4) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  z-index: 2;
+}
+
+.gl-upgrade-card.has-photo .flip-back-title {
+  font-family: var(--fd);
+  font-size: 1.1rem;
+  color: var(--gl-accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.gl-upgrade-card.has-photo .flip-back-includes {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gl-upgrade-card.has-photo .flip-back-item {
+  font-size: .72rem;
+  color: rgba(240,235,214,.85);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gl-upgrade-card.has-photo .flip-back-item::before {
+  content: '✦';
+  color: var(--gl-accent);
+  font-size: .55rem;
+  flex-shrink: 0;
+}
+
+/* ── Concierge Photo Cards ───────────────────────── */
+.gl-concierge-card.photo-card {
+  height: 280px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.gl-concierge-card.photo-card .concierge-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+  z-index: 0;
+}
+
+.gl-concierge-card.photo-card:hover .concierge-bg {
+  transform: scale(1.06);
+}
+
+.gl-concierge-card.photo-card .concierge-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.4) 60%, rgba(0,0,0,.1) 100%);
+  z-index: 1;
+}
+
+.gl-concierge-card.photo-card .concierge-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  z-index: 2;
+}
+
+/* ── Revenue SVG Chart ───────────────────────────── */
+.gl-revenue-svg-wrap {
+  margin-top: 48px;
+}
+
 @media(max-width:768px) {
   .gl-hero-content   { padding: 24px 20px; }
   .gl-section,
   .gl-section-full   { padding: 64px 20px; }
   .gl-features-grid  { grid-template-columns: 1fr; }
+  .gl-video-poster   { height: 240px; }
+  .gl-upgrade-card.has-photo { height: 200px; }
 }

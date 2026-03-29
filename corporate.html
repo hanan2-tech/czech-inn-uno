@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/styles/base/theme.css">
 <link rel="stylesheet" href="src/styles/base/shared.css">
+<link rel="stylesheet" href="src/styles/base/visuals.css">
 <link rel="stylesheet" href="src/styles/pages/corporate.css">
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.min.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -46,15 +47,15 @@
         <div class="co-stat-label" data-i18n="corp.stat1.label">People per corporate group</div>
       </div>
       <div class="co-stat">
-        <div class="co-stat-val">48h</div>
+        <div class="co-stat-val" data-count="48" data-suffix="h">48h</div>
         <div class="co-stat-label" data-i18n="corp.stat2.label">Turnaround for full programme quote</div>
       </div>
       <div class="co-stat">
-        <div class="co-stat-val">5</div>
+        <div class="co-stat-val" data-count="5">5</div>
         <div class="co-stat-label" data-i18n="corp.stat3.label">Languages supported for group tours</div>
       </div>
       <div class="co-stat">
-        <div class="co-stat-val">€0</div>
+        <div class="co-stat-val" data-count="0" data-prefix="€">€0</div>
         <div class="co-stat-label" data-i18n="corp.stat4.label">Planning fee, billed only on delivery</div>
       </div>
     </div>
@@ -106,6 +107,32 @@
             <span class="co-type-tag" data-i18n="corp.type3.tag3">Flexible</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Corporate Event Masonry Photo Grid -->
+<section class="co-photo-section">
+  <div class="co-photo-inner">
+    <div class="masonry-grid co-event-masonry">
+      <div class="masonry-item">
+        <img class="lightbox-trigger" src="https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="Team dinner Prague" loading="lazy" data-full="https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=1600&q=85">
+      </div>
+      <div class="masonry-item">
+        <img class="lightbox-trigger" src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="Corporate team activity" loading="lazy" data-full="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1600&q=85">
+      </div>
+      <div class="masonry-item">
+        <img class="lightbox-trigger" src="https://images.pexels.com/photos/5467577/pexels-photo-5467577.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="Conference group Prague" loading="lazy" data-full="https://images.pexels.com/photos/5467577/pexels-photo-5467577.jpeg?auto=compress&cs=tinysrgb&w=1600&q=85">
+      </div>
+      <div class="masonry-item">
+        <img class="lightbox-trigger" src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="Incentive travel group" loading="lazy" data-full="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1600&q=85">
+      </div>
+      <div class="masonry-item">
+        <img class="lightbox-trigger" src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="Team building workshop" loading="lazy" data-full="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1600&q=85">
+      </div>
+      <div class="masonry-item">
+        <img class="lightbox-trigger" src="https://images.pexels.com/photos/5935794/pexels-photo-5935794.jpeg?auto=compress&cs=tinysrgb&w=800&q=80" alt="Private Prague dining" loading="lazy" data-full="https://images.pexels.com/photos/5935794/pexels-photo-5935794.jpeg?auto=compress&cs=tinysrgb&w=1600&q=85">
       </div>
     </div>
   </div>
@@ -167,6 +194,29 @@
           <li><span class="feat-check"><lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" delay="3000" colors="primary:#C9A84C" style="width:14px;height:14px"></lord-icon></span><span data-i18n="corp.pkg3.f7">24/7 support during Prague stay</span></li>
         </ul>
         <button class="co-pkg-cta" data-i18n="corp.pkg.cta.quote">Request Quote</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- See What's Possible: Remotion ROI Video -->
+<section class="co-video-section">
+  <div class="co-video-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">See What's Possible</div>
+    <h2 class="sec-title sec-title-dark reveal reveal-delay-1">The ROI of a Day<br><em>in Prague</em></h2>
+    <p class="sec-sub reveal reveal-delay-2" style="max-width:520px;margin:0 auto">One day of shared experiences delivers measurable outcomes: stronger teams, higher retention, and stories that travel back to the office.</p>
+    <div class="co-laptop-wrap reveal" style="margin-top:56px">
+      <div class="device-frame-laptop" style="width:100%;max-width:760px;margin:0 auto">
+        <div class="device-laptop-body">
+          <div class="device-laptop-screen">
+            <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block"
+              poster="https://images.pexels.com/photos/9460510/pexels-photo-9460510.jpeg?auto=compress&cs=tinysrgb&w=900&q=80">
+              <source src="videos/corporate-roi.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="device-laptop-base"></div>
+        <div class="device-laptop-stand"></div>
       </div>
     </div>
   </div>
@@ -279,7 +329,7 @@
 
     <div class="co-venues-grid">
       <div class="co-venue-card reveal">
-        <img class="co-venue-img" src="https://images.pexels.com/photos/4204573/pexels-photo-4204573.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Café Louvre" loading="lazy" decoding="async"/>
+        <img class="co-venue-img lightbox-trigger" src="https://images.pexels.com/photos/4204573/pexels-photo-4204573.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Café Louvre" loading="lazy" decoding="async" data-full="https://images.pexels.com/photos/4204573/pexels-photo-4204573.jpeg?auto=compress&cs=tinysrgb&w=1400&q=90" style="cursor:zoom-in"/>
         <div class="co-venue-body">
           <div class="co-venue-name">Café Louvre</div>
           <div class="co-venue-type" data-i18n="corp.v1.type">Historic Restaurant · Private Room</div>
@@ -287,7 +337,7 @@
         </div>
       </div>
       <div class="co-venue-card reveal reveal-delay-1">
-        <img class="co-venue-img" src="https://images.pexels.com/photos/17606660/pexels-photo-17606660.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="King Solomon Restaurant" loading="lazy" decoding="async"/>
+        <img class="co-venue-img lightbox-trigger" src="https://images.pexels.com/photos/17606660/pexels-photo-17606660.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="King Solomon Restaurant" loading="lazy" decoding="async" data-full="https://images.pexels.com/photos/17606660/pexels-photo-17606660.jpeg?auto=compress&cs=tinysrgb&w=1400&q=90" style="cursor:zoom-in"/>
         <div class="co-venue-body">
           <div class="co-venue-name">King Solomon Restaurant</div>
           <div class="co-venue-type" data-i18n="corp.v2.type">Kosher Fine Dining · Private Hire</div>
@@ -295,7 +345,7 @@
         </div>
       </div>
       <div class="co-venue-card reveal reveal-delay-2">
-        <img class="co-venue-img" src="https://images.pexels.com/photos/258783/pexels-photo-258783.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Lobkowicz Palace" loading="lazy" decoding="async"/>
+        <img class="co-venue-img lightbox-trigger" src="https://images.pexels.com/photos/258783/pexels-photo-258783.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Lobkowicz Palace" loading="lazy" decoding="async" data-full="https://images.pexels.com/photos/258783/pexels-photo-258783.jpeg?auto=compress&cs=tinysrgb&w=1400&q=90" style="cursor:zoom-in"/>
         <div class="co-venue-body">
           <div class="co-venue-name">Lobkowicz Palace</div>
           <div class="co-venue-type" data-i18n="corp.v3.type">Castle · Concert and Private Events</div>
@@ -303,7 +353,7 @@
         </div>
       </div>
       <div class="co-venue-card reveal reveal-delay-3">
-        <img class="co-venue-img" src="https://images.pexels.com/photos/753337/pexels-photo-753337.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="T-Anker Rooftop" loading="lazy" decoding="async"/>
+        <img class="co-venue-img lightbox-trigger" src="https://images.pexels.com/photos/753337/pexels-photo-753337.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="T-Anker Rooftop" loading="lazy" decoding="async" data-full="https://images.pexels.com/photos/753337/pexels-photo-753337.jpeg?auto=compress&cs=tinysrgb&w=1400&q=90" style="cursor:zoom-in"/>
         <div class="co-venue-body">
           <div class="co-venue-name">T-Anker Rooftop</div>
           <div class="co-venue-type" data-i18n="corp.v4.type">Rooftop Bar · Evening Events</div>
@@ -324,5 +374,13 @@
 <script src="src/scripts/core/lang.js"></script>
 <script src="src/scripts/core/data.js"></script>
 <script src="src/scripts/pages/corporate.js"></script>
+<script type="module">
+  import { initCounters, initLightbox, initScrollReveal } from './src/scripts/core/visuals.js';
+  document.addEventListener('DOMContentLoaded', () => {
+    initScrollReveal();
+    initCounters();
+    initLightbox();
+  });
+</script>
 </body>
 </html>

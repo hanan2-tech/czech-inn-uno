@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/styles/base/theme.css">
 <link rel="stylesheet" href="src/styles/base/shared.css">
+<link rel="stylesheet" href="src/styles/base/visuals.css">
 <link rel="stylesheet" href="src/styles/pages/by-passion.css">
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.min.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -49,22 +50,22 @@
       <div class="quiz-sub" data-i18n="byp.q1.sub">Choose the one that feels most like you.</div>
       <div class="quiz-options">
         <div class="quiz-opt" data-val="culture">
-          <span class="quiz-opt-icon"><iconify-icon icon="tabler:palette" style="font-size:28px;color:#C9A84C"></iconify-icon></span>
+          <span class="quiz-opt-icon"><lottie-player src="public/lotties/culture.json" background="transparent" speed="1" style="width:36px;height:36px" loop autoplay></lottie-player></span>
           <div class="quiz-opt-label" data-i18n="byp.q1.c1.label">Art and Culture</div>
           <div class="quiz-opt-desc" data-i18n="byp.q1.c1.desc">Museums, galleries, architecture, history: the layers beneath the surface</div>
         </div>
         <div class="quiz-opt" data-val="food">
-          <span class="quiz-opt-icon"><iconify-icon icon="tabler:tools-kitchen-2" style="font-size:28px;color:#C9A84C"></iconify-icon></span>
+          <span class="quiz-opt-icon"><lottie-player src="public/lotties/food.json" background="transparent" speed="1" style="width:36px;height:36px" loop autoplay></lottie-player></span>
           <div class="quiz-opt-label" data-i18n="byp.q1.c2.label">Food and Drink</div>
           <div class="quiz-opt-desc" data-i18n="byp.q1.c2.desc">Markets, restaurants, local ingredients, wine, craft beer, cocktails</div>
         </div>
         <div class="quiz-opt" data-val="stories">
-          <span class="quiz-opt-icon"><lord-icon src="https://cdn.lordicon.com/kipaqhoz.json" trigger="hover" colors="primary:#C9A84C" style="width:28px;height:28px"></lord-icon></span>
+          <span class="quiz-opt-icon"><lottie-player src="public/lotties/stories.json" background="transparent" speed="1" style="width:36px;height:36px" loop autoplay></lottie-player></span>
           <div class="quiz-opt-label" data-i18n="byp.q1.c3.label">Stories and People</div>
           <div class="quiz-opt-desc" data-i18n="byp.q1.c3.desc">History, characters, hidden narratives: what really happened here</div>
         </div>
         <div class="quiz-opt" data-val="night">
-          <span class="quiz-opt-icon"><iconify-icon icon="tabler:moon" style="font-size:28px;color:#C9A84C"></iconify-icon></span>
+          <span class="quiz-opt-icon"><lottie-player src="public/lotties/night.json" background="transparent" speed="1" style="width:36px;height:36px" loop autoplay></lottie-player></span>
           <div class="quiz-opt-label" data-i18n="byp.q1.c4.label">Nightlife and Music</div>
           <div class="quiz-opt-desc" data-i18n="byp.q1.c4.desc">Jazz, cocktail bars, rooftops, live performances, after-dark energy</div>
         </div>
@@ -227,5 +228,108 @@
 <script src="src/scripts/core/lang.js"></script>
 <script src="src/scripts/core/data.js"></script>
 <script src="src/scripts/pages/by-passion.js"></script>
+<script>
+/* ── Quiz Background & Visual Enhancements ─────── */
+const BG_IMAGES = {
+  culture: 'https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80',
+  food:    'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80',
+  stories: 'https://images.pexels.com/photos/3355788/pexels-photo-3355788.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80',
+  night:   'https://images.pexels.com/photos/2079438/pexels-photo-2079438.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80',
+  guided:  'https://images.pexels.com/photos/3944430/pexels-photo-3944430.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80',
+  private: 'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80',
+  couple:  'https://images.pexels.com/photos/1024982/pexels-photo-1024982.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80',
+  jazz:    'https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80',
+  default: 'https://images.pexels.com/photos/695193/pexels-photo-695193.jpeg?auto=compress&cs=tinysrgb&w=1200&q=80',
+};
+
+const RESULT_PHOTOS = {
+  culture: 'https://images.pexels.com/photos/1153895/pexels-photo-1153895.jpeg?auto=compress&cs=tinysrgb&w=800&q=80',
+  food:    'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800&q=80',
+  stories: 'https://images.pexels.com/photos/3355788/pexels-photo-3355788.jpeg?auto=compress&cs=tinysrgb&w=800&q=80',
+  night:   'https://images.pexels.com/photos/2079438/pexels-photo-2079438.jpeg?auto=compress&cs=tinysrgb&w=800&q=80',
+};
+
+// Inject background canvas
+const canvas = document.createElement('div');
+canvas.className = 'quiz-bg-canvas';
+canvas.innerHTML = '<div class="quiz-bg-layer" id="bgLayer1"></div><div class="quiz-bg-layer" id="bgLayer2"></div><div class="quiz-bg-overlay"></div>';
+document.body.insertBefore(canvas, document.body.firstChild);
+
+const layers = [document.getElementById('bgLayer1'), document.getElementById('bgLayer2')];
+let activeLayer = 0;
+
+function setBg(key) {
+  const src = BG_IMAGES[key] || BG_IMAGES.default;
+  const next = 1 - activeLayer;
+  layers[next].style.backgroundImage = `url('${src}')`;
+  layers[next].classList.add('active');
+  layers[activeLayer].classList.remove('active');
+  activeLayer = next;
+}
+
+// Set background on option hover
+document.querySelectorAll('.quiz-opt').forEach(opt => {
+  const bg = BG_IMAGES[opt.dataset.val];
+  if (bg) opt.style.setProperty('--opt-bg', `url('${bg}')`);
+  opt.addEventListener('mouseenter', () => setBg(opt.dataset.val));
+  // Set hover bg via inline style trick
+  if (bg) opt.style.cssText += `--opt-bg:url('${bg}')`;
+});
+
+// Apply ::before background via CSS custom property
+document.querySelectorAll('.quiz-opt').forEach(opt => {
+  const bg = BG_IMAGES[opt.dataset.val];
+  if (!bg) return;
+  opt.addEventListener('mouseenter', () => {
+    opt.style.backgroundImage = `url('${bg}')`;
+    opt.style.backgroundSize = 'cover';
+    opt.style.backgroundPosition = 'center';
+  });
+  opt.addEventListener('mouseleave', () => {
+    opt.style.backgroundImage = '';
+  });
+});
+
+// Set bg per quiz step
+const stepBgs = ['default', 'guided', 'couple', 'jazz'];
+const origNextStep = window.nextStep;
+window.nextStep = function(current) {
+  origNextStep(current);
+  setBg(stepBgs[current + 1] || 'default');
+};
+
+// Enhance result card with photo background
+const origShowResult = window.showResult;
+window.showResult = function() {
+  origShowResult && origShowResult();
+
+  setTimeout(() => {
+    const resultSection = document.getElementById('resultSection');
+    if (resultSection) {
+      resultSection.classList.add('result-active');
+
+      // Inject photo bg into result card
+      const resultCard = document.getElementById('resultCard');
+      if (resultCard && !resultCard.querySelector('.result-card-bg')) {
+        const passion = (window.answers && window.answers.q0) || 'culture';
+        const photo = RESULT_PHOTOS[passion] || RESULT_PHOTOS.culture;
+
+        // Wrap existing content
+        const existingContent = resultCard.innerHTML;
+        resultCard.innerHTML = `
+          <div class="result-card-bg" style="background-image:url('${photo}')"></div>
+          <div class="result-card-overlay"></div>
+          <div class="result-card-content">${existingContent}</div>
+        `;
+        // Fade in bg
+        setTimeout(() => resultCard.querySelector('.result-card-bg').classList.add('loaded'), 50);
+      }
+    }
+  }, 100);
+};
+
+// Initial bg
+setBg('default');
+</script>
 </body>
 </html>

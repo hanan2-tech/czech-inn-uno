@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/styles/base/theme.css">
 <link rel="stylesheet" href="src/styles/base/shared.css">
+<link rel="stylesheet" href="src/styles/base/visuals.css">
 <link rel="stylesheet" href="src/styles/pages/analytics.css">
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.min.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -28,6 +29,8 @@
 
 <!-- Hero -->
 <section class="an-hero">
+  <!-- Aerial Prague background -->
+  <div class="an-hero-bg" style="background-image:url('https://images.pexels.com/photos/161901/prague-czech-republic-europa-city-161901.jpeg?auto=compress&cs=tinysrgb&w=1800&q=80')"></div>
   <div class="an-hero-inner">
     <div>
       <div class="sec-eyebrow reveal" data-i18n="an.eyebrow">Performance Dashboard</div>
@@ -38,25 +41,25 @@
     <div class="an-hero-kpis reveal">
       <div class="an-kpi">
         <div class="data-badge data-badge-real" data-i18n="an.badge.verified">Verified</div>
-        <div class="an-kpi-val">8.5M</div>
+        <div class="an-kpi-val" data-count="8.5" data-decimals="1" data-suffix="M">0M</div>
         <div class="an-kpi-label" data-i18n="an.kpi1.label">Prague tourists 2024</div>
         <div class="an-kpi-delta delta-up" data-i18n="an.kpi1.delta">↑ 18% vs 2023</div>
       </div>
       <div class="an-kpi">
         <div class="data-badge data-badge-real" data-i18n="an.badge.verified">Verified</div>
-        <div class="an-kpi-val">847</div>
+        <div class="an-kpi-val" data-count="847">0</div>
         <div class="an-kpi-label" data-i18n="an.kpi2.label">UNO Prague bookings 2024</div>
         <div class="an-kpi-delta delta-up" data-i18n="an.kpi2.delta">↑ 31% vs 2023</div>
       </div>
       <div class="an-kpi">
         <div class="data-badge data-badge-projected" data-i18n="an.badge.projected">Projected</div>
-        <div class="an-kpi-val">€1.7M</div>
+        <div class="an-kpi-val" data-count="1.7" data-decimals="1" data-prefix="€" data-suffix="M">€0M</div>
         <div class="an-kpi-label" data-i18n="an.kpi3.label">Czech Inn Year 1 revenue share</div>
         <div class="an-kpi-delta delta-source" data-i18n="an.kpi3.delta">9.5% conversion, 1.65M guests</div>
       </div>
       <div class="an-kpi">
         <div class="data-badge data-badge-real" data-i18n="an.badge.verified">Verified</div>
-        <div class="an-kpi-val">4.91</div>
+        <div class="an-kpi-val" data-count="4.91" data-decimals="2">0</div>
         <div class="an-kpi-label" data-i18n="an.kpi4.label">Avg UNO tour rating (2024)</div>
         <div class="an-kpi-delta delta-source" data-i18n="an.kpi4.delta">From 412 verified reviews</div>
       </div>
@@ -79,12 +82,12 @@
     </div>
     <div class="an-extra-kpi reveal" id="anKpiAvgVal">
       <div class="an-extra-kpi-label">Avg Booking Value</div>
-      <div class="an-extra-kpi-val" id="anAvgVal">€112</div>
+      <div class="an-extra-kpi-val" id="anAvgVal" data-count="112" data-prefix="€">€112</div>
       <div class="an-extra-kpi-sub">per transaction</div>
     </div>
     <div class="an-extra-kpi reveal" id="anKpiReturn">
       <div class="an-extra-kpi-label">Returning Guests</div>
-      <div class="an-extra-kpi-val" id="anReturnPct">24%</div>
+      <div class="an-extra-kpi-val" id="anReturnPct" data-count="24" data-suffix="%">24%</div>
       <div class="an-extra-kpi-sub">book a second experience</div>
     </div>
   </div>
@@ -272,11 +275,111 @@
   </div>
 </section>
 
+<!-- ── Dashboard Laptop Mockup ────────────────────── -->
+<section class="an-laptop-section">
+  <div class="an-laptop-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">Live Dashboard</div>
+    <h2 class="sec-title sec-title-dark reveal reveal-delay-1">See Your Revenue<br><em>In Real Time</em></h2>
+    <p class="sec-sub reveal reveal-delay-2" style="color:var(--grey);max-width:440px;margin:0 auto 56px">A fully branded dashboard available from day one. Track bookings, revenue, guest satisfaction, and tour performance — all in one place.</p>
+
+    <div class="device-frame-laptop reveal reveal-delay-3">
+      <div class="device-laptop-body">
+        <div class="device-laptop-screen">
+          <!-- Mini dashboard inside laptop -->
+          <div class="an-dash-mockup">
+            <div class="an-dash-header">
+              <div class="an-dash-logo">Czech Inn Hotels × UNO</div>
+              <div class="an-dash-date">Dashboard · March 2026</div>
+            </div>
+            <div class="an-dash-kpis">
+              <div class="an-dash-kpi"><div class="an-dash-kval">€142K</div><div class="an-dash-klabel">Revenue This Month</div></div>
+              <div class="an-dash-kpi"><div class="an-dash-kval">1,284</div><div class="an-dash-klabel">Guest Bookings</div></div>
+              <div class="an-dash-kpi"><div class="an-dash-kval">4.93</div><div class="an-dash-klabel">Avg Rating</div></div>
+              <div class="an-dash-kpi"><div class="an-dash-kval">€111</div><div class="an-dash-klabel">Avg Basket</div></div>
+            </div>
+            <!-- Mini bar chart -->
+            <div class="an-dash-chart">
+              <div class="an-dash-bar-row">
+                <div class="an-dash-bar" style="--h:40%"></div>
+                <div class="an-dash-bar" style="--h:55%"></div>
+                <div class="an-dash-bar" style="--h:62%"></div>
+                <div class="an-dash-bar" style="--h:48%"></div>
+                <div class="an-dash-bar" style="--h:71%"></div>
+                <div class="an-dash-bar" style="--h:80%"></div>
+                <div class="an-dash-bar" style="--h:68%"></div>
+                <div class="an-dash-bar" style="--h:88%"></div>
+                <div class="an-dash-bar" style="--h:95%"></div>
+                <div class="an-dash-bar" style="--h:76%"></div>
+                <div class="an-dash-bar" style="--h:84%"></div>
+                <div class="an-dash-bar" style="--h:100%"></div>
+              </div>
+              <div class="an-dash-chart-label">Monthly Revenue Share · Year 1</div>
+            </div>
+            <!-- Top tours list -->
+            <div class="an-dash-tours">
+              <div class="an-dash-tour-row"><span>Kafka's Prague</span><span class="an-dash-tour-rev">€38,200</span></div>
+              <div class="an-dash-tour-row"><span>Jewish Heritage</span><span class="an-dash-tour-rev">€29,400</span></div>
+              <div class="an-dash-tour-row"><span>Art Nouveau</span><span class="an-dash-tour-rev">€24,100</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="device-laptop-base">
+        <div class="device-laptop-stand"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Export Report Preview ──────────────────────── -->
+<section class="an-report-section">
+  <div class="an-report-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">Export Report</div>
+    <h2 class="sec-title reveal reveal-delay-1">Download Your<br><em>Monthly Performance Report</em></h2>
+    <p class="sec-sub reveal reveal-delay-2" style="max-width:420px;margin:0 auto 48px">Automated PDF reports sent monthly. Share with your management team, ownership, or investors.</p>
+
+    <div class="an-report-card reveal reveal-delay-3" id="anReportCard">
+      <div class="an-report-preview">
+        <div class="an-rp-header">
+          <div class="an-rp-logo">CZECH INN HOTELS × UNO</div>
+          <div class="an-rp-period">Monthly Performance Report · March 2026</div>
+        </div>
+        <div class="an-rp-divider"></div>
+        <div class="an-rp-summary">
+          <div class="an-rp-stat"><div class="an-rp-sval">€142,380</div><div class="an-rp-slabel">Total Revenue Share</div></div>
+          <div class="an-rp-stat"><div class="an-rp-sval">1,284</div><div class="an-rp-slabel">Bookings</div></div>
+          <div class="an-rp-stat"><div class="an-rp-sval">4.93 ★</div><div class="an-rp-slabel">Satisfaction Score</div></div>
+        </div>
+        <div class="an-rp-chart-placeholder">
+          <div class="an-rp-bar" style="--h:65%"></div>
+          <div class="an-rp-bar" style="--h:78%"></div>
+          <div class="an-rp-bar" style="--h:90%"></div>
+          <div class="an-rp-bar" style="--h:72%"></div>
+          <div class="an-rp-bar" style="--h:100%"></div>
+          <div class="an-rp-bar" style="--h:85%"></div>
+        </div>
+        <div class="an-rp-footer">Czech Inn Hotels × UNO · Confidential · Generated automatically</div>
+      </div>
+      <button class="an-report-print-btn" onclick="window.print()">
+        <iconify-icon icon="tabler:printer" style="font-size:18px"></iconify-icon>
+        Print / Export PDF
+      </button>
+    </div>
+  </div>
+</section>
+
 </div><!-- /page-wrap -->
 
 <script src="src/scripts/core/nav.js"></script>
 <script src="src/scripts/core/lang.js"></script>
 <script src="src/scripts/core/data.js"></script>
 <script src="src/scripts/pages/analytics.js"></script>
+<script type="module">
+import { initScrollReveal, initCounters } from './src/scripts/core/visuals.js';
+document.addEventListener('DOMContentLoaded', () => {
+  initScrollReveal();
+  initCounters();
+});
+</script>
 </body>
 </html>

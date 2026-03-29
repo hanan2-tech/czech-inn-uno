@@ -1,3 +1,13 @@
+/* ── Hover videos for featured experiences ─── */
+const HOVER_VIDEOS = {
+  'cooking':    'https://player.vimeo.com/external/368474122.sd.mp4?s=cad0c14af4f24f4e28e4f9c8e68f0b1a9b3a2b1c&profile_id=164',
+  'cruise':     'https://player.vimeo.com/external/477151520.sd.mp4?s=cad0c14af4f24f4e28e4f9c8e68f0b1a9b3a2b1c&profile_id=164',
+  'helicopter': 'https://player.vimeo.com/external/304625820.sd.mp4?s=cad0c14af4f24f4e28e4f9c8e68f0b1a9b3a2b1c&profile_id=164',
+};
+
+/* ── Featured cards (first of each category) ─── */
+const FEATURED_IDS = new Set(['cooking','cruise','helicopter','black-light','krumlov','classical']);
+
 /* ── Extras data ─── */
 const EXTRAS_DATA = [
   {cat:'food', catLabel:'Food & Drink', icon:'<iconify-icon icon="tabler:tools-kitchen-2" style="font-size:28px;color:#C9A84C"></iconify-icon>',
@@ -78,8 +88,9 @@ function renderCatalogue() {
       </div>
       <div class="ex-grid">
         ${items.map(item => `
-          <div class="ex-card reveal" data-id="${item.id}">
+          <div class="ex-card reveal${FEATURED_IDS.has(item.id) ? ' featured' : ''}${HOVER_VIDEOS[item.id] ? ' has-video' : ''}" data-id="${item.id}">
             <img class="ex-card-img" src="${item.img}" alt="${item.name}" loading="lazy"/>
+            ${HOVER_VIDEOS[item.id] ? `<video class="card-video" src="${HOVER_VIDEOS[item.id]}" muted loop playsinline preload="none"></video>` : ''}
             <div class="ex-card-body">
               <div class="ex-card-badges">
                 <span class="ex-badge ex-badge-cat">${catLabel}</span>

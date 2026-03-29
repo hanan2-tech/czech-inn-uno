@@ -376,7 +376,22 @@
       }).addTo(map);
 
       const latlngs = stops.map(s => [s.lat, s.lng]);
-      L.polyline(latlngs, { color: '#C9A84C', weight: 3, opacity: .85, dashArray: '8 5' }).addTo(map);
+      const routeLine = L.polyline(latlngs, { color: '#C9A84C', weight: 3, opacity: .85 }).addTo(map);
+
+      // Animate route drawing via SVG stroke-dashoffset
+      setTimeout(() => {
+        const pathEl = routeLine.getElement ? routeLine.getElement() : null;
+        if (pathEl) {
+          try {
+            const len = pathEl.getTotalLength();
+            pathEl.style.strokeDasharray = len;
+            pathEl.style.strokeDashoffset = len;
+            pathEl.style.transition = 'stroke-dashoffset 2.4s cubic-bezier(.4,0,.2,1)';
+            requestAnimationFrame(() => { pathEl.style.strokeDashoffset = '0'; });
+          } catch(e) {}
+        }
+      }, 300);
+
       stops.forEach((stop, i) => {
         const icon = L.divIcon({ html: `<div class="map-pin">${i + 1}</div>`, className: '', iconSize: [28, 28], iconAnchor: [14, 14] });
         L.marker([stop.lat, stop.lng], { icon }).addTo(map)

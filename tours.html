@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/styles/base/theme.css">
 <link rel="stylesheet" href="src/styles/base/shared.css">
+<link rel="stylesheet" href="src/styles/base/visuals.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <link rel="stylesheet" href="src/styles/pages/tours.css">
 <link rel="stylesheet" href="src/styles/pages/booking.css">
@@ -28,6 +29,9 @@
   <!-- ── Page Hero ─────────────────────────────── -->
   <section class="tours-hero">
     <div class="tours-hero-bg"></div>
+    <video class="tours-hero-video" autoplay muted loop playsinline poster="https://images.pexels.com/photos/16922751/pexels-photo-16922751.jpeg?auto=compress&cs=tinysrgb&w=1600&q=80">
+      <source src="https://videos.pexels.com/video-files/3044037/3044037-uhd_2560_1440_24fps.mp4" type="video/mp4">
+    </video>
     <div class="tours-hero-content">
       <div class="tours-hero-eyebrow" data-i18n="tours.eyebrow">4 Tours, 12 Languages, 4.91 Rating</div>
       <h1 class="tours-hero-title" data-i18n-html="tours.title">Four Stories Prague Has<br><em>Never Told Quite Like This</em></h1>
@@ -115,16 +119,134 @@
       <div class="sec-eyebrow" style="color:var(--gold)">In the Company of Prague</div>
       <h2 class="sec-title sec-title-dark reveal">Guided by Locals.<br><em>Remembered Forever.</em></h2>
       <p class="sec-sub sec-sub-dark reveal" style="margin-bottom:0">Every guide is a storyteller. Every guest leaves with something that cannot be photographed.</p>
-      <div class="guides-grid" style="margin-top:48px">
-        <img class="guides-img reveal" src="https://images.pexels.com/photos/3849558/pexels-photo-3849558.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Tour guide explaining Prague" loading="lazy" style="height:280px">
-        <img class="guides-img reveal" src="https://images.pexels.com/photos/1388030/pexels-photo-1388030.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="People walking through Prague" loading="lazy" style="height:200px">
-        <img class="guides-img reveal" src="https://images.pexels.com/photos/3064979/pexels-photo-3064979.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Couple at Charles Bridge" loading="lazy" style="height:200px">
-        <img class="guides-img reveal" src="https://images.pexels.com/photos/984498/pexels-photo-984498.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Children on tour" loading="lazy" style="height:280px">
-        <img class="guides-img reveal" src="https://images.pexels.com/photos/1467300/pexels-photo-1467300.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Family exploring Prague" loading="lazy" style="height:240px">
-        <img class="guides-img reveal" src="https://images.pexels.com/photos/3764958/pexels-photo-3764958.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Café conversation" loading="lazy" style="height:240px">
-        <img class="guides-img reveal" src="https://images.pexels.com/photos/13019654/pexels-photo-13019654.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Active Prague tour" loading="lazy" style="height:200px">
-        <img class="guides-img reveal" src="https://images.pexels.com/photos/2248713/pexels-photo-2248713.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Cycling along the Vltava" loading="lazy" style="height:200px">
+
+      <!-- Guide Profile Flip Cards -->
+      <div class="guide-cards-grid" style="margin-top:52px">
+
+        <!-- Tomáš -->
+        <div class="guide-flip-card reveal">
+          <div class="guide-flip-inner">
+            <div class="guide-flip-front">
+              <div class="guide-avatar guide-avatar-tomas">
+                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+                  <circle cx="40" cy="30" r="18" fill="rgba(156,123,60,.25)" stroke="var(--gold)" stroke-width="1.5"/>
+                  <circle cx="40" cy="28" r="10" fill="rgba(156,123,60,.35)"/>
+                  <ellipse cx="40" cy="55" rx="20" ry="14" fill="rgba(156,123,60,.2)" stroke="var(--gold)" stroke-width="1.5"/>
+                  <circle cx="36" cy="26" r="2" fill="var(--gold)"/>
+                  <circle cx="44" cy="26" r="2" fill="var(--gold)"/>
+                  <path d="M36 33 Q40 37 44 33" stroke="var(--gold)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="guide-name">Tomáš Novák</div>
+              <div class="guide-spec">Literary &amp; History</div>
+              <div class="guide-tags">
+                <span class="guide-tag">Kafka Tour</span>
+                <span class="guide-tag">Jewish Heritage</span>
+              </div>
+              <div class="guide-langs"><iconify-icon icon="tabler:world" style="font-size:13px;color:var(--gold)"></iconify-icon> EN · DE · CZ</div>
+              <div class="guide-stars">★★★★★</div>
+              <div class="guide-flip-hint">Hover for bio</div>
+            </div>
+            <div class="guide-flip-back">
+              <div class="guide-back-years">8 years guiding</div>
+              <div class="guide-back-quote">"Prague's streets are Kafka's labyrinth made real. Every alley has a story that never made it into the books."</div>
+              <ul class="guide-back-facts">
+                <li>PhD in Central European Literature</li>
+                <li>Published author on Prague's Jewish history</li>
+                <li>847 tours completed, 4.93 rating</li>
+              </ul>
+              <div class="guide-back-stars">★★★★★ <span>4.93</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Petra -->
+        <div class="guide-flip-card reveal reveal-delay-1">
+          <div class="guide-flip-inner">
+            <div class="guide-flip-front">
+              <div class="guide-avatar guide-avatar-petra">
+                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+                  <circle cx="40" cy="30" r="18" fill="rgba(156,123,60,.25)" stroke="var(--gold)" stroke-width="1.5"/>
+                  <circle cx="40" cy="28" r="10" fill="rgba(156,123,60,.35)"/>
+                  <path d="M26 22 Q30 16 40 18 Q50 16 54 22" stroke="var(--gold)" stroke-width="1.5" fill="none"/>
+                  <ellipse cx="40" cy="55" rx="20" ry="14" fill="rgba(156,123,60,.2)" stroke="var(--gold)" stroke-width="1.5"/>
+                  <circle cx="36" cy="26" r="2" fill="var(--gold)"/>
+                  <circle cx="44" cy="26" r="2" fill="var(--gold)"/>
+                  <path d="M36 32 Q40 36 44 32" stroke="var(--gold)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="guide-name">Petra Červenková</div>
+              <div class="guide-spec">Art &amp; Architecture</div>
+              <div class="guide-tags">
+                <span class="guide-tag">Mucha Tour</span>
+                <span class="guide-tag">Art Nouveau</span>
+              </div>
+              <div class="guide-langs"><iconify-icon icon="tabler:world" style="font-size:13px;color:var(--gold)"></iconify-icon> EN · FR · CZ</div>
+              <div class="guide-stars">★★★★★</div>
+              <div class="guide-flip-hint">Hover for bio</div>
+            </div>
+            <div class="guide-flip-back">
+              <div class="guide-back-years">6 years guiding</div>
+              <div class="guide-back-quote">"Mucha saw Art Nouveau not as decoration but as a spiritual language. I help guests learn to read it."</div>
+              <ul class="guide-back-facts">
+                <li>MA in Art History, Charles University</li>
+                <li>Specialist in Symbolism &amp; Czech Modernism</li>
+                <li>523 tours completed, 4.95 rating</li>
+              </ul>
+              <div class="guide-back-stars">★★★★★ <span>4.95</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jakub -->
+        <div class="guide-flip-card reveal reveal-delay-2">
+          <div class="guide-flip-inner">
+            <div class="guide-flip-front">
+              <div class="guide-avatar guide-avatar-jakub">
+                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+                  <circle cx="40" cy="30" r="18" fill="rgba(156,123,60,.25)" stroke="var(--gold)" stroke-width="1.5"/>
+                  <circle cx="40" cy="28" r="10" fill="rgba(156,123,60,.35)"/>
+                  <ellipse cx="40" cy="55" rx="20" ry="14" fill="rgba(156,123,60,.2)" stroke="var(--gold)" stroke-width="1.5"/>
+                  <circle cx="36" cy="26" r="2.5" fill="var(--gold)"/>
+                  <circle cx="44" cy="26" r="2.5" fill="var(--gold)"/>
+                  <path d="M35 32 Q40 38 45 32" stroke="var(--gold)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                  <path d="M28 18 Q30 14 32 18" stroke="var(--gold)" stroke-width="1" fill="none"/>
+                </svg>
+              </div>
+              <div class="guide-name">Jakub Horáček</div>
+              <div class="guide-spec">Family &amp; Adventure</div>
+              <div class="guide-tags">
+                <span class="guide-tag">Kids Tour</span>
+                <span class="guide-tag">Legend Quest</span>
+              </div>
+              <div class="guide-langs"><iconify-icon icon="tabler:world" style="font-size:13px;color:var(--gold)"></iconify-icon> EN · CZ · SK</div>
+              <div class="guide-stars">★★★★★</div>
+              <div class="guide-flip-hint">Hover for bio</div>
+            </div>
+            <div class="guide-flip-back">
+              <div class="guide-back-years">4 years guiding</div>
+              <div class="guide-back-quote">"Children see Prague as a place of magic, golems, and hidden treasure. My job is to make sure they're right."</div>
+              <ul class="guide-back-facts">
+                <li>Former primary school teacher</li>
+                <li>Designed the Legend Quest treasure hunt</li>
+                <li>301 tours completed, 4.97 rating</li>
+              </ul>
+              <div class="guide-back-stars">★★★★★ <span>4.97</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /guide-cards-grid -->
+
+      <!-- Photo mosaic strip -->
+      <div class="guides-photo-strip" style="margin-top:52px">
+        <img src="https://images.pexels.com/photos/3849558/pexels-photo-3849558.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Tour guide explaining Prague" loading="lazy">
+        <img src="https://images.pexels.com/photos/1388030/pexels-photo-1388030.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="People walking through Prague" loading="lazy">
+        <img src="https://images.pexels.com/photos/3064979/pexels-photo-3064979.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Couple at Charles Bridge" loading="lazy">
+        <img src="https://images.pexels.com/photos/984498/pexels-photo-984498.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Children on tour" loading="lazy">
+        <img src="https://images.pexels.com/photos/3764958/pexels-photo-3764958.jpeg?auto=compress&cs=tinysrgb&w=500&q=80" alt="Café conversation" loading="lazy">
       </div>
+
     </div>
   </section>
 
@@ -181,5 +303,12 @@
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script src="src/scripts/pages/booking.js"></script>
 <script src="src/scripts/pages/tours.js"></script>
+<script type="module">
+  import { initCounters, initScrollReveal } from './src/scripts/core/visuals.js';
+  document.addEventListener('DOMContentLoaded', () => {
+    initScrollReveal();
+    initCounters();
+  });
+</script>
 </body>
 </html>

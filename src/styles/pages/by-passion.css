@@ -1,8 +1,36 @@
+/* ── Quiz Background Crossfade ───────────────────── */
+.quiz-bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.quiz-bg-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.quiz-bg-layer.active { opacity: 0.18; }
+
+.quiz-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--dark) 0%, rgba(13,11,13,.7) 40%, rgba(13,11,13,.85) 100%);
+  z-index: 1;
+}
+
+/* ── Hero ─────────────────────────────────────────── */
 .bp2-hero{background:var(--dark);padding:140px 40px 80px;text-align:center;border-bottom:1px solid rgba(156,123,60,.12);position:relative;overflow:hidden}
 .bp2-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 50% 100%,rgba(156,123,60,.1) 0%,transparent 65%)}
 .bp2-hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto}
 
-.quiz-wrap{background:var(--bg-warm);padding:88px 40px}
+.quiz-wrap{background:var(--dark);padding:88px 40px;position:relative;z-index:1}
 .quiz-inner{max-width:760px;margin:0 auto}
 
 .quiz-step{display:none}
@@ -12,10 +40,14 @@
 .quiz-sub{font-size:.85rem;color:var(--grey);margin-bottom:40px;font-weight:300}
 
 .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:36px}
-.quiz-opt{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 20px;cursor:pointer;transition:border-color .2s,background .2s;text-align:left}
-.quiz-opt:hover{border-color:rgba(156,123,60,.4);background:rgba(156,123,60,.05)}
+.quiz-opt{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:22px 20px;cursor:pointer;transition:border-color .3s,background .3s,transform .2s;text-align:left;position:relative;overflow:hidden}
+.quiz-opt::before{content:'';position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .4s ease;z-index:0}
+.quiz-opt:hover::before{opacity:.15}
+.quiz-opt:hover{border-color:rgba(156,123,60,.5);background:rgba(156,123,60,.08);transform:translateY(-2px)}
 .quiz-opt.chosen{border-color:var(--gold);background:rgba(156,123,60,.08)}
-.quiz-opt-icon{font-size:1.8rem;margin-bottom:10px;display:block}
+.quiz-opt-icon{font-size:1.8rem;margin-bottom:10px;display:block;position:relative;z-index:1}
+.quiz-opt-label{font-family:var(--fd);font-size:1.05rem;color:var(--cream);font-weight:600;margin-bottom:5px;position:relative;z-index:1}
+.quiz-opt-desc{font-size:.76rem;color:var(--grey);line-height:1.6;position:relative;z-index:1}
 .quiz-opt-label{font-family:var(--fd);font-size:1.05rem;color:var(--cream);font-weight:600;margin-bottom:5px}
 .quiz-opt-desc{font-size:.76rem;color:var(--grey);line-height:1.6}
 
@@ -29,9 +61,44 @@
 
 /* Result */
 .result-wrap{display:none;background:var(--dark);padding:88px 40px;border-top:1px solid rgba(156,123,60,.12)}
+.result-wrap.result-active {
+  animation: resultFadeIn 0.7s ease forwards;
+}
+@keyframes resultFadeIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 .result-inner{max-width:900px;margin:0 auto}
 .result-profile{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;margin-top:52px}
-.result-card{background:rgba(156,123,60,.07);border:1px solid rgba(156,123,60,.25);border-radius:20px;padding:36px}
+.result-card{
+  background:rgba(156,123,60,.07);
+  border:1px solid rgba(156,123,60,.25);
+  border-radius:20px;
+  overflow:hidden;
+  position:relative;
+  min-height:320px;
+}
+.result-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.result-card-bg.loaded { opacity: 1; }
+.result-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,11,13,.97) 0%, rgba(13,11,13,.7) 60%, rgba(13,11,13,.3) 100%);
+  z-index: 1;
+}
+.result-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 36px;
+}
 .result-icon{font-size:3rem;margin-bottom:16px;display:block}
 .result-type{font-family:var(--fd);font-size:2rem;color:var(--gold);font-weight:600;margin-bottom:10px}
 .result-desc{font-size:.88rem;color:var(--tan);line-height:1.9;font-weight:300;margin-bottom:24px}

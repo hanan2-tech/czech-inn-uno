@@ -1068,3 +1068,153 @@
   .calculator-wrap { padding: 32px 24px; }
   .commission-table, .comp-table, .risk-table, .pnl-table { font-size: .76rem; }
 }
+
+/* ── Revenue Pillars Infographic ─────────────────── */
+.bp-pillars-section {
+  background: var(--dark);
+  padding: 100px 40px;
+  border-top: 1px solid rgba(156,123,60,.1);
+}
+.bp-pillars-inner { max-width: var(--max-w); margin: 0 auto; text-align: center; }
+.bp-pillars-diagram { display: flex; justify-content: center; }
+.bp-pillars-svg { max-width: 420px; width: 100%; }
+
+@keyframes pillarPulse {
+  0%,100% { opacity: .7; }
+  50% { opacity: 1; }
+}
+.bp-pillar-ring { animation: pillarPulse 3s ease-in-out infinite; }
+
+/* ── TAM/SAM/SOM Bubbles ─────────────────────────── */
+.bp-tam-section {
+  background: var(--bg-warm);
+  padding: 100px 40px;
+  border-top: 1px solid rgba(156,123,60,.08);
+}
+.bp-tam-inner { max-width: var(--max-w); margin: 0 auto; text-align: center; }
+.bp-tam-bubbles {
+  display: flex; align-items: center; justify-content: center;
+  gap: 56px; flex-wrap: wrap;
+}
+.bp-tam-svg { max-width: 480px; width: 100%; }
+
+@keyframes tamScale {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.bp-tam-circle {
+  transform-origin: center; transform-box: fill-box;
+  animation: tamScale .7s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+.bp-tam-legend {
+  display: flex; flex-direction: column; gap: 20px;
+  text-align: left; max-width: 260px;
+}
+.bp-tam-item { display: flex; gap: 14px; align-items: flex-start; }
+.bp-tam-dot {
+  width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; margin-top: 2px;
+}
+.bp-tam-dot-1 { background: rgba(156,123,60,.3); border: 2px solid rgba(156,123,60,.5); }
+.bp-tam-dot-2 { background: rgba(156,123,60,.5); border: 2px solid rgba(156,123,60,.7); }
+.bp-tam-dot-3 { background: rgba(201,168,76,.7); border: 2px solid #C9A84C; }
+.bp-tam-label { font-size: .72rem; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: 1px; }
+.bp-tam-value { font-family: var(--fd); font-size: 1.4rem; color: var(--gold); font-weight: 700; line-height: 1.1; }
+.bp-tam-desc { font-size: .75rem; color: var(--grey); margin-top: 3px; }
+
+/* ── Team Profile Cards ──────────────────────────── */
+.bp-profile-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 20px; margin-top: 8px;
+}
+.bp-profile-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 16px; align-items: center;
+  text-align: center;
+  transition: border-color .25s, transform .25s;
+}
+.bp-profile-card:hover { border-color: rgba(156,123,60,.4); transform: translateY(-4px); }
+.bp-profile-avatar {
+  width: 80px; height: 80px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid rgba(156,123,60,.3);
+}
+.bp-avatar-hanan { background: linear-gradient(135deg, rgba(156,123,60,.15), rgba(201,168,76,.08)); }
+.bp-avatar-guide { background: linear-gradient(135deg, rgba(60,100,156,.15), rgba(80,130,201,.08)); }
+.bp-avatar-ops   { background: linear-gradient(135deg, rgba(60,156,100,.12), rgba(76,175,125,.06)); }
+.bp-profile-avatar svg { width: 60px; height: 60px; }
+.bp-profile-name { font-family: var(--fd); font-size: 1rem; color: var(--text); font-weight: 600; margin-bottom: 2px; }
+.bp-profile-role { font-size: .7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
+.bp-profile-bio { font-size: .77rem; color: var(--text-l); line-height: 1.7; font-weight: 300; }
+
+/* ── Risk Matrix 2×2 ─────────────────────────────── */
+.bp-risk-matrix { max-width: 600px; margin-left: auto; margin-right: auto; }
+.bp-risk-grid {
+  display: grid;
+  grid-template-columns: 24px 1fr 1fr;
+  grid-template-rows: 1fr 1fr 20px;
+  gap: 4px;
+  height: 260px;
+}
+.bp-risk-y-label {
+  grid-row: 1 / 3; grid-column: 1;
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-size: .58rem; color: rgba(255,255,255,.35);
+  text-transform: uppercase; letter-spacing: 1.5px;
+  display: flex; align-items: center; justify-content: center;
+}
+.bp-risk-x-label {
+  grid-row: 3; grid-column: 2 / 4;
+  font-size: .58rem; color: rgba(255,255,255,.35);
+  text-transform: uppercase; letter-spacing: 1.5px;
+  display: flex; align-items: center; justify-content: flex-end;
+  padding-right: 8px;
+}
+.bp-risk-quad {
+  position: relative;
+  border: 1px solid rgba(156,123,60,.15);
+  border-radius: 6px;
+  padding: 8px;
+  min-height: 100px;
+}
+.bp-risk-q1 { background: rgba(201,168,76,.04); }
+.bp-risk-q2 { background: rgba(201,168,76,.06); }
+.bp-risk-q3 { background: rgba(76,175,125,.03); }
+.bp-risk-q4 { background: rgba(76,175,125,.04); }
+.bp-risk-quad-label {
+  font-size: .52rem; color: rgba(255,255,255,.25);
+  text-transform: uppercase; letter-spacing: .8px;
+  margin-bottom: 8px;
+}
+.bp-risk-dot {
+  position: absolute; width: 12px; height: 12px; border-radius: 50%;
+  left: 35%; top: 50%; transform: translate(-50%,-50%);
+  cursor: default;
+  transition: transform .2s;
+}
+.bp-risk-dot:hover { transform: translate(-50%,-50%) scale(1.4); }
+.bp-risk-dot > span {
+  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+  white-space: nowrap; font-size: .6rem; color: rgba(255,255,255,.6);
+  background: rgba(0,10,25,.9); padding: 2px 7px; border-radius: 3px;
+  pointer-events: none; opacity: 0; transition: opacity .2s;
+}
+.bp-risk-dot:hover > span { opacity: 1; }
+.bp-risk-green  { background: rgba(76,175,125,.85); box-shadow: 0 0 8px rgba(76,175,125,.4); }
+.bp-risk-amber  { background: rgba(201,168,76,.85); box-shadow: 0 0 8px rgba(201,168,76,.4); }
+.bp-risk-red    { background: rgba(220,80,80,.85); box-shadow: 0 0 8px rgba(220,80,80,.4); }
+
+.bp-risk-legend {
+  display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+  margin-top: 12px; font-size: .7rem; color: rgba(255,255,255,.5);
+}
+.bp-risk-leg-item { display: flex; align-items: center; gap: 6px; }
+.bp-risk-leg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+@media(max-width:768px) {
+  .bp-pillars-section, .bp-tam-section { padding: 56px 20px; }
+  .bp-profile-grid { grid-template-columns: 1fr; }
+  .bp-tam-bubbles { flex-direction: column; align-items: center; gap: 32px; }
+  .bp-risk-grid { height: 200px; }
+}

@@ -171,6 +171,91 @@
   background: rgba(76,175,125,.1); border: 1px solid rgba(76,175,125,.2);
 }
 
+/* ── Phone mockup row in hero ───────────────────── */
+.int-phones-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+}
+.int-phone-mockup {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 10px;
+}
+.int-phone-featured .device-frame-phone {
+  transform: scale(1.1);
+  box-shadow: 0 20px 60px rgba(156,123,60,.25);
+}
+.int-phone-label {
+  font-size: .62rem; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 1.5px;
+  text-align: center; font-weight: 500;
+}
+.int-phone-stat {
+  font-size: .6rem; color: var(--grey);
+  text-align: center; line-height: 1.4;
+}
+
+/* ── Animated setup steps ──────────────────────── */
+.int-step {
+  opacity: .35;
+  transform: translateX(-8px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.int-step.stepped {
+  opacity: 1;
+  transform: none;
+}
+.int-step.stepped .int-step-num {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #fff;
+  box-shadow: 0 0 20px rgba(156,123,60,.35);
+}
+
+/* ── Live QR demo section ──────────────────────── */
+.int-qr-demo {
+  background: var(--dark);
+  padding: 100px 40px;
+  border-top: 1px solid rgba(156,123,60,.1);
+  text-align: center;
+}
+.int-qr-demo-inner { max-width: var(--max-w); margin: 0 auto; }
+.int-qr-demo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  flex-wrap: wrap;
+}
+.int-qr-demo-info {
+  max-width: 320px;
+  text-align: left;
+}
+.int-qr-demo-label {
+  font-size: .6rem; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 2.5px;
+  font-weight: 600; margin-bottom: 16px;
+}
+.int-qr-demo-steps {
+  list-style: none; padding: 0; margin: 0 0 16px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.int-qr-demo-steps li {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: .8rem; color: var(--tan); font-weight: 300;
+  line-height: 1.5;
+}
+.int-qr-demo-steps li span {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: rgba(156,123,60,.15); border: 1px solid rgba(156,123,60,.3);
+  color: var(--gold); font-size: .65rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.int-qr-demo-note {
+  font-size: .7rem; color: var(--grey); font-style: italic;
+}
+
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.vis { opacity: 1; transform: none; }
 .reveal-delay-1 { transition-delay: .1s; }
@@ -178,14 +263,19 @@
 .reveal-delay-3 { transition-delay: .3s; }
 
 @media(max-width:768px) {
-  .int-hero-inner  { padding: 80px 20px 56px; grid-template-columns: 1fr; gap: 40px; }
+  .int-hero-inner    { padding: 80px 20px 56px; grid-template-columns: 1fr; gap: 40px; }
   .int-touch,
   .int-setup,
-  .int-materials   { padding: 56px 20px; }
-  .int-touch-grid  { grid-template-columns: 1fr; }
-  .int-setup-grid  { grid-template-columns: 1fr; gap: 32px; }
-  .int-mat-grid    { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .int-materials,
+  .int-qr-demo       { padding: 56px 20px; }
+  .int-touch-grid    { grid-template-columns: 1fr; }
+  .int-setup-grid    { grid-template-columns: 1fr; gap: 32px; }
+  .int-mat-grid      { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .int-phones-row    { gap: 12px; }
+  .int-phone-mockup  { transform: scale(.85); }
+  .int-phone-featured .device-frame-phone { transform: scale(1); }
 }
 @media(max-width:480px) {
-  .int-mat-grid    { grid-template-columns: 1fr; }
+  .int-mat-grid      { grid-template-columns: 1fr; }
+  .int-phones-row    { flex-direction: column; align-items: center; }
 }

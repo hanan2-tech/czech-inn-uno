@@ -290,3 +290,113 @@
 }
 .insta-item:hover::after { background: rgba(0,26,53,.25); }
 @media(max-width:600px) { .insta-grid { gap: 4px; } }
+
+/* ── Watch Overview button ────────────────────────── */
+.hero-watch-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 4px; padding: 12px 22px;
+  color: rgba(255,255,255,.8); font-family: var(--fd);
+  font-size: .82rem; font-weight: 500; letter-spacing: .5px;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.hero-watch-btn:hover { background: rgba(255,255,255,.13); border-color: rgba(255,255,255,.4); color: #fff; }
+.hero-watch-play {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(201,168,76,.7); display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; color: #fff; padding-left: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Video modal ─────────────────────────────────── */
+.hero-video-modal {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,.9);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
+}
+.hero-video-modal.open { opacity: 1; pointer-events: all; }
+.hero-video-modal-inner {
+  position: relative; width: min(90vw, 960px);
+  animation: modalPop .3s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes modalPop { from { transform: scale(.88); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.hero-modal-video {
+  width: 100%; border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+  display: block;
+}
+.hero-video-close {
+  position: absolute; top: -14px; right: -14px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+  color: #fff; font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.hero-video-close:hover { background: rgba(156,123,60,.4); }
+
+/* ── Prague map section ──────────────────────────── */
+.prague-map-section {
+  background: var(--dark);
+  padding: 100px 40px;
+  border-top: 1px solid rgba(156,123,60,.1);
+}
+.prague-map-inner { max-width: var(--max-w); margin: 0 auto; text-align: center; }
+.prague-map-wrap {
+  position: relative; display: inline-block;
+  max-width: 560px; width: 100%;
+  background: rgba(0,10,25,.7);
+  border: 1px solid rgba(156,123,60,.2);
+  border-radius: 16px; padding: 16px;
+  margin-bottom: 28px;
+}
+.prague-map-svg { width: 100%; display: block; }
+
+/* Pulse ring animation */
+@keyframes mapPulseRing {
+  0%   { r: 10; opacity: .7; }
+  100% { r: 26; opacity: 0; }
+}
+.map-pulse-ring {
+  animation: mapPulseRing 2.2s ease-out infinite;
+  transform-box: fill-box; transform-origin: center;
+}
+
+/* Tooltip */
+.prague-map-tooltip {
+  position: absolute; bottom: calc(100% + 12px);
+  left: 50%; transform: translateX(-50%);
+  background: rgba(5,15,30,.97); border: 1px solid rgba(156,123,60,.3);
+  border-radius: 10px; padding: 12px 18px; min-width: 220px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s ease;
+  text-align: left;
+}
+.prague-map-tooltip.show { opacity: 1; }
+.pmt-name { font-family: var(--fd); font-size: .9rem; color: var(--cream); font-weight: 600; margin-bottom: 4px; }
+.pmt-info { font-size: .75rem; color: var(--tan); line-height: 1.5; }
+
+/* District pills */
+.prague-map-pills {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  margin-top: 16px;
+}
+.pmp-pill {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(156,123,60,.2);
+  border-radius: 20px; padding: 8px 16px;
+  font-size: .72rem; color: var(--tan); cursor: pointer;
+  font-family: var(--fd); letter-spacing: .3px;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.pmp-pill:hover  { background: rgba(156,123,60,.1); border-color: rgba(156,123,60,.35); color: var(--cream); }
+.pmp-pill.active { background: rgba(156,123,60,.15); border-color: var(--gold); color: var(--gold); }
+
+@media(max-width:768px) {
+  .prague-map-section { padding: 56px 20px; }
+  .hero-watch-btn { display: none; }
+}

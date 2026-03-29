@@ -777,6 +777,160 @@
 }
 .guides-img:hover { opacity: .88; }
 
+/* ── Ambient hero video ─────────────────────────── */
+.tours-hero-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: .22;
+  z-index: 1;
+  pointer-events: none;
+}
+.tours-hero-bg { z-index: 0; }
+.tours-hero-content { z-index: 2; }
+
+/* ── Guide profile flip cards ───────────────────── */
+.guide-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.guide-flip-card {
+  height: 380px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+.guide-flip-inner {
+  position: relative;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .65s cubic-bezier(.4,0,.2,1);
+}
+.guide-flip-card:hover .guide-flip-inner { transform: rotateY(180deg); }
+.guide-flip-front,
+.guide-flip-back {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+}
+.guide-flip-front {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.guide-flip-back {
+  background: linear-gradient(145deg, rgba(0,26,53,.98), rgba(1,15,30,.98));
+  border: 1px solid rgba(156,123,60,.3);
+  transform: rotateY(180deg);
+  text-align: left;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Front content */
+.guide-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: rgba(156,123,60,.1);
+  border: 2px solid rgba(156,123,60,.3);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.guide-avatar-tomas { background: linear-gradient(135deg, rgba(102,62,55,.25), rgba(156,123,60,.15)); }
+.guide-avatar-petra { background: linear-gradient(135deg, rgba(156,123,60,.2), rgba(100,80,40,.15)); }
+.guide-avatar-jakub { background: linear-gradient(135deg, rgba(0,80,120,.2), rgba(156,123,60,.15)); }
+.guide-name {
+  font-family: var(--fd); font-size: 1.1rem;
+  color: var(--cream); font-weight: 600;
+  margin-bottom: 4px;
+}
+.guide-spec {
+  font-size: .68rem; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 2px;
+  font-weight: 500; margin-bottom: 14px;
+}
+.guide-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 12px; }
+.guide-tag {
+  font-size: .58rem; padding: 3px 9px; border-radius: 3px;
+  background: rgba(156,123,60,.1); color: var(--gold);
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.guide-langs {
+  display: flex; align-items: center; gap: 5px;
+  font-size: .72rem; color: var(--tan);
+  margin-bottom: 10px;
+}
+.guide-stars { color: var(--gold); font-size: .85rem; margin-bottom: 8px; }
+.guide-flip-hint {
+  font-size: .58rem; color: var(--grey);
+  text-transform: uppercase; letter-spacing: 1.5px;
+  margin-top: auto; opacity: .6;
+}
+
+/* Back content */
+.guide-back-years {
+  font-size: .6rem; color: var(--gold);
+  text-transform: uppercase; letter-spacing: 2.5px;
+  font-weight: 600; margin-bottom: 14px;
+}
+.guide-back-quote {
+  font-family: var(--fd); font-size: .9rem;
+  font-style: italic; color: var(--cream);
+  line-height: 1.65; margin-bottom: 16px;
+  border-left: 2px solid var(--gold); padding-left: 14px;
+}
+.guide-back-facts {
+  list-style: none; padding: 0; margin: 0 0 16px;
+  display: flex; flex-direction: column; gap: 7px;
+}
+.guide-back-facts li {
+  font-size: .75rem; color: var(--tan); font-weight: 300;
+  padding-left: 14px; position: relative; line-height: 1.5;
+}
+.guide-back-facts li::before {
+  content: '✦';
+  position: absolute; left: 0;
+  font-size: .5rem; color: var(--gold); top: 3px;
+}
+.guide-back-stars {
+  font-size: .8rem; color: var(--gold); font-weight: 500;
+  margin-top: auto;
+}
+.guide-back-stars span {
+  font-family: var(--fd); font-size: 1rem; font-weight: 700;
+}
+
+/* ── Photo mosaic strip ─────────────────────────── */
+.guides-photo-strip {
+  display: flex;
+  height: 220px;
+  gap: 4px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.guides-photo-strip img {
+  flex: 1; min-width: 0;
+  height: 100%; object-fit: cover;
+  transition: flex .4s ease, filter .3s;
+  filter: saturate(.7) brightness(.85);
+}
+.guides-photo-strip img:hover {
+  flex: 2.5;
+  filter: saturate(1) brightness(1);
+}
+
+/* ── Animated map route ─────────────────────────── */
+.tour-route-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 2.4s cubic-bezier(.4,0,.2,1);
+}
+.tour-route-path.animated { stroke-dashoffset: 0; }
+
 @media(max-width:768px) {
   .tours-hero-content { padding: 40px 20px 52px; }
   .info-bar           { padding: 20px 20px; flex-wrap: wrap; gap: 16px; }
@@ -788,10 +942,12 @@
   .stop-photo         { height: 180px; }
   .tour-gallery       { height: 180px; }
   .tour-gallery-img   { min-width: 220px; }
-  .guides-grid        { columns: 2; }
+  .guide-cards-grid   { grid-template-columns: 1fr; }
+  .guide-flip-card    { height: 340px; }
   .guides-section     { padding: 56px 20px; }
+  .guides-photo-strip { height: 160px; }
   .weather-bar        { padding: 10px 20px; }
 }
 @media(max-width:480px) {
-  .guides-grid        { columns: 2; }
+  .guides-photo-strip { display: none; }
 }
