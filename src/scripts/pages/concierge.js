@@ -11,6 +11,18 @@ document.addEventListener('DOMContentLoaded', () => {
   initHubTabs();
   injectHubCSS();
   initStaticChatEnhancement();
+
+  /* ── Enhancements 1-24 ── */
+  initPhoneTilt();
+  initTypewriter();
+  initParticles();
+  initCountUpStats();
+  initJourneyAnimations();
+  initStaticAutoPlay();
+  initRippleEffects();
+  initLightbox();
+  initScrollProgress();
+  initSocialProofStrip();
 });
 
 /* ─────────────────────────────────────────────────────────
@@ -24,8 +36,8 @@ function injectHubCSS() {
     .dc-hub-tabs{display:flex;gap:4px;margin-bottom:28px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:4px;flex-wrap:wrap;}
     .dc-hub-tab{flex:1;padding:10px 16px;border:none;border-radius:9px;background:transparent;font-family:var(--fb);font-size:.82rem;font-weight:500;color:var(--text-l);cursor:pointer;transition:background .2s,color .2s;white-space:nowrap;}
     .dc-hub-tab.active{background:var(--dark);color:var(--cream);}
-    .dc-hub-panel{display:none;}
-    .dc-hub-panel.active{display:block;}
+    .dc-hub-panel{display:none;opacity:0;}
+    .dc-hub-panel.active{display:block;animation:panelIn .3s ease both;}
     /* AI Chat */
     .dc-live-chat{background:var(--dark);border-radius:16px;overflow:hidden;max-width:560px;margin:0 auto;}
     .dc-live-chat-bar{padding:14px 18px;background:rgba(0,0,0,.3);display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.07);}
@@ -48,8 +60,9 @@ function injectHubCSS() {
     .dc-live-send{padding:10px 16px;background:var(--gold);border:none;border-radius:10px;color:#fff;font-size:.88rem;cursor:pointer;transition:background .2s;}
     .dc-live-send:hover{background:var(--gold-light);}
     .dc-live-chips{padding:10px 18px 14px;display:flex;gap:6px;flex-wrap:wrap;}
-    .dc-live-chip{padding:5px 12px;border:1px solid rgba(156,123,60,.35);border-radius:20px;background:transparent;color:var(--tan);font-family:var(--fb);font-size:.72rem;cursor:pointer;transition:border-color .2s,color .2s;}
-    .dc-live-chip:hover{border-color:var(--gold);color:var(--gold-light);}
+    .dc-live-chip{padding:5px 12px;border:1px solid rgba(156,123,60,.35);border-radius:20px;background:transparent;color:var(--tan);font-family:var(--fb);font-size:.72rem;cursor:pointer;transition:border-color .2s,color .2s,background .2s;}
+    .dc-live-chip:hover{border-color:var(--gold);color:var(--gold-light);background:rgba(156,123,60,.07);}
+    @media(max-width:480px){.dc-live-chips{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:12px;scrollbar-width:none;}.dc-live-chips::-webkit-scrollbar{display:none;}.dc-live-chip{flex-shrink:0;}}
     /* PMS */
     .dc-pms-wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
     .dc-pms-label{font-size:.68rem;text-transform:uppercase;letter-spacing:2px;color:var(--gold);font-weight:600;margin-bottom:10px;}
@@ -111,15 +124,21 @@ function injectHubCSS() {
    HUB TABS
    ───────────────────────────────────────────────────────── */
 function initHubTabs() {
-  const tabs  = document.querySelectorAll('.dc-hub-tab');
+  const tabs   = document.querySelectorAll('.dc-hub-tab');
   const panels = document.querySelectorAll('.dc-hub-panel');
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
+      panels.forEach(p => { p.classList.remove('active'); p.style.animation = 'none'; });
       tab.classList.add('active');
       const panel = document.getElementById('dc-tab-' + tab.dataset.tab);
-      if (panel) panel.classList.add('active');
+      if (panel) {
+        panel.classList.add('active');
+        panel.style.animation = '';
+        // Trigger reflow to restart animation
+        void panel.offsetWidth;
+        panel.style.animation = 'panelIn .3s ease both';
+      }
     });
   });
 }
@@ -833,3 +852,262 @@ const sg = (() => {
 
   return { demoLocation, demoCamera, capturePhoto, demoPush, demoVoice, demoQR, demoWhatsApp, demoAR, demoPWA, _install };
 })();
+
+/* ════════════════════════════════════════════════════════════
+   IMPROVEMENTS 1-24
+   ════════════════════════════════════════════════════════════ */
+
+/* ── #1 — 3D Phone Tilt ─────────────────────────────────── */
+function initPhoneTilt() {
+  const hero  = document.querySelector('.dc-hero');
+  const phone = document.querySelector('.dc-hero-phone');
+  if (!hero || !phone) return;
+  phone.style.willChange = 'transform';
+  hero.addEventListener('mousemove', e => {
+    const r  = hero.getBoundingClientRect();
+    const dx = ((e.clientX - r.left) / r.width  - 0.5) * 2;
+    const dy = ((e.clientY - r.top)  / r.height - 0.5) * 2;
+    phone.style.transition = 'transform .1s ease';
+    phone.style.transform = `perspective(900px) rotateY(${dx*7}deg) rotateX(${-dy*4}deg) translateZ(10px)`;
+  });
+  hero.addEventListener('mouseleave', () => {
+    phone.style.transition = 'transform .45s cubic-bezier(.25,.46,.45,.94)';
+    phone.style.transform  = 'perspective(900px) rotateY(0) rotateX(0) translateZ(0)';
+  });
+}
+
+/* ── #2 — Typewriter Greeting ───────────────────────────── */
+function initTypewriter() {
+  const el = document.querySelector('.dc-phone-greeting');
+  if (!el) return;
+  const savedHTML = el.innerHTML;
+  const plainText = el.textContent;
+  el.textContent  = '';
+  let i = 0;
+  setTimeout(() => {
+    const iv = setInterval(() => {
+      el.textContent = plainText.slice(0, i + 1);
+      i++;
+      if (i >= plainText.length) {
+        clearInterval(iv);
+        setTimeout(() => { el.innerHTML = savedHTML; }, 80);
+      }
+    }, 26);
+  }, 1400);
+}
+
+/* ── #4 — Floating Gold Particles ───────────────────────── */
+function initParticles() {
+  const hero = document.querySelector('.dc-hero');
+  if (!hero) return;
+  for (let i = 0; i < 20; i++) {
+    const p   = document.createElement('span');
+    p.className = 'dc-particle';
+    const sz  = (Math.random() * 2.5 + 1.2).toFixed(1);
+    const lft = (Math.random() * 100).toFixed(1);
+    const del = (Math.random() * 9).toFixed(2);
+    const dur = (Math.random() * 10 + 9).toFixed(1);
+    const dft = ((Math.random() - 0.5) * 80).toFixed(0);
+    p.style.cssText = `width:${sz}px;height:${sz}px;left:${lft}%;bottom:-8px;animation-delay:${del}s;animation-duration:${dur}s;--pd:${dft}px`;
+    hero.appendChild(p);
+  }
+}
+
+/* ── #6 — Count-Up Stat Strip ───────────────────────────── */
+function initCountUpStats() {
+  const journey = document.querySelector('.dc-journey');
+  if (!journey || document.querySelector('.dc-stat-strip')) return;
+
+  const strip = document.createElement('div');
+  strip.className = 'dc-stat-strip';
+  strip.innerHTML = `
+    <div class="dc-stat-strip-inner">
+      <div class="dc-stat-item"><span class="dc-stat-num" data-target="22">0</span><span class="dc-stat-pct">%</span><div class="dc-stat-label">Pre-arrival email conversion</div></div>
+      <div class="dc-stat-sep"></div>
+      <div class="dc-stat-item"><span class="dc-stat-num" data-target="68">0</span><span class="dc-stat-pct">%</span><div class="dc-stat-label">Review capture rate</div></div>
+      <div class="dc-stat-sep"></div>
+      <div class="dc-stat-item"><span class="dc-stat-num" data-target="28">0</span><div class="dc-stat-label">Hotels active</div></div>
+      <div class="dc-stat-sep"></div>
+      <div class="dc-stat-item"><span class="dc-stat-num" data-target="4.9">0</span><span class="dc-stat-pct">&#9733;</span><div class="dc-stat-label">Average tour rating</div></div>
+    </div>`;
+  journey.parentNode.insertBefore(strip, journey);
+
+  const css = document.createElement('style');
+  css.textContent = [
+    '.dc-stat-strip{background:var(--dark);border-top:1px solid rgba(156,123,60,.14);border-bottom:1px solid rgba(156,123,60,.14);padding:40px 20px;}',
+    '.dc-stat-strip-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;}',
+    '.dc-stat-item{text-align:center;padding:0 44px;flex-shrink:0;}',
+    '.dc-stat-num{font-family:var(--fd);font-size:2.8rem;font-weight:800;color:var(--gold-light);line-height:1;}',
+    '.dc-stat-pct{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:var(--gold);margin-left:2px;}',
+    '.dc-stat-label{font-size:.72rem;color:rgba(255,255,255,.38);margin-top:7px;letter-spacing:.4px;}',
+    '.dc-stat-sep{width:1px;height:52px;background:rgba(156,123,60,.18);flex-shrink:0;}',
+    '@media(max-width:640px){.dc-stat-item{padding:16px 22px;}.dc-stat-sep{display:none;}.dc-stat-num{font-size:2.1rem;}}'
+  ].join('');
+  document.head.appendChild(css);
+
+  const obs = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    obs.disconnect();
+    strip.querySelectorAll('.dc-stat-num').forEach(el => {
+      const target  = parseFloat(el.dataset.target);
+      const decimal = target % 1 !== 0;
+      const steps   = 1800 / 16;
+      let cur = 0;
+      const inc = target / steps;
+      const iv = setInterval(() => {
+        cur += inc;
+        if (cur >= target) { cur = target; clearInterval(iv); }
+        el.textContent = decimal ? cur.toFixed(1) : Math.round(cur);
+      }, 16);
+    });
+  }, { threshold: 0.5 });
+  obs.observe(strip);
+}
+
+/* ── #8 #9 #10 — Journey Animations ────────────────────── */
+function initJourneyAnimations() {
+  const stepsEl = document.querySelector('.dc-journey-steps');
+  if (!stepsEl) return;
+
+  // #8 — draw the connecting line
+  new IntersectionObserver((entries, o) => {
+    if (entries[0].isIntersecting) { stepsEl.classList.add('line-drawn'); o.disconnect(); }
+  }, { threshold: 0.3 }).observe(stepsEl);
+
+  // #9 — ring glow per step
+  const ringObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('ring-active'); ringObs.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.dc-j-step').forEach(s => ringObs.observe(s));
+
+  // #10 — carousel dot sync (mobile)
+  const dotsEl = document.querySelector('.dc-journey-dots');
+  if (!dotsEl) return;
+  const dots = Array.from(dotsEl.querySelectorAll('.dc-journey-dot'));
+  stepsEl.addEventListener('scroll', () => {
+    const w = stepsEl.firstElementChild ? stepsEl.firstElementChild.offsetWidth : 1;
+    const active = Math.round(stepsEl.scrollLeft / w);
+    dots.forEach((d, i) => d.classList.toggle('active', i === active));
+  }, { passive: true });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => {
+    const w = stepsEl.firstElementChild ? stepsEl.firstElementChild.offsetWidth : 0;
+    stepsEl.scrollTo({ left: i * w, behavior: 'smooth' });
+  }));
+}
+
+/* ── #11 — Static Chat Auto-Play ────────────────────────── */
+function initStaticAutoPlay() {
+  const section = document.querySelector('.dc-ai');
+  const msgs    = document.querySelector('.dc-ai-messages');
+  if (!section || !msgs) return;
+  const msgEls = Array.from(msgs.querySelectorAll('.dc-msg'));
+  if (msgEls.length < 2) return;
+  msgEls.forEach((m, i) => { if (i > 0) m.style.display = 'none'; });
+
+  let played = false;
+  new IntersectionObserver((entries, o) => {
+    if (!entries[0].isIntersecting || played) return;
+    played = true; o.disconnect();
+    let delay = 700;
+    msgEls.forEach((m, i) => {
+      if (i === 0) return;
+      const isBot = m.classList.contains('dc-msg-bot');
+      setTimeout(() => {
+        if (isBot) {
+          const dots = document.createElement('div');
+          dots.className = 'dc-msg dc-msg-bot';
+          dots.style.cssText = 'opacity:0;transition:opacity .25s ease;display:flex;gap:5px;align-items:center;padding:12px 16px;';
+          dots.innerHTML = '<span style="width:6px;height:6px;border-radius:50%;background:rgba(156,123,60,.55);display:block;animation:dotPulse 1.2s infinite;"></span><span style="width:6px;height:6px;border-radius:50%;background:rgba(156,123,60,.55);display:block;animation:dotPulse 1.2s .2s infinite;"></span><span style="width:6px;height:6px;border-radius:50%;background:rgba(156,123,60,.55);display:block;animation:dotPulse 1.2s .4s infinite;"></span>';
+          msgs.appendChild(dots);
+          msgs.scrollTop = msgs.scrollHeight;
+          requestAnimationFrame(() => { dots.style.opacity = '1'; });
+          setTimeout(() => {
+            dots.remove();
+            m.style.display = ''; m.style.opacity = '0'; m.style.transition = 'opacity .4s ease';
+            requestAnimationFrame(() => { m.style.opacity = '1'; });
+            msgs.scrollTop = msgs.scrollHeight;
+          }, 950);
+        } else {
+          m.style.display = ''; m.style.opacity = '0'; m.style.transition = 'opacity .3s ease';
+          requestAnimationFrame(() => { m.style.opacity = '1'; });
+          msgs.scrollTop = msgs.scrollHeight;
+        }
+      }, delay);
+      delay += isBot ? 2300 : 1300;
+    });
+  }, { threshold: 0.45 }).observe(section);
+}
+
+/* ── #13 #15 — Ripple Effects ───────────────────────────── */
+function addRipple(el, e) {
+  const r   = el.getBoundingClientRect();
+  const sz  = Math.max(r.width, r.height);
+  const x   = (e ? e.clientX - r.left : r.width  / 2) - sz / 2;
+  const y   = (e ? e.clientY - r.top  : r.height / 2) - sz / 2;
+  const rip = document.createElement('span');
+  rip.className = 'ripple-circle';
+  rip.style.cssText = `width:${sz}px;height:${sz}px;left:${x}px;top:${y}px;`;
+  el.appendChild(rip);
+  rip.addEventListener('animationend', () => rip.remove());
+}
+function initRippleEffects() {
+  const sendStatic = document.querySelector('.dc-ai-send');
+  const sendLive   = document.getElementById('dcLiveSend');
+  if (sendStatic) sendStatic.addEventListener('click', e => addRipple(sendStatic, e));
+  if (sendLive)   sendLive.addEventListener('click',   e => addRipple(sendLive, e));
+  document.querySelectorAll('.sg-btn').forEach(btn => btn.addEventListener('click', e => addRipple(btn, e)));
+}
+
+/* ── #17 — Memory Book Lightbox ─────────────────────────── */
+function initLightbox() {
+  const photos = document.querySelectorAll('.dc-mem-photo');
+  if (!photos.length) return;
+  const imgs = Array.from(photos).map(p => p.querySelector('img')).filter(Boolean);
+  let cur = 0, lb = null;
+
+  function build() {
+    lb = document.createElement('div');
+    lb.className = 'dc-lightbox';
+    lb.innerHTML = '<button class="dc-lightbox-close">\u2715</button><button class="dc-lightbox-prev">\u2039</button><img class="dc-lightbox-img" src="" alt=""><button class="dc-lightbox-next">\u203a</button><div class="dc-lightbox-counter"></div>';
+    document.body.appendChild(lb);
+    lb.querySelector('.dc-lightbox-close').onclick = close;
+    lb.querySelector('.dc-lightbox-prev').onclick  = e => { e.stopPropagation(); go(-1); };
+    lb.querySelector('.dc-lightbox-next').onclick  = e => { e.stopPropagation(); go(1);  };
+    lb.onclick = e => { if (e.target === lb) close(); };
+    document.addEventListener('keydown', keyNav);
+  }
+  function open(idx) { cur = idx; if (!lb) build(); lb.style.display = 'flex'; upd(); document.body.style.overflow = 'hidden'; }
+  function close()   { if (lb) lb.style.display = 'none'; document.body.style.overflow = ''; }
+  function go(d)     { cur = (cur + d + imgs.length) % imgs.length; upd(); }
+  function upd()     { lb.querySelector('.dc-lightbox-img').src = imgs[cur].src; lb.querySelector('.dc-lightbox-img').alt = imgs[cur].alt; lb.querySelector('.dc-lightbox-counter').textContent = (cur + 1) + ' / ' + imgs.length; }
+  function keyNav(e) { if (!lb || lb.style.display !== 'flex') return; if (e.key === 'ArrowRight') go(1); if (e.key === 'ArrowLeft') go(-1); if (e.key === 'Escape') close(); }
+
+  photos.forEach((p, i) => p.addEventListener('click', () => open(i)));
+}
+
+/* ── #23 — Integrations Strip ───────────────────────────── */
+function initSocialProofStrip() {
+  const feat = document.querySelector('.dc-features');
+  if (!feat || document.querySelector('.dc-integrations-strip')) return;
+
+  const strip = document.createElement('div');
+  strip.className = 'dc-integrations-strip';
+  strip.innerHTML = '<div class="dc-integrations-inner"><div class="dc-integrations-label">Integrates with</div><div class="dc-integrations-logos"><div class="dc-int-logo">Mews PMS</div><div class="dc-int-logo">Oracle Opera</div><div class="dc-int-logo">WhatsApp Business</div><div class="dc-int-logo">TripAdvisor</div><div class="dc-int-logo">Google Reviews</div><div class="dc-int-logo">Booking.com</div></div></div>';
+  feat.insertAdjacentElement('afterend', strip);
+
+  const css = document.createElement('style');
+  css.textContent = '.dc-integrations-strip{background:rgba(0,8,18,.97);border-top:1px solid rgba(156,123,60,.1);border-bottom:1px solid rgba(156,123,60,.1);padding:22px 20px;}.dc-integrations-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:center;}.dc-integrations-label{font-size:.62rem;text-transform:uppercase;letter-spacing:2.5px;color:rgba(255,255,255,.28);font-weight:600;white-space:nowrap;}.dc-integrations-logos{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;}.dc-int-logo{padding:7px 16px;border:1px solid rgba(156,123,60,.18);border-radius:7px;font-size:.7rem;font-family:var(--fd);font-weight:600;color:rgba(255,255,255,.35);letter-spacing:.4px;background:rgba(255,255,255,.02);transition:border-color .2s,color .2s,background .2s;cursor:default;}.dc-int-logo:hover{border-color:rgba(156,123,60,.42);color:var(--gold-light);background:rgba(156,123,60,.06);}';
+  document.head.appendChild(css);
+}
+
+/* ── #24 — Scroll Progress Bar ──────────────────────────── */
+function initScrollProgress() {
+  if (document.getElementById('conciergeProgress')) return;
+  const bar = document.createElement('div');
+  bar.id = 'conciergeProgress';
+  document.body.appendChild(bar);
+  window.addEventListener('scroll', () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = max > 0 ? (window.scrollY / max * 100) + '%' : '0';
+  }, { passive: true });
+}

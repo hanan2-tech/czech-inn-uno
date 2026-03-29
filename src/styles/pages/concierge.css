@@ -207,8 +207,32 @@
 }
 .dc-mem-photo {
   aspect-ratio: 1; border-radius: 10px; overflow: hidden;
+  position: relative; cursor: pointer;
 }
-.dc-mem-photo img { width: 100%; height: 100%; object-fit: cover; }
+.dc-mem-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .45s cubic-bezier(.25,.46,.45,.94);
+}
+.dc-mem-photo:hover img { transform: scale(1.09); }
+.dc-mem-photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(156,123,60,.18);
+  opacity: 0; transition: opacity .3s ease;
+  pointer-events: none;
+}
+.dc-mem-photo:hover::after { opacity: 1; }
+/* 5th photo: hidden until container hover */
+.dc-memory-photos .dc-mem-photo:nth-child(5) {
+  grid-column: 2 / span 2;
+  opacity: 0;
+  transform: translateY(10px) scale(.9);
+  transition: opacity .4s ease .05s, transform .45s cubic-bezier(.34,1.56,.64,1) .05s;
+  pointer-events: none;
+}
+.dc-memory-photos:hover .dc-mem-photo:nth-child(5) {
+  opacity: 1; transform: translateY(0) scale(1); pointer-events: all;
+}
 
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.vis { opacity: 1; transform: none; }
@@ -285,14 +309,20 @@
   font-size: .78rem; color: var(--tan); line-height: 1.6;
   margin-top: 12px; display: none; width: 100%;
 }
-.sg-ai-bubble.active { display: block; }
+.sg-ai-bubble.active {
+  display: block;
+  animation: slideUpReveal .4s cubic-bezier(.34,1.56,.64,1) both;
+}
 .sg-result {
   width: 100%; padding: 14px 16px;
   background: rgba(156,123,60,.07); border: 1px solid rgba(156,123,60,.18);
   border-radius: 12px; font-size: .78rem; color: var(--tan); line-height: 1.7;
   display: none;
 }
-.sg-result.active { display: block; }
+.sg-result.active {
+  display: block;
+  animation: slideUpReveal .4s cubic-bezier(.34,1.56,.64,1) both;
+}
 .sg-result strong { color: var(--cream); }
 .sg-voice-wrap {
   display: none; flex-direction: column; align-items: center; gap: 12px; width: 100%;
@@ -398,3 +428,187 @@
   .sg-btn-label { font-size: .62rem; }
 }
 @media(max-width:480px) { .sg-tiles { grid-template-columns: repeat(2, 1fr); } }
+
+/* ══════════════════════════════════════════════
+   IMPROVEMENTS 1-24
+   ══════════════════════════════════════════════ */
+
+/* #3 — Tile pop-in on load */
+@keyframes tilePop {
+  0%   { opacity: 0; transform: translateY(18px) scale(.93); }
+  65%  { transform: translateY(-4px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.dc-tile { animation: tilePop .6s cubic-bezier(.34,1.56,.64,1) both; }
+.dc-tile:nth-child(1) { animation-delay: .35s; }
+.dc-tile:nth-child(2) { animation-delay: .52s; }
+.dc-tile:nth-child(3) { animation-delay: .69s; }
+.dc-tile:nth-child(4) { animation-delay: .86s; }
+
+/* #4 — Floating gold particles */
+.dc-particle {
+  position: absolute; border-radius: 50%;
+  background: rgba(201,168,76,.55);
+  pointer-events: none;
+  animation: particleRise linear infinite;
+}
+@keyframes particleRise {
+  0%   { transform: translateY(0) translateX(0);       opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: .55; }
+  100% { transform: translateY(-110vh) translateX(var(--pd,0px)); opacity: 0; }
+}
+
+/* #5 — Shimmer sweep on feature cards */
+.dc-feat { position: relative; overflow: hidden; }
+.dc-feat::before {
+  content: '';
+  position: absolute; top: 0; left: -130%;
+  width: 70%; height: 100%;
+  background: linear-gradient(105deg, transparent 0%, rgba(201,168,76,.07) 50%, transparent 100%);
+  transform: skewX(-18deg);
+  transition: left .55s ease;
+  pointer-events: none; z-index: 0;
+}
+.dc-feat:hover::before { left: 160%; }
+.dc-feat-icon, .dc-feat-title, .dc-feat-desc { position: relative; z-index: 1; }
+
+/* #7 — Icon scale + glow on card hover */
+.dc-feat-icon {
+  display: inline-block;
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1), filter .25s ease;
+}
+.dc-feat:hover .dc-feat-icon {
+  transform: scale(1.28) translateY(-2px);
+  filter: drop-shadow(0 0 10px rgba(201,168,76,.5));
+}
+
+/* #8 — Journey timeline draws on scroll */
+.dc-journey-steps::before {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 1.4s cubic-bezier(.4,0,.2,1) .15s;
+}
+.dc-journey-steps.line-drawn::before { transform: scaleX(1); }
+
+/* #9 — Step ring glow on enter */
+.dc-j-num { transition: background .5s ease, box-shadow .5s ease; }
+.dc-j-step.ring-active .dc-j-num {
+  background: rgba(156,123,60,.22);
+  box-shadow: 0 0 0 6px rgba(156,123,60,.08), 0 0 22px rgba(156,123,60,.22);
+}
+
+/* #10 — Mobile journey carousel */
+@media(max-width:640px) {
+  .dc-journey-steps {
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; padding-bottom: 12px;
+    scrollbar-width: none;
+  }
+  .dc-journey-steps::-webkit-scrollbar { display: none; }
+  .dc-j-step { scroll-snap-align: start; min-width: 78vw; flex-shrink: 0; padding: 0 16px; }
+  .dc-journey-dots { display: flex; justify-content: center; gap: 7px; margin-top: 18px; }
+  .dc-journey-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: rgba(156,123,60,.25); cursor: pointer;
+    transition: background .2s, transform .2s; border: none;
+  }
+  .dc-journey-dot.active { background: var(--gold); transform: scale(1.35); }
+}
+@media(min-width:641px) { .dc-journey-dots { display: none; } }
+
+/* #12 — AI chat input focus glow */
+@keyframes inputGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(156,123,60,0); }
+  50%       { box-shadow: 0 0 0 3px rgba(156,123,60,.2); }
+}
+.dc-ai-input-field:focus {
+  border-color: var(--gold);
+  animation: inputGlow 2.4s ease-in-out infinite;
+}
+
+/* #13 #15 — Ripple on send / sg buttons */
+.dc-ai-send { position: relative; overflow: hidden; }
+.sg-btn     { position: relative; overflow: hidden; }
+.ripple-circle {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,.3);
+  transform: scale(0);
+  animation: rippleExpand .55s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes rippleExpand { to { transform: scale(4); opacity: 0; } }
+
+/* #14 — Phone mockup breathing glow */
+.sg-phone::after {
+  content: '';
+  position: absolute; bottom: -55px; left: 50%;
+  transform: translateX(-50%);
+  width: 200px; height: 60px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(156,123,60,.22) 0%, transparent 70%);
+  filter: blur(14px);
+  animation: phoneBreath 3.6s ease-in-out infinite alternate;
+  pointer-events: none; z-index: -1;
+}
+@keyframes phoneBreath {
+  from { opacity: .45; transform: translateX(-50%) scaleX(.85); }
+  to   { opacity: 1;   transform: translateX(-50%) scaleX(1.12); }
+}
+
+/* #16 — Result slide-up animation */
+@keyframes slideUpReveal {
+  from { transform: translateY(12px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* #17 — Lightbox */
+.dc-lightbox {
+  position: fixed; inset: 0; z-index: 10000;
+  background: rgba(0,0,0,.93);
+  display: flex; align-items: center; justify-content: center;
+  animation: lbIn .22s ease;
+}
+@keyframes lbIn { from { opacity: 0; } to { opacity: 1; } }
+.dc-lightbox-img {
+  max-width: 90vw; max-height: 85vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 80px rgba(0,0,0,.5);
+  animation: lbScale .3s cubic-bezier(.34,1.56,.64,1);
+  object-fit: contain;
+}
+@keyframes lbScale { from { transform: scale(.88); } to { transform: scale(1); } }
+.dc-lightbox-close {
+  position: absolute; top: 20px; right: 24px;
+  background: none; border: none; color: rgba(255,255,255,.55);
+  font-size: 2rem; cursor: pointer; line-height: 1; transition: color .2s;
+}
+.dc-lightbox-close:hover { color: #fff; }
+.dc-lightbox-prev, .dc-lightbox-next {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+  border-radius: 50%; width: 50px; height: 50px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: #fff; font-size: 1.4rem;
+  transition: background .2s; z-index: 1;
+}
+.dc-lightbox-prev:hover, .dc-lightbox-next:hover { background: rgba(156,123,60,.3); }
+.dc-lightbox-prev { left: 20px; }
+.dc-lightbox-next { right: 20px; }
+.dc-lightbox-counter {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  font-size: .72rem; color: rgba(255,255,255,.4);
+}
+
+/* #20 — Hub panel fade+slide transition */
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* #24 — Scroll progress bar */
+#conciergeProgress {
+  position: fixed; top: 0; left: 0; width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  z-index: 9998; pointer-events: none;
+  transition: width .12s linear;
+}
