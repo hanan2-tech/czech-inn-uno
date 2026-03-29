@@ -18,6 +18,7 @@ export default defineConfig({
         afterDark:    resolve(__dirname, 'after-dark.html'),
         corporate:    resolve(__dirname, 'corporate.html'),
         byPassion:    resolve(__dirname, 'by-passion.html'),
+        admin:        resolve(__dirname, 'admin.html'),
       }
     }
   }

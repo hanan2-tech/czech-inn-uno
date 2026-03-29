@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="src/styles/base/theme.css">
 <link rel="stylesheet" href="src/styles/base/shared.css">
 <link rel="stylesheet" href="src/styles/pages/concierge.css">
+<link rel="stylesheet" href="src/styles/pages/booking.css">
 <link rel="manifest" href="/manifest.json">
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.min.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -194,7 +195,7 @@
         <div class="dc-msg dc-msg-bot" data-i18n-html="dc.ai.msg5">2 tickets for the 7:30pm Mozart concert at Lobkowicz Palace, 29 EUR each. Shall I add them to your stay? Payment at checkout. <iconify-icon icon="tabler:sparkles" style="font-size:14px;color:#C9A84C"></iconify-icon></div>
       </div>
       <div class="dc-ai-input">
-        <input class="dc-ai-input-field" placeholder="Ask anything about Prague…" data-i18n-placeholder="dc.ai.placeholder" readonly/>
+        <input class="dc-ai-input-field" id="dcAiInput" placeholder="Ask anything about Prague…" data-i18n-placeholder="dc.ai.placeholder" autocomplete="off"/>
         <button class="dc-ai-send">Send</button>
       </div>
     </div>
@@ -319,10 +320,10 @@
     <h2 class="sec-title sec-title-dark reveal reveal-delay-1" data-i18n-html="dc.mem.title">Every Tour Ends With<br><em>Something Guests Send Home</em></h2>
     <p class="sec-sub reveal reveal-delay-2" style="max-width:520px;margin:0 auto 0" data-i18n="dc.mem.sub">After every guided experience, guests receive a private digital album of professional photos from their tour. The moment they share on Instagram, and remember forever.</p>
     <div class="dc-memory-photos reveal reveal-delay-3">
-      <div class="dc-mem-photo"><img src="https://images.pexels.com/photos/28780789/pexels-photo-28780789.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Charles Bridge Prague" loading="lazy"/></div>
-      <div class="dc-mem-photo"><img src="https://images.pexels.com/photos/17307598/pexels-photo-17307598.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Prague Astronomical Clock" loading="lazy"/></div>
-      <div class="dc-mem-photo"><img src="https://images.pexels.com/photos/16922417/pexels-photo-16922417.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Prague skyline aerial" loading="lazy"/></div>
-      <div class="dc-mem-photo"><img src="https://images.pexels.com/photos/3977192/pexels-photo-3977192.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Prague Castle at night" loading="lazy"/></div>
+      <div class="dc-mem-photo"><img src="https://images.pexels.com/photos/28780789/pexels-photo-28780789.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Charles Bridge Prague" loading="lazy" decoding="async"/></div>
+      <div class="dc-mem-photo"><img src="https://images.pexels.com/photos/17307598/pexels-photo-17307598.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Prague Astronomical Clock" loading="lazy" decoding="async"/></div>
+      <div class="dc-mem-photo"><img src="https://images.pexels.com/photos/16922417/pexels-photo-16922417.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Prague skyline aerial" loading="lazy" decoding="async"/></div>
+      <div class="dc-mem-photo"><img src="https://images.pexels.com/photos/3977192/pexels-photo-3977192.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Prague Castle at night" loading="lazy" decoding="async"/></div>
     </div>
     <a href="by-passion.html" class="btn-gold reveal" data-nav data-i18n="dc.mem.cta">Personalise Prague by Passion</a>
   </div>
@@ -365,6 +366,98 @@
   </div>
 </section>
 
+<!-- ── LIVE DEMO HUB ──────────────────────────────────────── -->
+<section class="dc-hub-section">
+  <div class="dc-hub-inner">
+    <div class="sec-eyebrow" style="color:var(--gold)">Live Demo</div>
+    <div class="sec-line"></div>
+    <h2 class="sec-title reveal">Try the Platform <span>Right Now</span></h2>
+    <p class="sec-sub reveal">Four live demos of what every guest experiences. No login required.</p>
+
+    <div class="dc-hub-tabs" id="dcHubTabs">
+      <button class="dc-hub-tab active" data-tab="chat">AI Concierge</button>
+      <button class="dc-hub-tab" data-tab="pms">PMS Check-In</button>
+      <button class="dc-hub-tab" data-tab="email">Pre-Arrival Email</button>
+      <button class="dc-hub-tab" data-tab="pass">Prague Pass</button>
+    </div>
+
+    <!-- AI Chat Panel -->
+    <div class="dc-hub-panel active" id="dc-tab-chat">
+      <div class="dc-live-chat">
+        <div class="dc-live-chat-bar">
+          <div class="dc-live-chat-avatar"><iconify-icon icon="tabler:sparkles" style="font-size:14px;color:#C9A84C"></iconify-icon></div>
+          <div>
+            <div class="dc-live-chat-name">Czech Inn Concierge</div>
+            <div class="dc-live-chat-status" id="dcChatStatus"><span class="dc-live-dot"></span> Online</div>
+          </div>
+        </div>
+        <div class="dc-live-messages" id="dcLiveMessages">
+          <div class="dc-live-msg dc-live-msg-bot">Good evening! I'm your Czech Inn Concierge. Ask me anything — about tours, Prague nightlife, restaurants, weather, or your hotel. I'm here to make your stay extraordinary.</div>
+        </div>
+        <div class="dc-live-input-row">
+          <input class="dc-live-input" id="dcLiveInput" type="text" placeholder="e.g. Tell me about the Kafka tour…" autocomplete="off" maxlength="200"/>
+          <button class="dc-live-send" id="dcLiveSend">→</button>
+        </div>
+        <div class="dc-live-chips">
+          <button class="dc-live-chip" data-q="Tell me about the Kafka tour">Kafka tour</button>
+          <button class="dc-live-chip" data-q="What's good for dinner tonight?">Dinner</button>
+          <button class="dc-live-chip" data-q="Prague nightlife recommendations">Nightlife</button>
+          <button class="dc-live-chip" data-q="What's the weather like?">Weather</button>
+          <button class="dc-live-chip" data-q="Tell me about the Jewish Quarter">Jewish Quarter</button>
+          <button class="dc-live-chip" data-q="Best family activities in Prague">Family</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PMS Check-In Panel -->
+    <div class="dc-hub-panel" id="dc-tab-pms">
+      <div class="dc-pms-wrap">
+        <div class="dc-pms-left">
+          <div class="dc-pms-label">Hotel Property Management System</div>
+          <p style="font-size:.82rem;color:var(--text-l);line-height:1.7;margin-bottom:20px">Enter any room number (101–420) to simulate loading a guest profile from the PMS. In production this connects to Mews, Opera, or your existing PMS via API.</p>
+          <div style="display:flex;gap:10px;align-items:center;margin-bottom:16px">
+            <input class="dc-pms-input" id="dcPmsRoom" type="text" placeholder="Room number (e.g. 204)" maxlength="3"/>
+            <button class="btn-gold" id="dcPmsLoad">Load Profile</button>
+          </div>
+          <div class="dc-pms-status" id="dcPmsStatus"></div>
+        </div>
+        <div class="dc-pms-right" id="dcPmsProfile"></div>
+      </div>
+    </div>
+
+    <!-- Pre-Arrival Email Panel -->
+    <div class="dc-hub-panel" id="dc-tab-email">
+      <div class="dc-email-wrap">
+        <div class="dc-email-controls">
+          <p style="font-size:.82rem;color:var(--text-l);line-height:1.7;margin-bottom:16px">This is the pre-arrival email sent to guests 48 hours before check-in. It achieves a 22% conversion rate to tour bookings.</p>
+          <button class="btn-gold" id="dcEmailPreview">Generate Preview</button>
+          <button class="bk-btn-back" id="dcEmailSend" style="margin-left:8px">✉ Send Preview</button>
+        </div>
+        <div class="dc-email-preview" id="dcEmailContent"></div>
+      </div>
+    </div>
+
+    <!-- Prague Pass Panel -->
+    <div class="dc-hub-panel" id="dc-tab-pass">
+      <div class="dc-pass-wrap">
+        <div class="dc-pass-card" id="dcPassCard">
+          <div class="dc-pass-card-logo">CZECH INN HOTELS</div>
+          <div class="dc-pass-card-title">Prague Pass</div>
+          <div class="dc-pass-balance-label">Available Balance</div>
+          <div class="dc-pass-balance">1,200 CZK</div>
+          <div class="dc-pass-guest" id="dcPassGuest">Guest Name</div>
+          <div class="dc-pass-valid">Valid until 31 December 2026</div>
+          <div class="dc-pass-chip"></div>
+        </div>
+        <div class="dc-pass-partners">
+          <div class="dc-pass-partners-title">Your Partner Discounts</div>
+          <div class="dc-pass-partner-grid" id="dcPassPartners"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── FROM YOUR HOTEL ───────────────────────────────────── -->
 <section class="hotel-strip">
   <div class="hotel-strip-inner">
@@ -402,6 +495,8 @@
 <script src="src/scripts/core/nav.js"></script>
 <script src="src/scripts/core/lang.js"></script>
 <script src="src/scripts/core/data.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="src/scripts/pages/booking.js"></script>
 <script src="src/scripts/pages/concierge.js"></script>
 </body>
 </html>

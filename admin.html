@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Admin Dashboard — Czech Inn Hotels × UNO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/styles/base/theme.css">
+<link rel="stylesheet" href="src/styles/base/shared.css">
+<link rel="stylesheet" href="src/styles/pages/admin.css">
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js" defer></script>
+</head>
+<body class="admin-body">
+
+<!-- Password Gate -->
+<div class="admin-gate" id="adminGate">
+  <div class="admin-gate-inner">
+    <div class="admin-gate-logo">CZECH INN HOTELS</div>
+    <div class="admin-gate-title">Admin Dashboard</div>
+    <p class="admin-gate-sub">Staff access only. Enter your credentials to continue.</p>
+    <div class="admin-gate-field">
+      <label>Password</label>
+      <input type="password" id="adminPwd" placeholder="Enter password" autocomplete="current-password"/>
+    </div>
+    <div class="admin-gate-error" id="adminGateError"></div>
+    <button class="btn-gold" id="adminLoginBtn" style="width:100%;justify-content:center">Sign In →</button>
+    <p class="admin-gate-hint">Demo password: <code>czechinn2026</code></p>
+  </div>
+</div>
+
+<!-- Admin Layout (hidden until logged in) -->
+<div class="admin-layout" id="adminLayout" style="display:none">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-sidebar-logo">
+      <div class="admin-sidebar-brand">CZECH INN</div>
+      <div class="admin-sidebar-sub">Admin</div>
+    </div>
+    <nav class="admin-nav">
+      <a href="#" class="admin-nav-item active" data-section="dashboard">
+        <iconify-icon icon="tabler:dashboard" style="font-size:20px"></iconify-icon>
+        <span>Dashboard</span>
+      </a>
+      <a href="#" class="admin-nav-item" data-section="bookings">
+        <iconify-icon icon="tabler:calendar" style="font-size:20px"></iconify-icon>
+        <span>Bookings</span>
+      </a>
+      <a href="#" class="admin-nav-item" data-section="guests">
+        <iconify-icon icon="tabler:users" style="font-size:20px"></iconify-icon>
+        <span>Guests</span>
+      </a>
+      <a href="#" class="admin-nav-item" data-section="tours">
+        <iconify-icon icon="tabler:map" style="font-size:20px"></iconify-icon>
+        <span>Tours</span>
+      </a>
+      <a href="#" class="admin-nav-item" data-section="revenue">
+        <iconify-icon icon="tabler:chart-bar" style="font-size:20px"></iconify-icon>
+        <span>Revenue</span>
+      </a>
+    </nav>
+    <div class="admin-sidebar-footer">
+      <a href="index.html" class="admin-back-link">← Back to Site</a>
+      <button class="admin-logout" id="adminLogout">Sign Out</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main" id="adminMain"></main>
+
+</div>
+
+<script src="src/scripts/core/data.js"></script>
+<script src="src/scripts/pages/admin.js"></script>
+</body>
+</html>

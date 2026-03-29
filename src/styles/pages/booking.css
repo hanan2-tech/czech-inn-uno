@@ -1,0 +1,512 @@
+/* ═══════════════════════════════════════════════
+   BOOKING MODAL — Czech Inn Hotels × UNO
+   Covers features: 6 (booking engine), 8 (calendar), 9 (QR)
+   ═══════════════════════════════════════════════ */
+
+/* ── Overlay ─────────────────────────────────── */
+.bk-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,10,26,.82);
+  backdrop-filter: blur(6px);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .28s ease;
+}
+.bk-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Modal Shell ─────────────────────────────── */
+.bk-modal {
+  background: var(--surface);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(24px) scale(.97);
+  transition: transform .3s ease;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.bk-overlay.open .bk-modal {
+  transform: translateY(0) scale(1);
+}
+
+/* ── Modal Header ────────────────────────────── */
+.bk-header {
+  background: var(--dark);
+  padding: 22px 24px 18px;
+  border-radius: 16px 16px 0 0;
+  position: relative;
+}
+.bk-title {
+  font-family: var(--fd);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.bk-subtitle {
+  font-size: .78rem;
+  color: var(--tan);
+  font-weight: 300;
+}
+.bk-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+  border: none;
+  color: var(--cream);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.bk-close:hover { background: rgba(255,255,255,.18); }
+
+/* ── Steps Indicator ─────────────────────────── */
+.bk-steps {
+  display: flex;
+  gap: 0;
+  padding: 0 24px;
+  background: var(--dark);
+  border-radius: 0;
+}
+.bk-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 14px;
+  position: relative;
+  cursor: default;
+}
+.bk-step::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; right: -50%;
+  height: 2px;
+  background: rgba(255,255,255,.1);
+}
+.bk-step:last-child::after { display: none; }
+.bk-step-num {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.1);
+  color: rgba(255,255,255,.4);
+  font-size: .72rem;
+  font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 4px;
+  transition: background .3s, color .3s;
+}
+.bk-step.active .bk-step-num,
+.bk-step.done .bk-step-num {
+  background: var(--gold);
+  color: #fff;
+}
+.bk-step-label {
+  font-size: .62rem;
+  color: rgba(255,255,255,.35);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  transition: color .3s;
+}
+.bk-step.active .bk-step-label { color: var(--gold-light); }
+.bk-step.done .bk-step-label { color: rgba(255,255,255,.5); }
+
+/* ── Modal Body ──────────────────────────────── */
+.bk-body {
+  padding: 24px;
+}
+
+/* ── Tour Summary Strip ──────────────────────── */
+.bk-tour-strip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  margin-bottom: 22px;
+}
+.bk-tour-img {
+  width: 56px; height: 42px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.bk-tour-info {}
+.bk-tour-name {
+  font-family: var(--fd);
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.bk-tour-meta {
+  font-size: .74rem;
+  color: var(--text-l);
+}
+.bk-tour-price {
+  margin-left: auto;
+  font-family: var(--fd);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* ── Section Label ───────────────────────────── */
+.bk-section-label {
+  font-size: .7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+/* ── Calendar Grid ───────────────────────────── */
+.bk-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 24px;
+}
+.bk-cal-day-header {
+  font-size: .63rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--text-l);
+  text-align: center;
+  padding: 4px 0;
+}
+.bk-cal-day {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  background: var(--bg);
+  transition: border-color .18s, background .18s;
+  position: relative;
+  min-height: 0;
+}
+.bk-cal-day:hover:not(.bk-cal-full):not(.bk-cal-past) {
+  border-color: var(--gold);
+  background: rgba(156,123,60,.07);
+}
+.bk-cal-day.selected {
+  border-color: var(--gold);
+  background: rgba(156,123,60,.12);
+}
+.bk-cal-day.bk-cal-full {
+  opacity: .38;
+  cursor: not-allowed;
+}
+.bk-cal-day.bk-cal-past {
+  opacity: .28;
+  cursor: not-allowed;
+}
+.bk-cal-day-num {
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1;
+}
+.bk-cal-day.selected .bk-cal-day-num { color: var(--gold); font-weight: 700; }
+.bk-cal-slots {
+  font-size: .55rem;
+  color: var(--text-l);
+  margin-top: 1px;
+}
+.bk-cal-slots.low { color: #c0533a; }
+.bk-cal-day.bk-cal-empty {
+  background: transparent;
+  border-color: transparent;
+  cursor: default;
+  pointer-events: none;
+}
+.bk-cal-month-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.bk-cal-month-label {
+  font-family: var(--fd);
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.bk-cal-nav-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  width: 30px; height: 30px;
+  cursor: pointer;
+  color: var(--gold);
+  font-size: .9rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .18s;
+}
+.bk-cal-nav-btn:hover { background: var(--bg); }
+
+/* ── Seats Selector ──────────────────────────── */
+.bk-seats-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.bk-seats-minus, .bk-seats-plus {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  font-size: 1.2rem;
+  color: var(--gold);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .18s, border-color .18s;
+  flex-shrink: 0;
+}
+.bk-seats-minus:hover, .bk-seats-plus:hover {
+  background: rgba(156,123,60,.1);
+  border-color: var(--gold);
+}
+.bk-seats-num {
+  font-family: var(--fd);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+  min-width: 36px;
+  text-align: center;
+}
+.bk-seats-label {
+  font-size: .8rem;
+  color: var(--text-l);
+}
+.bk-price-calc {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 24px;
+}
+.bk-price-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: .82rem;
+  color: var(--text-l);
+  margin-bottom: 8px;
+}
+.bk-price-row:last-child {
+  margin-bottom: 0;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  font-weight: 600;
+  color: var(--text);
+  font-size: .9rem;
+}
+.bk-price-row:last-child span:last-child { color: var(--gold); font-size: 1rem; }
+
+/* ── Guest Info Form ─────────────────────────── */
+.bk-field {
+  margin-bottom: 16px;
+}
+.bk-label {
+  display: block;
+  font-size: .74rem;
+  font-weight: 500;
+  color: var(--text-l);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.bk-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--fb);
+  font-size: .88rem;
+  color: var(--text);
+  background: var(--surface);
+  transition: border-color .2s;
+  outline: none;
+}
+.bk-input:focus { border-color: var(--gold); }
+
+/* ── Confirmation Screen ─────────────────────── */
+.bk-confirm {
+  text-align: center;
+  padding: 8px 0;
+}
+.bk-confirm-icon {
+  width: 64px; height: 64px;
+  background: rgba(58,143,92,.12);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 1.8rem;
+  animation: popIn .4s ease;
+}
+.bk-confirm-title {
+  font-family: var(--fd);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.bk-confirm-sub {
+  font-size: .82rem;
+  color: var(--text-l);
+  margin-bottom: 22px;
+  line-height: 1.6;
+}
+.bk-ref {
+  font-family: var(--fd);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+.bk-ref-label {
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-l);
+  margin-bottom: 22px;
+}
+.bk-qr-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.bk-qr-wrap canvas {
+  border-radius: 10px;
+  border: 6px solid white;
+  box-shadow: var(--shadow-sm);
+}
+.bk-confirm-details {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.bk-confirm-detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: .82rem;
+  margin-bottom: 8px;
+  gap: 12px;
+}
+.bk-confirm-detail-row:last-child { margin-bottom: 0; }
+.bk-confirm-detail-row span:first-child { color: var(--text-l); flex-shrink: 0; }
+.bk-confirm-detail-row span:last-child { color: var(--text); font-weight: 500; text-align: right; }
+
+/* ── Modal Footer ────────────────────────────── */
+.bk-footer {
+  display: flex;
+  gap: 10px;
+  padding: 0 24px 24px;
+  justify-content: flex-end;
+}
+.bk-btn-back {
+  padding: 12px 22px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--text-l);
+  font-family: var(--fb);
+  font-size: .85rem;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+.bk-btn-back:hover { border-color: var(--gold); color: var(--gold); }
+.bk-btn-next {
+  padding: 12px 28px;
+  border-radius: 8px;
+  background: linear-gradient(110deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  background-size: 200% auto;
+  border: none;
+  color: #fff;
+  font-family: var(--fb);
+  font-size: .85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-position .4s, transform .2s;
+}
+.bk-btn-next:hover { background-position: right center; transform: translateY(-1px); }
+.bk-btn-next:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+
+/* ── Toast Notification ──────────────────────── */
+.bk-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--dark);
+  color: var(--cream);
+  border-left: 4px solid var(--gold);
+  border-radius: 10px;
+  padding: 14px 20px;
+  font-size: .84rem;
+  z-index: 9999;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 340px;
+  transform: translateX(120%);
+  transition: transform .35s cubic-bezier(.34,1.4,.64,1);
+}
+.bk-toast.show { transform: translateX(0); }
+.bk-toast-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+/* ── Selected Date Display ───────────────────── */
+.bk-selected-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(156,123,60,.1);
+  border: 1px solid rgba(156,123,60,.3);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 480px) {
+  .bk-modal { border-radius: 12px 12px 0 0; max-height: 95vh; }
+  .bk-overlay { align-items: flex-end; padding: 0; }
+  .bk-body { padding: 18px; }
+  .bk-footer { padding: 0 18px 18px; }
+  .bk-cal-day-num { font-size: .75rem; }
+}

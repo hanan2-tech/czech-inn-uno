@@ -64,6 +64,32 @@
   </div>
 </section>
 
+<!-- Extra KPI Row -->
+<section class="an-extra-kpis">
+  <div class="an-extra-kpis-inner">
+    <div class="an-extra-kpi reveal" id="anKpiTopTour">
+      <div class="an-extra-kpi-label">Top Tour</div>
+      <div class="an-extra-kpi-val" id="anTopTour">Kafka's Prague</div>
+      <div class="an-extra-kpi-sub">312 bookings in period</div>
+    </div>
+    <div class="an-extra-kpi reveal" id="anKpiBestHotel">
+      <div class="an-extra-kpi-label">Best Hotel</div>
+      <div class="an-extra-kpi-val">Czech Inn Dlouhá</div>
+      <div class="an-extra-kpi-sub">28% of all bookings</div>
+    </div>
+    <div class="an-extra-kpi reveal" id="anKpiAvgVal">
+      <div class="an-extra-kpi-label">Avg Booking Value</div>
+      <div class="an-extra-kpi-val" id="anAvgVal">€112</div>
+      <div class="an-extra-kpi-sub">per transaction</div>
+    </div>
+    <div class="an-extra-kpi reveal" id="anKpiReturn">
+      <div class="an-extra-kpi-label">Returning Guests</div>
+      <div class="an-extra-kpi-val" id="anReturnPct">24%</div>
+      <div class="an-extra-kpi-sub">book a second experience</div>
+    </div>
+  </div>
+</section>
+
 <!-- Charts Section -->
 <section class="an-charts">
   <div class="an-charts-inner">
@@ -76,6 +102,12 @@
         <div class="an-chart-panel-title">
           <div class="an-chart-panel-name" data-i18n="an.chart1.name">Projected Monthly Revenue Share (Year 1)</div>
           <span class="data-badge data-badge-projected" data-i18n="an.badge.projected">Projected</span>
+        </div>
+        <div class="an-date-filters" id="anDateFilters">
+          <button class="an-filter-btn" data-range="7d">7d</button>
+          <button class="an-filter-btn" data-range="30d">30d</button>
+          <button class="an-filter-btn" data-range="90d">90d</button>
+          <button class="an-filter-btn active" data-range="ytd">YTD</button>
         </div>
         <div class="an-bar-chart" id="monthlyChart"></div>
       </div>
@@ -112,6 +144,45 @@
           </div>
         </div>
         <p style="font-size:.7rem;color:var(--grey);margin-top:16px;line-height:1.6" data-i18n="an.chart.note">Based on comparable Prague hotel partnership data and UNO 2024 product split.</p>
+      </div>
+
+      <!-- Booking Sources Donut -->
+      <div class="an-chart-panel reveal">
+        <div class="an-chart-panel-title">
+          <div class="an-chart-panel-name">Booking Sources</div>
+          <span class="data-badge data-badge-projected">Projected</span>
+        </div>
+        <div class="an-donut-wrap">
+          <div class="an-donut an-donut-sources"></div>
+          <div class="an-donut-legend">
+            <div class="an-donut-item">
+              <div class="an-donut-swatch" style="background:#C9A84C"></div>
+              <span class="an-donut-name">Direct QR Scan</span>
+              <span class="an-donut-pct">35%</span>
+            </div>
+            <div class="an-donut-item">
+              <div class="an-donut-swatch" style="background:#9C7B3C"></div>
+              <span class="an-donut-name">Pre-Arrival Email</span>
+              <span class="an-donut-pct">22%</span>
+            </div>
+            <div class="an-donut-item">
+              <div class="an-donut-swatch" style="background:rgba(156,123,60,.55)"></div>
+              <span class="an-donut-name">Reception Desk</span>
+              <span class="an-donut-pct">18%</span>
+            </div>
+            <div class="an-donut-item">
+              <div class="an-donut-swatch" style="background:#25d366"></div>
+              <span class="an-donut-name">WhatsApp</span>
+              <span class="an-donut-pct">15%</span>
+            </div>
+            <div class="an-donut-item">
+              <div class="an-donut-swatch" style="background:rgba(156,123,60,.2)"></div>
+              <span class="an-donut-name">Other Channels</span>
+              <span class="an-donut-pct">10%</span>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:.7rem;color:var(--grey);margin-top:16px;line-height:1.6">Projected booking source split based on UNO 2024 channel data and hotel concierge industry benchmarks.</p>
       </div>
     </div>
   </div>

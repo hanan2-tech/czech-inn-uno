@@ -349,6 +349,46 @@
       </button>
       <p class="pt-ask-note" data-i18n="pp.ask.note">Or review any section of this platform above. Every page is ready to explore.</p>
     </div>
+
+    <!-- Contact Form (Feature 32) -->
+    <div class="pt-contact-form reveal" id="ptContactForm" style="margin-top:48px;max-width:560px;margin-left:auto;margin-right:auto">
+      <div class="pt-form-title">Start the Conversation</div>
+      <p class="pt-form-sub">Send a message directly to the UNO team. We'll respond within one business day.</p>
+      <form class="pt-form" id="ptForm" action="mailto:partnership@czechinn.com" method="post" enctype="text/plain" onsubmit="ptHandleSubmit(event)">
+        <div class="pt-form-row">
+          <div class="pt-form-field">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="e.g. Jaroslav Svoboda" required autocomplete="name"/>
+          </div>
+          <div class="pt-form-field">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="e.g. j.svoboda@czechinn.com" required autocomplete="email"/>
+          </div>
+        </div>
+        <div class="pt-form-field">
+          <label>Role</label>
+          <select name="role">
+            <option value="">Select your role</option>
+            <option>CEO / General Manager</option>
+            <option>Revenue Manager</option>
+            <option>Head of Guest Experience</option>
+            <option>Operations Director</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="pt-form-field">
+          <label>Message</label>
+          <textarea name="message" rows="4" placeholder="Tell us what you'd like to discuss…" required></textarea>
+        </div>
+        <div class="pt-form-actions">
+          <button type="submit" class="pt-ask-btn" style="font-size:.85rem;padding:12px 28px">Send Message →</button>
+          <p style="font-size:.72rem;color:rgba(255,255,255,.35);margin:0">Or email directly: <a href="mailto:partnership@czechinn.com" style="color:var(--gold)">partnership@czechinn.com</a></p>
+        </div>
+        <div class="pt-form-success" id="ptFormSuccess" style="display:none">
+          <span>✓</span> Your message has been received. We'll be in touch within one business day.
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -358,5 +398,37 @@
 <script src="src/scripts/core/lang.js"></script>
 <script src="src/scripts/core/data.js"></script>
 <script src="src/scripts/pages/partnership.js"></script>
+<script>
+function ptHandleSubmit(e) {
+  e.preventDefault();
+  const success = document.getElementById('ptFormSuccess');
+  const form = document.getElementById('ptForm');
+  if (success && form) {
+    form.querySelectorAll('input,textarea,select,button[type=submit]').forEach(el => el.disabled = true);
+    success.style.display = 'flex';
+    success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+</script>
+<style>
+.pt-contact-form { }
+.pt-form-title { font-family: var(--fd); font-size: 1.2rem; font-weight: 700; color: var(--cream); margin-bottom: 8px; }
+.pt-form-sub { font-size: .82rem; color: var(--tan); line-height: 1.6; margin-bottom: 24px; }
+.pt-form { display: flex; flex-direction: column; gap: 14px; }
+.pt-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pt-form-field { display: flex; flex-direction: column; gap: 6px; }
+.pt-form-field label { font-size: .68rem; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,.4); font-weight: 500; }
+.pt-form-field input,
+.pt-form-field select,
+.pt-form-field textarea { padding: 11px 14px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: var(--cream); font-family: var(--fb); font-size: .85rem; outline: none; transition: border-color .2s; resize: vertical; }
+.pt-form-field input:focus,
+.pt-form-field select:focus,
+.pt-form-field textarea:focus { border-color: var(--gold); }
+.pt-form-field select option { background: #101827; color: var(--cream); }
+.pt-form-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.pt-form-success { align-items: center; gap: 10px; background: rgba(76,175,61,.12); border: 1px solid rgba(76,175,61,.25); border-radius: 10px; padding: 14px 18px; font-size: .85rem; color: #4caf7d; }
+.pt-form-success span { font-size: 1.2rem; }
+@media(max-width:520px) { .pt-form-row { grid-template-columns: 1fr; } }
+</style>
 </body>
 </html>

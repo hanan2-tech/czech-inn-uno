@@ -257,3 +257,36 @@
 @media(max-width:480px) {
   .proof-grid      { grid-template-columns: 1fr 1fr; }
 }
+
+
+/* ── Instagram Strip (Feature 28) ────────────── */
+.instagram-strip { background: var(--bg); padding: 72px 20px; }
+.instagram-strip-inner { max-width: var(--max-w); margin: 0 auto; }
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.insta-item {
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+}
+.insta-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+.insta-item:hover img { transform: scale(1.06); }
+.insta-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,26,53,0);
+  transition: background .3s;
+}
+.insta-item:hover::after { background: rgba(0,26,53,.25); }
+@media(max-width:600px) { .insta-grid { gap: 4px; } }

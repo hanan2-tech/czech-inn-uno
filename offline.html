@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>You're Offline — Czech Inn Hotels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --dark:#001A35; --gold:#9C7B3C; --gold-light:#C9A84C; --cream:#E8EDF4; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Rubik',sans-serif; background:var(--dark); color:var(--cream); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:20px; }
+  .wrap { max-width:480px; text-align:center; }
+  .logo { font-family:'Montserrat',sans-serif; font-size:.62rem; letter-spacing:4px; color:var(--gold); margin-bottom:32px; }
+  .icon { font-size:3rem; margin-bottom:20px; }
+  h1 { font-family:'Montserrat',sans-serif; font-size:1.8rem; font-weight:700; color:var(--cream); margin-bottom:12px; }
+  p { font-size:.88rem; color:rgba(255,255,255,.5); line-height:1.75; margin-bottom:28px; }
+  .tours { display:flex; flex-direction:column; gap:10px; margin-bottom:32px; }
+  .tour { display:flex; align-items:center; gap:14px; padding:14px 18px; background:rgba(255,255,255,.05); border:1px solid rgba(156,123,60,.2); border-radius:12px; text-align:left; text-decoration:none; color:var(--cream); }
+  .tour-icon { font-size:1.4rem; flex-shrink:0; }
+  .tour-name { font-size:.88rem; font-weight:600; }
+  .tour-meta { font-size:.72rem; color:rgba(255,255,255,.4); }
+  .btn { display:inline-block; padding:12px 28px; background:linear-gradient(110deg,var(--gold),var(--gold-light)); border-radius:8px; color:#fff; font-family:'Rubik',sans-serif; font-size:.88rem; font-weight:500; text-decoration:none; }
+  .hint { font-size:.72rem; color:rgba(255,255,255,.3); margin-top:16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">CZECH INN HOTELS × UNO</div>
+  <div class="icon">📡</div>
+  <h1>You're Offline</h1>
+  <p>It looks like you've lost your internet connection. Here are your saved tours, available to browse offline.</p>
+  <div class="tours">
+    <a href="tours.html" class="tour">
+      <span class="tour-icon">📖</span>
+      <div>
+        <div class="tour-name">Kafka's Prague Walking Tour</div>
+        <div class="tour-meta">5 hrs · €59 · 4.92 ★</div>
+      </div>
+    </a>
+    <a href="tours.html" class="tour">
+      <span class="tour-icon">🎨</span>
+      <div>
+        <div class="tour-name">Mucha's Art Nouveau Prague</div>
+        <div class="tour-meta">4.5 hrs · €54 · 4.89 ★</div>
+      </div>
+    </a>
+    <a href="tours.html" class="tour">
+      <span class="tour-icon">✡</span>
+      <div>
+        <div class="tour-name">Jewish Heritage of Prague</div>
+        <div class="tour-meta">4 hrs · €49 · 4.94 ★</div>
+      </div>
+    </a>
+    <a href="tours.html" class="tour">
+      <span class="tour-icon">👨‍👩‍👧</span>
+      <div>
+        <div class="tour-name">Prague for Families</div>
+        <div class="tour-meta">3.5 hrs · €44 · 4.91 ★</div>
+      </div>
+    </a>
+  </div>
+  <a href="/" class="btn">Try Again</a>
+  <p class="hint">Once you're back online, all features will be available again.</p>
+</div>
+</body>
+</html>
