@@ -1,7 +1,7 @@
 const CACHE = 'czech-inn-v1';
 const PRECACHE = [
   '/concierge.html',
-  '/js/lang.js',
+  '/src/scripts/core/lang.js',
   '/manifest.json'
 ];
 
