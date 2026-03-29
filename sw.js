@@ -1,7 +1,18 @@
-const CACHE = 'czech-inn-v1';
+const CACHE = 'czech-inn-v2';
 const PRECACHE = [
+  '/',
+  '/index.html',
+  '/tours.html',
+  '/extras.html',
   '/concierge.html',
+  '/gold-label.html',
+  '/after-dark.html',
+  '/by-passion.html',
+  '/src/styles/base/theme.css',
+  '/src/styles/base/shared.css',
+  '/src/scripts/core/nav.js',
   '/src/scripts/core/lang.js',
+  '/src/scripts/core/data.js',
   '/manifest.json'
 ];
 
