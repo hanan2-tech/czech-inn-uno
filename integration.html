@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/styles/base/theme.css">
 <link rel="stylesheet" href="src/styles/base/shared.css">
+<link rel="stylesheet" href="src/styles/base/visuals.css">
 <link rel="stylesheet" href="src/styles/pages/integration.css">
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.min.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -37,31 +38,63 @@
         <a href="partnership.html" class="btn-gold" data-nav data-i18n="int.cta.partnership">See Partnership Terms</a>
       </div>
     </div>
-    <div class="int-qr-mockup reveal reveal-delay-2">
-      <div class="int-qr-card">
-        <div class="int-qr-box"><iconify-icon icon="tabler:qrcode" style="font-size:32px;color:#C9A84C"></iconify-icon></div>
-        <div class="int-qr-info">
-          <div class="int-qr-title" data-i18n="int.qr1.title">Room Key Card QR</div>
-          <div class="int-qr-sub" data-i18n="int.qr1.sub">Printed on standard key cards. One scan opens the full concierge hub</div>
-          <div class="int-qr-stat" data-i18n="int.qr1.stat">✓ 68% of guests scan within first hour</div>
+    <div class="int-phones-row reveal reveal-delay-2">
+
+      <!-- Phone 1: Key Card QR -->
+      <div class="int-phone-mockup">
+        <div class="device-frame-phone">
+          <div class="device-screen" style="background:linear-gradient(145deg,#0a1628,#001a35);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;gap:10px">
+            <div style="font-size:.5rem;color:var(--gold);text-transform:uppercase;letter-spacing:3px">Czech Inn Hotels</div>
+            <div style="width:70px;height:70px;background:white;border-radius:6px;display:flex;align-items:center;justify-content:center">
+              <iconify-icon icon="tabler:qrcode" style="font-size:52px;color:#111"></iconify-icon>
+            </div>
+            <div style="font-size:.55rem;color:var(--cream);text-align:center;line-height:1.4">Scan to explore<br>Prague experiences</div>
+            <div style="font-size:.45rem;color:var(--gold);margin-top:4px">tours · extras · concierge</div>
+          </div>
         </div>
+        <div class="int-phone-label">Room Key Card QR</div>
+        <div class="int-phone-stat">✓ 68% scan within first hour</div>
       </div>
-      <div class="int-qr-card">
-        <div class="int-qr-box"><iconify-icon icon="tabler:monitor" style="font-size:32px;color:#C9A84C"></iconify-icon></div>
-        <div class="int-qr-info">
-          <div class="int-qr-title" data-i18n="int.qr2.title">Reception Desk Display</div>
-          <div class="int-qr-sub" data-i18n="int.qr2.sub">A4 stand with QR + branded headline, placed at check-in</div>
-          <div class="int-qr-stat" data-i18n="int.qr2.stat">✓ Increases awareness by 42% vs verbal offer</div>
+
+      <!-- Phone 2: Concierge Hub -->
+      <div class="int-phone-mockup int-phone-featured">
+        <div class="device-frame-phone">
+          <div class="device-screen" style="background:linear-gradient(145deg,#0a1628,#001a35);padding:12px;overflow:hidden">
+            <div style="font-size:.45rem;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px">Your Concierge</div>
+            <div style="background:rgba(156,123,60,.1);border:1px solid rgba(156,123,60,.2);border-radius:6px;padding:8px;margin-bottom:6px">
+              <div style="font-size:.5rem;color:var(--cream);font-weight:600;margin-bottom:3px">Kafka's Prague</div>
+              <div style="font-size:.42rem;color:var(--grey)">4.91 ★ · 3 hrs · from €49</div>
+              <div style="margin-top:4px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:2px"></div>
+            </div>
+            <div style="background:rgba(156,123,60,.1);border:1px solid rgba(156,123,60,.2);border-radius:6px;padding:8px;margin-bottom:6px">
+              <div style="font-size:.5rem;color:var(--cream);font-weight:600;margin-bottom:3px">Jewish Heritage</div>
+              <div style="font-size:.42rem;color:var(--grey)">4.93 ★ · 2.5 hrs · from €49</div>
+            </div>
+            <div style="margin-top:6px;background:linear-gradient(110deg,var(--gold),var(--gold-light));border-radius:4px;padding:5px;text-align:center">
+              <div style="font-size:.48rem;color:#fff;font-weight:600">Book Now</div>
+            </div>
+          </div>
         </div>
+        <div class="int-phone-label">Live Booking Hub</div>
+        <div class="int-phone-stat">✓ Instant availability</div>
       </div>
-      <div class="int-qr-card">
-        <div class="int-qr-box"><iconify-icon icon="tabler:bed" style="font-size:32px;color:#C9A84C"></iconify-icon></div>
-        <div class="int-qr-info">
-          <div class="int-qr-title" data-i18n="int.qr3.title">In-Room Table Topper</div>
-          <div class="int-qr-sub" data-i18n="int.qr3.sub">Elegant branded card on every room desk/bedside table</div>
-          <div class="int-qr-stat" data-i18n="int.qr3.stat">✓ 31% of bookings originate from room touchpoint</div>
+
+      <!-- Phone 3: In-room topper -->
+      <div class="int-phone-mockup">
+        <div class="device-frame-phone">
+          <div class="device-screen" style="background:linear-gradient(145deg,#0a1628,#001a35);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;gap:8px">
+            <iconify-icon icon="tabler:bed" style="font-size:28px;color:var(--gold)"></iconify-icon>
+            <div style="font-size:.55rem;color:var(--cream);font-weight:600;text-align:center">Your Prague<br>Experience Awaits</div>
+            <div style="width:56px;height:56px;background:white;border-radius:4px;display:flex;align-items:center;justify-content:center">
+              <iconify-icon icon="tabler:qrcode" style="font-size:42px;color:#111"></iconify-icon>
+            </div>
+            <div style="font-size:.45rem;color:var(--grey);text-align:center">Scan or ask reception</div>
+          </div>
         </div>
+        <div class="int-phone-label">In-Room Table Topper</div>
+        <div class="int-phone-stat">✓ 31% of bookings from room</div>
       </div>
+
     </div>
   </div>
 </section>
@@ -191,6 +224,34 @@
   </div>
 </section>
 
+<!-- Live QR Code Demo Section -->
+<section class="int-qr-demo">
+  <div class="int-qr-demo-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">Try It Now</div>
+    <h2 class="sec-title sec-title-dark reveal reveal-delay-1">Scan a Live Demo<br><em>QR Code</em></h2>
+    <p class="sec-sub reveal reveal-delay-2" style="max-width:480px;margin:0 auto">This is the actual QR code your guests would scan. It opens the concierge experience hub directly.</p>
+    <div class="int-qr-demo-card reveal" style="margin-top:48px">
+      <div class="device-frame-phone" style="margin:0 auto">
+        <div class="device-screen" style="background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;gap:12px">
+          <div style="font-size:.5rem;color:#9C7B3C;text-transform:uppercase;letter-spacing:3px;text-align:center">Czech Inn Hotels</div>
+          <div id="liveQrCode" style="width:100px;height:100px"></div>
+          <div style="font-size:.48rem;color:#666;text-align:center;line-height:1.4">Scan to experience<br>the concierge hub</div>
+        </div>
+      </div>
+      <div class="int-qr-demo-info">
+        <div class="int-qr-demo-label">How It Works</div>
+        <ul class="int-qr-demo-steps">
+          <li><span>1</span> Guest scans with phone camera</li>
+          <li><span>2</span> Branded landing page loads instantly</li>
+          <li><span>3</span> Tours, extras, concierge — all in one place</li>
+          <li><span>4</span> Booking confirmed via WhatsApp or email</li>
+        </ul>
+        <div class="int-qr-demo-note">Works on all smartphones. No app required.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Marketing Materials -->
 <section class="int-materials">
   <div class="int-materials-inner">
@@ -236,5 +297,34 @@
 <script src="src/scripts/core/lang.js"></script>
 <script src="src/scripts/core/data.js"></script>
 <script src="src/scripts/pages/integration.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var qrEl = document.getElementById('liveQrCode');
+    if (qrEl && typeof QRCode !== 'undefined') {
+      new QRCode(qrEl, {
+        text: 'https://hanan2-tech.github.io/czech-inn-uno/',
+        width: 100, height: 100,
+        colorDark: '#001a35', colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    }
+    // Animate setup step progress bar on scroll
+    var steps = document.querySelectorAll('.int-step');
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e, i) {
+        if (e.isIntersecting) {
+          setTimeout(function() { e.target.classList.add('stepped'); }, i * 200);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    steps.forEach(function(s) { obs.observe(s); });
+  });
+</script>
+<script type="module">
+  import { initScrollReveal } from './src/scripts/core/visuals.js';
+  document.addEventListener('DOMContentLoaded', () => { initScrollReveal(); });
+</script>
 </body>
 </html>

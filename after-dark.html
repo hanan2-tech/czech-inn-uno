@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/styles/base/theme.css">
 <link rel="stylesheet" href="src/styles/base/shared.css">
+<link rel="stylesheet" href="src/styles/base/visuals.css">
 <link rel="stylesheet" href="src/styles/pages/after-dark.css">
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.min.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -672,7 +673,54 @@
 <section class="ad-map">
   <div class="ad-map-inner">
     <div class="sec-eyebrow reveal" style="color:var(--gold)" data-i18n="ad.map.eyebrow">Prague by Night</div>
-    <h2 class="sec-title sec-title-dark reveal" data-i18n-html="ad.map.title">The <em>Neighbourhood</em> Guide</h2>
+    <h2 class="sec-title sec-title-dark reveal ad-neon-heading" data-i18n-html="ad.map.title">The <em>Neighbourhood</em> Guide</h2>
+
+    <!-- SVG Prague Night Districts Map -->
+    <div class="ad-svg-map-wrap reveal" style="margin-top:40px;margin-bottom:48px">
+      <svg class="ad-svg-map" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+        <!-- River Vltava -->
+        <path d="M 120 20 C 130 60, 125 100, 135 130 C 145 160, 140 200, 145 240 C 150 270, 160 300, 170 320" stroke="rgba(0,100,180,.35)" stroke-width="18" fill="none" stroke-linecap="round"/>
+        <!-- District silhouettes (simplified blobs) -->
+        <ellipse cx="200" cy="145" rx="55" ry="38" fill="rgba(156,123,60,.06)" stroke="rgba(156,123,60,.18)" stroke-width="1"/>
+        <ellipse cx="195" cy="188" rx="50" ry="35" fill="rgba(156,123,60,.05)" stroke="rgba(156,123,60,.12)" stroke-width="1"/>
+        <ellipse cx="105" cy="145" rx="38" ry="30" fill="rgba(156,123,60,.05)" stroke="rgba(156,123,60,.12)" stroke-width="1"/>
+        <ellipse cx="270" cy="185" rx="45" ry="32" fill="rgba(156,123,60,.05)" stroke="rgba(156,123,60,.12)" stroke-width="1"/>
+        <ellipse cx="280" cy="145" rx="40" ry="28" fill="rgba(156,123,60,.04)" stroke="rgba(156,123,60,.1)" stroke-width="1"/>
+        <ellipse cx="100" cy="205" rx="35" ry="25" fill="rgba(156,123,60,.04)" stroke="rgba(156,123,60,.1)" stroke-width="1"/>
+        <ellipse cx="210" cy="80" rx="42" ry="28" fill="rgba(156,123,60,.04)" stroke="rgba(156,123,60,.1)" stroke-width="1"/>
+        <!-- District labels -->
+        <text x="200" y="148" text-anchor="middle" font-size="8" fill="rgba(240,237,224,.3)" font-family="Montserrat,sans-serif">Old Town</text>
+        <text x="195" y="192" text-anchor="middle" font-size="7" fill="rgba(240,237,224,.25)" font-family="Montserrat,sans-serif">New Town</text>
+        <text x="105" y="148" text-anchor="middle" font-size="7" fill="rgba(240,237,224,.25)" font-family="Montserrat,sans-serif">Malá Strana</text>
+        <text x="272" y="188" text-anchor="middle" font-size="7" fill="rgba(240,237,224,.25)" font-family="Montserrat,sans-serif">Vinohrady</text>
+        <text x="280" y="148" text-anchor="middle" font-size="7" fill="rgba(240,237,224,.25)" font-family="Montserrat,sans-serif">Žižkov</text>
+        <text x="100" y="208" text-anchor="middle" font-size="7" fill="rgba(240,237,224,.25)" font-family="Montserrat,sans-serif">Smíchov</text>
+        <text x="210" y="82" text-anchor="middle" font-size="7" fill="rgba(240,237,224,.25)" font-family="Montserrat,sans-serif">Holešovice</text>
+        <!-- Pulse markers -->
+        <!-- Old Town -->
+        <circle cx="200" cy="140" r="12" fill="rgba(156,123,60,.12)" class="ad-map-pulse"/>
+        <circle cx="200" cy="140" r="5" fill="var(--gold)"/>
+        <!-- New Town -->
+        <circle cx="195" cy="182" r="10" fill="rgba(156,123,60,.1)" class="ad-map-pulse" style="animation-delay:.4s"/>
+        <circle cx="195" cy="182" r="4" fill="rgba(156,123,60,.85)"/>
+        <!-- Vinohrady -->
+        <circle cx="262" cy="178" r="10" fill="rgba(156,123,60,.1)" class="ad-map-pulse" style="animation-delay:.8s"/>
+        <circle cx="262" cy="178" r="4" fill="rgba(156,123,60,.7)"/>
+        <!-- Smíchov (Jazz Dock) -->
+        <circle cx="100" cy="198" r="10" fill="rgba(156,123,60,.1)" class="ad-map-pulse" style="animation-delay:1.2s"/>
+        <circle cx="100" cy="198" r="4" fill="rgba(156,123,60,.6)"/>
+        <!-- Holešovice -->
+        <circle cx="205" cy="76" r="10" fill="rgba(156,123,60,.1)" class="ad-map-pulse" style="animation-delay:1.6s"/>
+        <circle cx="205" cy="76" r="4" fill="rgba(156,123,60,.55)"/>
+        <!-- Tooltip labels on markers -->
+        <text x="216" y="138" font-size="7.5" fill="var(--gold)" font-family="Montserrat,sans-serif" font-weight="600">Jazz · Cocktails · Shows</text>
+        <text x="211" y="178" font-size="7" fill="rgba(156,123,60,.8)" font-family="Montserrat,sans-serif">Jazz · Cocktails</text>
+        <text x="277" y="175" font-size="7" fill="rgba(156,123,60,.75)" font-family="Montserrat,sans-serif">Vinohrady bars</text>
+        <text x="116" y="195" font-size="7" fill="rgba(156,123,60,.7)" font-family="Montserrat,sans-serif">Jazz Dock</text>
+        <text x="221" y="72" font-size="7" fill="rgba(156,123,60,.65)" font-family="Montserrat,sans-serif">Cross Club · La Fabrika</text>
+      </svg>
+    </div>
+
     <div class="ad-map-grid">
       <div class="reveal">
         <div class="ad-neighbourhood">
@@ -775,5 +823,9 @@
 <script src="src/scripts/core/lang.js"></script>
 <script src="src/scripts/core/data.js"></script>
 <script src="src/scripts/pages/after-dark.js"></script>
+<script type="module">
+  import { initScrollReveal } from './src/scripts/core/visuals.js';
+  document.addEventListener('DOMContentLoaded', () => { initScrollReveal(); });
+</script>
 </body>
 </html>

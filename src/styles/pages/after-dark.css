@@ -31,7 +31,16 @@
   font-weight: 300; color: #fff;
   line-height: .95; margin-bottom: 28px;
 }
-.ad-hero-title em { font-style: italic; color: var(--gold); }
+.ad-hero-title em {
+  font-style: italic; color: var(--gold);
+  text-shadow: 0 0 30px rgba(156,123,60,.6), 0 0 60px rgba(156,123,60,.25);
+  animation: neonPulse 3s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% { text-shadow: 0 0 30px rgba(156,123,60,.6), 0 0 60px rgba(156,123,60,.25); }
+  50%       { text-shadow: 0 0 50px rgba(156,123,60,.85), 0 0 100px rgba(156,123,60,.4); }
+}
 .ad-hero-desc {
   font-size: 1rem; color: rgba(219,219,215,.65);
   max-width: 480px; line-height: 1.9; font-weight: 300;
@@ -84,6 +93,11 @@
 .ad-cat-title {
   font-family: var(--fd); font-size: 1.8rem;
   color: var(--cream); font-weight: 400;
+  text-shadow: 0 0 20px rgba(156,123,60,.35);
+}
+/* Neon heading modifier */
+.ad-neon-heading em {
+  text-shadow: 0 0 25px rgba(156,123,60,.55), 0 0 50px rgba(156,123,60,.2);
 }
 .ad-cat-count { font-size: .72rem; color: var(--grey); }
 
@@ -178,6 +192,26 @@
   border-top: 1px solid rgba(156,123,60,.1);
 }
 .ad-cta-inner { max-width: 600px; margin: 0 auto; }
+
+/* ── SVG Prague Night Map ─────────────────────── */
+.ad-svg-map-wrap {
+  background: rgba(0,10,25,.6);
+  border: 1px solid rgba(156,123,60,.15);
+  border-radius: 16px;
+  padding: 24px;
+  overflow: hidden;
+}
+.ad-svg-map {
+  width: 100%; max-width: 600px;
+  display: block; margin: 0 auto;
+}
+@keyframes mapPulse {
+  0%, 100% { r: 10; opacity: .6; }
+  50%       { r: 18; opacity: .15; }
+}
+.ad-map-pulse {
+  animation: mapPulse 2.4s ease-in-out infinite;
+}
 
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.vis { opacity: 1; transform: none; }

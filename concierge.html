@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/styles/base/theme.css">
 <link rel="stylesheet" href="src/styles/base/shared.css">
+<link rel="stylesheet" href="src/styles/base/visuals.css">
 <link rel="stylesheet" href="src/styles/pages/concierge.css">
 <link rel="stylesheet" href="src/styles/pages/booking.css">
 <link rel="manifest" href="/manifest.json">
@@ -124,24 +125,28 @@
 
     <div class="dc-journey-steps">
       <div class="dc-j-step reveal">
+        <img class="dc-j-photo" src="https://images.pexels.com/photos/12663145/pexels-photo-12663145.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Pre-arrival email" loading="lazy">
         <div class="dc-j-num">1</div>
         <div class="dc-j-when" data-i18n="dc.j1.when">48 hrs before arrival</div>
         <div class="dc-j-title" data-i18n="dc.j1.title">Pre-Arrival Email</div>
         <p class="dc-j-desc" data-i18n="dc.j1.desc">Personalised experience suggestions, Prague weather, and a direct booking link arrive in the guest's inbox. 22% convert to a booking before they even land.</p>
       </div>
       <div class="dc-j-step reveal reveal-delay-1">
+        <img class="dc-j-photo" src="https://images.pexels.com/photos/14036250/pexels-photo-14036250.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Check-in" loading="lazy">
         <div class="dc-j-num">2</div>
         <div class="dc-j-when" data-i18n="dc.j2.when">At check-in</div>
         <div class="dc-j-title" data-i18n="dc.j2.title">QR Welcome Pack</div>
         <p class="dc-j-desc" data-i18n="dc.j2.desc">Reception hands guests a branded key card with QR code. The concierge hub opens in 2 seconds on their phone, ready to explore.</p>
       </div>
       <div class="dc-j-step reveal reveal-delay-2">
+        <img class="dc-j-photo" src="https://images.pexels.com/photos/3849558/pexels-photo-3849558.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Tour experience" loading="lazy">
         <div class="dc-j-num">3</div>
         <div class="dc-j-when" data-i18n="dc.j3.when">During stay</div>
         <div class="dc-j-title" data-i18n="dc.j3.title">Live Concierge Hub</div>
         <p class="dc-j-desc" data-i18n="dc.j3.desc">Book tours, browse extras, chat with the AI concierge, check dinner recommendations. All from their phone, all branded Czech Inn Hotels.</p>
       </div>
       <div class="dc-j-step reveal reveal-delay-3">
+        <img class="dc-j-photo" src="https://images.pexels.com/photos/28780789/pexels-photo-28780789.jpeg?auto=compress&cs=tinysrgb&w=400&q=80" alt="Memory book" loading="lazy">
         <div class="dc-j-num">4</div>
         <div class="dc-j-when" data-i18n="dc.j4.when">After experience</div>
         <div class="dc-j-title" data-i18n="dc.j4.title">Memory Book + Review</div>
@@ -188,7 +193,26 @@
     </div>
     <div class="dc-ai-chat reveal reveal-delay-2">
       <div class="dc-ai-chat-bar">
-        <div class="dc-ai-avatar"><iconify-icon icon="tabler:sparkles" style="font-size:14px;color:#C9A84C"></iconify-icon></div>
+        <div class="dc-ai-avatar">
+          <!-- Branded concierge SVG avatar -->
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Head -->
+            <circle cx="16" cy="13" r="6.5" fill="rgba(201,168,76,.18)" stroke="#C9A84C" stroke-width="1"/>
+            <!-- Eyes -->
+            <circle cx="13.5" cy="12.5" r="1" fill="#C9A84C"/>
+            <circle cx="18.5" cy="12.5" r="1" fill="#C9A84C"/>
+            <!-- Smile -->
+            <path d="M13 15.5 Q16 17.5 19 15.5" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" fill="none"/>
+            <!-- Concierge hat brim -->
+            <rect x="10" y="7.5" width="12" height="2" rx="1" fill="#C9A84C" opacity=".8"/>
+            <!-- Hat top -->
+            <rect x="12.5" y="4" width="7" height="4" rx="1" fill="rgba(201,168,76,.6)" stroke="#C9A84C" stroke-width=".8"/>
+            <!-- Body/collar -->
+            <path d="M10 26 Q10 21 16 20 Q22 21 22 26" fill="rgba(201,168,76,.1)" stroke="#C9A84C" stroke-width=".9"/>
+            <!-- Bow tie -->
+            <path d="M14 21.5 L16 22.5 L18 21.5 L16 23 Z" fill="#C9A84C" opacity=".7"/>
+          </svg>
+        </div>
         <div>
           <div class="dc-ai-name">Czech Inn Concierge</div>
           <div class="dc-ai-online" data-i18n="dc.ai.online">Online now</div>
@@ -199,7 +223,12 @@
         <div class="dc-msg dc-msg-user" data-i18n="dc.ai.msg2">Yes please, for 2 people at 8pm</div>
         <div class="dc-msg dc-msg-bot" data-i18n="dc.ai.msg3">Done. Table for 2 at T-Anker at 8pm tonight. I have sent the confirmation to your email. Anything else? Restaurant tomorrow after the tour, or tickets to the Mozart concert at Lobkowicz Palace?</div>
         <div class="dc-msg dc-msg-user" data-i18n="dc.ai.msg4">Mozart sounds amazing, yes!</div>
-        <div class="dc-msg dc-msg-bot" data-i18n-html="dc.ai.msg5">2 tickets for the 7:30pm Mozart concert at Lobkowicz Palace, 29 EUR each. Shall I add them to your stay? Payment at checkout. <iconify-icon icon="tabler:sparkles" style="font-size:14px;color:#C9A84C"></iconify-icon></div>
+        <div class="dc-typing-indicator" id="dcTypingIndicator">
+          <div class="dc-typing-dot"></div>
+          <div class="dc-typing-dot"></div>
+          <div class="dc-typing-dot"></div>
+        </div>
+        <div class="dc-msg dc-msg-bot" id="dcMsg5" style="display:none" data-i18n-html="dc.ai.msg5">2 tickets for the 7:30pm Mozart concert at Lobkowicz Palace, 29 EUR each. Shall I add them to your stay? Payment at checkout. <iconify-icon icon="tabler:sparkles" style="font-size:14px;color:#C9A84C"></iconify-icon></div>
       </div>
       <div class="dc-ai-input">
         <input class="dc-ai-input-field" id="dcAiInput" placeholder="Ask anything about Prague…" data-i18n-placeholder="dc.ai.placeholder" autocomplete="off"/>
@@ -506,5 +535,53 @@
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script src="src/scripts/pages/booking.js"></script>
 <script src="src/scripts/pages/concierge.js"></script>
+<script type="module">
+import { initScrollReveal } from './src/scripts/core/visuals.js';
+document.addEventListener('DOMContentLoaded', () => {
+  initScrollReveal();
+
+  /* Typing indicator → reveal final bot message after 2.2s */
+  const typing = document.getElementById('dcTypingIndicator');
+  const msg5   = document.getElementById('dcMsg5');
+  if (typing && msg5) {
+    const io = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        io.disconnect();
+        setTimeout(() => {
+          typing.style.display = 'none';
+          msg5.style.display   = '';
+          msg5.style.animation = 'slideUpReveal .4s cubic-bezier(.34,1.56,.64,1) both';
+        }, 2200);
+      }
+    }, { threshold: .6 });
+    io.observe(typing);
+  }
+
+  /* Memory book polaroid — lightbox on click */
+  document.querySelectorAll('.dc-mem-photo img').forEach((img, i, all) => {
+    img.parentElement.addEventListener('click', () => {
+      const lb = document.createElement('div');
+      lb.className = 'dc-lightbox';
+      lb.innerHTML = `
+        <button class="dc-lightbox-close">&#x2715;</button>
+        <button class="dc-lightbox-prev">&#8249;</button>
+        <img class="dc-lightbox-img" src="${img.src.replace('w=400','w=1200')}" alt="${img.alt}">
+        <button class="dc-lightbox-next">&#8250;</button>
+        <div class="dc-lightbox-counter">${i + 1} / ${all.length}</div>`;
+      document.body.appendChild(lb);
+      let cur = i;
+      const update = (n) => {
+        cur = (n + all.length) % all.length;
+        lb.querySelector('.dc-lightbox-img').src = all[cur].src.replace('w=400','w=1200');
+        lb.querySelector('.dc-lightbox-counter').textContent = `${cur+1} / ${all.length}`;
+      };
+      lb.querySelector('.dc-lightbox-prev').onclick  = () => update(cur - 1);
+      lb.querySelector('.dc-lightbox-next').onclick  = () => update(cur + 1);
+      lb.querySelector('.dc-lightbox-close').onclick = () => lb.remove();
+      lb.addEventListener('click', e => { if (e.target === lb) lb.remove(); });
+    });
+  });
+});
+</script>
 </body>
 </html>

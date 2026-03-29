@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/styles/base/theme.css">
 <link rel="stylesheet" href="src/styles/base/shared.css">
+<link rel="stylesheet" href="src/styles/base/visuals.css">
 <link rel="stylesheet" href="src/styles/pages/business-plan.css">
 </head>
 <body>
@@ -99,6 +100,61 @@
       </div>
     </div>
   </div>
+
+  <!-- ── Revenue Pillars Infographic ──────────────────────── -->
+  <section class="bp-pillars-section">
+    <div class="bp-pillars-inner">
+      <div class="sec-eyebrow reveal" style="color:var(--gold);text-align:center">Revenue Architecture</div>
+      <h2 class="sec-title reveal reveal-delay-1" style="text-align:center">Four Pillars, <em>One Platform</em></h2>
+      <p class="sec-sub reveal reveal-delay-2" style="max-width:460px;margin:0 auto 52px;text-align:center">Every revenue stream working together. Zero new infrastructure required.</p>
+
+      <div class="bp-pillars-diagram reveal reveal-delay-3">
+        <!-- Central hub SVG -->
+        <svg class="bp-pillars-svg" viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg">
+          <!-- Center ring -->
+          <circle cx="210" cy="190" r="62" fill="rgba(156,123,60,.08)" stroke="rgba(156,123,60,.35)" stroke-width="1.5"/>
+          <circle cx="210" cy="190" r="44" fill="rgba(156,123,60,.12)" stroke="rgba(156,123,60,.5)" stroke-width="1"/>
+          <!-- Center text -->
+          <text x="210" y="183" text-anchor="middle" fill="#C9A84C" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" letter-spacing="1.5">CZECH INN</text>
+          <text x="210" y="196" text-anchor="middle" fill="#C9A84C" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" letter-spacing="1.5">HOTELS</text>
+          <text x="210" y="210" text-anchor="middle" fill="rgba(201,168,76,.55)" font-family="Montserrat,sans-serif" font-size="7" letter-spacing=".5">× UNO</text>
+
+          <!-- Spoke lines -->
+          <line x1="210" y1="128" x2="210" y2="86"  stroke="rgba(156,123,60,.3)" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="210" y1="252" x2="210" y2="294" stroke="rgba(156,123,60,.3)" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="148" y1="190" x2="106" y2="190" stroke="rgba(156,123,60,.3)" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="272" y1="190" x2="314" y2="190" stroke="rgba(156,123,60,.3)" stroke-width="1" stroke-dasharray="3,3"/>
+
+          <!-- Pillar 1: Tours (top) -->
+          <circle cx="210" cy="68" r="38" fill="rgba(156,123,60,.1)" stroke="rgba(156,123,60,.4)" stroke-width="1.5" class="bp-pillar-ring" style="animation-delay:0s"/>
+          <text x="210" y="63" text-anchor="middle" fill="#C9A84C" font-size="10" font-family="Montserrat,sans-serif" font-weight="700">🗺</text>
+          <text x="210" y="77" text-anchor="middle" fill="rgba(255,255,255,.75)" font-size="7.5" font-family="Montserrat,sans-serif" font-weight="600">TOURS</text>
+          <text x="210" y="88" text-anchor="middle" fill="#C9A84C" font-size="7" font-family="Montserrat,sans-serif">€980K Y1</text>
+
+          <!-- Pillar 2: Gold Label (bottom) -->
+          <circle cx="210" cy="312" r="38" fill="rgba(156,123,60,.1)" stroke="rgba(201,168,76,.5)" stroke-width="1.5" class="bp-pillar-ring" style="animation-delay:.3s"/>
+          <text x="210" y="307" text-anchor="middle" fill="#C9A84C" font-size="10" font-family="Montserrat,sans-serif">★</text>
+          <text x="210" y="321" text-anchor="middle" fill="rgba(255,255,255,.75)" font-size="7.5" font-family="Montserrat,sans-serif" font-weight="600">GOLD LABEL</text>
+          <text x="210" y="332" text-anchor="middle" fill="#C9A84C" font-size="7" font-family="Montserrat,sans-serif">€420K Y1</text>
+
+          <!-- Pillar 3: Extras (left) -->
+          <circle cx="68" cy="190" r="38" fill="rgba(156,123,60,.1)" stroke="rgba(156,123,60,.4)" stroke-width="1.5" class="bp-pillar-ring" style="animation-delay:.6s"/>
+          <text x="68" y="185" text-anchor="middle" fill="#C9A84C" font-size="10" font-family="Montserrat,sans-serif">🎭</text>
+          <text x="68" y="199" text-anchor="middle" fill="rgba(255,255,255,.75)" font-size="7.5" font-family="Montserrat,sans-serif" font-weight="600">EXTRAS</text>
+          <text x="68" y="210" text-anchor="middle" fill="#C9A84C" font-size="7" font-family="Montserrat,sans-serif">€220K Y1</text>
+
+          <!-- Pillar 4: Concierge (right) -->
+          <circle cx="352" cy="190" r="38" fill="rgba(156,123,60,.1)" stroke="rgba(156,123,60,.4)" stroke-width="1.5" class="bp-pillar-ring" style="animation-delay:.9s"/>
+          <text x="352" y="185" text-anchor="middle" fill="#C9A84C" font-size="10" font-family="Montserrat,sans-serif">💬</text>
+          <text x="352" y="199" text-anchor="middle" fill="rgba(255,255,255,.75)" font-size="7.5" font-family="Montserrat,sans-serif" font-weight="600">CONCIERGE</text>
+          <text x="352" y="210" text-anchor="middle" fill="#C9A84C" font-size="7" font-family="Montserrat,sans-serif">€118K Y1</text>
+
+          <!-- Total label -->
+          <text x="210" y="362" text-anchor="middle" fill="rgba(201,168,76,.6)" font-size="8" font-family="Montserrat,sans-serif" letter-spacing="2">TOTAL Y1 PROJECTION: €1.7M</text>
+        </svg>
+      </div>
+    </div>
+  </section>
 
   <!-- ── 2. The Opportunity ────────────────────────────────── -->
   <section class="section" id="opportunity">
@@ -571,6 +627,73 @@
     </div>
   </section>
 
+  <!-- ── TAM / SAM / SOM Bubble Chart ──────────────────────── -->
+  <section class="bp-tam-section">
+    <div class="bp-tam-inner">
+      <div class="sec-eyebrow reveal" style="color:var(--gold);text-align:center">Market Sizing</div>
+      <h2 class="sec-title reveal reveal-delay-1" style="text-align:center">Addressable <em>Market</em></h2>
+      <p class="sec-sub reveal reveal-delay-2" style="max-width:420px;margin:0 auto 52px;text-align:center">Three concentric layers — from the total Prague tourism market to Czech Inn Hotels' specific revenue opportunity.</p>
+
+      <div class="bp-tam-bubbles reveal reveal-delay-3">
+        <!-- SVG bubble chart -->
+        <svg class="bp-tam-svg" viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
+          <!-- TAM - outermost -->
+          <circle cx="240" cy="160" r="148" fill="rgba(156,123,60,.05)" stroke="rgba(156,123,60,.25)" stroke-width="1.5" class="bp-tam-circle" style="animation-delay:0s"/>
+          <!-- SAM -->
+          <circle cx="240" cy="160" r="100" fill="rgba(156,123,60,.08)" stroke="rgba(156,123,60,.35)" stroke-width="1.5" class="bp-tam-circle" style="animation-delay:.2s"/>
+          <!-- SOM -->
+          <circle cx="240" cy="160" r="58" fill="rgba(156,123,60,.14)" stroke="rgba(201,168,76,.6)" stroke-width="2" class="bp-tam-circle" style="animation-delay:.4s"/>
+
+          <!-- TAM label -->
+          <text x="240" y="30" text-anchor="middle" fill="rgba(255,255,255,.45)" font-size="10" font-family="Montserrat,sans-serif" font-weight="700" letter-spacing="1.5">TAM</text>
+          <text x="240" y="43" text-anchor="middle" fill="rgba(201,168,76,.55)" font-size="8.5" font-family="Montserrat,sans-serif">€2.4B Prague Experience Market</text>
+
+          <!-- SAM label -->
+          <text x="240" y="82" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="9.5" font-family="Montserrat,sans-serif" font-weight="700" letter-spacing="1">SAM</text>
+          <text x="240" y="95" text-anchor="middle" fill="rgba(201,168,76,.6)" font-size="8" font-family="Montserrat,sans-serif">€140M Hotel-Linked Tourism</text>
+
+          <!-- SOM label -->
+          <text x="240" y="151" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="9.5" font-family="Montserrat,sans-serif" font-weight="700" letter-spacing="1">SOM</text>
+          <text x="240" y="165" text-anchor="middle" fill="#C9A84C" font-size="9" font-family="Montserrat,sans-serif" font-weight="600">€1.7M</text>
+          <text x="240" y="178" text-anchor="middle" fill="rgba(201,168,76,.7)" font-size="7.5" font-family="Montserrat,sans-serif">Czech Inn Hotels Y1</text>
+
+          <!-- Connector dots -->
+          <circle cx="240" cy="12" r="3" fill="rgba(156,123,60,.4)"/>
+          <circle cx="240" cy="64" r="3" fill="rgba(156,123,60,.5)"/>
+          <circle cx="240" cy="102" r="3" fill="rgba(201,168,76,.7)"/>
+        </svg>
+
+        <!-- Legend -->
+        <div class="bp-tam-legend">
+          <div class="bp-tam-item">
+            <div class="bp-tam-dot bp-tam-dot-1"></div>
+            <div>
+              <div class="bp-tam-label">TAM · Total Addressable Market</div>
+              <div class="bp-tam-value">€2.4B</div>
+              <div class="bp-tam-desc">All Prague visitor experience spend</div>
+            </div>
+          </div>
+          <div class="bp-tam-item">
+            <div class="bp-tam-dot bp-tam-dot-2"></div>
+            <div>
+              <div class="bp-tam-label">SAM · Serviceable Addressable</div>
+              <div class="bp-tam-value">€140M</div>
+              <div class="bp-tam-desc">Hotel-linked guided experiences</div>
+            </div>
+          </div>
+          <div class="bp-tam-item">
+            <div class="bp-tam-dot bp-tam-dot-3"></div>
+            <div>
+              <div class="bp-tam-label">SOM · Serviceable Obtainable</div>
+              <div class="bp-tam-value">€1.7M</div>
+              <div class="bp-tam-desc">Czech Inn Hotels Y1 projection</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── 7. Operations Plan ─────────────────────────────────── -->
   <div class="section-dark" id="operations">
     <div class="section-dark-inner">
@@ -682,6 +805,67 @@
       </div>
     </div>
 
+    <!-- Team profile cards -->
+    <div class="bp-profiles reveal" style="margin-top:48px">
+      <h3 style="font-family:var(--fd);font-size:1.2rem;color:var(--text);font-weight:600;margin-bottom:28px">The People Behind the Platform</h3>
+      <div class="bp-profile-grid">
+        <div class="bp-profile-card">
+          <div class="bp-profile-avatar bp-avatar-hanan">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="24" r="13" fill="rgba(201,168,76,.18)" stroke="#C9A84C" stroke-width="1.2"/>
+              <circle cx="28.5" cy="22.5" r="1.5" fill="#C9A84C"/>
+              <circle cx="35.5" cy="22.5" r="1.5" fill="#C9A84C"/>
+              <path d="M28 27 Q32 30 36 27" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+              <path d="M16 52 Q16 40 32 38 Q48 40 48 52" fill="rgba(156,123,60,.1)" stroke="#C9A84C" stroke-width="1"/>
+              <!-- Hair lines -->
+              <path d="M22 18 Q32 12 42 18" stroke="#C9A84C" stroke-width="1" fill="none" opacity=".5"/>
+            </svg>
+          </div>
+          <div class="bp-profile-info">
+            <div class="bp-profile-name">Hanan Elperin</div>
+            <div class="bp-profile-role">Founder &amp; Platform Architect</div>
+            <p class="bp-profile-bio">Built and launched UNO from scratch. 847 verified Prague bookings. 4.91 stars. Full-stack developer, brand strategist, and Prague specialist since 2022.</p>
+          </div>
+        </div>
+        <div class="bp-profile-card">
+          <div class="bp-profile-avatar bp-avatar-guide">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="24" r="13" fill="rgba(201,168,76,.15)" stroke="#C9A84C" stroke-width="1.2"/>
+              <circle cx="28.5" cy="22.5" r="1.5" fill="#C9A84C"/>
+              <circle cx="35.5" cy="22.5" r="1.5" fill="#C9A84C"/>
+              <path d="M28 27 Q32 30.5 36 27" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+              <path d="M16 52 Q16 40 32 38 Q48 40 48 52" fill="rgba(156,123,60,.08)" stroke="#C9A84C" stroke-width="1"/>
+              <!-- Guide badge -->
+              <rect x="28" y="10" width="8" height="5" rx="1" fill="rgba(201,168,76,.4)" stroke="#C9A84C" stroke-width=".8"/>
+            </svg>
+          </div>
+          <div class="bp-profile-info">
+            <div class="bp-profile-name">Lead Guide Team</div>
+            <div class="bp-profile-role">15+ Licensed Prague Guides</div>
+            <p class="bp-profile-bio">All Prague City Municipality licensed. Native Czech historians, multilingual storytellers. Average 7 years guiding experience across Kafka, Jewish, Mucha, and Beer tours.</p>
+          </div>
+        </div>
+        <div class="bp-profile-card">
+          <div class="bp-profile-avatar bp-avatar-ops">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="24" r="13" fill="rgba(201,168,76,.13)" stroke="#C9A84C" stroke-width="1.2"/>
+              <circle cx="28.5" cy="22.5" r="1.5" fill="#C9A84C"/>
+              <circle cx="35.5" cy="22.5" r="1.5" fill="#C9A84C"/>
+              <path d="M29 27 Q32 29.5 35 27" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+              <path d="M16 52 Q16 40 32 38 Q48 40 48 52" fill="rgba(156,123,60,.07)" stroke="#C9A84C" stroke-width="1"/>
+              <!-- Laptop icon on body -->
+              <rect x="28" y="43" width="8" height="5" rx="1" fill="none" stroke="#C9A84C" stroke-width=".8" opacity=".5"/>
+            </svg>
+          </div>
+          <div class="bp-profile-info">
+            <div class="bp-profile-name">Technology &amp; Operations</div>
+            <div class="bp-profile-role">Platform, Bookings &amp; Analytics</div>
+            <p class="bp-profile-bio">99.6% platform uptime since 2022. Stripe-verified payments. Real-time PMS integration. Automated email and WhatsApp confirmation in 12 languages.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:36px 40px;margin-top:8px" class="reveal">
       <h3 style="font-family:var(--fd);font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:24px" data-i18n="bp.team.tech.title">Technology Stack. All Live</h3>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
@@ -762,6 +946,56 @@
         </tbody>
       </table>
 
+      <!-- Risk Matrix 2×2 -->
+      <div class="bp-risk-matrix reveal" style="margin-top:48px;margin-bottom:40px">
+        <h3 style="font-family:var(--fd);font-size:1.1rem;color:var(--cream);font-weight:600;margin-bottom:24px;text-align:center">Risk Matrix: Impact vs Probability</h3>
+        <div class="bp-risk-grid">
+          <!-- Y axis label -->
+          <div class="bp-risk-y-label">HIGH IMPACT</div>
+          <!-- Quadrant: High Impact, Low Probability -->
+          <div class="bp-risk-quad bp-risk-q1">
+            <div class="bp-risk-quad-label">Low Probability / High Impact</div>
+            <div class="bp-risk-dot bp-risk-amber" title="Economic recession">
+              <span>Economic recession</span>
+            </div>
+          </div>
+          <!-- Quadrant: High Impact, High Probability -->
+          <div class="bp-risk-quad bp-risk-q2">
+            <div class="bp-risk-quad-label">High Probability / High Impact</div>
+            <div class="bp-risk-dot bp-risk-green" title="Seasonality">
+              <span>Seasonal dip</span>
+            </div>
+          </div>
+          <!-- Quadrant: Low Impact, Low Probability -->
+          <div class="bp-risk-quad bp-risk-q3">
+            <div class="bp-risk-quad-label">Low Probability / Low Impact</div>
+            <div class="bp-risk-dot bp-risk-green" title="Technology failure">
+              <span>Tech failure</span>
+            </div>
+            <div class="bp-risk-dot bp-risk-green" title="Staff turnover" style="left:55%;top:40%">
+              <span>Staff turnover</span>
+            </div>
+          </div>
+          <!-- Quadrant: Low Impact, High Probability -->
+          <div class="bp-risk-quad bp-risk-q4">
+            <div class="bp-risk-quad-label">High Probability / Low Impact</div>
+            <div class="bp-risk-dot bp-risk-green" title="Low conversion">
+              <span>Low conversion</span>
+            </div>
+            <div class="bp-risk-dot bp-risk-amber" title="Competitor copy" style="left:60%;top:35%">
+              <span>Competitor copy</span>
+            </div>
+          </div>
+          <!-- X axis label -->
+          <div class="bp-risk-x-label">HIGH PROBABILITY →</div>
+        </div>
+        <div class="bp-risk-legend">
+          <span class="bp-risk-leg-item"><span class="bp-risk-leg-dot bp-risk-green"></span> Low / Mitigated</span>
+          <span class="bp-risk-leg-item"><span class="bp-risk-leg-dot bp-risk-amber"></span> Medium / Monitored</span>
+          <span class="bp-risk-leg-item"><span class="bp-risk-leg-dot bp-risk-red"></span> High / Contingency</span>
+        </div>
+      </div>
+
       <div class="risk-guarantee reveal">
         <div class="risk-guarantee-icon">🛡️</div>
         <div>
@@ -800,5 +1034,12 @@
 <script src="src/scripts/core/lang.js"></script>
 <script src="src/scripts/core/data.js"></script>
 <script src="src/scripts/pages/business-plan.js"></script>
+<script type="module">
+import { initScrollReveal, initCounters } from './src/scripts/core/visuals.js';
+document.addEventListener('DOMContentLoaded', () => {
+  initScrollReveal();
+  initCounters();
+});
+</script>
 </body>
 </html>

@@ -383,6 +383,73 @@
   letter-spacing: .5px;
 }
 
+/* ── Hotel Photo Strip ─────────────────────────── */
+.pt-hotels-strip {
+  background: var(--dark);
+  border-top: 1px solid rgba(156,123,60,.1);
+  border-bottom: 1px solid rgba(156,123,60,.1);
+  padding: 16px 0 0;
+}
+.pt-hotels-label {
+  font-size: .58rem; color: var(--grey);
+  text-transform: uppercase; letter-spacing: 3px;
+  text-align: center; margin-bottom: 12px;
+}
+.pt-hotels-scroll {
+  display: flex;
+  height: 200px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 2px;
+}
+.pt-hotels-scroll::-webkit-scrollbar { display: none; }
+.pt-hotels-scroll img {
+  height: 100%;
+  width: auto;
+  min-width: 280px;
+  max-width: 400px;
+  object-fit: cover;
+  flex-shrink: 0;
+  filter: brightness(.65) saturate(.7);
+  transition: filter .4s, flex .5s;
+}
+.pt-hotels-scroll img:hover {
+  filter: brightness(.9) saturate(1);
+  flex: 2;
+}
+
+/* ── Partnership Video Section ─────────────────── */
+.pt-video-section {
+  background: var(--bg-warm);
+  padding: 100px 40px;
+  text-align: center;
+  border-top: 1px solid rgba(156,123,60,.1);
+}
+.pt-video-inner { max-width: var(--max-w); margin: 0 auto; }
+
+/* ── Animated Timeline ─────────────────────────── */
+.pt-tl-animated {
+  position: relative;
+}
+.pt-tl-animated::before {
+  content: '';
+  position: absolute;
+  top: 28px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold) 0%, rgba(156,123,60,.2) 100%);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1.8s cubic-bezier(.4,0,.2,1) .3s;
+  z-index: 0;
+}
+.pt-tl-animated.vis::before { transform: scaleX(1); }
+.pt-tl-dot {
+  position: relative; z-index: 1;
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+.pt-tl-animated.vis .pt-tl-dot { transform: scale(1.2); }
+.pt-tl-phase { position: relative; z-index: 1; }
+
 /* ── Reveal ─── */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
 .reveal.vis { opacity: 1; transform: none; }
@@ -397,10 +464,14 @@
   .pt-needs,
   .pt-timeline,
   .pt-finance,
-  .pt-guarantee     { padding: 56px 20px; }
+  .pt-guarantee,
+  .pt-video-section { padding: 56px 20px; }
   .pt-ask           { padding: 80px 20px; }
   .pt-offer-grid    { grid-template-columns: 1fr; }
   .pt-needs-steps   { grid-template-columns: 1fr; }
   .pt-tl-grid       { grid-template-columns: 1fr; }
   .pt-finance-layout{ grid-template-columns: 1fr; gap: 32px; }
+  .pt-tl-animated::before { display: none; }
+  .pt-hotels-strip  { padding: 12px 0 0; }
+  .pt-hotels-scroll { height: 140px; }
 }

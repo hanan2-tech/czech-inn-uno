@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/styles/base/theme.css">
 <link rel="stylesheet" href="src/styles/base/shared.css">
+<link rel="stylesheet" href="src/styles/base/visuals.css">
 <link rel="stylesheet" href="src/styles/pages/index.css">
 </head>
 <body>
@@ -38,6 +39,20 @@
     <div class="hero-btns">
       <a href="business-plan.html" class="btn-gold" data-nav data-i18n="idx.hero.btn1">See the Business Plan</a>
       <a href="tours.html" class="btn-outline btn-outline-light" data-nav data-i18n="idx.hero.btn2">Explore Tours</a>
+      <button class="hero-watch-btn" id="heroWatchBtn" aria-label="Watch overview video">
+        <span class="hero-watch-play">&#9654;</span>
+        <span>Watch Overview</span>
+      </button>
+    </div>
+
+    <!-- Video overlay modal -->
+    <div class="hero-video-modal" id="heroVideoModal" aria-hidden="true">
+      <div class="hero-video-modal-inner">
+        <button class="hero-video-close" id="heroVideoClose" aria-label="Close video">&#x2715;</button>
+        <video class="hero-modal-video" id="heroModalVideo" controls preload="none" poster="public/assets/after-dark/prague-night-panorama.jpg">
+          <source src="public/hero.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
     <div class="hero-scroll" data-i18n="idx.hero.scroll">Scroll to explore</div>
   </div>
@@ -168,6 +183,87 @@
   </div>
 </section>
 
+<!-- ── PRAGUE HOTSPOT MAP ─────────────────────────────── -->
+<section class="prague-map-section">
+  <div class="prague-map-inner">
+    <div class="sec-eyebrow" style="color:var(--gold)">Where We Take You</div>
+    <div class="sec-line"></div>
+    <h2 class="sec-title sec-title-dark reveal">Prague, <em>Stop by Stop</em></h2>
+    <p class="sec-sub reveal" style="color:var(--grey);max-width:480px;margin:0 auto 48px">Every district. Every story. Click a marker to explore tours and extras by neighbourhood.</p>
+    <div class="prague-map-wrap reveal">
+      <svg class="prague-map-svg" viewBox="0 0 560 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Prague interactive map">
+        <!-- River Vltava -->
+        <path d="M 140 10 C 148 60 135 110 145 155 C 158 210 145 250 160 310 C 165 335 170 350 175 360" stroke="#2a4a7f" stroke-width="18" fill="none" opacity=".45" stroke-linecap="round"/>
+        <path d="M 140 10 C 148 60 135 110 145 155 C 158 210 145 250 160 310 C 165 335 170 350 175 360" stroke="#3a6abf" stroke-width="7" fill="none" opacity=".3" stroke-linecap="round"/>
+
+        <!-- District shapes (simplified) -->
+        <!-- Prague Castle / Hradčany - NW -->
+        <ellipse cx="110" cy="130" rx="62" ry="44" fill="rgba(156,123,60,.07)" stroke="rgba(156,123,60,.18)" stroke-width="1"/>
+        <!-- Malá Strana - W center -->
+        <ellipse cx="138" cy="205" rx="50" ry="38" fill="rgba(156,123,60,.06)" stroke="rgba(156,123,60,.15)" stroke-width="1"/>
+        <!-- Old Town / Josefov - Center -->
+        <ellipse cx="240" cy="175" rx="65" ry="50" fill="rgba(156,123,60,.09)" stroke="rgba(156,123,60,.2)" stroke-width="1.2"/>
+        <!-- New Town / Wenceslas - SE -->
+        <ellipse cx="295" cy="255" rx="70" ry="52" fill="rgba(156,123,60,.06)" stroke="rgba(156,123,60,.15)" stroke-width="1"/>
+        <!-- Vinohrady / Žižkov - E -->
+        <ellipse cx="410" cy="230" rx="80" ry="55" fill="rgba(156,123,60,.06)" stroke="rgba(156,123,60,.15)" stroke-width="1"/>
+
+        <!-- District labels (subtle) -->
+        <text x="110" y="128" text-anchor="middle" fill="rgba(201,168,76,.3)" font-size="9" font-family="Montserrat,sans-serif" font-weight="600" letter-spacing="1">HRADČANY</text>
+        <text x="138" y="203" text-anchor="middle" fill="rgba(201,168,76,.3)" font-size="8" font-family="Montserrat,sans-serif" font-weight="500" letter-spacing=".8">MALÁ STRANA</text>
+        <text x="240" y="173" text-anchor="middle" fill="rgba(201,168,76,.35)" font-size="9" font-family="Montserrat,sans-serif" font-weight="600" letter-spacing="1">OLD TOWN</text>
+        <text x="295" y="253" text-anchor="middle" fill="rgba(201,168,76,.3)" font-size="8.5" font-family="Montserrat,sans-serif" font-weight="500" letter-spacing=".8">NEW TOWN</text>
+        <text x="410" y="228" text-anchor="middle" fill="rgba(201,168,76,.3)" font-size="8.5" font-family="Montserrat,sans-serif" font-weight="500" letter-spacing=".8">VINOHRADY</text>
+
+        <!-- ── Pulse markers ── -->
+        <!-- 1. Prague Castle -->
+        <circle class="map-pulse-ring" cx="110" cy="108" r="10" fill="none" stroke="rgba(201,168,76,.6)" stroke-width="2" style="animation-delay:0s"/>
+        <circle cx="110" cy="108" r="5" fill="#C9A84C"/>
+        <text x="110" y="96" text-anchor="middle" fill="#C9A84C" font-size="7.5" font-family="Montserrat,sans-serif" font-weight="700">Prague Castle</text>
+
+        <!-- 2. Old Town Square -->
+        <circle class="map-pulse-ring" cx="255" cy="158" r="10" fill="none" stroke="rgba(201,168,76,.6)" stroke-width="2" style="animation-delay:.5s"/>
+        <circle cx="255" cy="158" r="5" fill="#C9A84C"/>
+        <text x="255" y="146" text-anchor="middle" fill="#C9A84C" font-size="7.5" font-family="Montserrat,sans-serif" font-weight="700">Old Town</text>
+
+        <!-- 3. Jewish Quarter -->
+        <circle class="map-pulse-ring" cx="220" cy="152" r="10" fill="none" stroke="rgba(201,168,76,.6)" stroke-width="2" style="animation-delay:1s"/>
+        <circle cx="220" cy="152" r="5" fill="#C9A84C"/>
+        <text x="220" y="173" text-anchor="middle" fill="#C9A84C" font-size="7" font-family="Montserrat,sans-serif" font-weight="700">Josefov</text>
+
+        <!-- 4. Wenceslas Square -->
+        <circle class="map-pulse-ring" cx="280" cy="265" r="10" fill="none" stroke="rgba(201,168,76,.6)" stroke-width="2" style="animation-delay:1.5s"/>
+        <circle cx="280" cy="265" r="5" fill="#C9A84C"/>
+        <text x="280" y="285" text-anchor="middle" fill="#C9A84C" font-size="7.5" font-family="Montserrat,sans-serif" font-weight="700">Wenceslas</text>
+
+        <!-- 5. Vinohrady -->
+        <circle class="map-pulse-ring" cx="410" cy="210" r="10" fill="none" stroke="rgba(201,168,76,.6)" stroke-width="2" style="animation-delay:2s"/>
+        <circle cx="410" cy="210" r="5" fill="#C9A84C"/>
+        <text x="410" y="198" text-anchor="middle" fill="#C9A84C" font-size="7.5" font-family="Montserrat,sans-serif" font-weight="700">Vinohrady</text>
+
+        <!-- Compass rose (subtle) -->
+        <text x="520" y="30" fill="rgba(156,123,60,.35)" font-size="10" font-family="Montserrat,sans-serif" text-anchor="middle">N</text>
+        <line x1="520" y1="32" x2="520" y2="44" stroke="rgba(156,123,60,.35)" stroke-width="1.2"/>
+      </svg>
+
+      <!-- Tooltip -->
+      <div class="prague-map-tooltip" id="pragueMapTooltip">
+        <div class="pmt-name" id="pmtName"></div>
+        <div class="pmt-info" id="pmtInfo"></div>
+      </div>
+    </div>
+
+    <!-- District pills -->
+    <div class="prague-map-pills reveal">
+      <button class="pmp-pill active" data-district="castle">Prague Castle · 2 tours</button>
+      <button class="pmp-pill" data-district="oldtown">Old Town · 3 tours + 8 extras</button>
+      <button class="pmp-pill" data-district="josefov">Josefov · Jewish Heritage tour</button>
+      <button class="pmp-pill" data-district="wenceslas">Wenceslas · After Dark</button>
+      <button class="pmp-pill" data-district="vinohrady">Vinohrady · Food + Jazz</button>
+    </div>
+  </div>
+</section>
+
 </div><!-- /page-wrap -->
 
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.min.js"></script>
@@ -177,5 +273,74 @@
 <script src="src/scripts/core/lang.js"></script>
 <script src="src/scripts/core/data.js"></script>
 <script src="src/scripts/pages/index.js"></script>
+<script type="module">
+import { initScrollReveal, initCounters } from './src/scripts/core/visuals.js';
+document.addEventListener('DOMContentLoaded', () => {
+  initScrollReveal();
+  initCounters('[data-count]');
+
+  /* ── Hero parallax ── */
+  const heroContent = document.querySelector('.hero-content');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (heroContent && y < window.innerHeight) {
+          heroContent.style.transform = `translateY(${y * 0.28}px)`;
+          heroContent.style.opacity   = `${1 - y / window.innerHeight * 1.4}`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  /* ── Video modal ── */
+  const watchBtn    = document.getElementById('heroWatchBtn');
+  const modal       = document.getElementById('heroVideoModal');
+  const closeBtn    = document.getElementById('heroVideoClose');
+  const modalVideo  = document.getElementById('heroModalVideo');
+  if (watchBtn && modal) {
+    watchBtn.addEventListener('click', () => {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      modalVideo.play().catch(() => {});
+    });
+    const closeModal = () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      modalVideo.pause();
+      modalVideo.currentTime = 0;
+    };
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  }
+
+  /* ── Prague map tooltip ── */
+  const districtData = {
+    castle:    { name: 'Prague Castle', info: '2 tours · Kafka · Mucha · Views across Prague' },
+    oldtown:   { name: 'Old Town Square', info: '3 tours · 8 extras · Astronomical Clock · Historic cafés' },
+    josefov:   { name: 'Jewish Quarter (Josefov)', info: 'Jewish Heritage Tour · 6 synagogues · Kafka birthplace' },
+    wenceslas: { name: 'Wenceslas Square', info: 'After Dark Prague · Jazz clubs · Cocktail bars · Night walks' },
+    vinohrady: { name: 'Vinohrady', info: 'Food market · Jazz venues · Art Nouveau architecture' },
+  };
+  document.querySelectorAll('.pmp-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.pmp-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const d = districtData[pill.dataset.district];
+      if (d) {
+        document.getElementById('pmtName').textContent = d.name;
+        document.getElementById('pmtInfo').textContent = d.info;
+        const tooltip = document.getElementById('pragueMapTooltip');
+        tooltip.classList.add('show');
+        setTimeout(() => tooltip.classList.remove('show'), 4000);
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>

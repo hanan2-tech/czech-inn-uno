@@ -45,6 +45,55 @@
   transition: border-color .25s, transform .25s;
 }
 .sp-rev-card:hover { border-color: rgba(156,123,60,.4); transform: translateY(-4px); }
+/* ── Review header ─────────────────────────────── */
+.sp-rev-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.sp-rev-source {
+  font-size: .58rem;
+  color: var(--grey);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* ── Star animations ─────────────────────────────── */
+.star-row { margin-bottom: 0; }
+.star { width: 14px; height: 14px; }
+.star-fill { width: 0%; transition: width 0.5s ease; }
+.star-fill.animated { width: 100%; }
+
+/* ── Colored avatars ─────────────────────────────── */
+.sp-av-blue   { background: linear-gradient(135deg, #1e40af, #3b82f6); color: #fff; }
+.sp-av-teal   { background: linear-gradient(135deg, #0f766e, #14b8a6); color: #fff; }
+.sp-av-rose   { background: linear-gradient(135deg, #9f1239, #f43f5e); color: #fff; }
+.sp-av-amber  { background: linear-gradient(135deg, #92400e, #f59e0b); color: #fff; }
+.sp-av-indigo { background: linear-gradient(135deg, #3730a3, #6366f1); color: #fff; }
+.sp-av-green  { background: linear-gradient(135deg, #14532d, #22c55e); color: #fff; }
+
+/* ── Press logo SVGs ─────────────────────────────── */
+.sp-press-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  color: rgba(240,237,224,.4);
+  filter: grayscale(1);
+  transition: filter 0.4s;
+}
+.sp-press-logos:hover { filter: grayscale(.4); color: rgba(240,237,224,.6); }
+.sp-press-logo { display: flex; align-items: center; }
+
+/* ── Case study charts ───────────────────────────── */
+.sp-chart { opacity: .9; }
+
+/* Override old stars display */
+.sp-rev-stars { display: none; }
+
 .sp-rev-stars { color: var(--gold); font-size: .85rem; margin-bottom: 14px; }
 .sp-rev-text {
   font-family: var(--fd); font-size: 1.05rem;

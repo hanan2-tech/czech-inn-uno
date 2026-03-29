@@ -213,6 +213,62 @@ html[lang="cs"] .co-pkg.featured::before { content: 'Nejoblíbenější'; }
 .co-venue-type { font-size: .68rem; color: var(--gold); margin-bottom: 6px; }
 .co-venue-cap { font-size: .72rem; color: var(--grey); }
 
+/* ── Corporate Photo Masonry ─── */
+.co-photo-section {
+  background: var(--dark);
+  padding: 0;
+  overflow: hidden;
+}
+.co-photo-inner { max-width: 100%; }
+.co-event-masonry {
+  columns: 3;
+  column-gap: 3px;
+  gap: 3px;
+  padding: 3px;
+}
+.co-event-masonry .masonry-item {
+  break-inside: avoid;
+  margin-bottom: 3px;
+  overflow: hidden;
+}
+.co-event-masonry img {
+  width: 100%;
+  display: block;
+  transition: transform .5s ease, filter .4s;
+  filter: brightness(.75) saturate(.8);
+}
+.co-event-masonry img:hover {
+  transform: scale(1.04);
+  filter: brightness(.95) saturate(1);
+}
+
+/* ── ROI Video Section ─── */
+.co-video-section {
+  background: var(--bg-warm);
+  padding: 100px 40px;
+  text-align: center;
+  border-top: 1px solid rgba(156,123,60,.1);
+}
+.co-video-inner { max-width: var(--max-w); margin: 0 auto; }
+.co-laptop-wrap { display: flex; justify-content: center; }
+
+/* Module category colors */
+.co-module[data-name*="Kafka"],
+.co-module[data-name*="Scavenger"] {
+  border-left: 3px solid rgba(102,62,55,.5);
+}
+.co-module[data-name*="Cooking"],
+.co-module[data-name*="Dinner"],
+.co-module[data-name*="Jazz"] {
+  border-left: 3px solid rgba(156,123,60,.5);
+}
+.co-module[data-name*="River"],
+.co-module[data-name*="Concert"],
+.co-module[data-name*="Glass"] {
+  border-left: 3px solid rgba(0,80,120,.5);
+}
+.co-module.selected { border-left-width: 3px; }
+
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.vis { opacity: 1; transform: none; }
 .reveal-delay-1 { transition-delay: .1s; }
@@ -220,17 +276,20 @@ html[lang="cs"] .co-pkg.featured::before { content: 'Nejoblíbenější'; }
 .reveal-delay-3 { transition-delay: .3s; }
 
 @media(max-width:768px) {
-  .co-hero-inner   { padding: 80px 20px 56px; grid-template-columns: 1fr; gap: 40px; }
+  .co-hero-inner      { padding: 80px 20px 56px; grid-template-columns: 1fr; gap: 40px; }
   .co-types,
   .co-packages,
   .co-builder,
-  .co-venues       { padding: 56px 20px; }
-  .co-types-grid   { grid-template-columns: 1fr; }
-  .co-pkg-grid     { grid-template-columns: 1fr; }
-  .co-builder-grid { grid-template-columns: 1fr; gap: 32px; }
-  .co-venues-grid  { grid-template-columns: 1fr 1fr; gap: 14px; }
-  .co-hero-stats   { grid-template-columns: 1fr 1fr; }
+  .co-venues,
+  .co-video-section   { padding: 56px 20px; }
+  .co-types-grid      { grid-template-columns: 1fr; }
+  .co-pkg-grid        { grid-template-columns: 1fr; }
+  .co-builder-grid    { grid-template-columns: 1fr; gap: 32px; }
+  .co-venues-grid     { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .co-hero-stats      { grid-template-columns: 1fr 1fr; }
+  .co-event-masonry   { columns: 2; }
 }
 @media(max-width:480px) {
-  .co-venues-grid  { grid-template-columns: 1fr; }
+  .co-venues-grid     { grid-template-columns: 1fr; }
+  .co-event-masonry   { columns: 1; }
 }

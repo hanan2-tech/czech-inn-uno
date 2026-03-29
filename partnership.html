@@ -18,6 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/styles/base/theme.css">
 <link rel="stylesheet" href="src/styles/base/shared.css">
+<link rel="stylesheet" href="src/styles/base/visuals.css">
 <link rel="stylesheet" href="src/styles/pages/partnership.css">
 <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.3/dist/lottie-player.min.js" defer></script>
 <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -44,6 +45,19 @@
     </div>
   </div>
 </section>
+
+<!-- Czech Inn Hotels Photo Strip -->
+<div class="pt-hotels-strip">
+  <div class="pt-hotels-label">28 Czech Inn Hotels Properties · Prague</div>
+  <div class="pt-hotels-scroll">
+    <img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Hotel exterior" loading="lazy">
+    <img src="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Hotel lobby" loading="lazy">
+    <img src="https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Hotel room" loading="lazy">
+    <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Hotel restaurant" loading="lazy">
+    <img src="https://images.pexels.com/photos/2869215/pexels-photo-2869215.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Hotel pool" loading="lazy">
+    <img src="https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" alt="Hotel terrace" loading="lazy">
+  </div>
+</div>
 
 <!-- What You Get -->
 <section class="pt-offer" id="offer">
@@ -163,9 +177,9 @@
     <h2 class="sec-title sec-title-dark reveal reveal-delay-1" data-i18n-html="pp.tl.title">From Handshake to<br><em>First Booking</em> in 30 Days</h2>
     <p class="sec-sub reveal reveal-delay-2" style="max-width:500px;color:var(--grey)" data-i18n="pp.tl.sub">A proven three-phase rollout tested across multiple Prague partners: low disruption, high impact.</p>
 
-    <div class="pt-tl-grid reveal reveal-delay-3">
+    <div class="pt-tl-grid pt-tl-animated reveal reveal-delay-3">
       <div class="pt-tl-phase">
-        <div class="pt-tl-dot"></div>
+        <div class="pt-tl-dot pt-tl-dot-1"></div>
         <div class="pt-tl-period" data-i18n="pp.phase1.period">Days 1 – 30</div>
         <div class="pt-tl-title" data-i18n="pp.phase1.title">Foundation</div>
         <ul class="pt-tl-tasks">
@@ -202,6 +216,29 @@
           <li><span class="check">✓</span><span data-i18n="pp.phase3.t5">Year 2 expansion plan presented</span></li>
           <li><span class="check">✓</span><span data-i18n="pp.phase3.t6">Guest satisfaction benchmark set</span></li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partnership Timeline Video -->
+<section class="pt-video-section">
+  <div class="pt-video-inner">
+    <div class="sec-eyebrow reveal" style="color:var(--gold)">90 Days to Transformation</div>
+    <h2 class="sec-title sec-title-dark reveal reveal-delay-1">Watch the Journey<br><em>Unfold</em></h2>
+    <p class="sec-sub reveal reveal-delay-2" style="max-width:500px;margin:0 auto">From first conversation to a fully operational experience programme across all 28 properties.</p>
+    <div class="co-laptop-wrap reveal" style="margin-top:52px">
+      <div class="device-frame-laptop" style="width:100%;max-width:720px;margin:0 auto">
+        <div class="device-laptop-body">
+          <div class="device-laptop-screen">
+            <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block"
+              poster="https://images.pexels.com/photos/695193/pexels-photo-695193.jpeg?auto=compress&cs=tinysrgb&w=900&q=80">
+              <source src="videos/partnership-timeline.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="device-laptop-base"></div>
+        <div class="device-laptop-stand"></div>
       </div>
     </div>
   </div>
@@ -398,6 +435,14 @@
 <script src="src/scripts/core/lang.js"></script>
 <script src="src/scripts/core/data.js"></script>
 <script src="src/scripts/pages/partnership.js"></script>
+<script type="module">
+  import { initCounters, initScrollReveal, initChartAnimations } from './src/scripts/core/visuals.js';
+  document.addEventListener('DOMContentLoaded', () => {
+    initScrollReveal();
+    initCounters();
+    initChartAnimations();
+  });
+</script>
 <script>
 function ptHandleSubmit(e) {
   e.preventDefault();
