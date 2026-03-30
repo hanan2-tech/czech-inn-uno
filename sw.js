@@ -1,4 +1,4 @@
-const CACHE = 'czech-inn-v4';
+const CACHE = 'czech-inn-v5';
 const PRECACHE = [
   '/',
   '/index.html',
