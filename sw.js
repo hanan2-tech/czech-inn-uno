@@ -33,13 +33,13 @@ const PRECACHE = [
   '/src/scripts/pages/concierge.js',
   '/src/scripts/pages/by-passion.js',
   '/src/scripts/pages/analytics.js',
-  '/assets/icons/lordicon.js',
-  '/assets/backgrounds/after-dark-bg.jpg',
-  '/assets/backgrounds/concierge-bg.jpg',
-  '/assets/backgrounds/tours-bg.jpg',
-  '/assets/icons/icon-192.jpg',
-  '/assets/icons/icon-512.jpg',
-  '/assets/social-preview.jpg',
+  '/public/assets/icons/lordicon.js',
+  '/public/assets/backgrounds/after-dark-bg.jpg',
+  '/public/assets/backgrounds/concierge-bg.jpg',
+  '/public/assets/backgrounds/tours-bg.jpg',
+  '/public/assets/icons/icon-192.jpg',
+  '/public/assets/icons/icon-512.jpg',
+  '/public/assets/social-preview.jpg',
 ];
 
 self.addEventListener('install', e => {

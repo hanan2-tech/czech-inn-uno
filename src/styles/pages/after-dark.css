@@ -8,7 +8,7 @@
 }
 .ad-hero-bg {
   position: absolute; inset: 0;
-  background: url('/assets/backgrounds/after-dark-bg.jpg') center/cover;
+  background: url('../../../public/assets/backgrounds/after-dark-bg.jpg') center/cover;
   opacity: .35;
 }
 .ad-hero-overlay {

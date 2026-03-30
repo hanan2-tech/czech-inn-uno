@@ -48,7 +48,7 @@ const NAV_HTML = `
               <span class="mega-link-badge" data-i18n="nav.badge.premium">Premium</span>
             </a>
             <a href="extras.html" class="mega-link" data-nav>
-              <span class="mega-link-icon"><lord-icon src="assets/icons/lordicon/ibydboev.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
+              <span class="mega-link-icon"><lord-icon src="public/assets/icons/lordicon/ibydboev.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text" data-i18n="nav.extras">Extras Catalogue</span>
             </a>
             <a href="after-dark.html" class="mega-link" data-nav>
@@ -63,11 +63,11 @@ const NAV_HTML = `
               <span class="mega-link-text" data-i18n="nav.concierge">Digital Concierge</span>
             </a>
             <a href="by-passion.html" class="mega-link" data-nav>
-              <span class="mega-link-icon"><lord-icon src="assets/icons/lordicon/xyboiuok.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
+              <span class="mega-link-icon"><lord-icon src="public/assets/icons/lordicon/xyboiuok.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text" data-i18n="nav.by-passion">Prague by Passion</span>
             </a>
             <a href="corporate.html" class="mega-link" data-nav>
-              <span class="mega-link-icon"><lord-icon src="assets/icons/lordicon/zpxybbhl.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
+              <span class="mega-link-icon"><lord-icon src="public/assets/icons/lordicon/zpxybbhl.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text" data-i18n="nav.corporate">Groups & Corporate</span>
             </a>
           </div>
@@ -83,11 +83,11 @@ const NAV_HTML = `
           <div class="mega-col">
             <div class="mega-col-label" data-i18n="nav.col.strategy">Strategy & Revenue</div>
             <a href="business-plan.html" class="mega-link" data-nav>
-              <span class="mega-link-icon"><lord-icon src="assets/icons/lordicon/nocovwne.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
+              <span class="mega-link-icon"><lord-icon src="public/assets/icons/lordicon/nocovwne.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text" data-i18n="nav.business-plan">Business Plan</span>
             </a>
             <a href="analytics.html" class="mega-link" data-nav>
-              <span class="mega-link-icon"><lord-icon src="assets/icons/lordicon/uukerzzv.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
+              <span class="mega-link-icon"><lord-icon src="public/assets/icons/lordicon/uukerzzv.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text" data-i18n="nav.analytics">Analytics</span>
             </a>
             <a href="admin.html" class="mega-link" data-nav>
@@ -99,11 +99,11 @@ const NAV_HTML = `
           <div class="mega-col">
             <div class="mega-col-label" data-i18n="nav.col.operations">Operations & Trust</div>
             <a href="integration.html" class="mega-link" data-nav>
-              <span class="mega-link-icon"><lord-icon src="assets/icons/lordicon/jdsvypqr.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
+              <span class="mega-link-icon"><lord-icon src="public/assets/icons/lordicon/jdsvypqr.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text" data-i18n="nav.integration">Integration</span>
             </a>
             <a href="social-proof.html" class="mega-link" data-nav>
-              <span class="mega-link-icon"><lord-icon src="assets/icons/lordicon/tyvtvbcy.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
+              <span class="mega-link-icon"><lord-icon src="public/assets/icons/lordicon/tyvtvbcy.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:22px;height:22px"></lord-icon></span>
               <span class="mega-link-text" data-i18n="nav.social-proof">Social Proof</span>
             </a>
           </div>

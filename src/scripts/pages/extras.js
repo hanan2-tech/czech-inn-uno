@@ -2,40 +2,40 @@
 const EXTRAS_DATA = [
   {cat:'food', catLabel:'Food & Drink', icon:'<iconify-icon icon="tabler:tools-kitchen-2" style="font-size:28px;color:#C9A84C"></iconify-icon>',
    items:[
-    {id:'cooking',name:'Private Cooking Class',desc:'Learn Czech classics: svíčková, trdelník, and more. Taught by a professional Prague chef in a historic Old Town kitchen.',dur:'3 hrs',grp:'2–8 people',price:89,img:'assets/extras/cooking-class.jpg'},
-    {id:'wine',name:'Wine Cellar Tasting',desc:'Descended beneath a 14th-century Gothic cellar, taste Moravian wines paired with local charcuterie and artisan cheese.',dur:'2 hrs',grp:'2–12 people',price:65,img:'assets/extras/wine-cellar.jpg'},
-    {id:'beer',name:'Prague Craft Beer Tour',desc:'Four stops, eight beers, one unforgettable evening. From microbrewery taprooms to the last surviving brewing monastery in Prague.',dur:'3.5 hrs',grp:'2–15 people',price:49,img:'assets/extras/beer-tour.jpg'},
-    {id:'food-tour',name:'Prague Street Food & Market Walk',desc:'Start at Náplavka farmers\' market, finish at a riverside beer garden. Eat your way through Czech street food with a local food expert.',dur:'2.5 hrs',grp:'2–10 people',price:39,img:'assets/extras/food-tour.jpg'},
-    {id:'absinthe',name:'Czech Absinthe Experience',desc:'The real Czech absinthe ritual at Hemingway Bar. History, ceremony, and tasting with one of Prague\'s most acclaimed bartenders.',dur:'1.5 hrs',grp:'2–6 people',price:55,img:'assets/extras/absinthe.jpg'},
+    {id:'cooking',name:'Private Cooking Class',desc:'Learn Czech classics: svíčková, trdelník, and more. Taught by a professional Prague chef in a historic Old Town kitchen.',dur:'3 hrs',grp:'2–8 people',price:89,img:'public/assets/extras/cooking-class.jpg'},
+    {id:'wine',name:'Wine Cellar Tasting',desc:'Descended beneath a 14th-century Gothic cellar, taste Moravian wines paired with local charcuterie and artisan cheese.',dur:'2 hrs',grp:'2–12 people',price:65,img:'public/assets/extras/wine-cellar.jpg'},
+    {id:'beer',name:'Prague Craft Beer Tour',desc:'Four stops, eight beers, one unforgettable evening. From microbrewery taprooms to the last surviving brewing monastery in Prague.',dur:'3.5 hrs',grp:'2–15 people',price:49,img:'public/assets/extras/beer-tour.jpg'},
+    {id:'food-tour',name:'Prague Street Food & Market Walk',desc:'Start at Náplavka farmers\' market, finish at a riverside beer garden. Eat your way through Czech street food with a local food expert.',dur:'2.5 hrs',grp:'2–10 people',price:39,img:'public/assets/extras/food-tour.jpg'},
+    {id:'absinthe',name:'Czech Absinthe Experience',desc:'The real Czech absinthe ritual at Hemingway Bar. History, ceremony, and tasting with one of Prague\'s most acclaimed bartenders.',dur:'1.5 hrs',grp:'2–6 people',price:55,img:'public/assets/extras/absinthe.jpg'},
   ]},
   {cat:'river', catLabel:'River & Water', icon:'<iconify-icon icon="tabler:sailboat" style="font-size:28px;color:#C9A84C"></iconify-icon>',
    items:[
-    {id:'cruise',name:'Private River Cruise',desc:'A 2-hour private sightseeing cruise on the Vltava with Czech canapés, prosecco, and a narrated tour of Prague\'s waterfront landmarks.',dur:'2 hrs',grp:'2–10 people',price:119,img:'assets/extras/river-cruise.jpg'},
-    {id:'kayak',name:'Kayak Through Prague',desc:'Paddle under Charles Bridge and past Vyšehrad fortress at sunrise. A completely different view of the city, reserved for those who wake early enough.',dur:'2.5 hrs',grp:'2–8 people',price:45,img:'assets/extras/kayak.jpg'},
-    {id:'dinner-cruise',name:'Sunset Dinner Cruise',desc:'A three-course Czech dinner on the water as the sun sets over the city. Premium wine pairings available. Booking must be made 48 hrs in advance.',dur:'3 hrs',grp:'2–20 people',price:145,img:'assets/extras/beer-bike.jpg'},
-    {id:'pedalboat',name:'Pedal Boat and Picnic',desc:'A pedal boat on the Vltava, a stop at Emperor\'s Island, and a prepared Czech picnic basket. Perfect for families or couples.',dur:'3 hrs',grp:'2–5 people',price:38,img:'assets/extras/paddle-boat.jpg'},
+    {id:'cruise',name:'Private River Cruise',desc:'A 2-hour private sightseeing cruise on the Vltava with Czech canapés, prosecco, and a narrated tour of Prague\'s waterfront landmarks.',dur:'2 hrs',grp:'2–10 people',price:119,img:'public/assets/extras/river-cruise.jpg'},
+    {id:'kayak',name:'Kayak Through Prague',desc:'Paddle under Charles Bridge and past Vyšehrad fortress at sunrise. A completely different view of the city, reserved for those who wake early enough.',dur:'2.5 hrs',grp:'2–8 people',price:45,img:'public/assets/extras/kayak.jpg'},
+    {id:'dinner-cruise',name:'Sunset Dinner Cruise',desc:'A three-course Czech dinner on the water as the sun sets over the city. Premium wine pairings available. Booking must be made 48 hrs in advance.',dur:'3 hrs',grp:'2–20 people',price:145,img:'public/assets/extras/beer-bike.jpg'},
+    {id:'pedalboat',name:'Pedal Boat and Picnic',desc:'A pedal boat on the Vltava, a stop at Emperor\'s Island, and a prepared Czech picnic basket. Perfect for families or couples.',dur:'3 hrs',grp:'2–5 people',price:38,img:'public/assets/extras/paddle-boat.jpg'},
   ]},
   {cat:'cultural', catLabel:'Cultural', icon:'<iconify-icon icon="tabler:masks-theater" style="font-size:28px;color:#C9A84C"></iconify-icon>',
    items:[
-    {id:'black-light',name:'Black Light Theatre',desc:'Prague\'s iconic Black Light Theatre. An internationally acclaimed genre exclusive to this city. Premium seats at Image Theatre, reserved through Czech Inn Hotels.',dur:'1.5 hrs',grp:'Any',price:35,img:'assets/venues/black-light-theatre.jpg'},
-    {id:'classical',name:'Mozart in Prague Concert',desc:'Chamber concerts in the Baroque Lobkowicz Palace or the historic Chapel of Mirrors. The very stages where Mozart himself performed.',dur:'1 hr',grp:'Any',price:29,img:'assets/extras/mozart-concert.jpg'},
-    {id:'photography',name:'Private Photography Session',desc:'A 2-hour golden-hour shoot with a Prague professional photographer in the most photogenic streets and courtyards of the Old Town and Malá Strana.',dur:'2 hrs',grp:'1–6 people',price:120,img:'assets/extras/photoshoot.jpg'},
-    {id:'glass',name:'Czech Glass Blowing Workshop',desc:'Create your own Bohemian glass souvenir under expert guidance at a working glassworks studio in Žižkov. No experience required.',dur:'2 hrs',grp:'1–8 people',price:75,img:'assets/extras/glassblowing.jpg'},
-    {id:'mucha-workshop',name:'Art Nouveau Illustration Workshop',desc:'Inspired by Mucha himself. Learn Art Nouveau design techniques in a studio beside the Mucha Museum and take home your original artwork.',dur:'2.5 hrs',grp:'2–8 people',price:55,img:'assets/extras/mucha-workshop.jpg'},
+    {id:'black-light',name:'Black Light Theatre',desc:'Prague\'s iconic Black Light Theatre. An internationally acclaimed genre exclusive to this city. Premium seats at Image Theatre, reserved through Czech Inn Hotels.',dur:'1.5 hrs',grp:'Any',price:35,img:'public/assets/venues/black-light-theatre.jpg'},
+    {id:'classical',name:'Mozart in Prague Concert',desc:'Chamber concerts in the Baroque Lobkowicz Palace or the historic Chapel of Mirrors. The very stages where Mozart himself performed.',dur:'1 hr',grp:'Any',price:29,img:'public/assets/extras/mozart-concert.jpg'},
+    {id:'photography',name:'Private Photography Session',desc:'A 2-hour golden-hour shoot with a Prague professional photographer in the most photogenic streets and courtyards of the Old Town and Malá Strana.',dur:'2 hrs',grp:'1–6 people',price:120,img:'public/assets/extras/photoshoot.jpg'},
+    {id:'glass',name:'Czech Glass Blowing Workshop',desc:'Create your own Bohemian glass souvenir under expert guidance at a working glassworks studio in Žižkov. No experience required.',dur:'2 hrs',grp:'1–8 people',price:75,img:'public/assets/extras/glassblowing.jpg'},
+    {id:'mucha-workshop',name:'Art Nouveau Illustration Workshop',desc:'Inspired by Mucha himself. Learn Art Nouveau design techniques in a studio beside the Mucha Museum and take home your original artwork.',dur:'2.5 hrs',grp:'2–8 people',price:55,img:'public/assets/extras/mucha-workshop.jpg'},
   ]},
   {cat:'daytrip', catLabel:'Day Trips', icon:'<iconify-icon icon="tabler:bus" style="font-size:28px;color:#C9A84C"></iconify-icon>',
    items:[
-    {id:'krumlov',name:'Český Krumlov Day Trip',desc:'UNESCO World Heritage town. A fairy-tale castle, medieval old town, and Vltava river valley. Small-group minivan, licensed guide, lunch included.',dur:'10 hrs',grp:'2–8 people',price:115,img:'assets/extras/krumlov.jpg'},
-    {id:'kutna',name:'Kutná Hora & Bone Church',desc:'The hauntingly beautiful Sedlec Ossuary, the magnificent St Barbara\'s Cathedral, and the silver mining history that built the Czech kingdom.',dur:'8 hrs',grp:'2–12 people',price:89,img:'assets/extras/kutna-hora.jpg'},
-    {id:'karlstejn',name:'Karlštejn Castle Hike',desc:'Hike through cherry-tree orchards to the most famous castle in Bohemia. Private guide, small group, authentic Czech lunch in the village.',dur:'7 hrs',grp:'2–8 people',price:79,img:'assets/extras/castle-skip.jpg'},
-    {id:'terezin',name:'Terezín Memorial Visit',desc:'A deeply moving guided visit to Terezín Fortress. An essential part of understanding Central European 20th-century history, with an expert historian guide.',dur:'6 hrs',grp:'2–15 people',price:69,img:'assets/extras/terezin-memorial.jpg'},
+    {id:'krumlov',name:'Český Krumlov Day Trip',desc:'UNESCO World Heritage town. A fairy-tale castle, medieval old town, and Vltava river valley. Small-group minivan, licensed guide, lunch included.',dur:'10 hrs',grp:'2–8 people',price:115,img:'public/assets/extras/krumlov.jpg'},
+    {id:'kutna',name:'Kutná Hora & Bone Church',desc:'The hauntingly beautiful Sedlec Ossuary, the magnificent St Barbara\'s Cathedral, and the silver mining history that built the Czech kingdom.',dur:'8 hrs',grp:'2–12 people',price:89,img:'public/assets/extras/kutna-hora.jpg'},
+    {id:'karlstejn',name:'Karlštejn Castle Hike',desc:'Hike through cherry-tree orchards to the most famous castle in Bohemia. Private guide, small group, authentic Czech lunch in the village.',dur:'7 hrs',grp:'2–8 people',price:79,img:'public/assets/extras/castle-skip.jpg'},
+    {id:'terezin',name:'Terezín Memorial Visit',desc:'A deeply moving guided visit to Terezín Fortress. An essential part of understanding Central European 20th-century history, with an expert historian guide.',dur:'6 hrs',grp:'2–15 people',price:69,img:'public/assets/extras/terezin-memorial.jpg'},
   ]},
   {cat:'adventure', catLabel:'Adventure', icon:'<iconify-icon icon="tabler:bolt" style="font-size:28px;color:#C9A84C"></iconify-icon>',
    items:[
-    {id:'helicopter',name:'Prague Helicopter Flight',desc:'15 minutes above Prague. Charles Bridge, Prague Castle, Vyšehrad, and the Vltava river all visible from 300 metres up. An experience nobody forgets.',dur:'30 mins total',grp:'1–3 people',price:249,img:'assets/extras/helicopter.jpg'},
-    {id:'segway',name:'Segway City Tour',desc:'Cover twice the ground in half the time. A 2-hour Segway tour through Prague\'s most scenic streets with a small group and expert guide.',dur:'2 hrs',grp:'2–10 people',price:55,img:'assets/extras/segway.jpg'},
-    {id:'ebike',name:'E-Bike Day Rental',desc:'The best way to explore Prague independently. A quality e-bike with map, lock, helmet, and route suggestions tailored to your interests.',dur:'Full day',grp:'1–6 people',price:35,img:'assets/extras/ebike.jpg'},
-    {id:'escape',name:'Private Escape Room',desc:'A custom 75-minute private escape room experience in a historic Prague cellar, teams of 2 to 10. One of Prague\'s highest-rated puzzle experiences.',dur:'75 min',grp:'2–10 people',price:28,img:'assets/extras/underground.jpg'},
+    {id:'helicopter',name:'Prague Helicopter Flight',desc:'15 minutes above Prague. Charles Bridge, Prague Castle, Vyšehrad, and the Vltava river all visible from 300 metres up. An experience nobody forgets.',dur:'30 mins total',grp:'1–3 people',price:249,img:'public/assets/extras/helicopter.jpg'},
+    {id:'segway',name:'Segway City Tour',desc:'Cover twice the ground in half the time. A 2-hour Segway tour through Prague\'s most scenic streets with a small group and expert guide.',dur:'2 hrs',grp:'2–10 people',price:55,img:'public/assets/extras/segway.jpg'},
+    {id:'ebike',name:'E-Bike Day Rental',desc:'The best way to explore Prague independently. A quality e-bike with map, lock, helmet, and route suggestions tailored to your interests.',dur:'Full day',grp:'1–6 people',price:35,img:'public/assets/extras/ebike.jpg'},
+    {id:'escape',name:'Private Escape Room',desc:'A custom 75-minute private escape room experience in a historic Prague cellar, teams of 2 to 10. One of Prague\'s highest-rated puzzle experiences.',dur:'75 min',grp:'2–10 people',price:28,img:'public/assets/extras/underground.jpg'},
   ]},
 ];
 
@@ -84,7 +84,7 @@ function renderCatalogue() {
               <div class="ex-card-badges">
                 <span class="ex-badge ex-badge-cat">${catLabel}</span>
                 <span class="ex-badge ex-badge-dur"><iconify-icon icon="tabler:clock" style="font-size:12px;color:currentColor"></iconify-icon> ${item.dur}</span>
-                <span class="ex-badge ex-badge-grp"><lord-icon src="assets/icons/lordicon/dxjqoygy.json" trigger="hover" colors="primary:#C9A84C" style="width:12px;height:12px"></lord-icon> ${item.grp}</span>
+                <span class="ex-badge ex-badge-grp"><lord-icon src="public/assets/icons/lordicon/dxjqoygy.json" trigger="hover" colors="primary:#C9A84C" style="width:12px;height:12px"></lord-icon> ${item.grp}</span>
               </div>
               <div class="ex-card-name">${item.name}</div>
               <p class="ex-card-desc">${item.desc}</p>

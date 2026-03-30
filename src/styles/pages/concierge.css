@@ -14,7 +14,7 @@
 }
 .dc-hero-img {
   position: absolute; inset: 0;
-  background: url('/assets/backgrounds/concierge-bg.jpg') center/cover;
+  background: url('../../../public/assets/backgrounds/concierge-bg.jpg') center/cover;
   opacity: .06;
 }
 .dc-hero-inner {

@@ -40,7 +40,7 @@ body {
 }
 .gl-hero-bg {
   position: absolute; inset: 0;
-  background-image: url('/assets/backgrounds/gold-label-bg.jpg');
+  background-image: url('../../../public/assets/backgrounds/gold-label-bg.jpg');
   background-size: cover;
   background-position: center 30%;
   filter: brightness(.28) saturate(.6);

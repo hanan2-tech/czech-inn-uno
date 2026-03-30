@@ -14,7 +14,7 @@
 }
 .tours-hero-bg {
   position: absolute; inset: 0;
-  background-image: url('/assets/backgrounds/tours-bg.jpg');
+  background-image: url('../../../public/assets/backgrounds/tours-bg.jpg');
   background-size: cover;
   background-position: center 40%;
   animation: kenBurns 18s ease-in-out infinite alternate;

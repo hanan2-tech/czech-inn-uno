@@ -24,12 +24,12 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 /* ── Platform overview cards ────────────────────────────── */
 const PAGES = [
-  { slug:"tours",       href:"tours.html",       img:"assets/pages/tours-hero.jpg"  },
-  { slug:"gold-label",  href:"gold-label.html",  img:"assets/pages/gold-label-hero.jpg"  },
-  { slug:"extras",      href:"extras.html",      img:"assets/pages/extras-hero.jpg"  },
-  { slug:"concierge",   href:"concierge.html",   img:"assets/pages/concierge-hero.jpg" },
-  { slug:"analytics",   href:"analytics.html",   img:"assets/pages/analytics-hero.jpg"  },
-  { slug:"partnership", href:"partnership.html", img:"assets/pages/partnership-hero.jpg" }
+  { slug:"tours",       href:"tours.html",       img:"public/assets/pages/tours-hero.jpg"  },
+  { slug:"gold-label",  href:"gold-label.html",  img:"public/assets/pages/gold-label-hero.jpg"  },
+  { slug:"extras",      href:"extras.html",      img:"public/assets/pages/extras-hero.jpg"  },
+  { slug:"concierge",   href:"concierge.html",   img:"public/assets/pages/concierge-hero.jpg" },
+  { slug:"analytics",   href:"analytics.html",   img:"public/assets/pages/analytics-hero.jpg"  },
+  { slug:"partnership", href:"partnership.html", img:"public/assets/pages/partnership-hero.jpg" }
 ];
 
 function renderPages() {
