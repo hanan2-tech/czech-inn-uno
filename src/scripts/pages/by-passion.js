@@ -30,7 +30,7 @@ document.querySelectorAll('.quiz-opt').forEach(opt => {
 const PROFILES = {
   culture:  { icon:'<iconify-icon icon="tabler:palette" style="font-size:28px;color:#C9A84C"></iconify-icon>' },
   food:     { icon:'<iconify-icon icon="tabler:glass-wine" style="font-size:28px;color:#C9A84C"></iconify-icon>' },
-  stories:  { icon:'<lord-icon src="https://cdn.lordicon.com/kipaqhoz.json" trigger="hover" colors="primary:#C9A84C" style="width:28px;height:28px"></lord-icon>' },
+  stories:  { icon:'<lord-icon src="assets/icons/lordicon/kipaqhoz.json" trigger="hover" colors="primary:#C9A84C" style="width:28px;height:28px"></lord-icon>' },
   night:    { icon:'<iconify-icon icon="tabler:moon" style="font-size:28px;color:#C9A84C"></iconify-icon>' },
 };
 

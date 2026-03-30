@@ -10,7 +10,7 @@
   }
 
   const tourIcons = {
-    kafka:'<lord-icon src="https://cdn.lordicon.com/kipaqhoz.json" trigger="hover" colors="primary:#C9A84C" style="width:24px;height:24px"></lord-icon>',
+    kafka:'<lord-icon src="assets/icons/lordicon/kipaqhoz.json" trigger="hover" colors="primary:#C9A84C" style="width:24px;height:24px"></lord-icon>',
     mucha:'<iconify-icon icon="tabler:palette" style="font-size:24px;color:#C9A84C"></iconify-icon>',
     jewish:'<iconify-icon icon="tabler:star-of-david" style="font-size:24px;color:#C9A84C"></iconify-icon>',
     kids:'<iconify-icon icon="tabler:masks-theater" style="font-size:24px;color:#C9A84C"></iconify-icon>'
@@ -47,7 +47,7 @@
             <div class="gl-price-tag">€${tour.price} <span>${priceGroup}</span></div>
             <div class="gl-dur-pill"><iconify-icon icon="tabler:clock" style="font-size:13px;color:#C9A84C"></iconify-icon> ${tour.dur}</div>
           </div>
-          <span class="gl-guests-pill"><lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" colors="primary:#C9A84C" style="width:16px;height:16px"></lord-icon> ${tour.guests}</span>
+          <span class="gl-guests-pill"><lord-icon src="assets/icons/lordicon/dxjqoygy.json" trigger="hover" colors="primary:#C9A84C" style="width:16px;height:16px"></lord-icon> ${tour.guests}</span>
         </div>
       `;
       grid.appendChild(card);

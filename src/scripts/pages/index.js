@@ -24,12 +24,12 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 /* ── Platform overview cards ────────────────────────────── */
 const PAGES = [
-  { slug:"tours",       href:"tours.html",       img:"https://images.pexels.com/photos/12562599/pexels-photo-12562599.jpeg?auto=compress&cs=tinysrgb&w=600&q=80"  },
-  { slug:"gold-label",  href:"gold-label.html",  img:"https://images.pexels.com/photos/34672504/pexels-photo-34672504.jpeg?auto=compress&cs=tinysrgb&w=600&q=80"  },
-  { slug:"extras",      href:"extras.html",      img:"https://images.pexels.com/photos/31751536/pexels-photo-31751536.jpeg?auto=compress&cs=tinysrgb&w=600&q=80"  },
-  { slug:"concierge",   href:"concierge.html",   img:"https://images.pexels.com/photos/695193/pexels-photo-695193.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" },
-  { slug:"analytics",   href:"analytics.html",   img:"https://images.pexels.com/photos/7652044/pexels-photo-7652044.jpeg?auto=compress&cs=tinysrgb&w=600&q=80"  },
-  { slug:"partnership", href:"partnership.html", img:"https://images.pexels.com/photos/1181304/pexels-photo-1181304.jpeg?auto=compress&cs=tinysrgb&w=600&q=80" }
+  { slug:"tours",       href:"tours.html",       img:"assets/pages/tours-hero.jpg"  },
+  { slug:"gold-label",  href:"gold-label.html",  img:"assets/pages/gold-label-hero.jpg"  },
+  { slug:"extras",      href:"extras.html",      img:"assets/pages/extras-hero.jpg"  },
+  { slug:"concierge",   href:"concierge.html",   img:"assets/pages/concierge-hero.jpg" },
+  { slug:"analytics",   href:"analytics.html",   img:"assets/pages/analytics-hero.jpg"  },
+  { slug:"partnership", href:"partnership.html", img:"assets/pages/partnership-hero.jpg" }
 ];
 
 function renderPages() {

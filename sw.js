@@ -1,4 +1,4 @@
-const CACHE = 'czech-inn-v3';
+const CACHE = 'czech-inn-v4';
 const PRECACHE = [
   '/',
   '/index.html',
@@ -33,6 +33,13 @@ const PRECACHE = [
   '/src/scripts/pages/concierge.js',
   '/src/scripts/pages/by-passion.js',
   '/src/scripts/pages/analytics.js',
+  '/assets/icons/lordicon.js',
+  '/assets/backgrounds/after-dark-bg.jpg',
+  '/assets/backgrounds/concierge-bg.jpg',
+  '/assets/backgrounds/tours-bg.jpg',
+  '/assets/icons/icon-192.jpg',
+  '/assets/icons/icon-512.jpg',
+  '/assets/social-preview.jpg',
 ];
 
 self.addEventListener('install', e => {

@@ -3,3 +3,6 @@ dist/
 .DS_Store
 *.local
 .claude/
+
+# Temporary asset staging area (images verified & moved to proper folders)
+public/assets/tmp_verify/

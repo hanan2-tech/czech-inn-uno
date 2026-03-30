@@ -8,7 +8,7 @@
 }
 .co-hero-bg {
   position: absolute; inset: 0;
-  background: url('https://images.pexels.com/photos/9460510/pexels-photo-9460510.jpeg?auto=compress&cs=tinysrgb&w=1800&q=80') center/cover;
+  background: url('/assets/backgrounds/corporate-bg.jpg') center/cover;
   opacity: .12;
 }
 .co-hero-overlay {

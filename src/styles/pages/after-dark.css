@@ -8,7 +8,7 @@
 }
 .ad-hero-bg {
   position: absolute; inset: 0;
-  background: url('https://images.pexels.com/photos/3980364/pexels-photo-3980364.jpeg?auto=compress&cs=tinysrgb&w=1800&q=80') center/cover;
+  background: url('/assets/backgrounds/after-dark-bg.jpg') center/cover;
   opacity: .35;
 }
 .ad-hero-overlay {

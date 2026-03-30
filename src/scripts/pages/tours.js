@@ -120,7 +120,7 @@
               <blockquote class="stop-quote">${squote}</blockquote>
               <div class="stop-meta">
                 <div class="stop-activity">
-                  <span class="stop-meta-icon"><lord-icon src="https://cdn.lordicon.com/ibydboev.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:16px;height:16px"></lord-icon></span>
+                  <span class="stop-meta-icon"><lord-icon src="assets/icons/lordicon/ibydboev.json" trigger="hover" colors="primary:#C9A84C,secondary:#9C7B3C" style="width:16px;height:16px"></lord-icon></span>
                   <span>${sact}</span>
                 </div>
                 ${sfood ? `
@@ -165,7 +165,7 @@
             <span class="info-item-value">${dur}</span>
           </div>
           <div class="info-item">
-            <span class="info-item-icon"><lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" colors="primary:#C9A84C" style="width:20px;height:20px"></lord-icon></span>
+            <span class="info-item-icon"><lord-icon src="assets/icons/lordicon/dxjqoygy.json" trigger="hover" colors="primary:#C9A84C" style="width:20px;height:20px"></lord-icon></span>
             <span class="info-item-label">${lGroupSize}</span>
             <span class="info-item-value">${grp}</span>
           </div>
